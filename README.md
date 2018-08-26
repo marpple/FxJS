@@ -1,2 +1,2 @@
-# FxJS
-Functional Extensions for Javascript
+## FxJS - Functional Extensions for Javascript
+
