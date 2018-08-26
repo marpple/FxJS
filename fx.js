@@ -10,7 +10,7 @@ export const
 
 export const
   isString = a => typeof a == 'string',
-  
+
   is_string = isString,
 
   isFunction = a => typeof a == 'function',
@@ -25,15 +25,15 @@ const
 
   collIter = alterIter(valuesIter);
 
-function *valuesIter(obj) {
+export function *valuesIter(obj) {
   for (const k in obj) yield obj[k];
 }
 
-function *entriesIter(obj) {
+export function *entriesIter(obj) {
   for (const k in obj) yield [k, obj[k]];
 }
 
-function *reverseIter(arr) {
+export function *reverseIter(arr) {
   var l = arr.length;
   while (l--) yield arr[l];
 }
