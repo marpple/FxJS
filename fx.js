@@ -166,4 +166,5 @@ function *range(limit) {
   while (++i < limit) yield i;
 }
 
-export const object = coll => reduce((obj, [k, v]) => (obj[k] = v, obj),  coll, {});
+export const
+  object = coll => reduce((obj, [k, v]) => (obj[k] = v, obj),  coll, {});
