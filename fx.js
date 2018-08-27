@@ -39,7 +39,7 @@ export function *reverseIter(arr) {
 }
 
 export const
-  then = (f, a) => a instanceof Promise ? a.then(f) : f(a),
+  then = curry((f, a) => a instanceof Promise ? a.then(f) : f(a)),
 
   call = (f, a) => f(a),
 
@@ -64,9 +64,16 @@ export const
 export const
   reduce = curry((f, coll, acc) => {
     const iter = collIter(coll);
-    acc = acc === undefined ? iter.next().value : acc;
-    for (const a of iter) acc = then(acc => then(a => f(acc, a), a), acc);
-    return acc;
+    return then(function (cur) {
+      return function recur(acc) {
+        while ((cur = iter.next()) && !cur.done) {
+          if (cur instanceof Promise) return cur.then(cur => cur.done ? acc : then(recur, f(acc, cur.value)));
+          const a = cur.value;
+          acc = acc instanceof Promise ? acc.then(acc => f(acc, a)) : f(acc, a);
+        }
+        return acc;
+      } (acc === undefined ? cur.value : acc);
+    }, acc === undefined ? iter.next() : acc);
   }),
 
   go = (..._) => reduce(call2, _),
@@ -78,9 +85,9 @@ export const
   each = curry((f, coll) => go(reduce((_, a) => f(a), coll, null), _ => coll));
 
 export const
-  lmap = curry(function *(f, coll) {
-    for (const a of coll) yield f(a);
-  }),
+  lmap = curry((f, coll) => baseLazyLispF(function() {
+    return then(cur => cur.done ? cur : then(value => ({value}), f(cur.value)), this.iter.next());
+  }, coll)),
 
   map = curry((f, coll) =>
     hasIter(coll) ?
@@ -94,8 +101,15 @@ export const
   pluck = curry((k, coll) => map(a => a[k], coll));
 
 export const
-  lfilter = curry((f, coll) => baseLazyLispF(function(cur = this.iter.next()) {
-    return cur.done ? cur : go(f(cur.value), b => b ? cur : this.next());
+  lfilter = curry((f, coll) => baseLazyLispF(function() {
+    var recur = (cur, b) => {
+      while (!cur.done) {
+        if (b = f(cur.value)) return then(b => b ? cur : this.next(), b);
+        if ((cur = this.iter.next()) instanceof Promise) return cur.then(recur);
+      }
+      return { done: true }
+    };
+    return then(recur, this.iter.next());
   }, coll)),
 
   filter = curry((f, coll) =>
@@ -123,7 +137,9 @@ function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
 
-export const all = coll => reduce(push3, coll, []);
+export function all(coll) {
+  return reduce(push3, coll, []);
+}
 
 export const
   uniqueBy = curry((f, coll) => {
@@ -165,7 +181,7 @@ function pushSel(parent, k, v) {
   return parent;
 }
 
-function *range(limit) {
+export function *range(limit) {
   var i = -1;
   while (++i < limit) yield i;
 }
