@@ -50,6 +50,8 @@ export const
 
   push2 = (arr, a) => (arr.push(a), a),
 
+  push3 = (arr, a) => (arr.push(a), arr),
+
   flatten = arr => [].concat(...arr),
 
   set = curry(([k, v], obj) => (obj[k] = v, obj)),
@@ -82,7 +84,7 @@ export const
 
   map = curry((f, coll) =>
     hasIter(coll) ?
-      go(lmap(f, coll), _ => [..._]) :
+      all(lmap(f, coll)) :
       reduce(
         (res, [k, a]) => go(f(a), b => (res[k] = b, res)),
         entriesIter(coll),
@@ -98,7 +100,7 @@ export const
 
   filter = curry((f, coll) =>
     hasIter(coll) ?
-      go(lfilter(f, coll), _ => [..._]) :
+      all(lfilter(f, coll)) :
       reduce(
         (res, [k, a]) => go(f(a), b => (b && (res[k] = b), res)),
         entriesIter(coll),
@@ -120,6 +122,8 @@ function baseLazyLispF(next, coll) {
 function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
+
+export const all = coll => reduce(push3, coll, []);
 
 export const
   uniqueBy = curry((f, coll) => {
