@@ -39,8 +39,8 @@ describe('reduce', function () {
   it('reduce(add, [1, 2, 3])', () => {
     expect(reduce(add, [1, 2, 3])).to.eql(6);
   });
-  it('reduce(add, [1, 2, 3], 10)', () => {
-    expect(reduce(add, [1, 2, 3], 10)).to.eql(16);
+  it('reduce(add, 10, [1, 2, 3])', () => {
+    expect(reduce(add, 10, [1, 2, 3])).to.eql(16);
   });
   it('reduce(add, {a: 1, b: 2, c: 3})', () => {
     expect(reduce(add, {a: 1, b: 2, c: 3})).to.eql(6);

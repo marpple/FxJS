@@ -38,7 +38,7 @@ const add = (a, b) => a + b
 reduce(add, [1, 2, 3]);
 // 6
 
-reduce(add, [1, 2, 3], 10);
+reduce(add, 10, [1, 2, 3]);
 // 16
 
 reduce(add, {a: 1, b: 2, c: 3});

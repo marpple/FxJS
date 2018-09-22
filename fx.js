@@ -1,3 +1,4 @@
+// FxJS 0.0.6
 export const
   identity = a => a,
 
@@ -17,7 +18,13 @@ export const
 
   isFunction = a => typeof a == 'function',
 
-  is_function = isFunction;
+  is_function = isFunction,
+
+  isArray = Array.isArray,
+
+  is_array = isArray,
+
+  isUndefined = a => a === undefined;
 
 export const
   hasIter = coll => !!(coll && coll[Symbol.iterator]),
@@ -90,15 +97,21 @@ export const
 export const
   set = curry(([k, v], obj) => (obj[k] = v, obj)),
 
-  set2 = curry((obj, kv) => (set(kv, obj), kv));
+  set2 = curry((obj, kv) => (set(kv, obj), kv)),
+
+  set3 = curry((obj, [k, v]) => (obj[k] = v, obj));
 
 export const
   last = arr => arr[arr.length-1];
 
 export const
-  reduce = curry((f, coll, acc) => {
-    var iter = collIter(coll);
-    acc = acc === undefined ? iter.next().value : acc;
+  reduce = curry(function(f, acc, coll) {
+    if (arguments.length == 2) {
+      var iter = collIter(acc);
+      acc = iter.next().value;
+    } else {
+      iter = collIter(coll);
+    }
     return function recur() {
       let cur;
       while (!(cur = iter.next()).done) {
@@ -113,11 +126,11 @@ export const
 
   go = (..._) => reduce(call2, _),
 
-  pipe = (f, ...fs) => (...as) => reduce(call2, fs, f(...as)),
+  pipe = (f, ...fs) => (...as) => reduce(call2, f(...as), fs),
 
-  tap = (f, ...fs) => (a, ...as) => go(reduce(call2, fs, f(a, ...as)), _ => a),
+  tap = (f, ...fs) => (a, ...as) => go(reduce(call2, f(a, ...as), fs), _ => a),
 
-  each = curry((f, coll) => go(reduce((_, a) => f(a), coll, null), _ => coll));
+  each = curry((f, coll) => go(reduce((_, a) => f(a), null, coll), _ => coll));
 
 export const take = curry(function(limit, coll) {
   var res = [], iter = collIter(coll);
@@ -174,17 +187,17 @@ export const
   uniq = unique,
 
   countBy = curry((f, coll) =>
-    reduce((counts, a) => incSel(counts, f(a)), coll, {})),
+    reduce((counts, a) => incSel(counts, f(a)), {}, coll)),
 
   count_by = countBy,
 
   groupBy = curry((f, coll) =>
-    reduce((group, a) => pushSel(group, f(a), a), coll, {})),
+    reduce((group, a) => pushSel(group, f(a), a), {}, coll)),
 
   group_by = groupBy,
 
   indexBy = curry((f, coll) =>
-    reduce((indexed, a) => set([f(a), a], indexed), coll, {})),
+    reduce((indexed, a) => set([f(a), a], indexed), {}, coll)),
 
   index_by = indexBy;
 
@@ -206,17 +219,28 @@ export const
   every = curry(pipe(L.reject, take1, _ => _.length == 0));
 
 export const
-  object = coll => reduce((obj, [k, v]) => (obj[k] = v, obj), coll, {}),
+  object = coll => reduce((obj, [k, v]) => (obj[k] = v, obj), {}, coll),
 
   entryMap = curry((f, [k, a]) => go1(f(a), b => [k, b])),
 
-  eMap = entryMap;
+  eMap = entryMap,
+
+  entries = pipe(L.entries, takeAll);
+
+const baseExtend = set => (obj, ...objs) => reduce(reduce(set), obj, L.map(entries, objs));
+
+export const
+  has = curry((k, obj) => obj.hasOwnProperty(k)),
+
+  extend = baseExtend(set3),
+
+  defaults = baseExtend(tap((obj, kv) => has(kv[0], obj) || set3(obj, kv)));
 
 export const C = {};
 
 C.map = curry(pipe(L.map, _ => [..._], takeAll));
 
-C.reduce = (f, coll, acc) => reduce(f, [...coll], acc);
+C.reduce = (f, coll, acc) => reduce(f, acc, [...coll]);
 
 C.take = curry((limit, coll) => new Promise(function(resolve) {
   var res = [];
