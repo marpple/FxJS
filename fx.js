@@ -1,4 +1,4 @@
-// FxJS 0.0.6
+// FxJS 0.0.7
 export const
   identity = a => a,
 
@@ -59,7 +59,7 @@ L.tail = function(coll) {
 
 L.headTail = L.head_tail = function(coll) {
   var iter = collIter(coll);
-  return go1(take(1, iter), head => [head, iter]);
+  return go1(take(1, iter), ([head]) => [head, iter]);
 };
 
 L.range = function *(limit) {
@@ -133,6 +133,7 @@ export const
   each = curry((f, coll) => go(reduce((_, a) => f(a), null, coll), _ => coll));
 
 export const take = curry(function(limit, coll) {
+  if (limit === 0) return [];
   var res = [], iter = collIter(coll);
   return function recur() {
     let cur;
@@ -242,7 +243,7 @@ C.map = curry(pipe(L.map, _ => [..._], takeAll));
 
 C.reduce = (f, coll, acc) => reduce(f, acc, [...coll]);
 
-C.take = curry((limit, coll) => new Promise(function(resolve) {
+C.take = curry((limit, coll) => limit === 0 ? [] : new Promise(function(resolve) {
   var res = [];
   var i = -1, j = -1, resolved;
   for (const a of coll) {
