@@ -1,4 +1,4 @@
-// FxJS 0.0.9
+// FxJS 0.0.10
 export const
   identity = a => a,
 
@@ -138,6 +138,8 @@ export const
 
   tap = (f, ...fs) => (a, ...as) => go(reduce(call2, f(a, ...as), fs), _ => a),
 
+  hi = tap(log),
+
   each = curry((f, coll) => go(reduce((_, a) => f(a), null, coll), _ => coll));
 
 export const take = curry(function(limit, coll) {
@@ -257,11 +259,11 @@ export const
 
   eMap = entryMap, emap = eMap,
 
-  entries = Object.entries,
+  entries = a => a ? Object.entries(a) : [],
 
-  values = Object.values,
+  values = a => a ? Object.values(a) : [],
 
-  keys = Object.keys;
+  keys = a => a ? Object.keys(a) : [];
 
 const basePick = filter => curry((ks, obj) => go(
   obj,
@@ -275,7 +277,10 @@ export const
 
   omit = basePick(L.reject);
 
-const baseExtend = set => (obj, ...objs) => reduce(reduce(set), obj, L.map(entries, objs));
+const baseExtend = set => tap((obj, ...objs) => {
+  const type = typeof obj;
+  if (obj && (type == 'object' || type == 'function')) reduce(reduce(set), obj, L.map(entries, objs));
+});
 
 export const
   extend = baseExtend(set3),
@@ -402,8 +407,5 @@ export const
 
   sel = baseSel('.');
 
-export const scat = curry((f, coll) => go(
-  coll,
-  L.map(f),
-  reduce((a, b) => `${a}${b}`)
-));
+export const scat = curry((f, coll) =>
+  reduce((a, b) => `${a}${b}`, '', L.map(f, coll)));

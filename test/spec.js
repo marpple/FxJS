@@ -152,3 +152,84 @@ describe('uniq', function () {
     expect(uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})).to.eql({a: 1, b: 2, c: 3, f: 4});
   });
 });
+
+describe('go', function () {
+  it(`
+    go(
+      0,
+      a => a + 1,
+      a => a + 10,
+      a => a + 100)`, function () {
+    expect(
+      go(
+        0,
+        a => a + 1,
+        a => a + 10,
+        a => a + 100)).to.eql(111)
+  });
+
+  it(`
+    go(
+      0,
+      a => { throw { hi: 'ho' } },
+      a => a + 10,
+      a => a + 100)`, function () {
+    try {
+      go(
+        0,
+        a => { throw { hi: 'ho' } },
+        a => a + 10,
+        a => a + 100)
+    } catch (a) {
+      expect(a).to.eql({ hi: 'ho' })
+    }
+  });
+
+  it(`
+    go(
+      0,
+      a => Promise.resolve(a + 1),
+      a => a + 10,
+      a => a + 100)`, async function () {
+      expect(
+        await go(
+          0,
+          a => Promise.resolve(a + 1),
+          a => a + 10,
+          a => a + 100)).to.eql(111)
+  });
+
+  it(`
+    go(
+      0,
+      a => Promise.resolve(a + 1),
+      a => Promise.reject({ hi: 'ho' }),
+      a => a + 100)`, async function () {
+      try {
+        await go(
+          0,
+          a => Promise.resolve(a + 1),
+          a => Promise.reject({ hi: 'ho' }),
+          a => a + 100)
+      } catch (a) {
+        expect(a).to.eql({ hi: 'ho' })
+      }
+  });
+
+  it(`
+    go(
+      0,
+      a => Promise.resolve(a + 1),
+      a => { throw { hi: 'ho' } },
+      a => a + 100)`, async function () {
+      try {
+        await go(
+          0,
+          a => Promise.resolve(a + 1),
+          a => { throw { hi: 'ho' } },
+          a => a + 100)
+      } catch (a) {
+        expect(a).to.eql({ hi: 'ho' })
+      }
+  });
+});

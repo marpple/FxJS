@@ -16,6 +16,7 @@ npm i fxjs2
 - [take](#take)
 - [L.map](#L.map)
 - [L.filter](#L.filter)
+- [go](#go)
 
 #### map
 
@@ -80,3 +81,63 @@ take(2, lazy);
 // [11, 13]
 ```
 
+#### go
+
+```javascript
+const b = go(
+  0,
+  a => a + 1,
+  a => a + 10,
+  a => a + 100);
+
+console.log(b);
+// 111
+
+try {
+  const b = go(
+    0,
+    a => { throw { hi: 'ho' } },
+    a => a + 10,
+    a => a + 100);
+
+  console.log(b);
+} catch (c) {
+  console.log(c);
+}
+// { hi: 'ho' }
+
+const b = await go(
+  0,
+  a => Promise.resolve(a + 1),
+  a => a + 10,
+  a => a + 100);
+
+console.log(b);
+// 111
+
+try {
+  const b = await go(
+    0,
+    a => Promise.resolve(a + 1),
+    a => Promise.reject({ hi: 'ho' }),
+    a => a + 100);
+
+  console.log(b);
+} catch (c) {
+  console.log(c);
+}
+// { hi: 'ho' }
+
+try {
+  const b = await go(
+    0,
+    a => Promise.resolve(a + 1),
+    a => Promise.reject({ hi: 'ho' }),
+    a => a + 100);
+
+  console.log(b);
+} catch (c) {
+  console.log(c);
+}
+// { hi: 'ho' }
+```
