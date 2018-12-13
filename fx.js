@@ -110,7 +110,7 @@ L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = function *f(iter) {
   }
 };
 
-L.flatMap = curry((f, iter) => L.flat(L.map(f, iter)));
+L.flatMap = L.flat_map = curry((f, iter) => L.flat(L.map(f, iter)));
 
 export const
   call = (f, a) => f(a),
@@ -217,7 +217,15 @@ export const
 
   deepFlatten = pipe(L.deepFlatten, takeAll),
 
-  flatMap = curry(pipe(L.map, flat));
+  deepFlat = deepFlatten,
+
+  deep_flat = deepFlat,
+
+  deep_flatten = deepFlat,
+
+  flatMap = curry(pipe(L.map, flat)),
+
+  flat_map = flatMap;
 
 export const
   uniqueBy = curry((f, coll) => {
