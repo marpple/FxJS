@@ -69,36 +69,15 @@ describe('C.take', function () {
 
   it('C.take(2, L.map(a => delay(a, a * 100), [1, 2, 3]))', () => {
     go1(
-      C.take(2, L.map(a => delay(a, a * 100), [1, 2, 3])),
+      C.take(2, L.map(a => delay(a, 100), [1, 2, 3])),
       _ => expect(_).to.eql([1, 2])
-    );
-  });
-
- it('C.take(2, L.map(a => delay(a, (4 - a) * 100), [1, 2, 3]))', () => {
-    go1(
-      C.take(2, L.map(a => delay(a, (4 - a) * 100), [1, 2, 3])),
-      _ => expect(_).to.eql([3, 2])
     );
   });
 
   it('C.take(2, L.filter(a => delay(a % 2, a * 100), [1, 2, 3]))', () => {
     go1(
-      C.take(2, L.filter(a => delay(a % 2, a * 100), [1, 2, 3])),
+      C.take(2, L.filter(a => delay(a % 2, 100), [1, 2, 3])),
       _ => expect(_).to.eql([1, 3])
-    );
-  });
-
-  it('C.take(2, L.filter(a => delay(a % 2, (4-a) * 100), [1, 2, 3]))', () => {
-    go1(
-      C.take(2, L.filter(a => delay(a % 2, (4-a) * 100), [1, 2, 3])),
-      _ => expect(_).to.eql([3, 1])
-    );
-  });
-
-  it('C.take(1, L.filter(a => delay(a % 2, (4-a) * 100), [1, 2, 3]))', () => {
-    go1(
-      C.take(1, L.filter(a => delay(a % 2, (4-a) * 100), [1, 2, 3])),
-      _ => expect(_).to.eql([3])
     );
   });
 });

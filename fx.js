@@ -1,4 +1,4 @@
-// FxJS 0.0.10
+// FxJS 0.0.12
 export const
   identity = a => a,
 
@@ -82,7 +82,7 @@ L.map = curry(function *(f, coll) {
 L.filter = curry(function *(f, coll) {
   for (const a of L.values(coll)) {
     const b = go1(a, f);
-    if (b instanceof Promise) yield Promise.all([a, b]).then(([a, b]) => b ? a : Promise.reject(nop));
+    if (b instanceof Promise) yield b.then(b => b ? a : Promise.reject(nop));
     else if (b) yield a;
   }
 });
@@ -96,6 +96,22 @@ L.reject = baseReject(L.filter);
 function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
+
+L.flatten = function *(iter) {
+  for (const a of iter) {
+    if (hasIter(a)) yield *a;
+    else yield a;
+  }
+};
+
+L.deepFlatten = function *f(iter) {
+  for (const a of iter) {
+    if (hasIter(a)) yield *f(a);
+    else yield a;
+  }
+};
+
+L.flatMap = curry((f, iter) => L.flatten(L.map(f, iter)));
 
 export const
   call = (f, a) => f(a),
@@ -112,24 +128,24 @@ export const
 export const
   last = arr => arr[arr.length-1];
 
+const reduceF = (acc, a, f) =>
+  a instanceof Promise ?
+    a.then(a => f(acc, a), e => e == nop ? acc : Promise.reject(e)) :
+    f(acc, a);
+
 export const
-  reduce = curry(function(f, acc, coll) {
-    if (arguments.length == 2) {
-      var iter = L.values(acc);
-      acc = iter.next().value;
-    } else {
-      iter = L.values(coll);
-    }
-    return function recur() {
+  reduce = curry(function(f, acc, iter) {
+    if (arguments.length == 2) return reduce(f, head(iter = L.values(acc)), iter);
+
+    iter = L.values(iter);
+    return go1(acc, function recur(acc) {
       let cur;
       while (!(cur = iter.next()).done) {
-        const a = cur.value, acc_ = acc;
-        acc = go1(a, a => go1(acc_, acc => f(acc, a)));
-        if (acc instanceof Promise)
-          return (acc = acc.catch(e => e == nop ? acc_ : Promise.reject(e))).then(recur);
+        acc = reduceF(acc, cur.value, f);
+        if (acc instanceof Promise) return acc.then(recur);
       }
       return acc;
-    } ();
+    });
   }),
 
   go = (..._) => reduce(call2, _),
@@ -142,32 +158,35 @@ export const
 
   each = curry((f, coll) => go(reduce((_, a) => f(a), null, coll), _ => coll));
 
-export const take = curry(function(limit, coll) {
-  if (limit === 0) return [];
-  var res = [], iter = L.values(coll);
+export const take = curry((l, iter) => {
+  if (l === 0) return [];
+  let res = [];
+  iter = L.values(iter);
   return function recur() {
     let cur;
     while (!(cur = iter.next()).done) {
       const a = cur.value;
-      if (a instanceof Promise) return a
-        .then(a => (res.push(a), res).length == limit ? res : recur())
-        .catch(e => e == nop ? recur() : Promise.reject(e));
+      if (a instanceof Promise) {
+        return a
+          .then(a => (res.push(a), res).length == l ? res : recur())
+          .catch(e => e == nop ? recur() : Promise.reject(e));
+      }
       res.push(a);
-      if (res.length == limit) return res;
+      if (res.length == l) return res;
     }
     return res;
   } ();
 });
 
 export const
-  takeAll = coll => take(Infinity, coll),
+  takeAll = take(Infinity),
 
   take_all = takeAll,
 
   take1 = take(1);
 
 export const
-  head = pipe(take1, ([a]) => a),
+  head = iter => go1(take1(iter), ([h]) => h),
 
   tail = coll => takeAll(L.tail(coll));
 
@@ -193,6 +212,13 @@ export const
   reject = baseReject(filter);
 
 export const
+  flatten = pipe(L.flatten, takeAll),
+
+  deepFlatten = pipe(L.deepFlatten, takeAll),
+
+  flatMap = curry(pipe(L.map, flatten));
+
+export const
   uniqueBy = curry((f, coll) => {
     const s = new Set();
     const imobj = !hasIter(coll);
@@ -205,6 +231,8 @@ export const
         b => s.has(b) ? false : s.add(b))),
       imobj ? object : identity);
   }),
+
+  unique_by = uniqueBy,
 
   unique = uniqueBy(a => a),
 
@@ -228,10 +256,14 @@ export const
   maxBy = curry((f, coll) =>
     reduce((a, b) => f(a) > f(b) ? a : b, coll)),
 
+  max_by = maxBy,
+
   max = maxBy(identity),
 
   minBy = curry((f, coll) =>
     reduce((a, b) => f(a) > f(b) ? b : a, coll)),
+
+  min_by = minBy,
 
   min = maxBy(identity);
 
@@ -289,29 +321,22 @@ export const
 
 export const C = {};
 
-C.map = curry(pipe(L.map, _ => [..._], takeAll));
+const catchNoop = ([...arr]) =>
+  (arr.forEach(a => a instanceof Promise ? a.catch(noop) : a), arr);
 
-C.entriesMap = C.esMap = C.es_map = curry(pipe(L.esMap, _ => [..._], takeAll));
+C.reduce = curry((f, acc, iter) => iter ?
+  reduce(f, acc, catchNoop(iter)) :
+  reduce(f, catchNoop(acc)));
 
-C.reduce = (f, coll, acc) => reduce(f, acc, [...coll]);
+C.take = curry((l, iter) => take(l, catchNoop(iter)));
 
-C.take = curry((limit, coll) => limit === 0 ? [] : new Promise(function(resolve) {
-  var res = [];
-  var i = -1, j = -1, resolved;
-  for (const a of coll) {
-    ++i;
-    Promise.resolve(a).then(a => {
-      if (resolved) return;
-      res.push(a);
-      if (res.length == limit || i == ++j) {
-        resolved = true;
-        resolve(res);
-      }
-    }).catch(e => e != nop && Promise.reject(e));
-  }
-}));
+C.takeAll = C.take(Infinity);
 
-C.takeAll = C.take_all = coll => C.take(Infinity, coll);
+C.map = curry(pipe(L.map, C.takeAll));
+
+C.filter = curry(pipe(L.filter, C.takeAll));
+
+C.entriesMap = C.esMap = C.es_map = curry(pipe(L.esMap, C.takeAll));
 
 C.take1 = C.take(1);
 
@@ -325,7 +350,7 @@ C.some = curry(pipe(L.filter, C.take1, _ => _.length == 1));
 
 C.every = curry(pipe(L.reject, C.take1, _ => _.length == 0));
 
-C.calls = baseCalls(C.map, C.eMap);
+C.calls = baseCalls(C.map, C.esMap);
 
 export const
   isMatch = curry((a, b) =>
@@ -409,3 +434,26 @@ export const
 
 export const scat = curry((f, coll) =>
   reduce((a, b) => `${a}${b}`, '', L.map(f, coll)));
+
+const arrComparator = (arr) => (a, b) => {
+  let i = -1;
+  while (++i < arr.length) {
+    const ai = a[arr[i]], bi = b[arr[i]];
+    if (ai === bi) continue;
+    return ai < bi ? -1 : 1;
+  }
+  return 0;
+};
+
+const baseSortBy = (left, right) => curry(function sortBy(f, arr) {
+  return isArray(f) ? sortBy(arrComparator(f), arr) :
+    typeof f == 'string' ? sortBy(a => a[f], arr) :
+    f.length == 2 ? [...arr].sort(right == -1 ? pipe(f, n => n * -1) : f) :
+    [...arr].sort((a, b, fa = f(a), fb = f(b)) => fa == fb ? 0 : fa < fb ? left : right)
+});
+
+export const
+  sortBy = baseSortBy(-1, 1),
+  sortByDesc = baseSortBy(1, -1),
+  sort = sortBy(identity),
+  sortDesc = sortByDesc(identity);
