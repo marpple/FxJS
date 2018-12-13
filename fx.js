@@ -463,6 +463,9 @@ const baseSortBy = (left, right) => curry(function sortBy(f, arr) {
 
 export const
   sortBy = baseSortBy(-1, 1),
+  sort_by = sortBy,
   sortByDesc = baseSortBy(1, -1),
+  sort_by_desc = sortByDesc,
   sort = sortBy(identity),
-  sortDesc = sortByDesc(identity);
+  sortDesc = sortByDesc(identity),
+  sort_desc = sortDesc;
