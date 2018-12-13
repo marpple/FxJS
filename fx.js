@@ -1,4 +1,4 @@
-// FxJS 0.0.12
+// FxJS 0.0.14
 export const
   identity = a => a,
 
