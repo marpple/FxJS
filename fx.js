@@ -97,21 +97,21 @@ function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
 
-L.flatten = function *(iter) {
+L.flat = L.flatten = function *(iter) {
   for (const a of iter) {
     if (hasIter(a)) yield *a;
     else yield a;
   }
 };
 
-L.deepFlatten = function *f(iter) {
+L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = function *f(iter) {
   for (const a of iter) {
-    if (hasIter(a)) yield *f(a);
+    if (typeof a != 'string' && hasIter(a)) yield *f(a);
     else yield a;
   }
 };
 
-L.flatMap = curry((f, iter) => L.flatten(L.map(f, iter)));
+L.flatMap = curry((f, iter) => L.flat(L.map(f, iter)));
 
 export const
   call = (f, a) => f(a),
@@ -214,9 +214,11 @@ export const
 export const
   flatten = pipe(L.flatten, takeAll),
 
+  flat = flatten,
+
   deepFlatten = pipe(L.deepFlatten, takeAll),
 
-  flatMap = curry(pipe(L.map, flatten));
+  flatMap = curry(pipe(L.map, flat));
 
 export const
   uniqueBy = curry((f, coll) => {

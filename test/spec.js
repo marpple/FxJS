@@ -212,3 +212,11 @@ describe('go', function () {
       }
   });
 });
+
+describe('flatten', function () {
+  it(`deepFlatten([1, 2, [3]])`, function () {
+    expect(deepFlatten([1, 2, [3]])).to.eql([1,2,3])
+  });
+});
+
+
