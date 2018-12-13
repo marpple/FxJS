@@ -254,14 +254,14 @@ export const
   index_by = indexBy,
 
   maxBy = curry((f, coll) =>
-    reduce((a, b) => f(a) > f(b) ? a : b, coll)),
+    reduce((a, b) => f(a) >= f(b) ? a : b, coll)),
 
   max_by = maxBy,
 
   max = maxBy(identity),
 
   minBy = curry((f, coll) =>
-    reduce((a, b) => f(a) > f(b) ? b : a, coll)),
+    reduce((a, b) => f(a) <= f(b) ? a : b, coll)),
 
   min_by = minBy,
 
