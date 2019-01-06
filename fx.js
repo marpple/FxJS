@@ -54,6 +54,11 @@ L.keys = function *(obj) {
   for (const k in obj) yield k;
 };
 
+L.ivs = L.indexValues = function*(iter) {
+  let i = -1;
+  for (const a of iter) yield [i, a];
+};
+
 L.reverse = function *(arr) {
   var l = arr.length;
   while (l--) yield arr[l];
