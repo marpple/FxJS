@@ -162,25 +162,66 @@ export const
 
   each = curry((f, coll) => go(reduce((_, a) => f(a), null, coll), _ => coll));
 
-export const take = curry((l, iter) => {
-  if (l === 0) return [];
-  let res = [];
-  iter = L.values(iter);
-  return function recur() {
-    let cur;
-    while (!(cur = iter.next()).done) {
-      const a = cur.value;
-      if (a instanceof Promise) {
-        return a
-          .then(a => (res.push(a), res).length == l ? res : recur())
-          .catch(e => e == nop ? recur() : Promise.reject(e));
+export const
+  take = curry((l, iter) => {
+    if (l === 0) return [];
+    let res = [];
+    iter = L.values(iter);
+    return function recur() {
+      let cur;
+      while (!(cur = iter.next()).done) {
+        const a = cur.value;
+        if (a instanceof Promise) {
+          return a
+            .then(a => (res.push(a), res).length == l ? res : recur())
+            .catch(e => e == nop ? recur() : Promise.reject(e));
+        }
+        res.push(a);
+        if (res.length == l) return res;
       }
-      res.push(a);
-      if (res.length == l) return res;
-    }
-    return res;
-  } ();
-});
+      return res;
+    } ();
+  }),
+
+  takeWhile = curry((f, iter) => {
+    let res = [];
+    iter = L.values(iter);
+    return function recur() {
+      let cur;
+      while (!(cur = iter.next()).done) {
+        const a = cur.value;
+        const b = go1(a, f);
+        if (!b) return res;
+        if (b instanceof Promise) {
+          return b
+            .then(async b => b ? (res.push(await a), recur()) : res)
+            .catch(e => e == nop ? recur() : Promise.reject(e));
+        }
+        res.push(a);
+      }
+      return res;
+    } ();
+  }),
+
+  takeUntil = curry((f, iter) => {
+    let res = [];
+    iter = L.values(iter);
+    return function recur() {
+      let cur;
+      while (!(cur = iter.next()).done) {
+        const a = cur.value;
+        const b = go1(a, f);
+        if (b instanceof Promise) {
+          return b
+            .then(async b => (res.push(await a), b) ? res : recur())
+            .catch(e => e == nop ? recur() : Promise.reject(e));
+        }
+        res.push(a);
+        if (b) break;
+      }
+      return res;
+    } ();
+  });
 
 export const
   takeAll = take(Infinity),

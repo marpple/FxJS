@@ -32,6 +32,23 @@ describe('take', function () {
       _ => expect(_).to.eql([1, 3])
     );
   });
+
+  it('takeWhile', async () => {
+    expect(takeWhile(a => a, [1, 2, 0, 4])).to.eql([1, 2]);
+
+    expect((await go(L.range(Infinity),
+      L.map(a => Promise.resolve(a)),
+      takeWhile(a => a < 3)))).to.eql([0, 1, 2]);
+  });
+
+  it('takeUntil', async () => {
+    expect(takeUntil(a => a, [1, 2, 0, 4])).to.eql([1]);
+    expect(takeUntil(a => !a, [1, 2, 0, 4])).to.eql([1, 2, 0]);
+
+    expect((await go(L.range(Infinity),
+      L.map(a => Promise.resolve(a)),
+      takeUntil(a => a > 3)))).to.eql([0, 1, 2, 3, 4]);
+  });
 });
 
 describe('reduce', function () {
