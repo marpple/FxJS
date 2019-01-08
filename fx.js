@@ -203,6 +203,8 @@ export const
     } ();
   }),
 
+  take_while = takeWhile,
+
   takeUntil = curry((f, iter) => {
     let res = [];
     iter = L.values(iter);
@@ -221,7 +223,9 @@ export const
       }
       return res;
     } ();
-  });
+  }),
+
+  take_until = takeUntil;
 
 export const
   takeAll = take(Infinity),
