@@ -49,6 +49,13 @@ describe('take', function () {
       L.map(a => Promise.resolve(a)),
       takeUntil(a => a > 3)))).to.eql([0, 1, 2, 3, 4]);
   });
+
+  it('takeUntil, L.flat', async() => {
+    expect(await go(L.range(Infinity),
+      L.map(a => Promise.resolve([a, a])),
+      L.flat,
+      takeUntil((_, res) => res.length == 7))).to.eql([0, 0, 1, 1, 2, 2, 3]);
+  });
 });
 
 describe('reduce', function () {

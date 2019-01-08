@@ -101,11 +101,29 @@ function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
 
-L.flat = L.flatten = function *(iter) {
-  for (const a of iter) {
-    if (hasIter(a)) yield *a;
-    else yield a;
-  }
+L.flat = L.flatten = function(iter) {
+  iter = iter[Symbol.iterator]();
+  let flatting = null;
+  return {
+    next() {
+      if (flatting) {
+        const cur = flatting.next();
+        if (!cur.done) return cur;
+        else flatting = null;
+      }
+      const cur = iter.next();
+      if (cur.done) return cur;
+      return {
+        value: go1(cur.value, value => {
+          if (!hasIter(value)) return cur;
+          flatting = value[Symbol.iterator]();
+          return flatting.next().value;
+        }),
+        done: false
+      };
+    },
+    [Symbol.iterator]() { return this; }
+  };
 };
 
 L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = function *f(iter) {
@@ -190,7 +208,7 @@ export const
       let cur;
       while (!(cur = iter.next()).done) {
         const a = cur.value;
-        const b = go1(a, f);
+        const b = go1(a, a => f(a, res));
         if (!b) return res;
         if (b instanceof Promise) {
           return b
@@ -212,13 +230,9 @@ export const
       let cur;
       while (!(cur = iter.next()).done) {
         const a = cur.value;
-        const b = go1(a, f);
-        if (b instanceof Promise) {
-          return b
-            .then(async b => (res.push(await a), b) ? res : recur())
-            .catch(e => e == nop ? recur() : Promise.reject(e));
-        }
-        res.push(a);
+        const b = go1(a, a => (res.push(a), f(a, res)));
+        if (b instanceof Promise)
+          return b.then(b => b ? res : recur()).catch(e => e == nop ? recur() : Promise.reject(e));
         if (b) break;
       }
       return res;
@@ -226,6 +240,7 @@ export const
   }),
 
   take_until = takeUntil;
+
 
 export const
   takeAll = take(Infinity),
