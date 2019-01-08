@@ -3,6 +3,27 @@ const Functional = require('../index.js');
 
 Object.assign(global, Functional);
 
+describe('L.range', function() {
+  it('L.range(0)', () => {
+    expect([...L.range(0)]).to.eql([]);
+  });
+  it('L.range(3)', () => {
+    expect([...L.range(3)]).to.eql([0, 1, 2]);
+  });
+  it('L.range(1, 3)', () => {
+    expect([...L.range(1, 3)]).to.eql([1, 2]);
+  });
+  it('L.range(-1, 2)', () => {
+    expect([...L.range(-1, 2)]).to.eql([-1, 0, 1]);
+  });
+  it('L.range(0, 7, 2)', () => {
+    expect([...L.range(0, 7, 2)]).to.eql([0, 2, 4, 6]);
+  });
+  it('L.range(1, 7, 2)', () => {
+    expect([...L.range(1, 7, 2)]).to.eql([1, 3, 5]);
+  });
+});
+
 describe('take', function () {
   it('take(1, [1, 2, 3])', () => {
     expect(take(1, [1, 2, 3])).to.eql([1]);

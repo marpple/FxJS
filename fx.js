@@ -74,9 +74,12 @@ L.headTail = L.head_tail = function(coll) {
   return go1(take(1, iter), ([head]) => [head, iter]);
 };
 
-L.range = function *(limit) {
-  var i = -1;
-  while (++i < limit) yield i;
+L.range = function *(start = 0, stop = start, step = 1) {
+  if (arguments.length == 1) start = 0;
+  while (start < stop) {
+    yield start;
+    start += step;
+  }
 };
 
 L.map = curry(function *(f, coll) {
