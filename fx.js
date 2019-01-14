@@ -37,7 +37,9 @@ export const
 
   has = curry((k, obj) => obj.hasOwnProperty(k)),
 
-  hasIter = a => !!(a && a[Symbol.iterator]);
+  hasIter = a => a != null && !!a[Symbol.iterator],
+
+  isIterable = a => a != null && !!a[Symbol.iterator];
 
 export const L = {};
 
@@ -108,22 +110,32 @@ L.flat = L.flatten = function(iter) {
   iter = iter[Symbol.iterator]();
   let flatting = null;
   return {
-    next() {
+    next: function recur() {
       if (flatting) {
         const cur = flatting.next();
         if (!cur.done) return cur;
-        else flatting = null;
+        flatting = null;
       }
+
       const cur = iter.next();
       if (cur.done) return cur;
-      return {
-        value: go1(cur.value, value => {
-          if (!hasIter(value)) return cur;
-          flatting = value[Symbol.iterator]();
-          return flatting.next().value;
-        }),
-        done: false
-      };
+
+      if (hasIter(cur.value)) {
+        flatting = cur.value[Symbol.iterator]();
+        return recur();
+      } else if (cur.value instanceof Promise) {
+        return {
+          value: cur.value.then(value => {
+            if (!hasIter(value)) return value;
+            flatting = value[Symbol.iterator]();
+            const cur = flatting.next();
+            return cur.done ? Promise.reject(nop) : cur.value;
+          }),
+          done: false
+        };
+      } else {
+        return cur;
+      }
     },
     [Symbol.iterator]() { return this; }
   };
