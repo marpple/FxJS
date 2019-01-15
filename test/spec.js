@@ -24,6 +24,41 @@ describe('L.range', function() {
   });
 });
 
+describe('flatten, deepFlatten', function() {
+  it('flat([[], [], []])', () => {
+    expect(flat([[], [], []])).to.eql([]);
+  });
+
+  it('flat([Promise.resolve([], [], [])])', async () => {
+    expect(await flat([Promise.resolve([], [], [])])).to.eql([]);
+  });
+
+  it('flat([Promise.resolve([]), [], Promise.resolve([])])', async () => {
+    expect(await flat([Promise.resolve([]), [], Promise.resolve([])])).to.eql([]);
+  });
+
+  it('flat([0, [1, [2], 3], 4, [5, [6], 7], 8])', () => {
+    expect(flat([0, [1, [2], 3], 4, [5, [6], 7], 8])).to.eql([0, 1, [2], 3, 4, 5, [6], 7, 8]);
+  });
+
+  it('flat([0, Promise.resolve([1, [2, 3], 4]), Promise.resolve(5)])', async () => {
+    expect(await flat([0, Promise.resolve([1, [2, 3], 4]), Promise.resolve(5)])).to.eql([0, 1, [2, 3], 4, 5]);
+  })
+
+  it('flat([0, [1, Promise.resolve([2, 3]), 4], 5])', async () => {
+    expect(await flat([0, [1, Promise.resolve([2, 3]), 4], Promise.resolve(5)])).to.eql([0, 1, [2, 3], 4, 5]);
+  });
+
+  it('flat([Promise.resolve("01"), "23", [Promise.resolve(["45"]), "67"], "89"])', async () => {
+    expect(await flat([Promise.resolve("01"), "23", [Promise.resolve(["45"]), "67"], "89"])).to.eql(["01", "23", ["45"], "67", "89"]);
+  });
+
+  it('deepFlat([[[]]])', () => { expect(deepFlat([[[]]])).to.eql([]) });
+  it('deepFlat([0, Promise.resolve([1, Promise.resolve([2, 3]), 4]), Promise.resolve(5), 6])', async () => {
+    expect(await deepFlat([0, Promise.resolve([1, Promise.resolve([2, 3]), 4]), Promise.resolve(5), 6])).to.eql([0, 1, 2, 3, 4, 5, 6]);
+  });
+});
+
 describe('take', function () {
   it('take(1, [1, 2, 3])', () => {
     expect(take(1, [1, 2, 3])).to.eql([1]);
