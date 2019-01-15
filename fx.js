@@ -106,30 +106,26 @@ function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
 
-L.flat = L.flatten = function(iter) {
-  iter = iter[Symbol.iterator]();
-  let flatting = null;
+const baseFlat = curry(function (depth, iter) {
+  const iterStack = [iter[Symbol.iterator]()];
+  const hasNonStringIter = v => !isString(v) && hasIter(v);
   return {
     next: function recur() {
-      if (flatting) {
-        const cur = flatting.next();
-        if (!cur.done) return cur;
-        flatting = null;
-      }
-
+      const iter = last(iterStack);
+      if (!iter) return { done: true };
       const cur = iter.next();
-      if (cur.done) return cur;
-
-      if (hasIter(cur.value)) {
-        flatting = cur.value[Symbol.iterator]();
+      if (cur.done) {
+        iterStack.pop();
+        return recur();
+      } else if (hasNonStringIter(cur.value) && iterStack.length <= depth) {
+        iterStack.push(cur.value[Symbol.iterator]());
         return recur();
       } else if (cur.value instanceof Promise) {
         return {
           value: cur.value.then(value => {
-            if (!hasIter(value)) return value;
-            flatting = value[Symbol.iterator]();
-            const cur = flatting.next();
-            return cur.done ? Promise.reject(nop) : cur.value;
+            if (!hasNonStringIter(value) || iterStack.length > depth) return value;
+            const iter = value[Symbol.iterator](), cur = iter.next();
+            return cur.done ? Promise.reject(nop) : (iterStack.push(iter), cur.value);
           }),
           done: false
         };
@@ -139,14 +135,11 @@ L.flat = L.flatten = function(iter) {
     },
     [Symbol.iterator]() { return this; }
   };
-};
+});
 
-L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = function *f(iter) {
-  for (const a of iter) {
-    if (typeof a != 'string' && hasIter(a)) yield *f(a);
-    else yield a;
-  }
-};
+L.flat = L.flatten = baseFlat(1);
+
+L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = baseFlat(Infinity);
 
 L.flatMap = L.flat_map = curry((f, iter) => L.flat(L.map(f, iter)));
 
