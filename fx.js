@@ -106,9 +106,8 @@ function baseReject(filter) {
   return curry((f, coll) => filter(pipe(f, not), coll));
 }
 
-const baseFlat = curry(function (depth, iter) {
+L.flat = L.flatten = function(iter, depth = 1) {
   const iterStack = [iter[Symbol.iterator]()];
-  const hasNonStringIter = v => !isString(v) && hasIter(v);
   return {
     next: function recur() {
       const iter = last(iterStack);
@@ -117,13 +116,13 @@ const baseFlat = curry(function (depth, iter) {
       if (cur.done) {
         iterStack.pop();
         return recur();
-      } else if (hasNonStringIter(cur.value) && iterStack.length <= depth) {
+      } else if (iterStack.length <= depth && isIterable(cur.value) && typeof cur.value != 'string') {
         iterStack.push(cur.value[Symbol.iterator]());
         return recur();
       } else if (cur.value instanceof Promise) {
         return {
           value: cur.value.then(value => {
-            if (!hasNonStringIter(value) || iterStack.length > depth) return value;
+            if (iterStack.length > depth || !isIterable(value) || typeof value == 'string') return value;
             const iter = value[Symbol.iterator](), cur = iter.next();
             return cur.done ? Promise.reject(nop) : (iterStack.push(iter), cur.value);
           }),
@@ -135,11 +134,9 @@ const baseFlat = curry(function (depth, iter) {
     },
     [Symbol.iterator]() { return this; }
   };
-});
+};
 
-L.flat = L.flatten = baseFlat(1);
-
-L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = baseFlat(Infinity);
+L.deepFlat = L.deep_flat = L.deepFlatten = L.deep_flatten = iter => L.flat(iter, Infinity);
 
 L.flatMap = L.flat_map = curry((f, iter) => L.flat(L.map(f, iter)));
 
