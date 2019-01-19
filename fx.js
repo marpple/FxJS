@@ -6,7 +6,7 @@ export { default as identity } from './identity.js';
 export { default as reduce } from './reduce.js';
 export { default as reduceS } from './reduceS.js';
 export { default as stop } from './stop.js';
-export { default as ifStop, default as if_stop } from './ifStop.js';
+export { default as stopIf, default as stop_if } from './stopIf.js';
 export { default as take } from './take.js';
 export { default as omit } from './omit.js';
 export { default as values } from './values.js';

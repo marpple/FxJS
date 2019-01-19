@@ -309,19 +309,20 @@ describe('goS', function () {
 
     expect(goS(1, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(1);
     expect(goS(2, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(12);
-    expect(goS(1, ifStop(a => a % 2), a => a + 10)).to.eql(1);
-    expect(goS(2, if_stop(a => a % 2), a => a + 10)).to.eql(12);
+    expect(goS(1, stopIf(a => a % 2), a => a + 10)).to.eql(1);
+    expect(goS(2, stop_if(a => a % 2), a => a + 10)).to.eql(12);
 
     const f1 = pipeS(a => a % 2 ? stop(a) : a, a => a + 10);
-    const f2 = pipeS(ifStop(a => a % 2), a => a + 10);
+    const f2 = pipeS(stopIf(a => a % 2), a => a + 10);
 
     expect(f1(1)).to.eql(1);
     expect(f1(2)).to.eql(12);
     expect(f1(1)).to.eql(1);
     expect(f1(2)).to.eql(12);
 
-    expect(goS(1, ifStop(1), a => a + 10)).to.eql(1);
-    expect(goS({a: 1, b: 2}, ifStop({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 1, b: 2});
-    expect(goS({a: 2, b: 2}, ifStop({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 12, b: 2});
+    expect(goS(1, stopIf(1), a => a + 10)).to.eql(1);
+    expect(goS({a: 1, b: 2}, stopIf({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 1, b: 2});
+    expect(goS({a: 2, b: 2}, stopIf({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 12, b: 2});
+    expect(goS({a: 1, b: 2}, stopIf({a: 1}, null), ({a, b}) => ({a: a + 10, b}))).to.eql(null);
   });
 });
