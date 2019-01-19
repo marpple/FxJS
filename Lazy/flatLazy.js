@@ -1,0 +1,34 @@
+import isIterable from "../isIterable.js";
+import last from "../last.js";
+import toIter from "../toIter.js";
+import nop from "../nop.js";
+
+export default function flatLazy(iter, depth = 1) {
+  const iterStack = [toIter(iter)];
+  return {
+    next: function recur() {
+      const iter = last(iterStack);
+      if (!iter) return { done: true };
+      const cur = iter.next();
+      if (cur.done) {
+        iterStack.pop();
+        return recur();
+      } else if (iterStack.length <= depth && isIterable(cur.value) && typeof cur.value != 'string') {
+        iterStack.push(cur.value[Symbol.iterator]());
+        return recur();
+      } else if (cur.value instanceof Promise) {
+        return {
+          value: cur.value.then(value => {
+            if (iterStack.length > depth || !isIterable(value) || typeof value == 'string') return value;
+            const iter = value[Symbol.iterator](), cur = iter.next();
+            return cur.done ? Promise.reject(nop) : (iterStack.push(iter), cur.value);
+          }),
+          done: false
+        };
+      } else {
+        return cur;
+      }
+    },
+    [Symbol.iterator]() { return this; }
+  };
+}

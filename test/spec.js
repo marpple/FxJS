@@ -1,7 +1,7 @@
 const { expect } = require('chai');
-const Functional = require('../index.js');
+const Fx = require('../index.js');
 
-Object.assign(global, Functional);
+Object.assign(global, Fx);
 
 describe('L.range', function() {
   it('L.range(0)', () => {
@@ -122,8 +122,8 @@ describe('reduce', function () {
   it('reduce(add, 10, [1, 2, 3])', () => {
     expect(reduce(add, 10, [1, 2, 3])).to.eql(16);
   });
-  it('reduce(add, {a: 1, b: 2, c: 3})', () => {
-    expect(reduce(add, {a: 1, b: 2, c: 3})).to.eql(6);
+  it('reduce(add, L.values({a: 1, b: 2, c: 3}))', () => {
+    expect(reduce(add, L.values({a: 1, b: 2, c: 3}))).to.eql(6);
   });
   it('reduce(add, [Promise.resolve(1), 2, 3])', () => {
     go1(reduce(add, [Promise.resolve(1), 2, 3]), _ => expect(_).to.eql(6));
@@ -299,4 +299,29 @@ describe('flatten', function () {
   });
 });
 
+describe('goS', function () {
+  it(`goS`, function () {
+    expect(
+      reduceS((a, b) => {
+       const res = a + b;
+       return res > 5  ? stop(res) : res;
+      }, [1, 2, 3, 4])).to.eql(6);
 
+    expect(goS(1, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(1);
+    expect(goS(2, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(12);
+    expect(goS(1, ifStop(a => a % 2), a => a + 10)).to.eql(1);
+    expect(goS(2, if_stop(a => a % 2), a => a + 10)).to.eql(12);
+
+    const f1 = pipeS(a => a % 2 ? stop(a) : a, a => a + 10);
+    const f2 = pipeS(ifStop(a => a % 2), a => a + 10);
+
+    expect(f1(1)).to.eql(1);
+    expect(f1(2)).to.eql(12);
+    expect(f1(1)).to.eql(1);
+    expect(f1(2)).to.eql(12);
+
+    expect(goS(1, ifStop(1), a => a + 10)).to.eql(1);
+    expect(goS({a: 1, b: 2}, ifStop({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 1, b: 2});
+    expect(goS({a: 2, b: 2}, ifStop({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 12, b: 2});
+  });
+});
