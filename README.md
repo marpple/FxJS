@@ -62,22 +62,22 @@ take(2, [1, 2, 3])
 #### L.map
 
 ```javascript
-const lazy = L.map(a => a + 10, [1, 2, 3]);
-take(2, lazy);
+const iterator = L.map(a => a + 10, [1, 2, 3]);
+take(2, iterator);
 // [11, 12]
 ```
 
 #### L.filter
 
 ```javascript
-const lazy = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
-take(2, lazy);
+const iterator = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
+take(2, iterator);
 // [1, 3]
 ```
 
 ```javascript
-const lazy = L.filter(a => a % 2, L.map(a => a + 10, [1, 2, 3, 4, 5]));
-take(2, lazy);
+const iterator = L.filter(a => a % 2, L.map(a => a + 10, [1, 2, 3, 4, 5]));
+take(2, iterator);
 // [11, 13]
 ```
 
