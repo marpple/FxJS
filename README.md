@@ -134,7 +134,7 @@ take(2, iterator);
 // [11, 13]
 ```
 
-#### go
+#### go + try catch + 비동기 에러 핸들링
 
 ```javascript
 const b = go(
