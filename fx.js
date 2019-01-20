@@ -74,5 +74,6 @@ export { default as log } from './log.js';
 export { default as takeUntil, default as take_until } from './takeUntil.js';
 export { default as defaults } from './defaults.js';
 export { default as calls } from './calls.js';
+export { default as delay } from './delay.js';
 export * from './L.js';
 export * from './C.js';

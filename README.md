@@ -1,6 +1,59 @@
 ## FxJS - Functional Extensions for Javascript
 
-ES6+에서 사용하는 함수형 라이브러리
+FxJS는 자바스크립트의 기본 값을 이용하고, 이터러블 프로그래밍과 Promise를 강조한 함수형 프로그래밍 라이브러리입니다.
+
+### iterable
+
+```javascript
+const res = go(
+  L.range(Infinity),
+  L.filter(a => a % 2),
+  L.take(3),
+  reduce(add));
+
+log(res); // 9
+```
+
+### iterable + time
+
+```javascript
+go(
+  L.range(Infinity),
+  L.map(delay(1000)),
+  L.map(a => a + 10),
+  L.take(3),
+  each(log));
+// 1초 후 10
+// 2초 후 11
+// 3초 후 12
+```
+
+### iterable + time + Promise
+
+```javascript
+// L.interval = time => L.map(delay(time), L.range(Infinity));
+
+(async () => {
+  await go(
+    L.interval(1000),
+    L.map(a => a + 30),
+    L.takeUntil(a => a == 33),
+    each(log));
+  // 1초 후 30
+  // 2초 후 31
+  // 3초 후 32
+  // 4초 후 33
+
+  await go(
+    L.interval(1000),
+    L.map(a => a + 20),
+    L.takeWhile(a => a < 23),
+    each(log));
+  // 5초 후 20
+  // 6초 후 21
+  // 7초 후 22
+} ());
+```
 
 ### 설치
 

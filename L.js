@@ -12,6 +12,10 @@ import rangeLazy from './Lazy/rangeLazy.js';
 import rejectLazy from './Lazy/rejectLazy.js';
 import reverseLazy from './Lazy/reverseLazy.js';
 import valuesLazy from './Lazy/valuesLazy.js';
+import takeLazy from './Lazy/takeLazy.js';
+import takeWhileLazy from './Lazy/takeWhileLazy.js';
+import takeUntilLazy from './Lazy/takeUntilLazy.js';
+import intervalLazy from './Lazy/intervalLazy.js';
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -27,7 +31,11 @@ const L = {
   range: rangeLazy,
   reject: rejectLazy,
   reverse: reverseLazy,
-  values: valuesLazy
+  values: valuesLazy,
+  take: takeLazy,
+  takeWhile: takeWhileLazy,
+  takeUntil: takeUntilLazy,
+  interval: intervalLazy
 };
 
 export {
@@ -45,5 +53,9 @@ export {
   rangeLazy,
   rejectLazy,
   reverseLazy,
-  valuesLazy
+  valuesLazy,
+  takeLazy,
+  takeWhileLazy,
+  takeUntilLazy,
+  intervalLazy
 }
