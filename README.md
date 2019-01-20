@@ -44,14 +44,18 @@ go(
   // 3초 후 32
   // 4초 후 33
 
-  await go(
+  const res = await go(
     L.interval(1000),
     L.map(a => a + 20),
     L.takeWhile(a => a < 23),
-    each(log));
+    L.map(tap(log)),
+    reduce(add));
   // 5초 후 20
   // 6초 후 21
   // 7초 후 22
+
+  log(res);
+  // 63
 } ());
 ```
 
