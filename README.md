@@ -69,7 +69,8 @@ npm i fxjs2
 - [take](#take)
 - [L.map](#L.map)
 - [L.filter](#L.filter)
-- [go](#go)
+- [go + try catch + 비동기 에러 핸들링](#go--try-catch--비동기-에러-핸들링)
+- [stop](#stop)
 
 #### map
 
@@ -193,4 +194,27 @@ try {
   console.log(c);
 }
 // { hi: 'ho' }
+```
+
+### stop
+
+```javascript
+const f1 = pipeS(
+  a => a % 2 ? stop(a) : a,
+  a => a + 10);
+f1(1); // 1
+f1(2); // 12
+
+goS({a: 1, b: 2},
+  stopIf({a: 1}),
+  ({a, b}) => ({a: a + 10, b})); // {a: 1, b: 2}
+
+goS({a: 2, b: 2},
+  stopIf({a: 1}),
+  ({a, b}) => ({a: a + 10, b})); // {a: 12, b: 2}
+
+goS({a: 1, b: 2},
+  stopIf({a: 1}, null),
+  ({a, b}) => ({a: a + 10, b}));
+// null
 ```
