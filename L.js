@@ -1,6 +1,6 @@
 import deepFlatLazy from './Lazy/deepFlatLazy.js';
 import entriesLazy from './Lazy/entriesLazy.js';
-import entriesMapLazy from './Lazy/entriesMapLazy.js';
+import mapEntriesLazy from './Lazy/mapEntriesLazy.js';
 import filterLazy from './Lazy/filterLazy.js';
 import flatLazy from './Lazy/flatLazy.js';
 import flatMapLazy from './Lazy/flatMapLazy.js';
@@ -19,13 +19,21 @@ import intervalLazy from './Lazy/intervalLazy.js';
 
 const L = {
   deepFlat: deepFlatLazy,
+  deep_flat: deepFlatLazy,
+  deepFlatten: deepFlatLazy,
+  deep_flatten: deepFlatLazy,
   entries: entriesLazy,
-  entriesMap: entriesMapLazy,
+  entriesMap: mapEntriesLazy,
+  entries_map: mapEntriesLazy,
+  mapEntries: mapEntriesLazy,
+  map_entries: mapEntriesLazy,
   filter: filterLazy,
   flat: flatLazy,
   flatMap: flatMapLazy,
+  flat_map: flatMapLazy,
   headTail: headTailLazy,
   indexValues: indexValuesLazy,
+  index_values: indexValuesLazy,
   keys: keysLazy,
   map: mapLazy,
   range: rangeLazy,
@@ -34,7 +42,9 @@ const L = {
   values: valuesLazy,
   take: takeLazy,
   takeWhile: takeWhileLazy,
+  take_while: takeWhileLazy,
   takeUntil: takeUntilLazy,
+  take_until: takeUntilLazy,
   interval: intervalLazy
 };
 
@@ -42,7 +52,7 @@ export {
   L,
   deepFlatLazy,
   entriesLazy,
-  entriesMapLazy,
+  mapEntriesLazy,
   filterLazy,
   flatLazy,
   flatMapLazy,

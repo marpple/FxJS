@@ -1,7 +1,7 @@
 import tailC from './Concurrency/tailC.js';
 import reduceC from './Concurrency/reduceC.js';
 import takeC from './Concurrency/takeC.js';
-import entriesMapC from './Concurrency/entriesMapC.js';
+import mapEntriesC from './Concurrency/mapEntriesC.js';
 import findC from './Concurrency/findC.js';
 import mapC from './Concurrency/mapC.js';
 import everyC from './Concurrency/everyC.js';
@@ -16,12 +16,16 @@ const C = {
   tail: tailC,
   reduce: reduceC,
   take: takeC,
-  entriesMap: entriesMapC,
+  mapEntries: mapEntriesC,
+  map_entries: mapEntriesC,
+  entriesMap: mapEntriesC,
+  entries_map: mapEntriesC,
   find: findC,
   map: mapC,
   every: everyC,
   filter: filterC,
   takeAll: takeAllC,
+  take_all: takeAllC,
   head: headC,
   take1: take1C,
   calls: callsC,
@@ -33,7 +37,7 @@ export {
   tailC,
   reduceC,
   takeC,
-  entriesMapC,
+  mapEntriesC,
   findC,
   mapC,
   everyC,
