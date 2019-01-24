@@ -1,7 +1,13 @@
 const { expect } = require('chai');
 const Fx = require('../index.js');
 
-Object.assign(global, Fx);
+const {
+  L, flat, deepFlat, stop,
+  take, C, takeWhile, takeUntil, go,
+  map,
+  reduce, go1, find, some, every, deepFlatten, uniq,
+  reduceS, goS, stopIf, stop_if, pipeS, calls, callsC
+} = Fx;
 
 describe('L.range', function() {
   it('L.range(0)', () => {
@@ -163,7 +169,6 @@ describe('C.take', function () {
 });
 
 describe('map', function () {
-  return;
   function delay(val, time = 1000) {
     return new Promise(resolve => setTimeout(_ => resolve(val), time));
   }
@@ -326,3 +331,34 @@ describe('goS', function () {
     expect(goS({a: 1, b: 2}, stopIf({a: 1}, null), ({a, b}) => ({a: a + 10, b}))).to.eql(null);
   });
 });
+
+describe('calls', function () {
+  it(`calls`, async function () {
+    expect(await calls([
+      _ => Promise.resolve(1),
+      _ => Promise.resolve(2),
+      _ => Promise.resolve(3)
+    ])).to.eql([1,2,3]);
+
+    expect(await calls({
+      a: _ => Promise.resolve(1),
+      b: _ => Promise.resolve(2),
+      c: _ => Promise.resolve(3)
+    })).to.eql({a:1, b:2, c:3});
+  });
+
+  it(`callsC`, async function () {
+    expect(await callsC([
+      _ => Promise.resolve(1),
+      _ => Promise.resolve(2),
+      _ => Promise.resolve(3)
+    ])).to.eql([1,2,3]);
+
+    expect(await callsC({
+      a: _ => Promise.resolve(1),
+      b: _ => Promise.resolve(2),
+      c: _ => Promise.resolve(3)
+    })).to.eql({a:1, b:2, c:3});
+  });
+});
+

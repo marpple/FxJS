@@ -1,7 +1,7 @@
 import curry from "../curry.js";
 import go1 from "../go1.js";
-import values from "./valuesLazy.js";
+import safety from "../safety.js";
 
-export default curry(function *mapEntriesLazy(f, coll) {
-  for (const [k, a] of values(coll)) yield go1(go1(a, f), b => [k, b]);
+export default curry(function *mapEntriesLazy(f, iter) {
+  for (const [k, a] of safety(iter)) yield go1(go1(a, f), b => [k, b]);
 });

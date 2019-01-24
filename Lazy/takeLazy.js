@@ -1,7 +1,8 @@
 import curry from "../curry.js";
+import safety from "../safety.js";
 
 export default curry(function *takeLazy(l, iter) {
-  for (const a of iter) {
+  for (const a of safety(iter)) {
     if (a instanceof Promise) yield a.then(a => (--l, a));
     else yield (--l, a);
     if (!l) break;

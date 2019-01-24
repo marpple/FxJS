@@ -7,6 +7,7 @@ import pipe from "./pipe.js";
 import filter from "./Lazy/filterLazy.js";
 import entries from "./Lazy/entriesLazy.js";
 import takeAll from "./takeAll.js";
+import object from "./object.js";
 
 export const uniqueBy = curry(function uniqueBy(f, iter) {
   const s = new Set();
