@@ -6,7 +6,9 @@ const {
   take, C, takeWhile, takeUntil, go,
   map,
   reduce, go1, find, some, every, deepFlatten, uniq,
-  reduceS, goS, stopIf, stop_if, pipeS, calls, callsC
+  reduceS, goS, stopIf, stop_if, pipeS, calls, callsC,
+  mapObject,
+  promiseAllObject, promiseAllEntries
 } = Fx;
 
 describe('L.range', function() {
@@ -362,3 +364,22 @@ describe('calls', function () {
   });
 });
 
+describe('mapObject', function () {
+  it(`mapObject(a => a + 1, { a: 1, b: 2})`, function () {
+    expect(mapObject(a => a + 1, { a: 1, b: 2})).to.eql({a: 2, b: 3})
+  });
+
+  it(`mapObject(a => Promise.resolve(a + 1), { a: 1, b: 2})`, async function() {
+    expect(await mapObject(a => Promise.resolve(a + 1), { a: 1, b: 2})).to.eql({a: 2, b: 3})
+  });
+});
+
+describe('promiseAll...', function () {
+  it(`promiseAllObject({ a: Promise.resolve(1), b: Promise.resolve(2)})`, async function () {
+    expect(await promiseAllObject({ a: Promise.resolve(1), b: Promise.resolve(2)})).to.eql({a: 1, b: 2})
+  });
+
+  it(`promiseAllEntries(Object.entries({ a: Promise.resolve(1), b: Promise.resolve(2)}))`, async function () {
+    expect(await promiseAllEntries(Object.entries({ a: Promise.resolve(1), b: Promise.resolve(2)}))).to.eql(Object.entries({a: 1, b: 2}))
+  });
+});
