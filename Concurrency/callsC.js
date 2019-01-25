@@ -1,5 +1,5 @@
 import baseCalls from "../baseCalls.js";
-import mapEntriesC from "./mapEntriesC.js";
 import mapC from "./mapC.js";
+import objectC from "./objectC.js";
 
-export default baseCalls(mapC, mapEntriesC);
+export default baseCalls(mapC, objectC);

@@ -77,5 +77,8 @@ export { default as defaults } from './defaults.js';
 export { default as calls } from './calls.js';
 export { default as delay } from './delay.js';
 export { default as safety } from './safety.js';
+export { default as mapObject, default as map_object } from './mapObject.js';
+export { default as promiseAllObject, default as promise_all_object } from './promiseAllObject.js';
+export { default as promiseAllEntries, default as promise_all_entries } from './promiseAllEntries.js';
 export * from './L.js';
 export * from './C.js';

@@ -1,5 +1,5 @@
 import baseCalls from "./baseCalls.js";
 import map from "./map.js";
-import mapEntriesLazy from "./Lazy/mapEntriesLazy.js";
+import object from "./object.js";
 
-export default baseCalls(map, mapEntriesLazy);
+export default baseCalls(map, object);
