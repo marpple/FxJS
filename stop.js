@@ -1,9 +1,5 @@
-class Stop {
-  constructor(value) { this.value = value; }
-}
-
-export { Stop };
+const SymbolStop = Symbol.for('stop');
 
 export default function stop(value) {
-  return new Stop(value);
+  return { [SymbolStop]: true, value };
 }

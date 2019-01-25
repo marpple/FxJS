@@ -2,7 +2,7 @@ import toIter from "./toIter.js";
 import nop from "./nop.js";
 import go1 from "./go1.js";
 import head from "./head.js";
-import { Stop } from "./stop.js";
+import isStop from "./isStop.js";
 
 const call2 = (acc, a, f) =>
   a instanceof Promise ?
@@ -16,10 +16,10 @@ export default function reduceS(f, acc, iter) {
   iter = toIter(iter);
   return go1(acc, function recur(acc) {
     let cur;
-    while (!(acc instanceof Stop) && !(cur = iter.next()).done) {
+    while (!isStop(acc) && !(cur = iter.next()).done) {
       acc = call2(acc, cur.value, f);
       if (acc instanceof Promise) return acc.then(recur);
     }
-    return acc instanceof Stop ? acc.value : acc;
+    return isStop(acc) ? acc.value : acc;
   });
 }

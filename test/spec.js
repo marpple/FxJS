@@ -324,8 +324,8 @@ describe('goS', function () {
 
     expect(f1(1)).to.eql(1);
     expect(f1(2)).to.eql(12);
-    expect(f1(1)).to.eql(1);
-    expect(f1(2)).to.eql(12);
+    expect(f2(1)).to.eql(1);
+    expect(f2(2)).to.eql(12);
 
     expect(goS(1, stopIf(1), a => a + 10)).to.eql(1);
     expect(goS({a: 1, b: 2}, stopIf({a: 1}), ({a, b}) => ({a: a + 10, b}))).to.eql({a: 1, b: 2});
