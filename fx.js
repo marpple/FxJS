@@ -81,5 +81,6 @@ export { default as mapObject, default as map_object } from './mapObject.js';
 export { default as promiseAllObject, default as promise_all_object } from './promiseAllObject.js';
 export { default as promiseAllEntries, default as promise_all_entries } from './promiseAllEntries.js';
 export { default as isStop, default as is_stop } from './isStop.js';
+export { default as range } from './range.js';
 export * from './L.js';
 export * from './C.js';
