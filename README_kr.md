@@ -1,8 +1,6 @@
 ## FxJS - Functional Extensions for Javascript
 
-[EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
-
-FxJS is a functional programming library that uses basic JavaScript values ​​and emphasizes repeatable programming and Promise.
+FxJS는 자바스크립트의 기본 값을 이용하고, 이터러블 프로그래밍과 Promise를 강조한 함수형 프로그래밍 라이브러리입니다.
 
 ### iterable
 
@@ -25,9 +23,9 @@ go(
   L.map(a => a + 10),
   L.take(3),
   each(log));
-// After 1 second 10
-// After 2 seconds 11
-// After 3 seconds 12
+// 1초 후 10
+// 2초 후 11
+// 3초 후 12
 ```
 
 ### iterable + time + Promise
@@ -41,10 +39,10 @@ go(
     L.map(a => a + 30),
     L.takeUntil(a => a == 33),
     each(log));
-  // After 1 second 30
-  // After 2 seconds 31
-  // After 3 seconds 32
-  // After 4 seconds 33
+  // 1초 후 30
+  // 2초 후 31
+  // 3초 후 32
+  // 4초 후 33
 
   const res = await go(
     L.interval(1000),
@@ -52,22 +50,22 @@ go(
     L.takeWhile(a => a < 23),
     L.map(tap(log)),
     reduce(add));
-  // After 5 seconds 20
-  // After 6 seconds 21
-  // After 7 seconds 22
+  // 5초 후 20
+  // 6초 후 21
+  // 7초 후 22
 
   log(res);
   // 63
 } ());
 ```
 
-### Install
+### 설치
 
 ```
 npm i fxjs2
 ```
 
-### API
+### 목차
 
 - [map](#map)
 - [filter](#filter)
@@ -75,7 +73,7 @@ npm i fxjs2
 - [take](#take)
 - [L.map](#L.map)
 - [L.filter](#L.filter)
-- [go + try catch + Asynchronous error handling](#go--try-catch--Asynchronous-error-handling)
+- [go + try catch + 비동기 에러 핸들링](#go--try-catch--비동기-에러-핸들링)
 - [stop](#stop)
 
 #### map
@@ -141,7 +139,7 @@ take(2, iterator);
 // [11, 13]
 ```
 
-#### go + try catch + Asynchronous error handling
+#### go + try catch + 비동기 에러 핸들링
 
 ```javascript
 const b = go(
