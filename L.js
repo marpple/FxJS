@@ -16,6 +16,7 @@ import takeLazy from './Lazy/takeLazy.js';
 import takeWhileLazy from './Lazy/takeWhileLazy.js';
 import takeUntilLazy from './Lazy/takeUntilLazy.js';
 import intervalLazy from './Lazy/intervalLazy.js';
+import dropLazy from "./Lazy/dropLazy.js";
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -45,7 +46,8 @@ const L = {
   take_while: takeWhileLazy,
   takeUntil: takeUntilLazy,
   take_until: takeUntilLazy,
-  interval: intervalLazy
+  interval: intervalLazy,
+  drop: dropLazy
 };
 
 export {
@@ -67,5 +69,6 @@ export {
   takeLazy,
   takeWhileLazy,
   takeUntilLazy,
-  intervalLazy
+  intervalLazy,
+  dropLazy
 }

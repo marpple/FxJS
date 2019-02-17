@@ -11,6 +11,7 @@ import headC from './Concurrency/headC.js';
 import take1C from './Concurrency/take1C.js';
 import callsC from './Concurrency/callsC.js';
 import someC from './Concurrency/someC.js';
+import dropC from "./Concurrency/dropC.js";
 
 const C = {
   tail: tailC,
@@ -29,7 +30,8 @@ const C = {
   head: headC,
   take1: take1C,
   calls: callsC,
-  some: someC
+  some: someC,
+  drop: dropC
 };
 
 export {
@@ -46,5 +48,6 @@ export {
   headC,
   take1C,
   callsC,
-  someC
+  someC,
+  dropC
 }

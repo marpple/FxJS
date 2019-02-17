@@ -1,6 +1,5 @@
-import takeAllC from "./takeAllC.js";
-import tail from "../tail.js";
+import dropC from "./dropC.js";
 
 export default function tailC(iter) {
-  return tail(takeAllC(iter));
+  return dropC(1, iter);
 }
