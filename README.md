@@ -1,6 +1,6 @@
-## FxJS - Functional Extensions for Javascript
-
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
+
+## FxJS - Functional Extensions for Javascript
 
 FxJS is a functional programming library that uses basic JavaScript values ​​and emphasizes repeatable programming and Promise.
 

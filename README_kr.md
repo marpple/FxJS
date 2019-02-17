@@ -1,3 +1,5 @@
+[EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
+
 ## FxJS - Functional Extensions for Javascript
 
 FxJS는 자바스크립트의 기본 값을 이용하고, 이터러블 프로그래밍과 Promise를 강조한 함수형 프로그래밍 라이브러리입니다.
