@@ -9,7 +9,8 @@ const {
   reduce, go1, find, some, every, deepFlatten, uniq,
   reduceS, goS, stopIf, stop_if, pipeS, calls, callsC,
   mapObject,
-  promiseAllObject, promiseAllEntries
+  promiseAllObject, promiseAllEntries,
+  dropRight,
 } = Fx;
 
 (function() {
@@ -20,18 +21,38 @@ const {
       expect(takeAll(L.drop(2, [1, 2, 3, 4, 5]))).to.eql([3, 4, 5]);
       expect(takeAll(L.drop(4, [1, 2, 3, 4, 5]))).to.eql([5]);
       expect(takeAll(L.drop(5, [1, 2, 3, 4, 5]))).to.eql([]);
+      expect(takeAll(L.drop(6, [1, 2, 3, 4, 5]))).to.eql([]);
     });
     it('L.drop promise', async () => {
       expect(await takeAll(L.drop(1, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([2, 3, 4, 5]);
       expect(await takeAll(L.drop(2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([3, 4, 5]);
       expect(await takeAll(L.drop(4, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([5]);
       expect(await takeAll(L.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
+      expect(await takeAll(L.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
     });
     it('C.drop', async () => {
       expect(await C.drop(1, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([2, 3, 4, 5]);
       expect(await C.drop(2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([3, 4, 5]);
       expect(await C.drop(4, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([5]);
       expect(await C.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
+      expect(await C.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
+    });
+  });
+
+  describe('dropRight', function () {
+    it('dropRight', () => {
+      expect(dropRight(1, [1, 2, 3, 4, 5])).to.eql([1, 2, 3, 4]);
+      expect(dropRight(2, [1, 2, 3, 4, 5])).to.eql([1, 2, 3]);
+      expect(dropRight(4, [1, 2, 3, 4, 5])).to.eql([1]);
+      expect(dropRight(5, [1, 2, 3, 4, 5])).to.eql([]);
+      expect(dropRight(6, [1, 2, 3, 4, 5])).to.eql([]);
+    });
+    it('dropRight promise', async () => {
+      expect(await dropRight(1, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([1, 2, 3, 4]);
+      expect(await dropRight(2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([1, 2, 3]);
+      expect(await dropRight(4, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([1]);
+      expect(await dropRight(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
+      expect(await dropRight(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
     });
   });
 

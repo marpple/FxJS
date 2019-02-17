@@ -3,7 +3,7 @@ import toIter from "./toIter.js";
 import nop from "./nop.js";
 
 export default curry(function take(l, iter) {
-  if (l === 0) return [];
+  if (l < 1) return [];
   let res = [];
   iter = toIter(iter);
   return function recur() {

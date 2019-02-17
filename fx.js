@@ -82,5 +82,7 @@ export { default as promiseAllObject, default as promise_all_object } from './pr
 export { default as promiseAllEntries, default as promise_all_entries } from './promiseAllEntries.js';
 export { default as isStop, default as is_stop } from './isStop.js';
 export { default as range } from './range.js';
+export { default as drop } from './drop.js';
+export { default as dropRight, default as drop_right } from './dropRight.js';
 export * from './L.js';
 export * from './C.js';
