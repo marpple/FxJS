@@ -1,8 +1,10 @@
 {
   "name": "fxjs2",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Functional Extensions for Javascript",
   "main": "index.js",
+  "module": "fx.js",
+  "sideEffects": false,
   "scripts": {
     "test": "mocha -R spec test/**/*.js"
   },
