@@ -2,7 +2,7 @@
 
 ## FxJS - Functional Extensions for Javascript
 
-FxJS is a functional programming library that uses basic JavaScript values ​​and emphasizes repeatable programming and Promise.
+FxJS is a functional programming library that uses JavaScript basic values and emphasizes iterable programming and Promise.
 
 ### iterable
 
