@@ -84,8 +84,8 @@ import isStop from './isStop.js';
 import range from './range.js';
 import drop from './drop.js';
 import dropRight from './dropRight.js';
-import  * as L from './L.js';
-import  * as C from './C.js';
+import { L } from './L.js';
+import { C } from './C.js';
 
 window.fx = window._ = {};
 window.fx.L = window.L = L;

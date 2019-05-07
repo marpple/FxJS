@@ -90,45 +90,6 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var L_namespaceObject = {};
-__webpack_require__.r(L_namespaceObject);
-__webpack_require__.d(L_namespaceObject, "L", function() { return L; });
-__webpack_require__.d(L_namespaceObject, "deepFlatLazy", function() { return deepFlatLazy; });
-__webpack_require__.d(L_namespaceObject, "entriesLazy", function() { return entriesLazy; });
-__webpack_require__.d(L_namespaceObject, "mapEntriesLazy", function() { return Lazy_mapEntriesLazy; });
-__webpack_require__.d(L_namespaceObject, "filterLazy", function() { return Lazy_filterLazy; });
-__webpack_require__.d(L_namespaceObject, "flatLazy", function() { return flatLazy; });
-__webpack_require__.d(L_namespaceObject, "flatMapLazy", function() { return Lazy_flatMapLazy; });
-__webpack_require__.d(L_namespaceObject, "headTailLazy", function() { return headTailLazy; });
-__webpack_require__.d(L_namespaceObject, "indexValuesLazy", function() { return indexValuesLazy; });
-__webpack_require__.d(L_namespaceObject, "keysLazy", function() { return keysLazy; });
-__webpack_require__.d(L_namespaceObject, "mapLazy", function() { return Lazy_mapLazy; });
-__webpack_require__.d(L_namespaceObject, "rangeLazy", function() { return rangeLazy; });
-__webpack_require__.d(L_namespaceObject, "rejectLazy", function() { return Lazy_rejectLazy; });
-__webpack_require__.d(L_namespaceObject, "reverseLazy", function() { return reverseLazy; });
-__webpack_require__.d(L_namespaceObject, "valuesLazy", function() { return valuesLazy; });
-__webpack_require__.d(L_namespaceObject, "takeLazy", function() { return Lazy_takeLazy; });
-__webpack_require__.d(L_namespaceObject, "takeWhileLazy", function() { return Lazy_takeWhileLazy; });
-__webpack_require__.d(L_namespaceObject, "takeUntilLazy", function() { return Lazy_takeUntilLazy; });
-__webpack_require__.d(L_namespaceObject, "intervalLazy", function() { return intervalLazy; });
-__webpack_require__.d(L_namespaceObject, "dropLazy", function() { return Lazy_dropLazy; });
-var C_namespaceObject = {};
-__webpack_require__.r(C_namespaceObject);
-__webpack_require__.d(C_namespaceObject, "C", function() { return C; });
-__webpack_require__.d(C_namespaceObject, "tailC", function() { return tailC; });
-__webpack_require__.d(C_namespaceObject, "reduceC", function() { return Concurrency_reduceC; });
-__webpack_require__.d(C_namespaceObject, "takeC", function() { return Concurrency_takeC; });
-__webpack_require__.d(C_namespaceObject, "mapEntriesC", function() { return Concurrency_mapEntriesC; });
-__webpack_require__.d(C_namespaceObject, "findC", function() { return Concurrency_findC; });
-__webpack_require__.d(C_namespaceObject, "mapC", function() { return Concurrency_mapC; });
-__webpack_require__.d(C_namespaceObject, "everyC", function() { return Concurrency_everyC; });
-__webpack_require__.d(C_namespaceObject, "filterC", function() { return Concurrency_filterC; });
-__webpack_require__.d(C_namespaceObject, "takeAllC", function() { return takeAllC; });
-__webpack_require__.d(C_namespaceObject, "headC", function() { return headC; });
-__webpack_require__.d(C_namespaceObject, "take1C", function() { return take1C; });
-__webpack_require__.d(C_namespaceObject, "callsC", function() { return callsC; });
-__webpack_require__.d(C_namespaceObject, "someC", function() { return Concurrency_someC; });
-__webpack_require__.d(C_namespaceObject, "dropC", function() { return Concurrency_dropC; });
 
 // CONCATENATED MODULE: ./curry.js
 function curry(f) {
@@ -1423,8 +1384,8 @@ const C = {
 
 
 window.fx = window._ = {};
-window.fx.L = window.L = L_namespaceObject;
-window.fx.C = window.C = C_namespaceObject;
+window.fx.L = window.L = L;
+window.fx.C = window.C = C;
 
 _.minBy = _.min_by = minBy_0;
 _.sortDesc = _.sort_desc = sort;
