@@ -17,6 +17,8 @@ import takeWhileLazy from './Lazy/takeWhileLazy.js';
 import takeUntilLazy from './Lazy/takeUntilLazy.js';
 import intervalLazy from './Lazy/intervalLazy.js';
 import dropLazy from "./Lazy/dropLazy.js";
+import differenceLazy from './Lazy/differenceLazy';
+import intersectionLazy from './Lazy/intersectionLazy';
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -47,7 +49,9 @@ const L = {
   takeUntil: takeUntilLazy,
   take_until: takeUntilLazy,
   interval: intervalLazy,
-  drop: dropLazy
+  drop: dropLazy,
+  difference: differenceLazy,
+  intersection: intersectionLazy,
 };
 
 export {
@@ -70,5 +74,7 @@ export {
   takeWhileLazy,
   takeUntilLazy,
   intervalLazy,
-  dropLazy
+  dropLazy,
+  differenceLazy,
+  intersectionLazy
 }

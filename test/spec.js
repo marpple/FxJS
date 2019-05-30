@@ -11,6 +11,11 @@ const {
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
+  differenceBy,
+  difference,
+  initial,
+  intersectionBy,
+  intersection
 } = Fx;
 
 (function() {
@@ -438,5 +443,45 @@ const {
     });
   });
 
+  describe('differenceBy', function () {
+    it("differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
+      expect(differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 2 }]);
+    });
+  });
 
+  describe('difference', function () {
+    it('difference([2, 1], [2, 3])', function () {
+      expect(difference([2, 1], [2, 3])).to.eql([1]);
+    });
+
+    it('difference([1], [1,2,3,4,5,6,7,8])', function () {
+      expect(difference([1], [1,2,3,4,5,6,7,8])).to.eql([]);
+    });
+
+    it('difference([1,1,1,1,1], [2,2,2,2])', function () {
+      expect(difference([1,1,1,1,1], [2,2,2,2])).to.eql([1, 1, 1, 1, 1]);
+    });
+  });
+
+  describe('initial', function () {
+    it('initial([1, 2, 3])', function() {
+      expect(initial([1, 2, 3])).to.eql([1, 2]);
+    })
+  });
+
+  describe('intersectionBy', function () {
+    it("intersectionBy(o => o.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
+      expect(intersectionBy(o => o.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }]);
+    });
+  });
+
+  describe('intersection', function () {
+    it('intersection([2, 1], [2, 3])', function () {
+      expect(intersection([2, 1], [2, 3])).to.eql([2]);
+    });
+
+    it('intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])', function () {
+      expect(intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])).to.eql([1, 2]);
+    });
+  });
 } ());
