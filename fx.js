@@ -89,5 +89,7 @@ export { default as differenceBy } from './differenceBy.js';
 export { default as initial } from './initial.js';
 export { default as intersection } from './intersection.js';
 export { default as intersectionBy } from './intersectionBy.js';
+export { default as unionBy } from './unionBy.js';
+export { default as union } from './union.js';
 export * from './L.js';
 export * from './C.js';

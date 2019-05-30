@@ -15,7 +15,9 @@ const {
   difference,
   initial,
   intersectionBy,
-  intersection
+  intersection,
+  unionBy,
+  union,
 } = Fx;
 
 (function() {
@@ -482,6 +484,22 @@ const {
 
     it('intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])', function () {
       expect(intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])).to.eql([1, 2]);
+    });
+  });
+
+  describe('unionBy', function () {
+    it('unionBy(Math.floor, [2.1, 2.2], [1.2, 2.3])', function () {
+      expect(unionBy(Math.floor, [2.1, 2.2], [1.2, 2.3])).to.eql([2.1, 1.2]);
+    });
+
+    it("unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
+      expect(unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
+    });
+  });
+
+  describe('union', function () {
+    it('union([2, 3], [2, 1, 4])', function () {
+      expect(union([2, 3], [2, 1, 4])).to.eql([2, 3, 1, 4]);
     });
   });
 } ());
