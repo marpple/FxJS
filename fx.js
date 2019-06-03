@@ -87,6 +87,7 @@ export { default as dropRight, default as drop_right } from './dropRight.js';
 export { default as difference } from './difference.js';
 export { default as differenceBy } from './differenceBy.js';
 export { default as initial } from './initial.js';
+export { default as rest } from './rest.js';
 export { default as intersection } from './intersection.js';
 export { default as intersectionBy } from './intersectionBy.js';
 export { default as unionBy } from './unionBy.js';

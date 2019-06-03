@@ -14,6 +14,7 @@ const {
   differenceBy,
   difference,
   initial,
+  rest,
   intersectionBy,
   intersection,
   unionBy,
@@ -468,6 +469,12 @@ const {
   describe('initial', function () {
     it('initial([1, 2, 3])', function() {
       expect(initial([1, 2, 3])).to.eql([1, 2]);
+    })
+  });
+
+  describe('rest', function () {
+    it('rest([1, 2, 3])', function() {
+      expect(rest([1, 2, 3])).to.eql([2, 3]);
     })
   });
 
