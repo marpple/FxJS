@@ -447,21 +447,21 @@ const {
 
   describe('differenceBy', function () {
     it("differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
-      expect(differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 2 }]);
+      expect(differenceBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 2 }]);
     });
   });
 
   describe('difference', function () {
     it('difference([2, 1], [2, 3])', function () {
-      expect(difference([2, 1], [2, 3])).to.eql([1]);
+      expect(difference([2, 3], [2, 1])).to.eql([1]);
     });
 
     it('difference([1], [1,2,3,4,5,6,7,8])', function () {
-      expect(difference([1], [1,2,3,4,5,6,7,8])).to.eql([]);
+      expect(difference([1,2,3,4,5,6,7,8], [1])).to.eql([]);
     });
 
     it('difference([1,1,1,1,1], [2,2,2,2])', function () {
-      expect(difference([1,1,1,1,1], [2,2,2,2])).to.eql([1, 1, 1, 1, 1]);
+      expect(difference([2,2,2,2], [1,1,1,1,1])).to.eql([1, 1, 1, 1, 1]);
     });
   });
 
@@ -472,8 +472,8 @@ const {
   });
 
   describe('intersectionBy', function () {
-    it("intersectionBy(o => o.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
-      expect(intersectionBy(o => o.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }]);
+    it("intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
+      expect(intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 1 }]);
     });
   });
 

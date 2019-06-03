@@ -1,8 +1,16 @@
-import curry from "../curry.js";
-import mapLazy from './mapLazy.js';
 import filterLazy from './filterLazy.js';
+import mapLazy from './mapLazy.js';
+import uniqueLazy from './uniqueLazy';
+import curry from "../curry.js";
+import go1 from '../go1.js';
 
-export default curry(function *intersectionByLazy(f, a, b) {
-  const setB = new Set(mapLazy(f, b));
-  yield* new Set(filterLazy(item => setB.has(f(item)), a));
+export default curry(function intersectionByLazy(f, iter2, iter) {
+  let set = null;
+  return uniqueLazy(
+    filterLazy(
+      a => go1(
+        set || go1(mapLazy(f, iter2), l => set = new Set(l)),
+        set => go1(f(a), b => set.has(b))
+      ),
+      iter));
 });
