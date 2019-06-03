@@ -19,6 +19,7 @@ const {
   intersection,
   unionBy,
   union,
+  zip,
 } = Fx;
 
 (function() {
@@ -507,6 +508,20 @@ const {
   describe('union', function () {
     it('union([2, 3], [2, 1, 4])', function () {
       expect(union([2, 3], [2, 1, 4])).to.eql([2, 3, 1, 4]);
+    });
+  });
+
+  describe('zip', function () {
+    it("zip(['a', 'b'], [1, 2], [true, false])", function () {
+      expect(zip(['a', 'b'], [1, 2], [true, false])).to.eql([['a', 1, true], ['b', 2, false]]);
+    });
+
+    it("zip(['a', 'b', 'c'], [1, 2], [true, false])", function () {
+      expect(zip(['a', 'b', 'c'], [1, 2], [true, false])).to.eql([['a', 1, true], ['b', 2, false], ['c', undefined, undefined]]);
+    });
+
+    it("zip(['a', 'b'], [1, 2], [true, false, true])", function () {
+      expect(zip(['a', 'b'], [1, 2], [true, false, true])).to.eql([['a', 1, true], ['b', 2, false], [undefined, undefined, true]]);
     });
   });
 } ());
