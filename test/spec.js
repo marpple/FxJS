@@ -11,6 +11,15 @@ const {
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
+  differenceBy,
+  difference,
+  initial,
+  rest,
+  intersectionBy,
+  intersection,
+  unionBy,
+  union,
+  zip,
 } = Fx;
 
 (function() {
@@ -438,5 +447,81 @@ const {
     });
   });
 
+  describe('differenceBy', function () {
+    it("differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
+      expect(differenceBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 2 }]);
+    });
+  });
 
+  describe('difference', function () {
+    it('difference([2, 1], [2, 3])', function () {
+      expect(difference([2, 3], [2, 1])).to.eql([1]);
+    });
+
+    it('difference([1], [1,2,3,4,5,6,7,8])', function () {
+      expect(difference([1,2,3,4,5,6,7,8], [1])).to.eql([]);
+    });
+
+    it('difference([1,1,1,1,1], [2,2,2,2])', function () {
+      expect(difference([2,2,2,2], [1,1,1,1,1])).to.eql([1, 1, 1, 1, 1]);
+    });
+  });
+
+  describe('initial', function () {
+    it('initial([1, 2, 3])', function() {
+      expect(initial([1, 2, 3])).to.eql([1, 2]);
+    })
+  });
+
+  describe('rest', function () {
+    it('rest([1, 2, 3])', function() {
+      expect(rest([1, 2, 3])).to.eql([2, 3]);
+    })
+  });
+
+  describe('intersectionBy', function () {
+    it("intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
+      expect(intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 1 }]);
+    });
+  });
+
+  describe('intersection', function () {
+    it('intersection([2, 1], [2, 3])', function () {
+      expect(intersection([2, 1], [2, 3])).to.eql([2]);
+    });
+
+    it('intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])', function () {
+      expect(intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4])).to.eql([1, 2]);
+    });
+  });
+
+  describe('unionBy', function () {
+    it('unionBy(Math.floor, [2.1, 2.2], [1.2, 2.3])', function () {
+      expect(unionBy(Math.floor, [2.1, 2.2], [1.2, 2.3])).to.eql([2.1, 1.2]);
+    });
+
+    it("unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
+      expect(unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
+    });
+  });
+
+  describe('union', function () {
+    it('union([2, 3], [2, 1, 4])', function () {
+      expect(union([2, 3], [2, 1, 4])).to.eql([2, 3, 1, 4]);
+    });
+  });
+
+  describe('zip', function () {
+    it("zip(['a', 'b'], [1, 2], [true, false])", function () {
+      expect(zip(['a', 'b'], [1, 2], [true, false])).to.eql([['a', 1, true], ['b', 2, false]]);
+    });
+
+    it("zip(['a', 'b', 'c'], [1, 2], [true, false])", function () {
+      expect(zip(['a', 'b', 'c'], [1, 2], [true, false])).to.eql([['a', 1, true], ['b', 2, false], ['c', undefined, undefined]]);
+    });
+
+    it("zip(['a', 'b'], [1, 2], [true, false, true])", function () {
+      expect(zip(['a', 'b'], [1, 2], [true, false, true])).to.eql([['a', 1, true], ['b', 2, false], [undefined, undefined, true]]);
+    });
+  });
 } ());
