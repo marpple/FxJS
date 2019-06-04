@@ -3,6 +3,7 @@ import mapLazy from './mapLazy.js';
 import uniqueLazy from './uniqueLazy';
 import curry from "../curry.js";
 import go1 from '../go1.js';
+import go from '../go.js';
 
 export default curry(function intersectionByLazy(f, iter2, iter) {
   let set = null;
@@ -10,7 +11,7 @@ export default curry(function intersectionByLazy(f, iter2, iter) {
     filterLazy(
       a => go1(
         set || go1(mapLazy(f, iter2), l => set = new Set(l)),
-        set => go1(f(a), b => set.has(b))
+        set => go(a, f, b => set.has(b))
       ),
       iter));
 });
