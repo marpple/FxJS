@@ -20,6 +20,7 @@ const {
   unionBy,
   union,
   zip,
+  unzip,
   zipObj,
   zipWith,
 } = Fx;
@@ -524,6 +525,12 @@ const {
 
     it("zip(['a', 'b'], [1, 2], [true, false, true])", function () {
       expect(zip(['a', 'b'], [1, 2], [true, false, true])).to.eql([['a', 1, true], ['b', 2, false], [undefined, undefined, true]]);
+    });
+  });
+
+  describe('unzip', function () {
+    it("unzip([['a', 1, true], ['b', 2, false]])", function () {
+      expect(unzip([['a', 1, true], ['b', 2, false]])).to.eql([['a', 'b'], [1, 2], [true, false]]);
     });
   });
 

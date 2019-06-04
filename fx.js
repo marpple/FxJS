@@ -93,6 +93,7 @@ export { default as intersectionBy } from './intersectionBy.js';
 export { default as unionBy } from './unionBy.js';
 export { default as union } from './union.js';
 export { default as zip } from './zip.js';
+export { default as unzip } from './unzip.js';
 export { default as zipObj } from './zipObj.js';
 export { default as zipWith } from './zipWith.js';
 export * from './L.js';
