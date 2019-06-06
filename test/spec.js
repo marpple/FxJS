@@ -526,6 +526,19 @@ const {
     it("zip(['a', 'b'], [1, 2], [true, false, true])", function () {
       expect(zip(['a', 'b'], [1, 2], [true, false, true])).to.eql([['a', 1, true], ['b', 2, false], [undefined, undefined, true]]);
     });
+
+    it("zip(Promise.resolve(['a', 'b']), [1, 2], Promise.resolve([true, false]))", async function () {
+      expect(await zip(Promise.resolve(['a', 'b']), [1, 2], Promise.resolve([true, false])))
+        .to.eql([['a', 1, true], ['b', 2, false]]);
+    });
+
+    it("zip(Promise.resolve(['a', Promise.resolve('b')]), [Promise.resolve(1), Promise.resolve(2)], [true, false])", async function () {
+      expect(await zip(
+        Promise.resolve(['a', Promise.resolve('b')]),
+        [Promise.resolve(1), Promise.resolve(2)],
+        [true, false]))
+        .to.eql([['a', 1, true], ['b', 2, false]]);
+    });
   });
 
   describe('unzip', function () {
