@@ -20,6 +20,9 @@ const {
   unionBy,
   union,
   zip,
+  unzip,
+  zipObj,
+  zipWith,
 } = Fx;
 
 (function() {
@@ -522,6 +525,38 @@ const {
 
     it("zip(['a', 'b'], [1, 2], [true, false, true])", function () {
       expect(zip(['a', 'b'], [1, 2], [true, false, true])).to.eql([['a', 1, true], ['b', 2, false], [undefined, undefined, true]]);
+    });
+
+    it("zip(Promise.resolve(['a', 'b']), [1, 2], Promise.resolve([true, false]))", async function () {
+      expect(await zip(Promise.resolve(['a', 'b']), [1, 2], Promise.resolve([true, false])))
+        .to.eql([['a', 1, true], ['b', 2, false]]);
+    });
+
+    it("zip(Promise.resolve(['a', Promise.resolve('b')]), [Promise.resolve(1), Promise.resolve(2)], [true, false])", async function () {
+      expect(await zip(
+        Promise.resolve(['a', Promise.resolve('b')]),
+        [Promise.resolve(1), Promise.resolve(2)],
+        [true, false]))
+        .to.eql([['a', 1, true], ['b', 2, false]]);
+    });
+  });
+
+  describe('unzip', function () {
+    it("unzip([['a', 1, true], ['b', 2, false]])", function () {
+      expect(unzip([['a', 1, true], ['b', 2, false]])).to.eql([['a', 'b'], [1, 2], [true, false]]);
+    });
+  });
+
+  describe('zipObj', function() {
+    it("zipObj(['a', 'b', 'c'], [1, 2, 3])", function () {
+      expect(zipObj(['a', 'b', 'c'], [1, 2, 3])).to.eql({a: 1, b: 2, c: 3});
+    });
+  });
+
+  describe('zipWith', function() {
+    it("zipWith((a, b) => `${a}=${b}`, ['a', 'b', 'c'], [1, 2, 3])", function () {
+      expect(zipWith((a, b) => `${a}=${b}`, ['a', 'b', 'c'], [1, 2, 3]))
+        .to.eql(['a=1', 'b=2', 'c=3']);
     });
   });
 } ());

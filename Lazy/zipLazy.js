@@ -1,13 +1,17 @@
 import map from "../map.js";
 import toIter from '../toIter.js';
 import curry from '../curry.js';
-import every from "../every.js";
+import go from "../go.js";
+import mapLazy from "./mapLazy.js";
+import rangeLazy from "./rangeLazy.js";
+import takeWhileLazy from "./takeWhileLazy.js";
+import some from "../some.js";
 
-export default curry(function *zipLazy(...iterables) {
+export default curry(function zipLazy(...iterables) {
   const iterators = map(toIter, iterables);
-  while (true) {
-    const group = map(a => a.next(), iterators);
-    if (every(a => a.done, group)) break;
-    yield map(a => a.value, group);
-  }
+  return go(
+    rangeLazy(Infinity),
+    mapLazy(_ => map(it => it.next(), iterators)),
+    takeWhileLazy(some(cur => !cur.done)),
+    mapLazy(map(cur => cur.value)))
 });
