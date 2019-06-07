@@ -506,6 +506,10 @@ const {
     it("unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
       expect(unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
     });
+
+    it("unionBy(a => Promise.resolve(a.x), [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", async function () {
+      expect(await unionBy(a => Promise.resolve(a.x), [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
+    });
   });
 
   describe('union', function () {
@@ -558,5 +562,28 @@ const {
       expect(zipWith((a, b) => `${a}=${b}`, ['a', 'b', 'c'], [1, 2, 3]))
         .to.eql(['a=1', 'b=2', 'c=3']);
     });
+
+    it("zipWith((a, b) => Promise.resolve(`${a}=${b}`), ['a', 'b', 'c'], [1, 2, 3])", async function () {
+      expect(await zipWith((a, b) => Promise.resolve(`${a}=${b}`), ['a', 'b', 'c'], [1, 2, 3]))
+        .to.eql(['a=1', 'b=2', 'c=3']);
+    });
   });
+
+  // describe('partition', function() {
+  //   it("partition(a => a % 2, [1, 2, 3, 4])", function () {
+  //     expect(partition(a => a % 2, [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
+  //   });
+  //
+  //   it("partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))", function () {
+  //     expect(partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))).to.eql([[1, 3], [2, 4]]);
+  //   });
+  //
+  //   it("partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])", function () {
+  //     expect(partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
+  //   });
+  //
+  //   it("partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])", function () {
+  //     expect(partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])).to.eql([[1, 3], [2, 4]]);
+  //   });
+  // });
 } ());
