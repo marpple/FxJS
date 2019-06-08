@@ -97,5 +97,6 @@ export { default as zip } from './zip.js';
 export { default as unzip } from './unzip.js';
 export { default as zipObj } from './zipObj.js';
 export { default as zipWith } from './zipWith.js';
+export { default as partition } from './partition.js';
 export * from './L.js';
 export * from './C.js';
