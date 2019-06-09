@@ -12,6 +12,7 @@ const {
   promiseAllObject, promiseAllEntries,
   dropRight,
   dropWhile,
+  dropUntil,
   differenceBy,
   difference,
   initial,
@@ -74,6 +75,30 @@ const {
       expect(await dropWhile(
         a => Promise.resolve(a % 2),
         Promise.resolve([1, Promise.resolve(1), 2, 2, 3, Promise.resolve(3)]))).to.eql([2, 2, 3, 3]);
+    })
+  });
+
+  describe('dropUntil', function () {
+    it('L.dropUntil', () => {
+      expect(takeAll(L.dropUntil(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([1, 2, 2, 3, 3]);
+      expect(takeAll(L.dropUntil(a => a % 2, [2, 2, 3, 3]))).to.eql([3]);
+      expect(takeAll(L.dropUntil(a => a % 2, [2, 2, 4, 4]))).to.eql([]);
+    });
+
+    it('L.dropUntil promise', async () => {
+      expect(await takeAll(
+        L.dropUntil(a => Promise.resolve(a % 2), [2, 2, 3, 3]))).to.eql([3]);
+
+      expect(await takeAll(
+        L.dropUntil(
+          a => Promise.resolve(a % 2),
+          [2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+    });
+
+    it('dropUntil promise', async () => {
+      expect(await dropUntil(
+        a => Promise.resolve(a % 2),
+        Promise.resolve([2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
     })
   });
 
