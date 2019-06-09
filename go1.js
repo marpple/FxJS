@@ -1,3 +1,1 @@
-export default function go1(a, f) {
-  return a instanceof Promise ? a.then(f) : f(a);
-}
+export default (a, f) => a instanceof Promise ? a.then(f) : f(a);

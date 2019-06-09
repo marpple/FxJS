@@ -46,6 +46,7 @@ export { default as baseSel, default as base_sel } from './baseSel.js';
 export { default as sortBy, default as sort_by } from './sortBy.js';
 export { default as not } from './not.js';
 export { default as go1 } from './go1.js';
+export { default as pipe1 } from './pipe1.js';
 export { default as find } from './find.js';
 export { default as isArray, default as is_array } from './isArray.js';
 export { default as each } from './each.js';
