@@ -84,6 +84,8 @@ export { default as promiseAllEntries, default as promise_all_entries } from './
 export { default as isStop, default as is_stop } from './isStop.js';
 export { default as range } from './range.js';
 export { default as drop } from './drop.js';
+export { default as dropWhile } from './dropWhile.js';
+export { default as dropUntil } from './dropUntil.js';
 export { default as dropRight, default as drop_right } from './dropRight.js';
 export { default as difference } from './difference.js';
 export { default as differenceBy } from './differenceBy.js';
@@ -97,5 +99,6 @@ export { default as zip } from './zip.js';
 export { default as unzip } from './unzip.js';
 export { default as zipObj } from './zipObj.js';
 export { default as zipWith } from './zipWith.js';
+export { default as partition } from './partition.js';
 export * from './L.js';
 export * from './C.js';

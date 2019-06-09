@@ -24,6 +24,9 @@ import intersectionByLazy from './Lazy/intersectionByLazy';
 import unionByLazy from './Lazy/unionByLazy';
 import unionLazy from './Lazy/unionLazy';
 
+import dropWhileLazy from './Lazy/dropWhileLazy';
+import dropUntilLazy from './Lazy/dropUntilLazy';
+
 const L = {
   deepFlat: deepFlatLazy,
   deep_flat: deepFlatLazy,
@@ -54,12 +57,19 @@ const L = {
   take_until: takeUntilLazy,
   interval: intervalLazy,
   drop: dropLazy,
+  drop_while: dropWhileLazy,
+  dropWhile: dropWhileLazy,
+  drop_until: dropUntilLazy,
+  dropUntil: dropUntilLazy,
   difference: differenceLazy,
   differenceBy: differenceByLazy,
   difference_by: differenceByLazy,
   intersection: intersectionLazy,
   intersectionBy: intersectionByLazy,
   intersection_by: intersectionByLazy,
+  union: unionLazy,
+  union_by: unionByLazy,
+  unionBy: unionByLazy,
 };
 
 export {
@@ -83,6 +93,8 @@ export {
   takeUntilLazy,
   intervalLazy,
   dropLazy,
+  dropWhileLazy,
+  dropUntilLazy,
   differenceLazy,
   differenceByLazy,
   intersectionLazy,

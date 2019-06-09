@@ -11,6 +11,8 @@ const {
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
+  dropWhile,
+  dropUntil,
   differenceBy,
   difference,
   initial,
@@ -23,6 +25,7 @@ const {
   unzip,
   zipObj,
   zipWith,
+  partition,
 } = Fx;
 
 (function() {
@@ -49,6 +52,54 @@ const {
       expect(await C.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
       expect(await C.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
     });
+  });
+
+  describe('dropWhile', function () {
+    it('L.dropWhile', () => {
+      expect(takeAll(L.dropWhile(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+    });
+
+    it('L.dropWhile promise', async () => {
+      expect(await takeAll(
+        L.dropWhile(
+          a => Promise.resolve(a % 2),
+          [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+
+      expect(await takeAll(
+        L.dropWhile(
+          a => Promise.resolve(a % 2),
+          [1, Promise.resolve(1), 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+    });
+
+    it('dropWhile promise', async () => {
+      expect(await dropWhile(
+        a => Promise.resolve(a % 2),
+        Promise.resolve([1, Promise.resolve(1), 2, 2, 3, Promise.resolve(3)]))).to.eql([2, 2, 3, 3]);
+    })
+  });
+
+  describe('dropUntil', function () {
+    it('L.dropUntil', () => {
+      expect(takeAll(L.dropUntil(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([1, 2, 2, 3, 3]);
+      expect(takeAll(L.dropUntil(a => a % 2, [2, 2, 3, 3]))).to.eql([3]);
+      expect(takeAll(L.dropUntil(a => a % 2, [2, 2, 4, 4]))).to.eql([]);
+    });
+
+    it('L.dropUntil promise', async () => {
+      expect(await takeAll(
+        L.dropUntil(a => Promise.resolve(a % 2), [2, 2, 3, 3]))).to.eql([3]);
+
+      expect(await takeAll(
+        L.dropUntil(
+          a => Promise.resolve(a % 2),
+          [2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+    });
+
+    it('dropUntil promise', async () => {
+      expect(await dropUntil(
+        a => Promise.resolve(a % 2),
+        Promise.resolve([2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+    })
   });
 
   describe('dropRight', function () {
@@ -506,6 +557,10 @@ const {
     it("unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", function () {
       expect(unionBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
     });
+
+    it("unionBy(a => Promise.resolve(a.x), [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])", async function () {
+      expect(await unionBy(a => Promise.resolve(a.x), [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 1 }, { 'x': 2 }]);
+    });
   });
 
   describe('union', function () {
@@ -557,6 +612,29 @@ const {
     it("zipWith((a, b) => `${a}=${b}`, ['a', 'b', 'c'], [1, 2, 3])", function () {
       expect(zipWith((a, b) => `${a}=${b}`, ['a', 'b', 'c'], [1, 2, 3]))
         .to.eql(['a=1', 'b=2', 'c=3']);
+    });
+
+    it("zipWith((a, b) => Promise.resolve(`${a}=${b}`), ['a', 'b', 'c'], [1, 2, 3])", async function () {
+      expect(await zipWith((a, b) => Promise.resolve(`${a}=${b}`), ['a', 'b', 'c'], [1, 2, 3]))
+        .to.eql(['a=1', 'b=2', 'c=3']);
+    });
+  });
+
+  describe('partition', function() {
+    it("partition(a => a % 2, [1, 2, 3, 4])", function () {
+      expect(partition(a => a % 2, [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
+    });
+
+    it("partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))", async function () {
+      expect(await partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))).to.eql([[1, 3], [2, 4]]);
+    });
+
+    it("partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])", async function () {
+      expect(await partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
+    });
+
+    it("partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])", async function () {
+      expect(await partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])).to.eql([[1, 3], [2, 4]]);
     });
   });
 } ());
