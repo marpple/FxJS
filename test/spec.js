@@ -11,6 +11,7 @@ const {
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
+  dropWhile,
   differenceBy,
   difference,
   initial,
@@ -50,6 +51,30 @@ const {
       expect(await C.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
       expect(await C.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([]);
     });
+  });
+
+  describe('dropWhile', function () {
+    it('L.dropWhile', () => {
+      expect(takeAll(L.dropWhile(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+    });
+
+    it('L.dropWhile promise', async () => {
+      expect(await takeAll(
+        L.dropWhile(
+          a => Promise.resolve(a % 2),
+          [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+
+      expect(await takeAll(
+        L.dropWhile(
+          a => Promise.resolve(a % 2),
+          [1, Promise.resolve(1), 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+    });
+
+    it('dropWhile promise', async () => {
+      expect(await dropWhile(
+        a => Promise.resolve(a % 2),
+        Promise.resolve([1, Promise.resolve(1), 2, 2, 3, Promise.resolve(3)]))).to.eql([2, 2, 3, 3]);
+    })
   });
 
   describe('dropRight', function () {

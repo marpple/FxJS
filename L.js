@@ -24,6 +24,8 @@ import intersectionByLazy from './Lazy/intersectionByLazy';
 import unionByLazy from './Lazy/unionByLazy';
 import unionLazy from './Lazy/unionLazy';
 
+import dropWhileLazy from './Lazy/dropWhileLazy';
+
 const L = {
   deepFlat: deepFlatLazy,
   deep_flat: deepFlatLazy,
@@ -60,6 +62,11 @@ const L = {
   intersection: intersectionLazy,
   intersectionBy: intersectionByLazy,
   intersection_by: intersectionByLazy,
+  union: unionLazy,
+  union_by: unionByLazy,
+  unionBy: unionByLazy,
+  drop_while: dropWhileLazy,
+  dropWhile: dropWhileLazy,
 };
 
 export {
@@ -89,4 +96,5 @@ export {
   intersectionByLazy,
   unionByLazy,
   unionLazy,
+  dropWhileLazy,
 }
