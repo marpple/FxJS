@@ -98,7 +98,7 @@ const {
     it('dropUntil promise', async () => {
       expect(await dropUntil(
         a => Promise.resolve(a % 2),
-        Promise.resolve([2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+        [2, Promise.resolve(2), 3, Promise.resolve(3)])).to.eql([3]);
     })
   });
 
@@ -623,10 +623,6 @@ const {
   describe('partition', function() {
     it("partition(a => a % 2, [1, 2, 3, 4])", function () {
       expect(partition(a => a % 2, [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
-    });
-
-    it("partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))", async function () {
-      expect(await partition(a => a % 2, Promise.resolve([1, 2, 3, 4]))).to.eql([[1, 3], [2, 4]]);
     });
 
     it("partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])", async function () {
