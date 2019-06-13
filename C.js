@@ -12,6 +12,7 @@ import take1C from './Concurrency/take1C.js';
 import callsC from './Concurrency/callsC.js';
 import someC from './Concurrency/someC.js';
 import dropC from "./Concurrency/dropC.js";
+import compactC from "./Concurrency/compactC.js";
 
 const C = {
   tail: tailC,
@@ -31,7 +32,8 @@ const C = {
   take1: take1C,
   calls: callsC,
   some: someC,
-  drop: dropC
+  drop: dropC,
+  compact: compactC
 };
 
 export {
@@ -49,5 +51,6 @@ export {
   take1C,
   callsC,
   someC,
-  dropC
+  dropC,
+  compactC
 }
