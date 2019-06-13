@@ -5,6 +5,7 @@ const {
   L, flat, deepFlat, stop,
   take, C, takeWhile, takeUntil, go,
   takeAll,
+  delay,
   map,
   reduce, go1, find, some, every, deepFlatten, uniq,
   reduceS, goS, stopIf, stop_if, pipeS, calls, callsC,
@@ -29,6 +30,23 @@ const {
 } = Fx;
 
 (function() {
+  describe('L.take + C.takeAll', function () {
+    it('L.take + takeAll', () => {
+      expect(takeAll(L.take(2, L.map(a => a, [1, 2, 3])))).to.eql([1, 2]);
+    });
+    it('Promise + L.take + takeAll', async () => {
+      expect(await takeAll(L.take(2, L.map(a => Promise.resolve(a), [1, 2, 3])))).to.eql([1, 2]);
+    });
+    it('Promise + L.take + L.filter + takeAll', async () => {
+      expect(await takeAll(L.take(2, L.filter(a => a % 2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5, 6]))))).to.eql([1, 3]);
+    });
+    it('Promise + L.take + C.takeAll', async () => {
+      expect(await C.takeAll(L.take(2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 30])))).to.eql([51, 30]);
+    });
+    it('Promise + L.take + C.takeAll', async () => {
+      expect(await C.takeAll(L.take(2, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 31]))))).to.eql([51, 31]);
+    });
+  });
 
   describe('drop', function () {
     it('L.drop', () => {
