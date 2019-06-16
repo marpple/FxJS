@@ -1,6 +1,6 @@
 import reduceS from "./reduceS.js";
-import call from "./call.js";
+import go1Sync from "./.internal/go1Sync.js";
 
 export default function pipeS(f, ...fs) {
-  return (...as) => reduceS(call, f(...as), fs);
+  return (...as) => reduceS(go1Sync, f(...as), fs);
 }
