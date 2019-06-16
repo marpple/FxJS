@@ -1,4 +1,4 @@
-import baseCalls from "../baseCalls.js";
+import baseCalls from "../.internal/baseCalls.js";
 import mapC from "./mapC.js";
 import objectC from "./objectC.js";
 

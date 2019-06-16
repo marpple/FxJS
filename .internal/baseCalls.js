@@ -1,6 +1,6 @@
-import isIterable from "./isIterable.js";
-import entriesLazy from "./Lazy/entriesLazy.js";
-import mapEntriesLazy from "./Lazy/mapEntriesLazy.js";
+import isIterable from "../isIterable.js";
+import entriesLazy from "../Lazy/entriesLazy.js";
+import mapEntriesLazy from "../Lazy/mapEntriesLazy.js";
 
 const baseCalls = (map, object) => function calls(fs, ...args) {
   return isIterable(fs) ?

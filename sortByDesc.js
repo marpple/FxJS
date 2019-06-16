@@ -1,4 +1,4 @@
-import baseSortBy from "./baseSortBy.js";
+import baseSortBy from "./.internal/baseSortBy.js";
 import curry from "./curry.js";
 
 export default curry(function sortByDesc(f, arr) {

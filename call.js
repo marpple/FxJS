@@ -1,3 +1,5 @@
-export default function call(a, f) {
-  return f(a);
-}
+import curry from "./curry.js";
+
+export default curry(function call(f, ...args) {
+  return f(...args);
+});

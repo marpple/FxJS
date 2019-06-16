@@ -1,6 +1,6 @@
-import reduce from "./reduce.js";
-import mapLazy from "./Lazy/mapLazy.js";
-import entriesLazy from "./Lazy/entriesLazy.js";
+import reduce from "../reduce.js";
+import mapLazy from "../Lazy/mapLazy.js";
+import entriesLazy from "../Lazy/entriesLazy.js";
 
 export default function baseExtend(set, obj, objs) {
   const type = typeof obj;

@@ -27,6 +27,7 @@ const {
   zipObj,
   zipWith,
   partition,
+  join,
 } = Fx;
 
 (function() {
@@ -155,6 +156,12 @@ const {
     });
     it('L.range(1, 7, 2)', () => {
       expect([...L.range(1, 7, 2)]).to.eql([1, 3, 5]);
+    });
+    it('L.range(-4)', () => {
+      expect([...L.range(-4)]).to.eql([0, -1, -2, -3]);
+    });
+    it('L.range(0, -4, -1)', () => {
+      expect([...L.range(0, -4, -1)]).to.eql([0, -1, -2, -3]);
     });
   });
 
@@ -649,6 +656,12 @@ const {
 
     it("partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])", async function () {
       expect(await partition(a => a % 2, [1, Promise.resolve(2), 3, Promise.resolve(4)])).to.eql([[1, 3], [2, 4]]);
+    });
+  });
+
+  describe('join', function() {
+    it("join(',' [1, 2, 3])", function() {
+      expect(join('-', [1,2,3])).to.eql("1-2-3");
     });
   });
 } ());

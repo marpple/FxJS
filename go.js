@@ -1,6 +1,6 @@
 import reduce from "./reduce.js";
-import call from "./call.js";
+import go1Sync from "./.internal/go1Sync.js";
 
 export default function go(..._) {
-  return reduce(call, _);
+  return reduce(go1Sync, _);
 }
