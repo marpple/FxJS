@@ -95,6 +95,7 @@ export { default as initial } from './initial.js';
 export { default as rest } from './rest.js';
 export { default as intersection } from './intersection.js';
 export { default as intersectionBy } from './intersectionBy.js';
+export { default as intersectionWith } from './intersectionWith.js';
 export { default as unionBy } from './unionBy.js';
 export { default as union } from './union.js';
 export { default as zip } from './zip.js';

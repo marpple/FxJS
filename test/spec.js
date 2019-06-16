@@ -21,6 +21,7 @@ const {
   initial,
   rest,
   intersectionBy,
+  intersectionWith,
   intersection,
   unionBy,
   union,
@@ -717,6 +718,16 @@ const {
   describe('intersectionBy', function () {
     it("intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
       expect(intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 1 }]);
+    });
+  });
+
+  describe('intersectionWith', function () {
+    const cmp = (x, y) => x.a === y.a;
+    const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+    const l2 = [{a: 3}, {a: 4}];
+
+    it("intersectionWith sync", function () {
+      expect(intersectionWith(cmp, l1, l2)).to.eql([{a: 3}, {a: 4}]);
     });
   });
 
