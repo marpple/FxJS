@@ -16,6 +16,7 @@ const {
   dropWhile,
   dropUntil,
   differenceBy,
+  differenceWith,
   difference,
   initial,
   rest,
@@ -661,6 +662,29 @@ const {
   describe('differenceBy', function () {
     it("differenceBy(a => a.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
       expect(differenceBy(a => a.x, [{ 'x': 1 }], [{ 'x': 2 }, { 'x': 1 }])).to.eql([{ 'x': 2 }]);
+    });
+  });
+
+  describe('differenceWith', function () {
+    it("differenceWith sync function", function () {
+      const cmp = (x, y) => x.a === y.a;
+      const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, {a: 4}];
+      expect(differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
+    });
+
+    it("differenceWith async function", async function () {
+      const cmp = (x, y) => Promise.resolve(x.a === y.a);
+      const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, {a: 4}];
+      expect(await differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
+    });
+
+    it("differenceWith promise iterable elements", async function () {
+      const cmp = (x, y) => Promise.resolve(x.a === y.a);
+      const l1 = [{a: 1}, Promise.resolve({a: 2}), Promise.resolve({a: 3}), {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, Promise.resolve({a: 4})];
+      expect(await differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
     });
   });
 
