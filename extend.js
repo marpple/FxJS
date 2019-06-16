@@ -1,4 +1,4 @@
-import baseExtend from "./baseExtend.js";
+import baseExtend from "./.internal/baseExtend.js";
 
 const setter = (obj, [k, v]) => (obj[k] = v, obj);
 
