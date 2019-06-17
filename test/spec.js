@@ -28,9 +28,43 @@ const {
   zipWith,
   partition,
   join,
+  pick,
+  omit,
 } = Fx;
 
 (function() {
+
+  describe('pick', function() {
+    it("pick([], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pick([], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+    it("pick(['a', 'c'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pick(['a', 'c'], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
+    });
+    it("pick(['a', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pick(['a', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1});
+    });
+    it("pick(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pick(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+  });
+
+  describe('omit', function() {
+    it("omit([], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omit([], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, b: 2, c: 3, d: 4});
+    });
+    it("omit(['a', 'c'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omit(['a', 'c'], {a: 1, b: 2, c: 3, d: 4})).to.eql({b: 2, d: 4});
+    });
+    it("omit(['a', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omit(['a', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({b: 2, c: 3, d: 4});
+    });
+    it("omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, b: 2, c: 3, d: 4});
+    });
+  });
+  return;
+
   describe('L.take + C.takeAll', function () {
     it('L.take + takeAll', () => {
       expect(takeAll(L.take(2, L.map(a => a, [1, 2, 3])))).to.eql([1, 2]);
@@ -664,4 +698,5 @@ const {
       expect(join('-', [1,2,3])).to.eql("1-2-3");
     });
   });
+
 } ());

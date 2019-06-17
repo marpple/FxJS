@@ -1,7 +1,10 @@
-import filterLazy from "./Lazy/filterLazy.js";
 import curry from "./curry.js";
-import basePick from "./.internal/basePick.js";
+import object from "./object.js";
+import rejectLazy from "./Lazy/rejectLazy.js";
+import mapLazy from "./Lazy/mapLazy.js";
 
 export default curry(function pick(ks, obj) {
-  return basePick(filterLazy, ks, obj);
+  return object(
+    rejectLazy(([_, v]) => v === undefined,
+      mapLazy(k => [k, obj[k]], ks)));
 });
