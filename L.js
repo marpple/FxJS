@@ -4,7 +4,6 @@ import mapEntriesLazy from './Lazy/mapEntriesLazy.js';
 import filterLazy from './Lazy/filterLazy.js';
 import flatLazy from './Lazy/flatLazy.js';
 import flatMapLazy from './Lazy/flatMapLazy.js';
-import headTailLazy from './Lazy/headTailLazy.js';
 import indexValuesLazy from './Lazy/indexValuesLazy.js';
 import keysLazy from './Lazy/keysLazy.js';
 import mapLazy from './Lazy/mapLazy.js';
@@ -42,7 +41,6 @@ const L = {
   flat: flatLazy,
   flatMap: flatMapLazy,
   flat_map: flatMapLazy,
-  headTail: headTailLazy,
   indexValues: indexValuesLazy,
   index_values: indexValuesLazy,
   keys: keysLazy,
@@ -82,7 +80,6 @@ export {
   filterLazy,
   flatLazy,
   flatMapLazy,
-  headTailLazy,
   indexValuesLazy,
   keysLazy,
   mapLazy,
