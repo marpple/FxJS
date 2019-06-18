@@ -4,7 +4,6 @@ import noop from "../noop.js";
 import nop from "../nop.js";
 
 const resolved = Promise.resolve();
-
 export default curry(function *takeLazy(l, iter) {
   if (l < 1) return;
   let prev = resolved;
