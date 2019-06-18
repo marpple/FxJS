@@ -70,6 +70,24 @@ const {
     });
   });
 
+  describe('L.takeUntil + C.takeAll', function () {
+    it('L.takeUntil + takeAll', () => {
+      expect(takeAll(L.takeUntil(a => a == 2, L.map(a => a, [1, 2, 3])))).to.eql([1, 2]);
+    });
+    it('Promise + L.takeUntil + takeAll', async () => {
+      expect(await takeAll(L.takeUntil(a => a == 2, L.map(a => Promise.resolve(a), [1, 2, 3])))).to.eql([1, 2]);
+    });
+    it('Promise + L.takeUntil + L.filter + takeAll', async () => {
+      expect(await takeAll(L.takeUntil(a => a == 3, L.filter(a => a % 2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5, 6]))))).to.eql([1, 3]);
+    });
+    it('Promise + L.takeUntil + C.takeAll', async () => {
+      expect(await C.takeAll(L.takeUntil(a => a < 600, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 30])))).to.eql([601, 500]);
+    });
+    it('Promise + L.takeWhile + C.takeAll', async () => {
+      expect(await C.takeAll(L.takeUntil(a => a < 600, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 31]))))).to.eql([601, 401]);
+    });
+  });
+
   describe('pick', function() {
     it("pick([], {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(pick([], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
