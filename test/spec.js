@@ -70,8 +70,6 @@ const {
     });
   });
 
-  return;
-
   describe('pick', function() {
     it("pick([], {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(pick([], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
