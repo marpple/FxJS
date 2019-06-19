@@ -13,6 +13,8 @@ import callsC from './Concurrency/callsC.js';
 import someC from './Concurrency/someC.js';
 import dropC from "./Concurrency/dropC.js";
 import compactC from "./Concurrency/compactC.js";
+import takeRaceC from "./Concurrency/takeRaceC.js";
+import raceC from "./Concurrency/raceC.js";
 
 const C = {
   tail: tailC,
@@ -33,7 +35,10 @@ const C = {
   calls: callsC,
   some: someC,
   drop: dropC,
-  compact: compactC
+  compact: compactC,
+  takeRace: takeRaceC,
+  take_race: takeRaceC,
+  race: raceC
 };
 
 export {
@@ -52,5 +57,7 @@ export {
   callsC,
   someC,
   dropC,
-  compactC
+  compactC,
+  takeRaceC,
+  raceC
 }

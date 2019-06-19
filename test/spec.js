@@ -33,6 +33,38 @@ const {
 } = Fx;
 
 (function() {
+  describe('C.race', function () {
+    it('C.takeRace(1, iter)', async () => {
+      expect(await C.race(L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql(50);
+      expect(await C.race(L.filter(a => a % 2, L.map(a => delay(a, a), [100, 101, 50, 51, 200, 201, 70, 71, 300, 301, 80, 81])))).to.eql(51);
+    });
+    it('C.takeRace(1, iter) error', async () => {
+      try {
+        await C.takeRace(1, L.map(async a => delay(a, await Promise.reject(a)), [100, 50, 200, 70, 300, 80]));
+        expect(1).to.eql(2);
+      } catch (e) {}
+      try {
+        expect(await C.race(L.filter(a => asdad, L.map(a => delay(a, a), [100, 101, 50, 51, 200, 201, 70, 71, 300, 301, 80, 81])))).to.eql(51);
+        expect(1).to.eql(2);
+      } catch (e) {}
+    });
+  });
+
+  describe('C.takeRace', function () {
+    it('C.takeRace(1, iter)', async () => {
+      expect(await C.takeRace(1, L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql([50]);
+      expect(await C.takeRace(1, L.filter(a => a % 2, L.map(a => delay(a, a), [100, 101, 50, 51, 200, 201, 70, 71, 300, 301, 80, 81])))).to.eql([51]);
+    });
+    it('C.takeRace(2, iter)', async () => {
+      expect(await C.takeRace(2, L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql([50, 70]);
+      expect(await C.takeRace(2, L.filter(a => a % 2, L.map(a => delay(a, a), [100, 101, 50, 51, 200, 201, 70, 71, 300, 301, 80, 81])))).to.eql([51, 71]);
+    });
+    it('C.takeRace(3, iter)', async () => {
+      expect(await C.takeRace(3, L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql([50, 70, 80]);
+      expect(await C.takeRace(3, L.filter(a => a % 2, L.map(a => delay(a, a), [100, 101, 50, 51, 200, 201, 70, 71, 300, 301, 80, 81])))).to.eql([51, 71, 81]);
+    });
+  });
+
   describe('C.takeAll', function () {
     it('C.takeAll(iter)', async () => {
       expect(await C.takeAll(L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
