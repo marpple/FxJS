@@ -33,6 +33,17 @@ const {
 } = Fx;
 
 (function() {
+  describe('C.takeAll', function () {
+    it('C.takeAll', async () => {
+      expect(await C.takeAll(L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
+    }).timeout(600);
+    it('C.takeAll(10)', async () => {
+      expect(await C.takeAll(10, L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
+    }).timeout(1100);
+    it('C.takeAll(5)', async () => {
+      expect(await C.takeAll(5, L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
+    }).timeout(2100);
+  });
 
   describe('L.take + C.takeAll', function () {
     it('L.take + takeAll', () => {
@@ -384,14 +395,12 @@ const {
     });
 
     it('map(a => delay(a+10, 1000), [1, 2, 3])', async function () {
-      this.timeout(5000);
       expect(await map(a => delay(a + 10, 1000), [1, 2, 3])).to.eql([11, 12, 13]);
-    });
+    }).timeout(5000);
 
     it('C.map(a => delay(a+10, 1000), [1, 2, 3])', async function () {
-      this.timeout(1500);
       expect(await C.map(a => delay(a + 10, 1000), [1, 2, 3])).to.eql([11, 12, 13]);
-    });
+    }).timeout(1500);
   });
 
   describe('find', function () {

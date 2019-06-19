@@ -3,7 +3,7 @@ import go1 from "./go1.js";
 import nop from "./nop.js";
 import curry from "./curry.js";
 
-export const takeUntil = curry(function takeUntil(f, iter) {
+export default curry(function takeUntil(f, iter) {
   let res = [];
   iter = toIter(iter);
   return function recur() {
@@ -18,5 +18,3 @@ export const takeUntil = curry(function takeUntil(f, iter) {
     return res;
   } ();
 });
-
-export default takeUntil;
