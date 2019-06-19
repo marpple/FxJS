@@ -34,14 +34,17 @@ const {
 
 (function() {
   describe('C.takeAll', function () {
-    it('C.takeAll', async () => {
+    it('C.takeAll(iter)', async () => {
       expect(await C.takeAll(L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
     }).timeout(600);
-    it('C.takeAll(10)', async () => {
+    it('C.takeAll(10, iter)', async () => {
       expect(await C.takeAll(10, L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
     }).timeout(1100);
-    it('C.takeAll(5)', async () => {
+    it('C.takeAll(5, iter)', async () => {
       expect(await C.takeAll(5, L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
+    }).timeout(2100);
+    it('C.takeAll(5)(iter) Currying', async () => {
+      expect(await C.takeAll(5)(L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
     }).timeout(2100);
   });
 
