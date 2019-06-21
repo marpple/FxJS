@@ -11,7 +11,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Lazy evaluation](#Lazy-evaluation)
   - [RFP style](#RFP-style)
   - [Promise/async/await](#Promise/async/await)
-  - [Concurrency][#Concurrency]
+  - [Concurrency](#Concurrency)
   - [Error handling](#Error-handling)
 - [API](#API)
   - [Strict](#Strict)

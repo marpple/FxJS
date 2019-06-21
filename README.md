@@ -11,7 +11,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Lazy evaluation](#Lazy-evaluation)
   - [RFP style](#RFP-style)
   - [Promise/async/await](#Promise/async/await)
-  - [Concurrency][#Concurrency]
+  - [Concurrency](#Concurrency)
   - [Error handling](#Error-handling)
 - [API](#API)
   - [Strict](#Strict)
