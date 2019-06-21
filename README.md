@@ -20,11 +20,11 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Stoppable](#Stoppable)
 - [Change Log](#Change-Log)
 
-## Getting Started
+# Getting Started
 
-### Installation
+## Installation
 
-#### In Modern Browsers Supporting ES6
+### In Modern Browsers Supporting ES6
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
@@ -33,7 +33,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 <script src="path/fx.min.js"></script>
 ```
 
-#### In Legacy ES5 Browsers
+### In Legacy ES5 Browsers
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
@@ -42,7 +42,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 <script src="path/fx.es5.min.js"></script>
 ```
 
-#### Node and npm
+### Node and npm
 
 You can bundle it with a webpack.
 
@@ -58,7 +58,7 @@ const { map, filter, reduce, L, C } = require("fxjs2");
 import { map, filter, reduce, L, C } from "fxjs2";
 ```
 
-### Iteration protocols
+## Iteration protocols
 
 You can evaluate the iterator as a function of FxJS.
 
@@ -86,7 +86,7 @@ reduce((a, b) => a + b, f());
 // 10
 ```
 
-### Iterable programming
+## Iterable programming
 
 Any value can be used with FxJS if it has a `[Symbol.iterator]()` method.
 
@@ -99,7 +99,7 @@ const res = go(
 log(res); // 9
 ```
 
-### Lazy evaluation
+## Lazy evaluation
 
 You can do 'lazy evaluation' as a function of the `L` namespace.
 
@@ -113,7 +113,7 @@ const res = go(
 log(res); // 9
 ```
 
-### RFP style
+## RFP style
 
 Reactive functional programming style.
 
@@ -129,7 +129,7 @@ go(
 // After 3 seconds 12
 ```
 
-### Promise/async/await
+## Promise/async/await
 
 Asynchronous control is easy.
 
@@ -162,7 +162,7 @@ Asynchronous control is easy.
 } ());
 ```
 
-### Concurrency
+## Concurrency
 
 `C` functions can be evaluated concurrency.
 
@@ -201,7 +201,7 @@ go(
 // { html: 78, css: 36, is: 192 ... }
 ```
 
-### Error handling
+## Error handling
 
 You can use JavaScript standard error handling.
 

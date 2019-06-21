@@ -20,11 +20,11 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Stoppable](#Stoppable)
 - [Change Log](#Change-Log)
 
-## Getting Started
+# Getting Started
 
-### Installation
+## Installation
 
-#### In Modern Browsers Supporting ES6
+### In Modern Browsers Supporting ES6
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
@@ -33,7 +33,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 <script src="path/fx.min.js"></script>
 ```
 
-#### In Legacy ES5 Browsers
+### In Legacy ES5 Browsers
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
@@ -42,7 +42,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 <script src="path/fx.es5.min.js"></script>
 ```
 
-#### Node and npm
+### Node and npm
 
 Webpack으로 번들링 할 수 있습니다.
 
@@ -58,7 +58,7 @@ const { map, filter, reduce, L, C } = require("fxjs2");
 import { map, filter, reduce, L, C } from "fxjs2";
 ```
 
-### Iteration protocols
+## Iteration protocols
 
 제너레이터를 통해 만든 이터레이터를 FxJS의 함수들로 평가할 수 있습니다.
 
@@ -86,7 +86,7 @@ reduce((a, b) => a + b, f());
 // 10
 ```
 
-### Iterable programming
+## Iterable programming
 
 어떤 값이든 `[Symbol.iterator]()` 메서드를 가진 이터러블이라면 FxJS와 사용할 수 있습니다.
 
@@ -99,7 +99,7 @@ const res = go(
 log(res); // 9
 ```
 
-### Lazy evaluation
+## Lazy evaluation
 
 `L` 네임스페이스의 함수를 통해 지연 평가를 할 수 있습니다.
 
@@ -113,7 +113,7 @@ const res = go(
 log(res); // 9
 ```
 
-### RFP style
+## RFP style
 
 Reactive functional programming 스타일을 작성할 수 있습니다.
 
@@ -129,7 +129,7 @@ go(
 // 3초 후 12
 ```
 
-### Promise/async/await
+## Promise/async/await
 
 FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 잘 따르고 있어 async/await과도 함께 사용할 수 있습니다.
 
@@ -162,7 +162,7 @@ FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 �
 } ());
 ```
 
-### Concurrency
+## Concurrency
 
 `C` 네임스페이스의 함수를 통해 동시/병렬적인 평가가 가능합니다.
 
@@ -201,7 +201,7 @@ go(
 // { html: 78, css: 36, is: 192 ... }
 ```
 
-### Error handling
+## Error handling
 
 FxJS는 자바스크립트의 기본 프로토콜을 지키고 있기 때문에 자바스크립트 표준 에러 핸들링을 사용할 수 있습니다.
 
