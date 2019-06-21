@@ -4,13 +4,13 @@
 
 FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterator, Generator, Promise.
 
-- [Getting Started](#Getting-Started)
+- [Getting Started](#getting-started)
   - [Installation](#Installation)
   - [Iteration protocols](#Iteration-protocols)
   - [Iterable programming](#Iterable-programming)
   - [Lazy evaluation](#Lazy-evaluation)
   - [RFP style](#RFP-style)
-  - [Promise/async/await](#Promise/async/await)
+  - [Promise/async/await](#promiseasyncawait)
   - [Concurrency](#Concurrency)
   - [Error handling](#Error-handling)
 - [API](#API)
@@ -113,7 +113,7 @@ const res = go(
 log(res); // 9
 ```
 
-### RPF style
+### RFP style
 
 Reactive functional programming style.
 
@@ -257,35 +257,35 @@ try {
 
 ## API
 
-- [Strict evaluation](#Strict evaluation)
+- [Strict evaluation](#strict-evaluation)
   - [map](#map)
   - [filter](#filter)
   - [reduce](#reduce)
   - [take](#take)
-- [Lazy evaluation](#Lazy-evaluation)
+- [Lazy evaluation](#lazy-evaluation)
   - [L.map](#L.map)
   - [L.filter](#L.filter)
-- [Concurrency](#Concurrency)
-  - [C.calls](#C.calls)
-  - [C.takeAll](#C.takeAll)
-  - [C.takeRace](#C.takeRace)
-  - [C.race](#C.race)
-  - [C.map](#C.map)
-  - [C.mapEntries](#C.mapEntries)
-  - [C.filter](#C.filter)
-  - [C.compact](#C.compact)
-  - [C.reduce](#C.reduce)
-  - [C.take](#C.take)
-  - [C.drop](#C.drop)
-  - [C.take1](#C.take1)
-  - [C.head](#C.head)
-  - [C.tail](#C.tail)
-  - [C.find](#C.find)
-  - [C.every](#C.every)
-  - [C.some](#C.some)
-- [Stoppable](#Stoppable)
-  - [reduceS, stop](#reduceS,-stop)
-  - [goS, pipeS, stop, stopIf](#goS,-pipeS,-stop,-stopIf)
+- [Concurrency](#concurrency)
+  - [C.calls](#ccalls)
+  - [C.takeAll](#ctakeAll)
+  - [C.takeRace](#ctakeRace)
+  - [C.race](#crace)
+  - [C.map](#cmap)
+  - [C.mapEntries](#cmapEntries)
+  - [C.filter](#cfilter)
+  - [C.compact](#ccompact)
+  - [C.reduce](#creduce)
+  - [C.take](#ctake)
+  - [C.drop](#cdrop)
+  - [C.take1](#ctake1)
+  - [C.head](#chead)
+  - [C.tail](#ctail)
+  - [C.find](#cfind)
+  - [C.every](#cevery)
+  - [C.some](#csome)
+- [Stoppable](#stoppable)
+  - [reduceS, stop](#reduces-stop)
+  - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
 
 ### Strict
 
