@@ -13,7 +13,7 @@ export default curry(function *takeWhileLazy(f, iter) {
       _ok.catch(noop);
       yield prev = prev.then(_ => _ok).then(_ok => (ok = _ok) ? a : Promise.reject(nop));
       prev = prev.catch(noop);
-    } else if (_ok) {
+    } else if (ok = _ok) {
       yield a;
     }
     if (!ok) break;
