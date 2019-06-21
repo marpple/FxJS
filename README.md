@@ -257,12 +257,12 @@ try {
 
 ## API
 
-- [Strict evaluation](#strict-evaluation)
+- [Strict](#strict)
   - [map](#map)
   - [filter](#filter)
   - [reduce](#reduce)
   - [take](#take)
-- [Lazy evaluation](#lazy-evaluation)
+- [Lazy](#lazy)
   - [L.map](#L.map)
   - [L.filter](#L.filter)
 - [Concurrency](#concurrency)
