@@ -5,7 +5,7 @@ import noop from "../noop.js";
 import nop from "../nop.js";
 
 const resolved = Promise.resolve();
-export default curry(function *takeUntilLazy(f, iter) {
+export default curry(function* takeUntilLazy(f, iter) {
   let prev = resolved, ok = false;
   for (const a of safety(iter)) {
     const _ok = ok || go1(a, f);

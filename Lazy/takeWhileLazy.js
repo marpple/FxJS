@@ -5,7 +5,7 @@ import safety from "../safety.js";
 import noop from "../noop.js";
 
 const resolved = Promise.resolve();
-export default curry(function *takeWhileLazy(f, iter) {
+export default curry(function* takeWhileLazy(f, iter) {
   let prev = resolved, ok = true;
   for (const a of safety(iter)) {
     const _ok = ok && go1(a, f);
