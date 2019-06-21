@@ -136,30 +136,28 @@ Asynchronous control is easy.
 ```javascript
 // L.interval = time => L.map(delay(time), L.range(Infinity));
 
-(async () => {
-  await go(
-    L.interval(1000),
-    L.map(a => a + 30),
-    L.takeUntil(a => a == 33),
-    each(log));
-  // After 1 second 30
-  // After 2 seconds 31
-  // After 3 seconds 32
-  // After 4 seconds 33
+await go(
+  L.interval(1000),
+  L.map(a => a + 30),
+  L.takeUntil(a => a == 33),
+  each(log));
+// After 1 second 30
+// After 2 seconds 31
+// After 3 seconds 32
+// After 4 seconds 33
 
-  const res = await go(
-    L.interval(1000),
-    L.map(a => a + 20),
-    L.takeWhile(a => a < 23),
-    L.map(tap(log)),
-    reduce(add));
-  // After 5 seconds 20
-  // After 6 seconds 21
-  // After 7 seconds 22
+const res = await go(
+  L.interval(1000),
+  L.map(a => a + 20),
+  L.takeWhile(a => a < 23),
+  L.map(tap(log)),
+  reduce(add));
+// After 5 seconds 20
+// After 6 seconds 21
+// After 7 seconds 22
 
-  log(res);
-  // 63
-} ());
+log(res);
+// 63
 ```
 
 ## Concurrency

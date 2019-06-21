@@ -136,30 +136,28 @@ FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 �
 ```javascript
 // L.interval = time => L.map(delay(time), L.range(Infinity));
 
-(async () => {
-  await go(
-    L.interval(1000),
-    L.map(a => a + 30),
-    L.takeUntil(a => a == 33),
-    each(log));
-  // 1초 후 30
-  // 2초 후 31
-  // 3초 후 32
-  // 4초 후 33
+await go(
+  L.interval(1000),
+  L.map(a => a + 30),
+  L.takeUntil(a => a == 33),
+  each(log));
+// 1초 후 30
+// 2초 후 31
+// 3초 후 32
+// 4초 후 33
 
-  const res = await go(
-    L.interval(1000),
-    L.map(a => a + 20),
-    L.takeWhile(a => a < 23),
-    L.map(tap(log)),
-    reduce(add));
-  // 5초 후 20
-  // 6초 후 21
-  // 7초 후 22
+const res = await go(
+  L.interval(1000),
+  L.map(a => a + 20),
+  L.takeWhile(a => a < 23),
+  L.map(tap(log)),
+  reduce(add));
+// 5초 후 20
+// 6초 후 21
+// 7초 후 22
 
-  log(res);
-  // 63
-} ());
+log(res);
+// 63
 ```
 
 ## Concurrency
