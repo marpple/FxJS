@@ -1,10 +1,107 @@
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
 
-## FxJS - Functional Extensions for Javascript
+# FxJS - Functional Extensions for Javascript
 
-FxJS는 자바스크립트의 기본 값을 이용하고, 이터러블 프로그래밍과 Promise를 강조한 함수형 프로그래밍 라이브러리입니다.
+FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니다. Iterable, Iterator, Generator, Promise를 다룹니다.
 
-### iterable
+- [Getting Started](#Getting-Started)
+  - [Installation](#Installation)
+  - [Iteration protocols](#Iteration-protocols)
+  - [Iterable programming](#Iterable-programming)
+  - [Lazy evaluation](#Lazy-evaluation)
+  - [RFP style](#RFP-style)
+  - [Promise/async/await](#Promise/async/await)
+  - [Concurrency][#Concurrency]
+  - [Error handling](#Error-handling)
+- [API](#API)
+  - [Strict](#Strict)
+  - [Lazy](#Lazy)
+  - [Concurrency](#Concurrency)
+  - [Stoppable](#Stoppable)
+- [Change Log](#Change-Log)
+
+## Getting Started
+
+### Installation
+
+#### In Modern Browsers Supporting ES6
+- [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
+- [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
+- [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
+
+```html
+<script src="path/fx.min.js"></script>
+```
+
+#### In Legacy ES5 Browsers
+- [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
+- [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
+- [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
+
+```html
+<script src="path/fx.es5.min.js"></script>
+```
+
+#### Node and npm
+
+Webpack으로 번들링 할 수 있습니다.
+
+```
+npm install fxjs2
+```
+
+```javascript
+const { map, filter, reduce, L, C } = require("fxjs2");
+```
+
+```javascript
+import { map, filter, reduce, L, C } from "fxjs2";
+```
+
+### Iteration protocols
+
+제너레이터를 통해 만든 이터레이터를 FxJS의 함수들로 평가할 수 있습니다.
+
+```javascript
+function *fibonacci() {
+  let a = 0, b = 1;
+  while (true) {
+    yield a;
+    [a, b] = [b, a + b];
+  }
+}
+
+const f = pipe(
+  fibonacci,
+  L.filter(n => n % 2 == 0),
+  L.takeWhile(n => n < 10));
+
+const iterator = f();
+console.log(iterator.next()); // { value: 0, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 8, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+
+reduce((a, b) => a + b, f());
+// 10
+```
+
+### Iterable programming
+
+어떤 값이든 `[Symbol.iterator]()` 메서드를 가진 이터러블이라면 FxJS와 사용할 수 있습니다.
+
+```javascript
+const res = go(
+  [1, 2, 3, 4, 5],
+  filter(a => a % 2),
+  reduce(add));
+
+log(res); // 9
+```
+
+### Lazy evaluation
+
+`L` 네임스페이스의 함수를 통해 지연 평가를 할 수 있습니다.
 
 ```javascript
 const res = go(
@@ -16,7 +113,9 @@ const res = go(
 log(res); // 9
 ```
 
-### iterable + time
+### RPF style
+
+Reactive functional programming 스타일을 작성할 수 있습니다.
 
 ```javascript
 go(
@@ -30,7 +129,9 @@ go(
 // 3초 후 12
 ```
 
-### iterable + time + Promise
+### Promise/async/await
+
+FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 잘 따르고 있어 async/await과도 함께 사용할 수 있습니다.
 
 ```javascript
 // L.interval = time => L.map(delay(time), L.range(Infinity));
@@ -61,87 +162,48 @@ go(
 } ());
 ```
 
-### 설치
+### Concurrency
 
-```
-npm i fxjs2
-```
-
-### 목차
-
-- [map](#map)
-- [filter](#filter)
-- [reduce](#reduce)
-- [take](#take)
-- [L.map](#L.map)
-- [L.filter](#L.filter)
-- [go + try catch + 비동기 에러 핸들링](#go--try-catch--비동기-에러-핸들링)
-- [stop](#stop)
-
-#### map
+`C` 네임스페이스의 함수를 통해 동시/병렬적인 평가가 가능합니다.
 
 ```javascript
-map(a => a + 10, [1, 2, 3]);
-// [11, 12, 13]
+await map(getPage, range(1, 6));
+// 5초 후
+// [page1, page2, page3, page4, page5]
+
+const pages = await C.map(getPage, range(1, 6));
+// 1초 후
+// [page1, page2, page3, page4, page5]
 ```
 
-#### filter
+`L` 함수들로 지연해둔 함수열을 `C` 함수로 동시에 평가할 수도 있습니다. 이런 방식은 Clojure의 Reducers와 비슷합니다.
 
 ```javascript
-filter(a => a % 2, [1, 2, 3]);
-// [1, 3]
+go(
+  range(1, 6),
+  map(getPage),
+  filter(page => page.line > 50),
+  map(getWords),
+  flat,
+  countBy(identity));
+// 5초 후
+// { html: 78, css: 36, is: 192 ... }
+
+go(
+  L.range(1, 6),
+  L.map(getPage),
+  L.filter(page => page.line > 50),
+  L.map(getWords),
+  L.flat,
+  C.takeAll,
+  countBy(identity));
+// 1초 후
+// { html: 78, css: 36, is: 192 ... }
 ```
 
-#### reduce
+### Error handling
 
-```javascript
-const add = (a, b) => a + b
-reduce(add, [1, 2, 3]);
-// 6
-
-reduce(add, 10, [1, 2, 3]);
-// 16
-
-reduce(add, {a: 1, b: 2, c: 3});
-// 6
-
-await reduce(add, [Promise.resolve(1), 2, 3])
-// 6
-```
-
-#### take
-
-```javascript
-take(1, [1, 2, 3]);
-// [1]
-
-take(2, [1, 2, 3])
-// [1, 2]
-```
-
-#### L.map
-
-```javascript
-const iterator = L.map(a => a + 10, [1, 2, 3]);
-take(2, iterator);
-// [11, 12]
-```
-
-#### L.filter
-
-```javascript
-const iterator = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
-take(2, iterator);
-// [1, 3]
-```
-
-```javascript
-const iterator = L.filter(a => a % 2, L.map(a => a + 10, [1, 2, 3, 4, 5]));
-take(2, iterator);
-// [11, 13]
-```
-
-#### go + try catch + 비동기 에러 핸들링
+FxJS는 자바스크립트의 기본 프로토콜을 지키고 있기 때문에 자바스크립트 표준 에러 핸들링을 사용할 수 있습니다.
 
 ```javascript
 const b = go(
@@ -165,7 +227,11 @@ try {
   console.log(c);
 }
 // { hi: 'ho' }
+```
 
+async/await와 try/catch를 사용하여 비동기 에러 핸들링을 할 수 있습니다. 표준적인 에러 핸들링을 사용하기 때문에 여러 라이브러리들과 함께 사용하기 좋습니다.
+
+```javascript
 const b = await go(
   0,
   a => Promise.resolve(a + 1),
@@ -187,22 +253,135 @@ try {
   console.log(c);
 }
 // { hi: 'ho' }
-
-try {
-  const b = await go(
-    0,
-    a => Promise.resolve(a + 1),
-    a => Promise.reject({ hi: 'ho' }),
-    a => a + 100);
-
-  console.log(b);
-} catch (c) {
-  console.log(c);
-}
-// { hi: 'ho' }
 ```
 
-### stop
+## API
+
+- [Strict evaluation](#Strict evaluation)
+  - [map](#map)
+  - [filter](#filter)
+  - [reduce](#reduce)
+  - [take](#take)
+- [Lazy evaluation](#Lazy-evaluation)
+  - [L.map](#L.map)
+  - [L.filter](#L.filter)
+- [Concurrency](#Concurrency)
+  - [C.calls](#C.calls)
+  - [C.takeAll](#C.takeAll)
+  - [C.takeRace](#C.takeRace)
+  - [C.race](#C.race)
+  - [C.map](#C.map)
+  - [C.mapEntries](#C.mapEntries)
+  - [C.filter](#C.filter)
+  - [C.compact](#C.compact)
+  - [C.reduce](#C.reduce)
+  - [C.take](#C.take)
+  - [C.drop](#C.drop)
+  - [C.take1](#C.take1)
+  - [C.head](#C.head)
+  - [C.tail](#C.tail)
+  - [C.find](#C.find)
+  - [C.every](#C.every)
+  - [C.some](#C.some)
+- [Stoppable](#Stoppable)
+  - [reduceS, stop](#reduceS,-stop)
+  - [goS, pipeS, stop, stopIf](#goS,-pipeS,-stop,-stopIf)
+
+### Strict
+
+#### map
+
+```javascript
+map(a => a + 10, [1, 2, 3]);
+// [11, 12, 13]
+```
+
+#### filter
+
+```javascript
+filter(a => a % 2, [1, 2, 3]);
+// [1, 3]
+```
+
+#### reduce
+
+```javascript
+const add = (a, b) => a + b
+
+reduce(add, [1, 2, 3]);
+// 6
+
+reduce(add, 10, [1, 2, 3]);
+// 16
+
+reduce(add, {a: 1, b: 2, c: 3});
+// 6
+
+await reduce(add, [Promise.resolve(1), 2, 3])
+// 6
+```
+
+#### take
+
+```javascript
+take(1, [1, 2, 3]);
+// [1]
+
+take(2, [1, 2, 3])
+// [1, 2]
+```
+
+### Lazy
+
+#### L.map
+
+```javascript
+const iterator = L.map(a => a + 10, [1, 2, 3]);
+take(2, iterator);
+// [11, 12]
+```
+
+#### L.filter
+
+```javascript
+const iterator = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
+take(2, iterator);
+// [1, 3]
+```
+
+### Concurrency
+
+#### C.calls
+#### C.takeAll
+#### C.takeRace
+#### C.race
+#### C.map
+#### C.mapEntries
+#### C.filter
+#### C.compact
+#### C.reduce
+#### C.take
+#### C.drop
+#### C.take1
+#### C.head
+#### C.tail
+#### C.find
+#### C.every
+#### C.some
+
+### Stoppable
+
+#### reduceS, stop
+
+```javascript
+reduceS((a, b) => {
+ const res = a + b;
+ return res > 5 ? stop(res) : res;
+}, [1, 2, 3, 4]);
+// 6
+```
+
+#### goS, pipeS, stop, stopIf
 
 ```javascript
 const f1 = pipeS(
