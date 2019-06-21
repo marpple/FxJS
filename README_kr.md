@@ -255,7 +255,7 @@ try {
 // { hi: 'ho' }
 ```
 
-## API
+# API
 
 - [Strict](#strict)
   - [map](#map)
@@ -287,23 +287,23 @@ try {
   - [reduceS, stop](#reduces-stop)
   - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
 
-### Strict
+## Strict
 
-#### map
+### map
 
 ```javascript
 map(a => a + 10, [1, 2, 3]);
 // [11, 12, 13]
 ```
 
-#### filter
+### filter
 
 ```javascript
 filter(a => a % 2, [1, 2, 3]);
 // [1, 3]
 ```
 
-#### reduce
+### reduce
 
 ```javascript
 const add = (a, b) => a + b
@@ -321,7 +321,7 @@ await reduce(add, [Promise.resolve(1), 2, 3])
 // 6
 ```
 
-#### take
+### take
 
 ```javascript
 take(1, [1, 2, 3]);
@@ -331,9 +331,9 @@ take(2, [1, 2, 3])
 // [1, 2]
 ```
 
-### Lazy
+## Lazy
 
-#### L.map
+### L.map
 
 ```javascript
 const iterator = L.map(a => a + 10, [1, 2, 3]);
@@ -341,7 +341,7 @@ take(2, iterator);
 // [11, 12]
 ```
 
-#### L.filter
+### L.filter
 
 ```javascript
 const iterator = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
@@ -349,29 +349,29 @@ take(2, iterator);
 // [1, 3]
 ```
 
-### Concurrency
+## Concurrency
 
-#### C.calls
-#### C.takeAll
-#### C.takeRace
-#### C.race
-#### C.map
-#### C.mapEntries
-#### C.filter
-#### C.compact
-#### C.reduce
-#### C.take
-#### C.drop
-#### C.take1
-#### C.head
-#### C.tail
-#### C.find
-#### C.every
-#### C.some
+### C.calls
+### C.takeAll
+### C.takeRace
+### C.race
+### C.map
+### C.mapEntries
+### C.filter
+### C.compact
+### C.reduce
+### C.take
+### C.drop
+### C.take1
+### C.head
+### C.tail
+### C.find
+### C.every
+### C.some
 
-### Stoppable
+## Stoppable
 
-#### reduceS, stop
+### reduceS, stop
 
 ```javascript
 reduceS((a, b) => {
@@ -381,7 +381,7 @@ reduceS((a, b) => {
 // 6
 ```
 
-#### goS, pipeS, stop, stopIf
+### goS, pipeS, stop, stopIf
 
 ```javascript
 const f1 = pipeS(
