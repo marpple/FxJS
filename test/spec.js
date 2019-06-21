@@ -2,6 +2,7 @@ const { expect } = require('chai');
 const Fx = require('../index.js');
 
 const {
+  html,
   L, flat, deepFlat, stop,
   take, C, takeWhile, takeUntil, go,
   takeAll,
@@ -33,6 +34,14 @@ const {
 } = Fx;
 
 (function() {
+
+  describe('html', function () {
+    it('html', async () => {
+      expect(html `a${'b'}c${'d'}${undefined}e`).to.eql('abcde');
+      expect(await html `a${Promise.resolve('b')}c${Promise.resolve('d')}${Promise.resolve(undefined)}e`).to.eql('abcde');
+    });
+  });
+
   describe('C.race', function () {
     it('C.takeRace(1, iter)', async () => {
       expect(await C.race(L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql(50);
