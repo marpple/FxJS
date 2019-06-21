@@ -138,7 +138,7 @@ const {
     it('Promise + L.takeUntil + C.takeAll', async () => {
       expect(await C.takeAll(L.takeUntil(a => a < 600, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 30])))).to.eql([601, 500]);
     });
-    it('Promise + L.takeWhile + C.takeAll', async () => {
+    it('Promise + L.takeUntil + L.filter + C.takeAll', async () => {
       expect(await C.takeAll(L.takeUntil(a => a < 600, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 31]))))).to.eql([601, 401]);
     });
   });
@@ -188,6 +188,16 @@ const {
       expect(await takeAll(L.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
       expect(await takeAll(L.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
     });
+    it('Promise + L.drop + L.filter + takeAll', async () => {
+      expect(await takeAll(L.drop(1, L.filter(a => a % 2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5, 6]))))).to.eql([3, 5]);
+    });
+
+    it('Promise + L.drop + C.takeAll', async () => {
+      expect(await C.takeAll(L.drop(2, L.map(a => delay(a, a), [601, 500, 401, 300])))).to.eql([401, 300]);
+    });
+    it('Promise + L.drop + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(L.drop(1, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100]))))).to.eql([401, 201]);
+    });
     it('C.drop', async () => {
       expect(await C.drop(1, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([2, 3, 4, 5]);
       expect(await C.drop(2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([3, 4, 5]);
@@ -218,7 +228,7 @@ const {
       expect(await dropWhile(
         a => Promise.resolve(a % 2),
         Promise.resolve([1, Promise.resolve(1), 2, 2, 3, Promise.resolve(3)]))).to.eql([2, 2, 3, 3]);
-    })
+    });
   });
 
   describe('dropUntil', function () {
