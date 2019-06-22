@@ -212,6 +212,9 @@ const {
   describe('dropWhile', function () {
     it('L.dropWhile', () => {
       expect(takeAll(L.dropWhile(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 1, [1, 1, 2, 2, 3, 3]))).to.eql([1, 1, 2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 3, [1, 1, 2, 2, 3, 3]))).to.eql([3, 3]);
     });
 
     it('L.dropWhile promise', async () => {
@@ -224,6 +227,22 @@ const {
         L.dropWhile(
           a => Promise.resolve(a % 2),
           [1, Promise.resolve(1), 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+    });
+
+    it('Promise + L.dropWhile + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropWhile(a => Promise.resolve(a % 2),
+          L.map(a => delay(a, a),
+            [601, 501, 400, 300])))).to.eql([400, 300]);
+    });
+
+    it('Promise + L.dropWhile + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropWhile(a => Promise.resolve(a > 100),
+          L.filter(a => a % 2,
+            L.map(a => delay(a, a),
+              [601, 500, 401, 300, 201, 100, 91, 80, 71, 60])))))
+      .to.eql([91, 71]);
     });
 
     it('dropWhile promise', async () => {
@@ -248,6 +267,22 @@ const {
         L.dropUntil(
           a => Promise.resolve(a % 2),
           [2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+    });
+
+    it('Promise + L.dropUntil + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropUntil(a => Promise.resolve(a % 2),
+          L.map(a => delay(a, a),
+            [600, 501, 401, 300])))).to.eql([401, 300]);
+    });
+
+    it('Promise + L.dropUntil + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropUntil(a => Promise.resolve(a < 300),
+          L.filter(a => a % 2,
+            L.map(a => delay(a, a),
+              [601, 500, 401, 300, 201, 100, 91, 80, 71, 60])))))
+      .to.eql([91, 71]);
     });
 
     it('dropUntil promise', async () => {
