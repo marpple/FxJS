@@ -180,7 +180,7 @@ log(res);
 
 ```javascript
 await map(getPage, range(1, 5));
-// 6초 후
+// 4초 후
 // [page1, page2, page3, page4]
 
 const pages = await C.map(getPage, range(1, 5));
@@ -199,7 +199,7 @@ go(
   flat,
   countBy(identity),
   log);
-// 6초 후
+// 4초 후
 // { html: 78, css: 36, is: 192 ... }
 
 go(
@@ -207,11 +207,23 @@ go(
   L.map(getPage),
   L.filter(page => page.line > 50),
   L.map(getWords),
-  C.takeAll,
+  C.takeAll, // 4개 페이지 동시 요청
   flat,
   countBy(identity),
   log);
 // 1초 후
+// { html: 78, css: 36, is: 192 ... }
+
+go(
+  L.range(1, 5),
+  L.map(getPage),
+  L.filter(page => page.line > 50),
+  L.map(getWords),
+  C.takeAll(2), // 2개 페이지씩 나눠서 동시 요청
+  flat,
+  countBy(identity),
+  log);
+// 2초 후
 // { html: 78, css: 36, is: 192 ... }
 ```
 

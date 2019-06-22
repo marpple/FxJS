@@ -193,11 +193,23 @@ go(
   L.map(getPage),
   L.filter(page => page.line > 50),
   L.map(getWords),
-  C.takeAll,
+  C.takeAll, // All requests same time.
   flat,
   countBy(identity),
   log);
 // After 1 second
+// { html: 78, css: 36, is: 192 ... }
+
+go(
+  L.range(1, 5),
+  L.map(getPage),
+  L.filter(page => page.line > 50),
+  L.map(getWords),
+  C.takeAll(2), // 2 requests same time.
+  flat,
+  countBy(identity),
+  log);
+// After 2 second
 // { html: 78, css: 36, is: 192 ... }
 ```
 
