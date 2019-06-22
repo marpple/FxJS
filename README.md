@@ -178,23 +178,25 @@ Like [Clojure Reducers](#https://clojure.org/reference/reducers), you can handle
 
 ```javascript
 go(
-  range(1, 6),
+  range(1, 7),
   map(getPage),
   filter(page => page.line > 50),
   map(getWords),
   flat,
-  countBy(identity));
+  countBy(identity),
+  log);
 // After 5 seconds
 // { html: 78, css: 36, is: 192 ... }
 
 go(
-  L.range(1, 6),
+  L.range(1, 7),
   L.map(getPage),
   L.filter(page => page.line > 50),
   L.map(getWords),
-  L.flat,
   C.takeAll,
-  countBy(identity));
+  flat,
+  countBy(identity),
+  log);
 // After 1 second
 // { html: 78, css: 36, is: 192 ... }
 ```
