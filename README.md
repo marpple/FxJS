@@ -165,31 +165,31 @@ log(res);
 `C` functions can be evaluated concurrency.
 
 ```javascript
-await map(getPage, range(1, 6));
-// After 5 seconds
-// [page1, page2, page3, page4, page5]
+await map(getPage, range(1, 5));
+// After 4 seconds
+// [page1, page2, page3, page4]
 
-const pages = await C.map(getPage, range(1, 6));
+const pages = await C.map(getPage, range(1, 5));
 // After 1 second
-// [page1, page2, page3, page4, page5]
+// [page1, page2, page3, page4]
 ```
 
 Like [Clojure Reducers](#https://clojure.org/reference/reducers), you can handle concurrency.
 
 ```javascript
 go(
-  range(1, 7),
+  range(1, 5),
   map(getPage),
   filter(page => page.line > 50),
   map(getWords),
   flat,
   countBy(identity),
   log);
-// After 5 seconds
+// After 4 seconds
 // { html: 78, css: 36, is: 192 ... }
 
 go(
-  L.range(1, 7),
+  L.range(1, 5),
   L.map(getPage),
   L.filter(page => page.line > 50),
   L.map(getWords),

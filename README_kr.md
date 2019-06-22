@@ -179,20 +179,20 @@ log(res);
 `C` 네임스페이스의 함수를 통해 동시/병렬적인 평가가 가능합니다.
 
 ```javascript
-await map(getPage, range(1, 6));
-// 5초 후
-// [page1, page2, page3, page4, page5]
+await map(getPage, range(1, 5));
+// 6초 후
+// [page1, page2, page3, page4]
 
-const pages = await C.map(getPage, range(1, 6));
+const pages = await C.map(getPage, range(1, 5));
 // 1초 후
-// [page1, page2, page3, page4, page5]
+// [page1, page2, page3, page4]
 ```
 
 `L` 함수들로 지연해둔 함수열을 `C` 함수로 동시에 평가할 수도 있습니다. 이런 방식은 [Clojure Reducers](#https://clojure.org/reference/reducers)와 비슷합니다.
 
 ```javascript
 go(
-  range(1, 7),
+  range(1, 5),
   map(getPage),
   filter(page => page.line > 50),
   map(getWords),
@@ -203,7 +203,7 @@ go(
 // { html: 78, css: 36, is: 192 ... }
 
 go(
-  L.range(1, 7),
+  L.range(1, 5),
   L.map(getPage),
   L.filter(page => page.line > 50),
   L.map(getWords),
