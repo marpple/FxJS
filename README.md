@@ -672,3 +672,5 @@ goS({a: 1, b: 2},
 ### strMap
 ### join
 ### html
+
+# Change Log
