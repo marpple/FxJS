@@ -255,14 +255,120 @@ try {
 
 # API
 
+- [Function](#Function)
+  - [go](#go)
+  - [pipe](#pipe)
+  - [curry](#curry)
+  - [tap](#tap)
+  - [constant](#constant)
+  - [negate](#negate)
+  - [call](#call)
+  - [apply](#apply)
+  - [calls](#calls)
 - [Strict](#strict)
+  - [range](#range)
   - [map](#map)
+  - [mapEntries](#mapEntries)
+  - [mapObject](#mapObject)
+  - [pluck](#pluck)
+  - [flat](#flat)
+  - [deepFlat](#deepFlat)
+  - [flatMap](#flatMap)
   - [filter](#filter)
+  - [reject](#reject)
+  - [compact](#compact)
+  - [unique](#unique)
+  - [difference](#difference)
+  - [differenceBy](#differenceBy)
+  - [intersection](#intersection)
+  - [intersectionBy](#intersectionBy)
+  - [union](#union)
+  - [unionBy](#unionBy)
   - [reduce](#reduce)
+  - [each](#each)
+  - [partition](#partition)
+  - [countBy](#countBy)
+  - [groupBy](#groupBy)
+  - [indexBy](#indexBy)
+  - [max](#max)
+  - [maxBy](#maxBy)
+  - [min](#min)
+  - [minBy](#minBy)
+  - [sort](#sort)
+  - [sortBy](#sortBy)
+  - [sortDesc](#sortDesc)
+  - [sortByDesc](#sortByDesc)
+  - [object](#object)
+  - [pick](#pick)
+  - [omit](#omit)
+  - [values](#values)
+  - [keys](#keys)
+  - [entries](#entries)
+  - [extend](#extend)
+  - [defaults](#defaults)
+  - [baseSel](#baseSel)
+  - [sel](#sel)
   - [take](#take)
+  - [takeWhile](#takeWhile)
+  - [takeUntil](#takeUntil)
+  - [takeAll](#takeAll)
+  - [drop](#drop)
+  - [dropWhile](#dropWhile)
+  - [dropUntil](#dropUntil)
+  - [dropRight](#dropRight)
+  - [head](#head)
+  - [tail, rest](#tail, rest)
+  - [last](#last)
+  - [initial](#initial)
+  - [find](#find)
+  - [findWhere](#findWhere)
+  - [zip](#zip)
+  - [unzip](#unzip)
+  - [zipObj](#zipObj)
+  - [zipWith](#zipWith)
+  - [delay](#delay)
+  - [promiseAllObject](#promiseAllObject)
+  - [promiseAllEntries](#promiseAllEntries)
+  - [noop](#noop)
+  - [identity](#identity)
+- [Predicates](#Predicates)
+  - [some](#some)
+  - [every](#every)
+  - [match](#match)
+  - [isMatch](#isMatch)
+  - [isIterable](#isIterable)
+  - [isFunction](#isFunction)
+  - [isArray](#isArray)
+  - [isString](#isString)
+  - [isUndefined](#isUndefined)
 - [Lazy](#lazy)
-  - [L.map](#L.map)
-  - [L.filter](#L.filter)
+  - [L.range](#lrange)
+  - [L.map](#lmap)
+  - [L.filter](#lfilter)
+  - [L.reject](#lreject)
+  - [L.compact](#lcompact)
+  - [L.mapEntries](#lmapEntries)
+  - [L.entries](#lentries)
+  - [L.values](#lvalues)
+  - [L.keys](#lkeys)
+  - [L.indexValues](#lindexValues)
+  - [L.flat](#lflat)
+  - [L.flatMap](#lflatMap)
+  - [L.deepFlat](#ldeepFlat)
+  - [L.reverse](#lreverse)
+  - [L.take](#ltake)
+  - [L.takeWhile](#ltakeWhile)
+  - [L.takeUntil](#ltakeUntil)
+  - [L.drop](#ldrop)
+  - [L.dropWhile](#ldropWhile)
+  - [L.dropUntil](#ldropUntil)
+  - [L.difference](#ldifference)
+  - [L.differenceBy](#ldifferenceBy)
+  - [L.intersection](#lintersection)
+  - [L.intersectionBy](#lintersectionBy)
+  - [L.union](#lunion)
+  - [L.unionBy](#lunionBy)
+  - [L.interval](#linterval)
 - [Concurrency](#concurrency)
   - [C.calls](#ccalls)
   - [C.takeAll](#ctakeAll)
@@ -284,8 +390,69 @@ try {
 - [Stoppable](#stoppable)
   - [reduceS, stop](#reduces-stop)
   - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
+- [String](#String)
+  - [string](#string)
+  - [strMap](#strMap)
+  - [join](#join)
+  - [html](#html)
+
+## Function
+
+### go
+
+```javascript
+go(0, a => a + 1, a => a + 10, log); // 11
+go(0, a => Promise.resolve(a + 1), a => a + 10, log); // 11
+
+const b = go(0, a => a + 1, a => a + 10);
+log(b); // 11
+
+const pb = go(0, a => Promise.resolve(a + 1), a => a + 10);
+pb.then(log); // 11
+```
+
+### pipe
+
+```javascript
+const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
+const b = f1('a');
+log(b); // true
+
+const total = f => pipe(
+  map(f),
+  reduce((a, b) => a + b));
+
+const totalAge = total(({age}) => age);
+
+go(
+  fetchUsers(),
+  totalAge,
+  log);
+
+go(
+  fetchProducts(),
+  total(({price}) => price),
+  log);
+```
+
+### curry
+
+```javascript
+const add = curry((a, b) => a + b);
+const add10 = add(10);
+add10(5); // 15
+```
+
+### tap
+### constant
+### negate
+### call
+### apply
+### calls
 
 ## Strict
+
+### range
 
 ### map
 
@@ -294,12 +461,30 @@ map(a => a + 10, [1, 2, 3]);
 // [11, 12, 13]
 ```
 
+### mapEntries
+### mapObject
+### pluck
+
+### flat
+### deepFlat
+### flatMap
+
 ### filter
 
 ```javascript
 filter(a => a % 2, [1, 2, 3]);
 // [1, 3]
 ```
+
+### reject
+### compact
+### unique
+### difference
+### differenceBy
+### intersection
+### intersectionBy
+### union
+### unionBy
 
 ### reduce
 
@@ -319,6 +504,33 @@ await reduce(add, [Promise.resolve(1), 2, 3])
 // 6
 ```
 
+### each
+
+### partition
+### countBy
+### groupBy
+### indexBy
+### max
+### maxBy
+### min
+### minBy
+
+### sort
+### sortBy
+### sortDesc
+### sortByDesc
+
+### object
+### pick
+### omit
+### values
+### keys
+### entries
+### extend
+### defaults
+### baseSel
+### sel
+
 ### take
 
 ```javascript
@@ -329,29 +541,81 @@ take(2, [1, 2, 3])
 // [1, 2]
 ```
 
+### takeWhile
+### takeUntil
+### takeAll
+### drop
+### dropWhile
+### dropUntil
+### dropRight
+### head
+### tail, rest
+### last
+### initial
+
+### find
+### findWhere
+
+### zip
+### unzip
+### zipObj
+### zipWith
+
+### delay
+### promiseAllObject
+### promiseAllEntries
+
+### noop
+### identity
+
+## Predicates
+
+### some
+### every
+### match
+### isMatch
+### isIterable
+### isFunction
+### isArray
+### isString
+### isUndefined
+
 ## Lazy
 
+### L.range
 ### L.map
-
-```javascript
-const iterator = L.map(a => a + 10, [1, 2, 3]);
-take(2, iterator);
-// [11, 12]
-```
-
 ### L.filter
+### L.reject
+### L.compact
+### L.mapEntries
+### L.entries
+### L.values
+### L.keys
+### L.indexValues
+### L.flat
+### L.flatMap
+### L.deepFlat
+### L.reverse
+### L.take
+### L.takeWhile
+### L.takeUntil
+### L.drop
+### L.dropWhile
+### L.dropUntil
+### L.difference
+### L.differenceBy
+### L.intersection
+### L.intersectionBy
+### L.union
+### L.unionBy
+### L.interval
 
-```javascript
-const iterator = L.filter(a => a % 2, [1, 2, 3, 4, 5]);
-take(2, iterator);
-// [1, 3]
-```
 
 ## Concurrency
 
 ### C.calls
 ### C.takeAll
-## C.takeRace
+### C.takeRace
 ### C.race
 ### C.map
 ### C.mapEntries
@@ -401,3 +665,10 @@ goS({a: 1, b: 2},
   ({a, b}) => ({a: a + 10, b}));
 // null
 ```
+
+## String
+
+### string
+### strMap
+### join
+### html
