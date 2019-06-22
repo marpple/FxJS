@@ -188,7 +188,7 @@ const pages = await C.map(getPage, range(1, 6));
 // [page1, page2, page3, page4, page5]
 ```
 
-`L` 함수들로 지연해둔 함수열을 `C` 함수로 동시에 평가할 수도 있습니다. 이런 방식은 Clojure의 Reducers와 비슷합니다.
+`L` 함수들로 지연해둔 함수열을 `C` 함수로 동시에 평가할 수도 있습니다. 이런 방식은 [Clojure Reducers](#https://clojure.org/reference/reducers)와 비슷합니다.
 
 ```javascript
 go(

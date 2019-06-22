@@ -174,7 +174,7 @@ const pages = await C.map(getPage, range(1, 6));
 // [page1, page2, page3, page4, page5]
 ```
 
-Like Clojure reducers, you can handle concurrency.
+Like [Clojure Reducers](#https://clojure.org/reference/reducers), you can handle concurrency.
 
 ```javascript
 go(
