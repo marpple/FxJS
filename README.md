@@ -317,7 +317,7 @@ try {
   - [dropUntil](#dropUntil)
   - [dropRight](#dropRight)
   - [head](#head)
-  - [tail, rest](#tail, rest)
+  - [tail](#tail)
   - [last](#last)
   - [initial](#initial)
   - [find](#find)
