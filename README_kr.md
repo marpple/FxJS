@@ -294,6 +294,8 @@ try {
   - [call](https://github.com/marpple/FxJS/blob/master/API.md#call)
   - [apply](https://github.com/marpple/FxJS/blob/master/API.md#apply)
   - [calls](https://github.com/marpple/FxJS/blob/master/API.md#calls)
+  - [throttle](https://github.com/marpple/FxJS/blob/master/API.md#throttle)
+  - [debounce](https://github.com/marpple/FxJS/blob/master/API.md#debounce)
 - [Strict](https://github.com/marpple/FxJS/blob/master/API.md#strict)
   - [range](https://github.com/marpple/FxJS/blob/master/API.md#range)
   - [map](https://github.com/marpple/FxJS/blob/master/API.md#map)

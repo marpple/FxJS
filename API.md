@@ -76,6 +76,8 @@
   - [promiseAllEntries](#promiseAllEntries)
   - [noop](#noop)
   - [identity](#identity)
+  - [throttle](#throttle)
+  - [debounce](#debounce)
 - [Predicates](#Predicates)
   - [some](#some)
   - [every](#every)
@@ -301,6 +303,9 @@ calls({
 // {a: 1, b: 2, c: 3}
 ```
 
+### throttle
+### debounce
+
 ## Strict
 
 ### range
@@ -395,6 +400,14 @@ go(
 ```
 
 ### pluck
+
+- `String k => Iterable a => [a[k]]`
+- [source](#https://github.com/marpple/FxJS/blob/master/pluck.js)
+
+```javascript
+log(map('id', [{ id: 1 }, { id: 3 }]));
+// [1, 3]
+```
 
 ### flat
 ### deepFlat
@@ -498,6 +511,9 @@ take(2, [1, 2, 3])
 
 ### noop
 ### identity
+### throttle
+### debounce
+
 
 ## Predicates
 
