@@ -4,6 +4,7 @@ import toIter from "../toIter.js";
 import nop from "../nop.js";
 
 export default function flatLazy(iter, depth = 1) {
+  let concurCheck = null;
   const iterStack = [toIter(iter)];
   return {
     next: function recur() {
@@ -17,8 +18,14 @@ export default function flatLazy(iter, depth = 1) {
         iterStack.push(cur.value[Symbol.iterator]());
         return recur();
       } else if (cur.value instanceof Promise) {
+        if (concurCheck && !concurCheck.done) {
+          iterStack.length = 0;
+          return { value: Promise.reject(new Error("'L.flat' can not be used with 'C' function.")), done: false };
+        }
+        concurCheck = concurCheck || {};
         return {
           value: cur.value.then(value => {
+            if (!concurCheck.hasOwnProperty('done')) concurCheck.done = true;
             if (iterStack.length > depth || !isIterable(value) || typeof value == 'string') return value;
             const iter = value[Symbol.iterator](), cur = iter.next();
             return cur.done ? Promise.reject(nop) : (iterStack.push(iter), cur.value);
