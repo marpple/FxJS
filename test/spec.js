@@ -16,10 +16,12 @@ const {
   dropWhile,
   dropUntil,
   differenceBy,
+  differenceWith,
   difference,
   initial,
   rest,
   intersectionBy,
+  intersectionWith,
   intersection,
   unionBy,
   union,
@@ -138,7 +140,7 @@ const {
     it('Promise + L.takeUntil + C.takeAll', async () => {
       expect(await C.takeAll(L.takeUntil(a => a < 600, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 30])))).to.eql([601, 500]);
     });
-    it('Promise + L.takeWhile + C.takeAll', async () => {
+    it('Promise + L.takeUntil + L.filter + C.takeAll', async () => {
       expect(await C.takeAll(L.takeUntil(a => a < 600, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 31]))))).to.eql([601, 401]);
     });
   });
@@ -188,6 +190,16 @@ const {
       expect(await takeAll(L.drop(5, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
       expect(await takeAll(L.drop(6, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5])))).to.eql([]);
     });
+    it('Promise + L.drop + L.filter + takeAll', async () => {
+      expect(await takeAll(L.drop(1, L.filter(a => a % 2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5, 6]))))).to.eql([3, 5]);
+    });
+
+    it('Promise + L.drop + C.takeAll', async () => {
+      expect(await C.takeAll(L.drop(2, L.map(a => delay(a, a), [601, 500, 401, 300])))).to.eql([401, 300]);
+    });
+    it('Promise + L.drop + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(L.drop(1, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100]))))).to.eql([401, 201]);
+    });
     it('C.drop', async () => {
       expect(await C.drop(1, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([2, 3, 4, 5]);
       expect(await C.drop(2, L.map(a => Promise.resolve(a), [1, 2, 3, 4, 5]))).to.eql([3, 4, 5]);
@@ -200,6 +212,9 @@ const {
   describe('dropWhile', function () {
     it('L.dropWhile', () => {
       expect(takeAll(L.dropWhile(a => a % 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 1, [1, 1, 2, 2, 3, 3]))).to.eql([1, 1, 2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 2, [1, 1, 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
+      expect(takeAll(L.dropWhile(a => a < 3, [1, 1, 2, 2, 3, 3]))).to.eql([3, 3]);
     });
 
     it('L.dropWhile promise', async () => {
@@ -214,11 +229,27 @@ const {
           [1, Promise.resolve(1), 2, 2, 3, 3]))).to.eql([2, 2, 3, 3]);
     });
 
+    it('Promise + L.dropWhile + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropWhile(a => Promise.resolve(a % 2),
+          L.map(a => delay(a, a),
+            [601, 501, 400, 300])))).to.eql([400, 300]);
+    });
+
+    it('Promise + L.dropWhile + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropWhile(a => Promise.resolve(a > 100),
+          L.filter(a => a % 2,
+            L.map(a => delay(a, a),
+              [601, 500, 401, 300, 201, 100, 91, 80, 71, 60])))))
+      .to.eql([91, 71]);
+    });
+
     it('dropWhile promise', async () => {
       expect(await dropWhile(
         a => Promise.resolve(a % 2),
         Promise.resolve([1, Promise.resolve(1), 2, 2, 3, Promise.resolve(3)]))).to.eql([2, 2, 3, 3]);
-    })
+    });
   });
 
   describe('dropUntil', function () {
@@ -236,6 +267,22 @@ const {
         L.dropUntil(
           a => Promise.resolve(a % 2),
           [2, Promise.resolve(2), 3, Promise.resolve(3)]))).to.eql([3]);
+    });
+
+    it('Promise + L.dropUntil + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropUntil(a => Promise.resolve(a % 2),
+          L.map(a => delay(a, a),
+            [600, 501, 401, 300])))).to.eql([401, 300]);
+    });
+
+    it('Promise + L.dropUntil + L.filter + C.takeAll', async () => {
+      expect(await C.takeAll(
+        L.dropUntil(a => Promise.resolve(a < 300),
+          L.filter(a => a % 2,
+            L.map(a => delay(a, a),
+              [601, 500, 401, 300, 201, 100, 91, 80, 71, 60])))))
+      .to.eql([91, 71]);
     });
 
     it('dropUntil promise', async () => {
@@ -654,6 +701,29 @@ const {
     });
   });
 
+  describe('differenceWith', function () {
+    it("differenceWith sync function", function () {
+      const cmp = (x, y) => x.a === y.a;
+      const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, {a: 4}];
+      expect(differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
+    });
+
+    it("differenceWith async function", async function () {
+      const cmp = (x, y) => Promise.resolve(x.a === y.a);
+      const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, {a: 4}];
+      expect(await differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
+    });
+
+    it("differenceWith promise iterable elements", async function () {
+      const cmp = (x, y) => Promise.resolve(x.a === y.a);
+      const l1 = [{a: 1}, Promise.resolve({a: 2}), Promise.resolve({a: 3}), {a: 4}, {a: 5}];
+      const l2 = [{a: 3}, Promise.resolve({a: 4})];
+      expect(await differenceWith(cmp, l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 5}]);
+    });
+  });
+
   describe('difference', function () {
     it('difference([2, 1], [2, 3])', function () {
       expect(difference([2, 3], [2, 1])).to.eql([1]);
@@ -683,6 +753,16 @@ const {
   describe('intersectionBy', function () {
     it("intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])", function () {
       expect(intersectionBy(o => o.x, [{ 'x': 2 }, { 'x': 1 }], [{ 'x': 1 }])).to.eql([{ 'x': 1 }]);
+    });
+  });
+
+  describe('intersectionWith', function () {
+    const cmp = (x, y) => x.a === y.a;
+    const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+    const l2 = [{a: 3}, {a: 4}];
+
+    it("intersectionWith sync", function () {
+      expect(intersectionWith(cmp, l1, l2)).to.eql([{a: 3}, {a: 4}]);
     });
   });
 
