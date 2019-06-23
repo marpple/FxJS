@@ -171,7 +171,7 @@ const pb = go(0,
   a => Promise.resolve(a + 1),
   a => a + 10);
 pb.then(log); // 11
-```
+</script>
 
 ### pipe
 
@@ -201,7 +201,7 @@ go(
   total(({price}) => price),
   log);
   // 156000
-```
+</script>
 
 ### curry
 
@@ -217,7 +217,7 @@ add10(5); // 15
 add10(6); // 16
 
 add(10, 5); // 15
-```
+</script>
 
 ### tap
 
@@ -233,7 +233,7 @@ go(
     log), // 20
   a => a + 10,
   log); // 25
-```
+</script>
 
 ### constant
 
@@ -244,7 +244,7 @@ go(
 const a = constant('A');
 a(); // A
 a(); // A
-```
+</script>
 
 ### negate
 
@@ -255,7 +255,7 @@ a(); // A
 const a = negate(a => a);
 log(a(true)); // false
 log(a(false)); // true
-```
+</script>
 
 ### call
 
@@ -276,16 +276,16 @@ log(a(false)); // true
 - [source](https://github.com/marpple/FxJS/blob/master/calls.js)
 
 ```javascript
-log(calls([
+calls([
   a => a + 1,
   a => a + 2
-], 10));
+], 10);
 // [11, 12]
 
-log(calls({
+calls({
   a: a => a + 1,
   b: a => a + 2
-}, 10));
+}, 10);
 // {a: 11, b: 12}
 
 calls([
@@ -301,10 +301,7 @@ calls({
   c: _ => Promise.resolve(3)
 }).then(log);
 // {a: 1, b: 2, c: 3}
-```
-
-### throttle
-### debounce
+</script>
 
 ## Strict
 
@@ -328,39 +325,43 @@ range(0, 20, 5);
 
 range(0, -4, -1);
 // => [0, -1, -2, -3]
-```
+</script>
 
 ### map
 
 - `(a => b) => Iterable a => [b]`
+- `(a => b) => Iterable Promise a => Promise [b]`
 - `(a => Promise b) => Iterable a => Promise [b]`
+- `(a => Promise b) => Iterable Promise a => Promise [b]`
 - [source](https://github.com/marpple/FxJS/blob/master/map.js)
 
 ```javascript
-log(map(a => a + 10, [1, 2, 3]));
+map(a => a + 10, [1, 2, 3]);
 // [11, 12, 13]
 
 map(a => Promise.resolve(a + 10), [1, 2, 3]).then(log);
 // [11, 12, 13]
 
-log(map(a => a.nodeName, document.querySelectorAll('head *')));
+map(a => a.nodeName, document.querySelectorAll('head *'));
 // ["META", "TITLE", "SCRIPT"]
 
-log(map(a => a + 10, function* () {
+map(a => a + 10, function* () {
   yield 4;
   yield 5;
-} ()));
+} ());
 // [14, 15]
-```
+</script>
 
 ### mapEntries
 
 - `(a => b) => Iterable [k, a] => [[k, b]]`
-- `(a => Promise b) => Iterable [k, a] => Promise [k, b]`
+- `(a => b) => Iterable [k, Promise a] => Promise [[k, b]]`
+- `(a => Promise b) => Iterable [k, a] => Promise [[k, b]]`
+- `(a => Promise b) => Iterable [k, Promise a] => Promise [[k, b]]`
 - [source](https://github.com/marpple/FxJS/blob/master/mapEntries.js)
 
 ```javascript
-log(mapEntries(a => a + 10, [['a', 1], ['b', 2]]));
+mapEntries(a => a + 10, [['a', 1], ['b', 2]]);
 // [['a', 11], ['b', 12]]
 
 mapEntries(a => Promise.resolve(a + 10), [['a', 1], ['b', 2]]).then(log);
@@ -377,16 +378,18 @@ go({ a: 1, b: 2},
   object
 ).then(log);
 // { a: 11, b: 12 }
-```
+</script>
 
 ### mapObject
 
 - `(a => b) => { k: a } => { k: b }`
+- `(a => b) => { k: Promise a } => Promise { k: b }`
 - `(a => Promise b) => { k: a } => Promise { k: b }`
+- `(a => Promise b) => { k: Promise a } => Promise { k: b }`
 - [source](https://github.com/marpple/FxJS/blob/master/mapObject.js)
 
 ```javascript
-log(mapObject(a => a + 10, { a: 1, b: 2 }));
+mapObject(a => a + 10, { a: 1, b: 2 });
 // { a: 11, b: 12 }
 
 mapObject(a => Promise.resolve(a + 10), { a: 1, b: 2 }).then(log);
@@ -397,17 +400,18 @@ go(
   mapObject(a => Promise.resolve(a + 10)),
   log);
   // { a: 11, b: 12 }
-```
+</script>
 
 ### pluck
 
 - `String k => Iterable a => [a[k]]`
+- `String k => Iterable Promise a => Promise [a[k]]`
 - [source](https://github.com/marpple/FxJS/blob/master/pluck.js)
 
 ```javascript
-log(map('id', [{ id: 1 }, { id: 3 }]));
+pluck('id', [{ id: 1 }, { id: 3 }]);
 // [1, 3]
-```
+</script>
 
 ### flat
 ### deepFlat
@@ -415,12 +419,70 @@ log(map('id', [{ id: 1 }, { id: 3 }]));
 
 ### filter
 
+- `(a => Boolean) => Iterable a => [a]`
+- `(a => Boolean) => Iterable Promise a => Promise [a]`
+- `(a => Promise Boolean) => Iterable a => Promise [a]`
+- `(a => Promise Boolean) => Iterable Promise a => Promise [a]`
+- [source](https://github.com/marpple/FxJS/blob/master/filter.js)
+
 ```javascript
 filter(a => a % 2, [1, 2, 3]);
 // [1, 3]
-```
+
+filter(a => a % 2, [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(log);
+// [1, 3]
+
+filter(
+  a => Promise.resolve(a % 2),
+  [1, 2, 3]
+).then(log);
+// [1, 3]
+
+filter(a => Promise.resolve(a % 2), [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(log);
+// [1, 3]
+</script>
 
 ### reject
+
+- `(a => Boolean) => Iterable a => []`
+- `(a => Boolean) => Iterable Promise a => Promise []`
+- `(a => Promise Boolean) => Iterable a => Promise []`
+- `(a => Promise Boolean) => Iterable Promise a => Promise []`
+- [source](https://github.com/marpple/FxJS/blob/master/reject.js)
+
+```javascript
+reject(a => a % 2, [1, 2, 3]);
+// [2]
+
+reject(a => a % 2, [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(log);
+// [2]
+
+reject(
+  a => Promise.resolve(a % 2),
+  [1, 2, 3]
+).then(log);
+// [2]
+
+reject(a => Promise.resolve(a % 2), [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(log);
+// [2]
+```
+
 ### compact
 ### unique
 ### difference
@@ -432,6 +494,14 @@ filter(a => a % 2, [1, 2, 3]);
 
 ### reduce
 
+- `((a, b) => c) => Iterable(a, b) => c`
+- `((a, b) => Promise c) => Iterable(a, b) => Promise c`
+- `((a, b) => c) => Iterable(Promise a, Promise b) => Promise c`
+- `((acc, b) => acc) => acc => Iterable b => acc`
+- `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
+- `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
+- [source](https://github.com/marpple/FxJS/blob/master/filter.js)
+
 ```javascript
 const add = (a, b) => a + b
 
@@ -441,10 +511,11 @@ reduce(add, [1, 2, 3]);
 reduce(add, 10, [1, 2, 3]);
 // 16
 
-reduce(add, {a: 1, b: 2, c: 3});
-// 6
-
-await reduce(add, [Promise.resolve(1), 2, 3])
+await reduce(add, [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+])
 // 6
 ```
 
@@ -476,15 +547,6 @@ await reduce(add, [Promise.resolve(1), 2, 3])
 ### sel
 
 ### take
-
-```javascript
-take(1, [1, 2, 3]);
-// [1]
-
-take(2, [1, 2, 3])
-// [1, 2]
-```
-
 ### takeWhile
 ### takeUntil
 ### takeAll
@@ -511,9 +573,6 @@ take(2, [1, 2, 3])
 
 ### noop
 ### identity
-### throttle
-### debounce
-
 
 ## Predicates
 
@@ -526,96 +585,3 @@ take(2, [1, 2, 3])
 ### isArray
 ### isString
 ### isUndefined
-
-## Lazy
-
-### L.range
-### L.map
-### L.filter
-### L.reject
-### L.compact
-### L.mapEntries
-### L.entries
-### L.values
-### L.keys
-### L.indexValues
-### L.flat
-### L.flatMap
-### L.deepFlat
-### L.reverse
-### L.take
-### L.takeWhile
-### L.takeUntil
-### L.drop
-### L.dropWhile
-### L.dropUntil
-### L.difference
-### L.differenceBy
-### L.intersection
-### L.intersectionBy
-### L.union
-### L.unionBy
-### L.interval
-
-
-## Concurrency
-
-### C.calls
-### C.takeAll
-### C.takeRace
-### C.race
-### C.map
-### C.mapEntries
-### C.filter
-### C.compact
-### C.reduce
-### C.take
-### C.drop
-### C.take1
-### C.head
-### C.tail
-### C.find
-### C.every
-### C.some
-
-## Stoppable
-
-### reduceS, stop
-
-```javascript
-reduceS((a, b) => {
- const res = a + b;
- return res > 5 ? stop(res) : res;
-}, [1, 2, 3, 4]);
-// 6
-```
-
-### goS, pipeS, stop, stopIf
-
-```javascript
-const f1 = pipeS(
-  a => a % 2 ? stop(a) : a,
-  a => a + 10);
-f1(1); // 1
-f1(2); // 12
-
-goS({a: 1, b: 2},
-  stopIf({a: 1}),
-  ({a, b}) => ({a: a + 10, b})); // {a: 1, b: 2}
-
-goS({a: 2, b: 2},
-  stopIf({a: 1}),
-  ({a, b}) => ({a: a + 10, b})); // {a: 12, b: 2}
-
-goS({a: 1, b: 2},
-  stopIf({a: 1}, null),
-  ({a, b}) => ({a: a + 10, b}));
-// null
-```
-
-## String
-
-### string
-### strMap
-### join
-### html
