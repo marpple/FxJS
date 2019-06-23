@@ -413,6 +413,10 @@ try {
 ## Function
 
 ### go
+- `(a, a => b, b => c, ..., y => z) => z`
+- `(Promise a, a => b, b => c, ..., y => z) => Promise z`
+- `(a, a => Promise b, b => Promise c, ..., y => z) => Promise z`
+- [source](#https://github.com/marpple/FxJS/blob/master/go.js)
 
 ```javascript
 go(0, a => a + 1, a => a + 10, log); // 11
@@ -426,6 +430,10 @@ pb.then(log); // 11
 ```
 
 ### pipe
+
+- `((a, b, ...) => e, e => f, f => g, ..., y => z) => (a, b, ...) => z`
+- `((a, b, ...) => Promise e, e => f, f => Promise g, ..., y => z) => Promise z`
+- [source](#https://github.com/marpple/FxJS/blob/master/pipe.js)
 
 ```javascript
 const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
@@ -451,18 +459,103 @@ go(
 
 ### curry
 
+- `(a, b, ...) => e => a => (b, ...) => e`
+- `(a, b, ...) => e => (a, b, ...) => e`
+- [source](#https://github.com/marpple/FxJS/blob/master/curry.js)
+
 ```javascript
 const add = curry((a, b) => a + b);
+
 const add10 = add(10);
 add10(5); // 15
+add10(6); // 16
+
+add(10, 5); // 15
 ```
 
 ### tap
+
+- `(g, f) => a => (f(g(a), a)`
+- [source](#https://github.com/marpple/FxJS/blob/master/tap.js)
+
+```javascript
+go(
+  10,
+  a => a + 5,
+  tap(
+    a => a + 5,
+    log), // 20
+  a => a + 10,
+  log); // 25
+```
+
 ### constant
+
+- `a => _ => a`
+- [source](#https://github.com/marpple/FxJS/blob/master/constant.js)
+
+```javascript
+const a = constant('A');
+a(); // A
+a(); // A
+```
+
 ### negate
+
+- `f => a => !f(a)`
+- [source](#https://github.com/marpple/FxJS/blob/master/negate.js)
+
+```javascript
+const a = negate(a => a);
+log(a(true)); // false
+log(a(false)); // true
+```
+
 ### call
+
+- `(f, ...args) => f(...args)`
+- [source](#https://github.com/marpple/FxJS/blob/master/call.js)
+
 ### apply
+
+- `(f, iterable) => f(...iterable)`
+- [source](#https://github.com/marpple/FxJS/blob/master/apply.js)
+
 ### calls
+
+- `([(a, b) => c, (a, b) => d, ...], a, b) => [c, d, ...]`
+- `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
+- `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
+- `({ k: (a, b) => Promise c, k2: (a, b) => Promise d }, a, b) => Promise { k: c, k2: d }`
+- [source](#https://github.com/marpple/FxJS/blob/master/calls.js)
+
+```javascript
+log(calls([
+  a => a + 1,
+  a => a + 2
+], 10));
+// [11, 12]
+
+log(calls({
+  a: a => a + 1,
+  b: a => a + 2
+}, 10));
+// {a: 11, b: 12}
+
+calls([
+  _ => Promise.resolve(1),
+  _ => Promise.resolve(2),
+  _ => Promise.resolve(3)
+]).then(log);
+// [1, 2, 3]
+
+calls({
+  a: _ => Promise.resolve(1),
+  b: _ => Promise.resolve(2),
+  c: _ => Promise.resolve(3)
+}).then(log);
+// {a: 1, b: 2, c: 3}
+```
 
 ## Strict
 
