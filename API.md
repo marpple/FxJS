@@ -171,7 +171,7 @@ const pb = go(0,
   a => Promise.resolve(a + 1),
   a => a + 10);
 pb.then(log); // 11
-</script>
+```
 
 ### pipe
 
@@ -201,7 +201,7 @@ go(
   total(({price}) => price),
   log);
   // 156000
-</script>
+```
 
 ### curry
 
@@ -217,7 +217,7 @@ add10(5); // 15
 add10(6); // 16
 
 add(10, 5); // 15
-</script>
+```
 
 ### tap
 
@@ -233,7 +233,7 @@ go(
     log), // 20
   a => a + 10,
   log); // 25
-</script>
+```
 
 ### constant
 
@@ -244,7 +244,7 @@ go(
 const a = constant('A');
 a(); // A
 a(); // A
-</script>
+```
 
 ### negate
 
@@ -255,7 +255,7 @@ a(); // A
 const a = negate(a => a);
 log(a(true)); // false
 log(a(false)); // true
-</script>
+```
 
 ### call
 
@@ -301,7 +301,7 @@ calls({
   c: _ => Promise.resolve(3)
 }).then(log);
 // {a: 1, b: 2, c: 3}
-</script>
+```
 
 ## Strict
 
@@ -325,7 +325,7 @@ range(0, 20, 5);
 
 range(0, -4, -1);
 // => [0, -1, -2, -3]
-</script>
+```
 
 ### map
 
@@ -350,7 +350,7 @@ map(a => a + 10, function* () {
   yield 5;
 } ());
 // [14, 15]
-</script>
+```
 
 ### mapEntries
 
@@ -378,7 +378,7 @@ go({ a: 1, b: 2},
   object
 ).then(log);
 // { a: 11, b: 12 }
-</script>
+```
 
 ### mapObject
 
@@ -400,7 +400,7 @@ go(
   mapObject(a => Promise.resolve(a + 10)),
   log);
   // { a: 11, b: 12 }
-</script>
+```
 
 ### pluck
 
@@ -411,7 +411,7 @@ go(
 ```javascript
 pluck('id', [{ id: 1 }, { id: 3 }]);
 // [1, 3]
-</script>
+```
 
 ### flat
 ### deepFlat
@@ -448,7 +448,7 @@ filter(a => Promise.resolve(a % 2), [
   Promise.resolve(3)
 ]).then(log);
 // [1, 3]
-</script>
+```
 
 ### reject
 
