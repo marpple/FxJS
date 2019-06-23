@@ -434,13 +434,24 @@ try {
 - [source](https://github.com/marpple/FxJS/blob/master/go.js)
 
 ```javascript
-go(0, a => a + 1, a => a + 10, log); // 11
-go(0, a => Promise.resolve(a + 1), a => a + 10, log); // 11
+go(0,
+  a => a + 1,
+  a => a + 10,
+  log); // 11
 
-const b = go(0, a => a + 1, a => a + 10);
+go(0,
+  a => Promise.resolve(a + 1),
+  a => a + 10,
+  log); // 11
+
+const b = go(0,
+  a => a + 1,
+  a => a + 10);
 log(b); // 11
 
-const pb = go(0, a => Promise.resolve(a + 1), a => a + 10);
+const pb = go(0,
+  a => Promise.resolve(a + 1),
+  a => a + 10);
 pb.then(log); // 11
 ```
 
