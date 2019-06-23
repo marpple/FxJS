@@ -149,7 +149,7 @@
 - `(a, a => b, b => c, ..., y => z) => z`
 - `(Promise a, a => b, b => c, ..., y => z) => Promise z`
 - `(a, a => Promise b, b => Promise c, ..., y => z) => Promise z`
-- [source](#https://github.com/marpple/FxJS/blob/master/go.js)
+- [source](https://github.com/marpple/FxJS/blob/master/go.js)
 
 ```javascript
 go(0,
@@ -177,7 +177,7 @@ pb.then(log); // 11
 
 - `((a, b, ...) => e, e => f, f => g, ..., y => z) => (a, b, ...) => z`
 - `((a, b, ...) => Promise e, e => f, f => Promise g, ..., y => z) => Promise z`
-- [source](#https://github.com/marpple/FxJS/blob/master/pipe.js)
+- [source](https://github.com/marpple/FxJS/blob/master/pipe.js)
 
 ```javascript
 const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
@@ -207,7 +207,7 @@ go(
 
 - `(a, b, ...) => e => a => (b, ...) => e`
 - `(a, b, ...) => e => (a, b, ...) => e`
-- [source](#https://github.com/marpple/FxJS/blob/master/curry.js)
+- [source](https://github.com/marpple/FxJS/blob/master/curry.js)
 
 ```javascript
 const add = curry((a, b) => a + b);
@@ -222,7 +222,7 @@ add(10, 5); // 15
 ### tap
 
 - `(g, f) => a => (f(g(a), a)`
-- [source](#https://github.com/marpple/FxJS/blob/master/tap.js)
+- [source](https://github.com/marpple/FxJS/blob/master/tap.js)
 
 ```javascript
 go(
@@ -238,7 +238,7 @@ go(
 ### constant
 
 - `a => _ => a`
-- [source](#https://github.com/marpple/FxJS/blob/master/constant.js)
+- [source](https://github.com/marpple/FxJS/blob/master/constant.js)
 
 ```javascript
 const a = constant('A');
@@ -249,7 +249,7 @@ a(); // A
 ### negate
 
 - `f => a => !f(a)`
-- [source](#https://github.com/marpple/FxJS/blob/master/negate.js)
+- [source](https://github.com/marpple/FxJS/blob/master/negate.js)
 
 ```javascript
 const a = negate(a => a);
@@ -260,12 +260,12 @@ log(a(false)); // true
 ### call
 
 - `(f, ...args) => f(...args)`
-- [source](#https://github.com/marpple/FxJS/blob/master/call.js)
+- [source](https://github.com/marpple/FxJS/blob/master/call.js)
 
 ### apply
 
 - `(f, iterable) => f(...iterable)`
-- [source](#https://github.com/marpple/FxJS/blob/master/apply.js)
+- [source](https://github.com/marpple/FxJS/blob/master/apply.js)
 
 ### calls
 
@@ -273,7 +273,7 @@ log(a(false)); // true
 - `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
 - `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
 - `({ k: (a, b) => Promise c, k2: (a, b) => Promise d }, a, b) => Promise { k: c, k2: d }`
-- [source](#https://github.com/marpple/FxJS/blob/master/calls.js)
+- [source](https://github.com/marpple/FxJS/blob/master/calls.js)
 
 ```javascript
 log(calls([
@@ -311,7 +311,7 @@ calls({
 ### range
 
 - `([start=0], end, [step=1]) => [Number a, ...]`
-- [source](#https://github.com/marpple/FxJS/blob/master/range.js)
+- [source](https://github.com/marpple/FxJS/blob/master/range.js)
 
 ```javascript
 range(4);
@@ -334,7 +334,7 @@ range(0, -4, -1);
 
 - `(a => b) => Iterable a => [b]`
 - `(a => Promise b) => Iterable a => Promise [b]`
-- [source](#https://github.com/marpple/FxJS/blob/master/map.js)
+- [source](https://github.com/marpple/FxJS/blob/master/map.js)
 
 ```javascript
 log(map(a => a + 10, [1, 2, 3]));
@@ -357,7 +357,7 @@ log(map(a => a + 10, function* () {
 
 - `(a => b) => Iterable [k, a] => [[k, b]]`
 - `(a => Promise b) => Iterable [k, a] => Promise [k, b]`
-- [source](#https://github.com/marpple/FxJS/blob/master/mapEntries.js)
+- [source](https://github.com/marpple/FxJS/blob/master/mapEntries.js)
 
 ```javascript
 log(mapEntries(a => a + 10, [['a', 1], ['b', 2]]));
@@ -383,7 +383,7 @@ go({ a: 1, b: 2},
 
 - `(a => b) => { k: a } => { k: b }`
 - `(a => Promise b) => { k: a } => Promise { k: b }`
-- [source](#https://github.com/marpple/FxJS/blob/master/mapObject.js)
+- [source](https://github.com/marpple/FxJS/blob/master/mapObject.js)
 
 ```javascript
 log(mapObject(a => a + 10, { a: 1, b: 2 }));
@@ -402,7 +402,7 @@ go(
 ### pluck
 
 - `String k => Iterable a => [a[k]]`
-- [source](#https://github.com/marpple/FxJS/blob/master/pluck.js)
+- [source](https://github.com/marpple/FxJS/blob/master/pluck.js)
 
 ```javascript
 log(map('id', [{ id: 1 }, { id: 3 }]));
