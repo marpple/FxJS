@@ -542,7 +542,7 @@ log(a(false)); // true
 - `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
 - `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
 - `({ k: (a, b) => Promise c, k2: (a, b) => Promise d }, a, b) => Promise { k: c, k2: d }`
-- [source](https://github.com/marpple/FxJS/blob/master/calls.js)
+- [calls](https://github.com/marpple/FxJS/blob/master/calls.js), [baseCalls](https://github.com/marpple/FxJS/blob/master/.internal/baseCalls.js)
 
 ```javascript
 log(calls([
