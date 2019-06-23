@@ -500,7 +500,7 @@ reject(a => Promise.resolve(a % 2), [
 - `((acc, b) => acc) => acc => Iterable b => acc`
 - `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
 - `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
-- [source](https://github.com/marpple/FxJS/blob/master/filter.js)
+- [source](https://github.com/marpple/FxJS/blob/master/reduce.js)
 
 ```javascript
 const add = (a, b) => a + b
