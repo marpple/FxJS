@@ -22,10 +22,10 @@ import intersectionLazy from './Lazy/intersectionLazy';
 import intersectionByLazy from './Lazy/intersectionByLazy';
 import unionByLazy from './Lazy/unionByLazy';
 import unionLazy from './Lazy/unionLazy';
-
 import dropWhileLazy from './Lazy/dropWhileLazy';
 import dropUntilLazy from './Lazy/dropUntilLazy';
 import compactLazy from "./Lazy/compactLazy.js";
+import chunkLazy from "./Lazy/chunkLazy.js";
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -70,6 +70,7 @@ const L = {
   union_by: unionByLazy,
   unionBy: unionByLazy,
   compact: compactLazy,
+  chunk: chunkLazy,
 };
 
 export {
@@ -100,5 +101,6 @@ export {
   intersectionByLazy,
   unionByLazy,
   unionLazy,
-  compactLazy
+  compactLazy,
+  chunkLazy,
 }

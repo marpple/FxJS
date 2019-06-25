@@ -33,6 +33,7 @@ const {
   join,
   pick,
   omit,
+  chunk,
 } = Fx;
 
 (function() {
@@ -864,6 +865,16 @@ const {
   describe('join', function() {
     it("join(',' [1, 2, 3])", function() {
       expect(join('-', [1,2,3])).to.eql("1-2-3");
+    });
+  });
+
+  describe('chunk', function() {
+    it('L.chunk + take', function() {
+      expect(take(3, L.chunk(2, L.range(10)))).to.eql([[0, 1], [2, 3], [4, 5]]);
+    });
+
+    it('chunk(4, "abcdefghij")', function() {
+      expect(chunk(4, "abcdefghij")).to.eql([["a", "b", "c", "d"], ["e", "f", "g", "h"], ["i", "j"]]);
     });
   });
 
