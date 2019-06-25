@@ -34,6 +34,7 @@ const {
   pick,
   omit,
   chunk,
+  splitEvery,
 } = Fx;
 
 (function() {
@@ -878,4 +879,13 @@ const {
     });
   });
 
+  describe('splitEvery', function() {
+    it("L.splitEvery + take", function() {
+      expect(take(3, L.splitEvery(2, "abcdefghij"))).to.eql(["ab", "cd", "ef"]);
+    });
+
+    it("splitEvery(2, 'abcdefghij')", function() {
+      expect(splitEvery(2, 'abcdefghij')).to.eql(["ab", "cd", "ef", "gh", "ij"]);
+    });
+  });
 } ());

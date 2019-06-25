@@ -106,5 +106,6 @@ export { default as partition } from './partition.js';
 export { default as join } from './join.js';
 export { default as html } from './html.js';
 export { default as chunk } from './chunk.js';
+export { default as splitEvery } from './splitEvery.js';
 export * from './L.js';
 export * from './C.js';

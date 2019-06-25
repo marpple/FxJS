@@ -26,6 +26,7 @@ import dropWhileLazy from './Lazy/dropWhileLazy';
 import dropUntilLazy from './Lazy/dropUntilLazy';
 import compactLazy from "./Lazy/compactLazy.js";
 import chunkLazy from "./Lazy/chunkLazy.js";
+import splitEveryLazy from "./Lazy/splitEveryLazy.js";
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -71,6 +72,8 @@ const L = {
   unionBy: unionByLazy,
   compact: compactLazy,
   chunk: chunkLazy,
+  split_every: splitEveryLazy,
+  splitEvery: splitEveryLazy,
 };
 
 export {
@@ -103,4 +106,5 @@ export {
   unionLazy,
   compactLazy,
   chunkLazy,
+  splitEveryLazy,
 }
