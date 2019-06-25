@@ -57,20 +57,22 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 // 9;
 ```
 
-### Node and npm
-
-Webpack으로 번들링 할 수 있도록 설정되어 있습니다.
+### In Node.js
+FxJS의 함수들은 ECMAScript Module로 작성되어 있습니다.
+또한 각각의 함수들이 개별 파일로 잘 분리되어 있기 때문에,
+Webpack과 같은 bundler가 Tree-Shaking을 할 수 있습니다.
 
 ```
 npm install fxjs2
-```
-
-```javascript
-const { map, filter, reduce, L, C } = require("fxjs2");
-```
+``` 
 
 ```javascript
 import { map, filter, reduce, L, C } from "fxjs2";
+```
+
+ECMAScript Module로 작성된 FxJS를 CommonJS Module로 사용할 수 있도록 [esm](https://github.com/standard-things/esm)을 사용합니다.
+```javascript
+const { map, filter, reduce, L, C } = require("fxjs2");
 ```
 
 ## Iteration protocols
