@@ -1,12 +1,12 @@
 import curry from "../curry.js";
-import safety from "../safety.js";
+import toIter from "../toIter.js";
 import noop from "../noop.js";
 import nop from "../nop.js";
 
 export default curry(function* takeLazy(l, iter) {
   if (l < 1) return;
   let prev = null;
-  for (const a of safety(iter)) {
+  for (const a of toIter(iter)) {
     if (a instanceof Promise) {
       a.catch(noop);
       yield prev = (prev || Promise.resolve())

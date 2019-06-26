@@ -1,6 +1,6 @@
-import safety from "../safety.js";
+import toIter from "../toIter.js";
 
 export default function* indexValuesLazy(iter) {
   let i = -1;
-  for (const a of safety(iter)) yield [++i, a];
+  for (const a of toIter(iter)) yield [++i, a];
 };
