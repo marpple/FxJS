@@ -29,7 +29,6 @@ export { default as sortByDesc, default as sort_by_desc } from './sortByDesc.js'
 export { default as noop } from './noop.js';
 export { default as hi } from './hi.js';
 export { default as extend } from './extend.js';
-export { default as empty } from './empty.js';
 export { default as takeWhile, default as take_while } from './takeWhile.js';
 export { default as isMatch, default as is_match } from './isMatch.js';
 export { default as mapEntries, default as map_entries, default as entriesMap, default as entries_map } from './mapEntries.js';

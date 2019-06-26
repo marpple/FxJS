@@ -892,6 +892,10 @@ const {
   });
 
   describe('splitEvery', function() {
+    it("L.splitEvery(2, null)", function() {
+      expect(take(3, L.splitEvery(2, null))).to.eql([]);
+    });
+
     it("L.splitEvery + take", function() {
       expect(take(3, L.splitEvery(2, "abcdefghij"))).to.eql(["ab", "cd", "ef"]);
     });

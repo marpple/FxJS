@@ -27,6 +27,8 @@ import dropUntilLazy from './Lazy/dropUntilLazy';
 import compactLazy from "./Lazy/compactLazy.js";
 import chunkLazy from "./Lazy/chunkLazy.js";
 import splitEveryLazy from "./Lazy/splitEveryLazy.js";
+import emptyLazy from "./Lazy/emptyLazy.js";
+import constantLazy from "./Lazy/constantLazy.js";
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -74,6 +76,8 @@ const L = {
   chunk: chunkLazy,
   split_every: splitEveryLazy,
   splitEvery: splitEveryLazy,
+  constant: constantLazy,
+  empty: emptyLazy,
 };
 
 export {
@@ -107,4 +111,6 @@ export {
   compactLazy,
   chunkLazy,
   splitEveryLazy,
+  constantLazy,
+  emptyLazy,
 }

@@ -30,7 +30,6 @@ import sortByDesc from './sortByDesc.js';
 import noop from './noop.js';
 import hi from './hi.js';
 import extend from './extend.js';
-import empty from './empty.js';
 import takeWhile from './takeWhile.js';
 import isMatch from './isMatch.js';
 import mapEntries from './mapEntries.js';
