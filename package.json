@@ -1,7 +1,7 @@
 {
-  "name": "fxjs2",
-  "version": "0.2.7",
-  "description": "Functional Extensions for Javascript",
+  "name": "fxjs",
+  "version": "0.9.0",
+  "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
   "module": "fx.js",
   "sideEffects": false,
@@ -12,17 +12,30 @@
     "test": "mocha -R spec test/**/*.js"
   },
   "files": [
-    "Concurrency/*",
-    "Lazy/*",
-    "*.js",
-    "LICENSE",
-    "README.md"
+    "Concurrency",
+    "Lazy",
+    "dist",
+    "*.js"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marpple/FxJS.git"
   },
-  "author": "",
+  "author": "Indong Yoo <idy@marpple.com>",
+  "contributors": [
+    {
+      "name": "Indong Yoo",
+      "email": "idy@marpple.com"
+    },
+    {
+      "name": "Piljung Park",
+      "email": "pjp@marpple.com"
+    },
+    {
+      "name": "Dohyeong Lee",
+      "email": "dhl@marpple.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/marpple/FxJS/issues"
@@ -45,5 +58,15 @@
     "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "functional",
+    "fp",
+    "fxjs"
+  ],
+  "unpkg": "dist/fx.es5.min.js",
+  "jsdelivr": "dist/fx.es5.min.js"
 }
