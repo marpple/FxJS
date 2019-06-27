@@ -4,12 +4,12 @@ import go from "../go.js";
 import take from "../take.js";
 import rangeLazy from "./rangeLazy.js";
 import mapLazy from "./mapLazy.js";
-import takeWhileLazy from "./takeWhileLazy.js";
+import takeUntilLazy from "./takeUntilLazy.js";
 
 export default curry(function chunkLazy(n, iter) {
   iter = toIter(iter);
   return go(
     rangeLazy(Infinity),
     mapLazy(_ => take(n, iter)),
-    takeWhileLazy(c => c.length))
+    takeUntilLazy(c => c.length < n))
 });
