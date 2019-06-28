@@ -904,4 +904,19 @@ const {
       expect(splitEvery(2, 'abcdefghij')).to.eql(["ab", "cd", "ef", "gh", "ij"]);
     });
   });
+
+  describe('append', function() {
+    it.only('L.append + take', function() {
+      expect(takeAll(L.append(3, [1, 2]))).to.eql([1, 2, 3]);
+      expect(takeAll(L.append('c', 'ab'))).to.eql(['a', 'b', 'c']);
+    });
+  });
+
+  describe('prepend', function() {
+    it.only('L.prepend + take', function() {
+      expect(take(3, L.prepend(0, [1, 2, 3, 4, 5]))).to.eql([0, 1, 2]);
+      expect(takeAll(L.prepend('a', 'bc'))).to.eql(['a', 'b', 'c']);
+    });
+  });
+
 } ());

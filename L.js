@@ -29,6 +29,8 @@ import chunkLazy from "./Lazy/chunkLazy.js";
 import splitEveryLazy from "./Lazy/splitEveryLazy.js";
 import emptyLazy from "./Lazy/emptyLazy.js";
 import constantLazy from "./Lazy/constantLazy.js";
+import appendLazy from "./Lazy/appendLazy.js";
+import prependLazy from "./Lazy/prependLazy.js";
 
 const L = {
   deepFlat: deepFlatLazy,
@@ -78,6 +80,8 @@ const L = {
   splitEvery: splitEveryLazy,
   constant: constantLazy,
   empty: emptyLazy,
+  append: appendLazy,
+  prepend: prependLazy,
 };
 
 export {
@@ -113,4 +117,6 @@ export {
   splitEveryLazy,
   constantLazy,
   emptyLazy,
+  appendLazy,
+  prependLazy,
 }
