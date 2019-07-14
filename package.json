@@ -34,6 +34,7 @@
     "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
+    "lodash": ">=4.17.13",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
