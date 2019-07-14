@@ -1,8 +1,15 @@
-import take1C from "./take1C.js";
 import curry from "../curry.js";
-import filterLazy from "../Lazy/filterLazy.js";
-import go1 from "../go1.js";
+import mapLazy from "../Lazy/mapLazy.js";
+import takeUntilLazy from "../Lazy/takeUntilLazy.js";
+import identity from "../identity.js";
+import reduceC from "./reduceC.js";
+import go from "../go.js";
 
 export default curry(function someC(f, iter) {
-  return go1(take1C(filterLazy(f, iter)), ({length}) => length == 1);
+  return go(
+    mapLazy(f, iter),
+    takeUntilLazy(identity),
+    reduceC((a, b) => a || b),
+    (a = false) => a,
+    Boolean);
 });

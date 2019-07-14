@@ -1,8 +1,15 @@
-import take1C from "./take1C.js";
 import curry from "../curry.js";
-import rejectLazy from "../Lazy/rejectLazy.js";
-import go1 from "../go1.js";
+import go from "../go.js";
+import mapLazy from "../Lazy/mapLazy.js";
+import takeUntilLazy from "../Lazy/takeUntilLazy.js";
+import reduceC from "./reduceC.js";
+import not from "../not.js";
 
 export default curry(function everyC(f, iter) {
-  return go1(take1C(rejectLazy(f, iter)), ({length}) => length == 0);
-});;
+  return go(
+    mapLazy(f, iter),
+    takeUntilLazy(not),
+    reduceC((a, b) => a && b),
+    (a = false) => a,
+    Boolean);
+});

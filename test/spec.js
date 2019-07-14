@@ -505,6 +505,14 @@ const {
       expect(some(a => a > 1, [1, 2, 3])).to.eql(true);
     });
 
+    it('some(a => a > 10, [1, 2, 3])', function () {
+      expect(some(a => a > 10, [1, 2, 3])).to.eql(false);
+    });
+
+    it('some(a => a > 1, [])', function () {
+      expect(some(a => a > 1, [])).to.eql(false);
+    });
+
     it('every(a => a > 1, [1, 2, 3])', function () {
       expect(every(a => a > 1, [1, 2, 3])).to.eql(false);
       expect(every(a => a < 3, [1, 2, 3])).to.eql(false);
@@ -512,6 +520,10 @@ const {
 
     it('every(a => a > 0, [1, 2, 3])', function () {
       expect(every(a => a > 0, [1, 2, 3])).to.eql(true);
+    });
+
+    it('every(a => a > 0, [])', function () {
+      expect(every(a => a > 0, [])).to.eql(false);
     });
   });
 
