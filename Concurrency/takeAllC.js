@@ -1,12 +1,12 @@
-import toIter from "../toIter.js";
-import go from "../go.js";
-import map from "../map.js";
+import toIter from "../Strict/toIter.js";
+import go from "../Strict/go.js";
+import map from "../Strict/map.js";
 import rangeLazy from "../Lazy/rangeLazy.js";
 import mapLazy from "../Lazy/mapLazy.js";
 import takeUntilLazy from "../Lazy/takeUntilLazy.js";
-import flat from "../flat.js";
+import flat from "../Strict/flat.js";
 import takeC from "./takeC.js";
-import takeWhile from "../takeWhile.js";
+import takeWhile from "../Strict/takeWhile.js";
 
 export default function takeAllC(n, iter) {
   if (arguments.length == 1) return typeof n == 'number' ? _ => takeAllC(n, _) : takeC(Infinity, n);

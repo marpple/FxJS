@@ -1,4 +1,4 @@
-import curry from "../curry.js";
+import curry from "../Strict/curry.js";
 import flatLazy from "./flatLazy.js";
 import mapLazy from "./mapLazy.js";
 

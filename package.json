@@ -7,8 +7,8 @@
   "sideEffects": false,
   "scripts": {
     "build": "npm run build-modern && npm run build-legacy",
-    "build-modern": "webpack --config modern.config.js --env.NODE_ENV=production",
-    "build-legacy": "webpack --config legacy.config.js --env.NODE_ENV=production",
+    "build-modern": "webpack --config webpack.config.modern.js --env.NODE_ENV=production",
+    "build-legacy": "webpack --config webpack.config.legacy.js --env.NODE_ENV=production",
     "test": "mocha -R spec test/**/*.js"
   },
   "files": [

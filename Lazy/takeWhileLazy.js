@@ -1,8 +1,8 @@
-import curry from "../curry.js";
-import nop from "../nop.js";
-import go1 from "../go1.js";
-import toIter from "../toIter.js";
-import noop from "../noop.js";
+import curry from "../Strict/curry.js";
+import nop from "../Strict/nop.js";
+import go1 from "../Strict/go1.js";
+import toIter from "../Strict/toIter.js";
+import noop from "../Strict/noop.js";
 
 const resolved = Promise.resolve();
 export default curry(function* takeWhileLazy(f, iter) {

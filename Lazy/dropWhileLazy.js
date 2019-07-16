@@ -1,8 +1,8 @@
-import go1 from "../go1.js";
-import curry from "../curry.js";
-import toIter from "../toIter.js";
-import noop from "../noop.js";
-import nop from "../nop.js";
+import go1 from "../Strict/go1.js";
+import curry from "../Strict/curry.js";
+import toIter from "../Strict/toIter.js";
+import noop from "../Strict/noop.js";
+import nop from "../Strict/nop.js";
 import flatLazy from "./flatLazy.js";
 
 export default curry(function* dropWhileLazy(f, iter) {

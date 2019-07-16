@@ -1,6 +1,6 @@
-import curry from "../curry.js";
-import go1 from "../go1.js";
-import pipe from "../pipe.js";
+import curry from "../Strict/curry.js";
+import go1 from "../Strict/go1.js";
+import pipe from "../Strict/pipe.js";
 import filterLazy from "./filterLazy.js";
 
 export const uniqueByLazy = curry(function uniqueByLazy(f, iter) {

@@ -1,5 +1,5 @@
-import curry from "../curry.js";
-import nop from "../nop.js";
+import curry from "../Strict/curry.js";
+import nop from "../Strict/nop.js";
 
 export default curry(function takeRaceC(l, iter) {
   return new Promise((resolve, reject) => {

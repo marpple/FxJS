@@ -1,7 +1,7 @@
-import isIterable from "../isIterable.js";
-import last from "../last.js";
-import toIter from "../toIter.js";
-import nop from "../nop.js";
+import isIterable from "../Strict/isIterable.js";
+import last from "../Strict/last.js";
+import toIter from "../Strict/toIter.js";
+import nop from "../Strict/nop.js";
 
 export default function flatLazy(iter, depth = 1) {
   let concurCheck = null;

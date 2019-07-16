@@ -1,6 +1,6 @@
-import reduce from "../reduce.js";
-import catchNoop from "./catchNoop.js";
-import curry from "../curry.js";
+import reduce from "../Strict/reduce.js";
+import catchNoop from "../.internal/catchNoop.js";
+import curry from "../Strict/curry.js";
 
 export default curry(function reduceC(f, acc, iter) {
   return arguments.length == 2 ?

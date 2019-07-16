@@ -1,11 +1,11 @@
-import map from "../map.js";
-import toIter from '../toIter.js';
-import curry from '../curry.js';
-import go from "../go.js";
+import map from "../Strict/map.js";
+import toIter from '../Strict/toIter.js';
+import curry from '../Strict/curry.js';
+import go from "../Strict/go.js";
 import mapLazy from "./mapLazy.js";
 import rangeLazy from "./rangeLazy.js";
 import takeWhileLazy from "./takeWhileLazy.js";
-import some from "../some.js";
+import some from "../Strict/some.js";
 
 export default curry(function zipLazy(...iterables) {
   const iterators = map(toIter, iterables);

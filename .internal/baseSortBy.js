@@ -1,5 +1,5 @@
-import pipe from "../pipe.js";
-import isArray from "../isArray.js";
+import pipe from "../Strict/pipe.js";
+import isArray from "../Strict/isArray.js";
 
 const arrComparator = (arr) => (a, b) => {
   let i = -1;

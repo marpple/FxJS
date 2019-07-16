@@ -9,7 +9,7 @@ const {
   delay,
   map,
   reduce, go1, find, some, every, deepFlatten, uniq,
-  reduceS, goS, stopIf, stop_if, pipeS, calls, callsC,
+  reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
@@ -311,7 +311,7 @@ const {
     });
   });
 
-  describe('L.range', function () {
+  describe('range', function () {
     it('L.range(0)', () => {
       expect([...L.range(0)]).to.eql([]);
     });
@@ -671,14 +671,14 @@ const {
       })).to.eql({a: 1, b: 2, c: 3});
     });
 
-    it(`callsC`, async function () {
-      expect(await callsC([
+    it(`C.calls`, async function () {
+      expect(await C.calls([
         _ => Promise.resolve(1),
         _ => Promise.resolve(2),
         _ => Promise.resolve(3)
       ])).to.eql([1, 2, 3]);
 
-      expect(await callsC({
+      expect(await C.calls({
         a: _ => Promise.resolve(1),
         b: _ => Promise.resolve(2),
         c: _ => Promise.resolve(3)
@@ -906,14 +906,14 @@ const {
   });
 
   describe('append', function() {
-    it.only('L.append + take', function() {
+    it('L.append + take', function() {
       expect(takeAll(L.append(3, [1, 2]))).to.eql([1, 2, 3]);
       expect(takeAll(L.append('c', 'ab'))).to.eql(['a', 'b', 'c']);
     });
   });
 
   describe('prepend', function() {
-    it.only('L.prepend + take', function() {
+    it('L.prepend + take', function() {
       expect(take(3, L.prepend(0, [1, 2, 3, 4, 5]))).to.eql([0, 1, 2]);
       expect(takeAll(L.prepend('a', 'bc'))).to.eql(['a', 'b', 'c']);
     });

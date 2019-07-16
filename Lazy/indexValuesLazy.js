@@ -1,4 +1,4 @@
-import toIter from "../toIter.js";
+import toIter from "../Strict/toIter.js";
 
 export default function* indexValuesLazy(iter) {
   let i = -1;

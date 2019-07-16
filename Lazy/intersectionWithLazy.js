@@ -1,7 +1,7 @@
 import filterLazy from "./filterLazy.js";
-import curry from "../curry.js";
-import take from "../take.js";
-import go1 from "../go1.js";
+import curry from "../Strict/curry.js";
+import take from "../Strict/take.js";
+import go1 from "../Strict/go1.js";
 
 
 export default curry(function intersectionWithLazy(f, iter1, iter2) {

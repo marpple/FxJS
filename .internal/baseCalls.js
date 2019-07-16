@@ -1,4 +1,4 @@
-import isIterable from "../isIterable.js";
+import isIterable from "../Strict/isIterable.js";
 import entriesLazy from "../Lazy/entriesLazy.js";
 import mapEntriesLazy from "../Lazy/mapEntriesLazy.js";
 

@@ -1,7 +1,7 @@
-import curry from "../curry.js";
-import toIter from "../toIter.js";
-import noop from "../noop.js";
-import nop from "../nop.js";
+import curry from "../Strict/curry.js";
+import toIter from "../Strict/toIter.js";
+import noop from "../Strict/noop.js";
+import nop from "../Strict/nop.js";
 
 export default curry(function* dropLazy(l, iter) {
   if (l < 1) yield* iter;

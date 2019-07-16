@@ -1,4 +1,4 @@
-import curry from "../curry.js";
+import curry from "../Strict/curry.js";
 import filterLazy from "../Lazy/filterLazy.js";
 import headC from "./headC.js";
 
