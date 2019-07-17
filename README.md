@@ -21,7 +21,9 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Concurrency](https://github.com/marpple/FxJS/blob/master/API.md#concurrency)
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
-- [Change Log](#Change-Log)
+- [Extention Libraries](#Extention Libraries)
+  - FxSQL
+  - FxDOM
 
 # Getting Started
 
@@ -53,7 +55,7 @@ Tree-Shaking is possible when a bundler like a webpack is bundling.
 
 ```
 npm install fxjs2
-``` 
+```
 
 ```javascript
 import { map, filter, reduce, L, C } from "fxjs2";
@@ -418,4 +420,10 @@ try {
   - [join](https://github.com/marpple/FxJS/blob/master/API.md#join)
   - [html](https://github.com/marpple/FxJS/blob/master/API.md#html)
 
-# Change Log
+# Extention Libraries
+
+The following libraries are based on FxJS. It is a library that enables DOM and SQL Query to be handled through functional APIs, respectively.
+
+- [FxDOM](https://github.com/marpple/FxDOM)
+- [FxSQL](https://github.com/marpple/FxSQL)
+

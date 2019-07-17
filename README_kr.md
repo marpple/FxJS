@@ -21,7 +21,9 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Concurrency](https://github.com/marpple/FxJS/blob/master/API.md#concurrency)
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
-- [Change Log](#Change-Log)
+- [Extention Libraries](#Extention Libraries)
+  - FxSQL
+  - FxDOM
 
 # Getting Started
 
@@ -64,7 +66,7 @@ Webpack과 같은 bundler가 Tree-Shaking을 할 수 있습니다.
 
 ```
 npm install fxjs2
-``` 
+```
 
 ```javascript
 import { map, filter, reduce, L, C } from "fxjs2";
@@ -429,4 +431,10 @@ try {
   - [join](https://github.com/marpple/FxJS/blob/master/API.md#join)
   - [html](https://github.com/marpple/FxJS/blob/master/API.md#html)
   
-# Change Log
+# Extention Libraries
+
+아래의 라이브러리들은 FxJS를 기반으로 만들어졌습니다. 각각 DOM과 SQL Query를 함수형 API를 통해 다룰 수 있게 해주는 라이브러리 입니다.
+
+- [FxDOM](https://github.com/marpple/FxDOM)
+- [FxSQL](https://github.com/marpple/FxSQL)
+
