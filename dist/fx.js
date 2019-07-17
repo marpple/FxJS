@@ -2209,7 +2209,9 @@ function tailC(iter) {
 const L = { ...Lazy_namespaceObject };
 const C = { ...Concurrency_namespaceObject };
 
-window._ = { ...Strict_namespaceObject, L, C };
+window.fx = window._ = { ...Strict_namespaceObject, L, C };
+window.C = C;
+window.L = L;
 
 /***/ })
 /******/ ]);

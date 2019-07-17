@@ -9376,10 +9376,12 @@ var L = _objectSpread({}, Lazy_namespaceObject);
 
 var C = _objectSpread({}, Concurrency_namespaceObject);
 
-window._ = _objectSpread({}, Strict_namespaceObject, {
+window.fx = window._ = _objectSpread({}, Strict_namespaceObject, {
   L: L,
   C: C
 });
+window.C = C;
+window.L = L;
 
 /***/ })
 /******/ ]);
