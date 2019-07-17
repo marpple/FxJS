@@ -5,4 +5,6 @@ import * as Concurrency from "./Concurrency";
 const L = { ...Lazy };
 const C = { ...Concurrency };
 
-window._ = { ...Strict, L, C };
+window.fx = window._ = { ...Strict, L, C };
+window.C = C;
+window.L = L;

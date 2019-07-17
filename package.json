@@ -68,5 +68,9 @@
     "fxjs"
   ],
   "unpkg": "dist/fx.es5.min.js",
-  "jsdelivr": "dist/fx.es5.min.js"
+  "jsdelivr": "dist/fx.es5.min.js",
+  "np": {
+    "yarn": false,
+    "contents": "dist"
+  }
 }
