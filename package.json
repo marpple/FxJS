@@ -1,6 +1,6 @@
 {
   "name": "fxjs2",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
   "module": "fx.js",
