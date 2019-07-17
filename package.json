@@ -12,11 +12,13 @@
     "test": "mocha -R spec test/**/*.js"
   },
   "files": [
+    ".internal",
     "Concurrency",
     "Lazy",
     "Strict",
     "dist",
-    "*.js"
+    "index.js",
+    "fx.js"
   ],
   "repository": {
     "type": "git",
