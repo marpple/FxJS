@@ -1,3 +1,5 @@
+export { default as add } from "./add";
+export { default as addAll } from "./addAll";
 export { default as append } from './append.js';
 export { default as apply } from './apply.js';
 export { default as baseSel, default as base_sel } from './baseSel.js';
@@ -94,6 +96,7 @@ export { default as stop } from './stop.js';
 export { default as stopIf, default as stop_if } from './stopIf.js';
 export { default as string } from './string.js';
 export { default as strMap, default as str_map, default as scat } from './strMap.js';
+export { default as sum }  from "./sum.js";
 export { default as tail } from './tail.js';
 export { default as take } from './take.js';
 export { default as take1 } from './take1.js';
