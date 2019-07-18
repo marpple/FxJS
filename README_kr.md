@@ -22,8 +22,8 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
 - [Extention Libraries](#Extention-Libraries)
-  - FxSQL
-  - FxDOM
+  - [FxSQL](https://github.com/marpple/FxSQL)
+  - [FxDOM](https://github.com/marpple/FxDOM)
 
 # Getting Started
 
@@ -361,6 +361,7 @@ try {
   - [union](https://github.com/marpple/FxJS/blob/master/API.md#union)
   - [unionBy](https://github.com/marpple/FxJS/blob/master/API.md#unionBy)
   - [unique](https://github.com/marpple/FxJS/blob/master/API.md#unique)
+  - [uniqueBy](https://github.com/marpple/FxJS/blob/master/API.md#uniqueBy)
   - [unzip](https://github.com/marpple/FxJS/blob/master/API.md#unzip)
   - [values](https://github.com/marpple/FxJS/blob/master/API.md#values)
   - [zip](https://github.com/marpple/FxJS/blob/master/API.md#zip)
@@ -433,8 +434,8 @@ try {
   
 # Extention Libraries
 
-아래의 라이브러리들은 FxJS를 기반으로 만들어졌습니다. 각각 DOM과 SQL Query를 함수형 API를 통해 다룰 수 있게 해주는 라이브러리 입니다.
+아래의 라이브러리들은 FxJS를 기반으로 만들어졌습니다. 각각 SQL과 DOM을 함수형 API를 통해 다룰 수 있게 해주는 라이브러리 입니다.
 
-- [FxDOM](https://github.com/marpple/FxDOM)
 - [FxSQL](https://github.com/marpple/FxSQL)
+- [FxDOM](https://github.com/marpple/FxDOM)
 

@@ -23,6 +23,7 @@
   - [reject](#reject)
   - [compact](#compact)
   - [unique](#unique)
+  - [uniqueBy](#uniqueBy)
   - [difference](#difference)
   - [differenceBy](#differenceBy)
   - [intersection](#intersection)
@@ -149,7 +150,7 @@
 - `(a, a => b, b => c, ..., y => z) => z`
 - `(Promise a, a => b, b => c, ..., y => z) => Promise z`
 - `(a, a => Promise b, b => Promise c, ..., y => z) => Promise z`
-- [source](https://github.com/marpple/FxJS/blob/master/go.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/go.js)
 
 ```javascript
 go(0,
@@ -177,7 +178,7 @@ pb.then(log); // 11
 
 - `((a, b, ...) => e, e => f, f => g, ..., y => z) => (a, b, ...) => z`
 - `((a, b, ...) => Promise e, e => f, f => Promise g, ..., y => z) => Promise z`
-- [source](https://github.com/marpple/FxJS/blob/master/pipe.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pipe.js)
 
 ```javascript
 const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
@@ -207,7 +208,7 @@ go(
 
 - `(a, b, ...) => e => a => (b, ...) => e`
 - `(a, b, ...) => e => (a, b, ...) => e`
-- [source](https://github.com/marpple/FxJS/blob/master/curry.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/curry.js)
 
 ```javascript
 const add = curry((a, b) => a + b);
@@ -222,7 +223,7 @@ add(10, 5); // 15
 ### tap
 
 - `(g, f) => a => (f(g(a), a)`
-- [source](https://github.com/marpple/FxJS/blob/master/tap.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/tap.js)
 
 ```javascript
 go(
@@ -238,7 +239,7 @@ go(
 ### constant
 
 - `a => _ => a`
-- [source](https://github.com/marpple/FxJS/blob/master/constant.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/constant.js)
 
 ```javascript
 const a = constant('A');
@@ -249,7 +250,7 @@ a(); // A
 ### negate
 
 - `f => a => !f(a)`
-- [source](https://github.com/marpple/FxJS/blob/master/negate.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/negate.js)
 
 ```javascript
 const a = negate(a => a);
@@ -260,12 +261,12 @@ log(a(false)); // true
 ### call
 
 - `(f, ...args) => f(...args)`
-- [source](https://github.com/marpple/FxJS/blob/master/call.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/call.js)
 
 ### apply
 
 - `(f, iterable) => f(...iterable)`
-- [source](https://github.com/marpple/FxJS/blob/master/apply.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/apply.js)
 
 ### calls
 
@@ -273,7 +274,7 @@ log(a(false)); // true
 - `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
 - `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
 - `({ k: (a, b) => Promise c, k2: (a, b) => Promise d }, a, b) => Promise { k: c, k2: d }`
-- [source](https://github.com/marpple/FxJS/blob/master/calls.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/calls.js)
 
 ```javascript
 calls([
@@ -308,7 +309,7 @@ calls({
 ### range
 
 - `([start=0], end, [step=1]) => [Number a, ...]`
-- [source](https://github.com/marpple/FxJS/blob/master/range.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/range.js)
 
 ```javascript
 range(4);
@@ -333,7 +334,7 @@ range(0, -4, -1);
 - `(a => b) => Iterable Promise a => Promise [b]`
 - `(a => Promise b) => Iterable a => Promise [b]`
 - `(a => Promise b) => Iterable Promise a => Promise [b]`
-- [source](https://github.com/marpple/FxJS/blob/master/map.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/map.js)
 
 ```javascript
 map(a => a + 10, [1, 2, 3]);
@@ -358,7 +359,7 @@ map(a => a + 10, function* () {
 - `(a => b) => Iterable [k, Promise a] => Promise [[k, b]]`
 - `(a => Promise b) => Iterable [k, a] => Promise [[k, b]]`
 - `(a => Promise b) => Iterable [k, Promise a] => Promise [[k, b]]`
-- [source](https://github.com/marpple/FxJS/blob/master/mapEntries.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapEntries.js)
 
 ```javascript
 mapEntries(a => a + 10, [['a', 1], ['b', 2]]);
@@ -386,7 +387,7 @@ go({ a: 1, b: 2},
 - `(a => b) => { k: Promise a } => Promise { k: b }`
 - `(a => Promise b) => { k: a } => Promise { k: b }`
 - `(a => Promise b) => { k: Promise a } => Promise { k: b }`
-- [source](https://github.com/marpple/FxJS/blob/master/mapObject.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapObject.js)
 
 ```javascript
 mapObject(a => a + 10, { a: 1, b: 2 });
@@ -406,7 +407,7 @@ go(
 
 - `String k => Iterable a => [a[k]]`
 - `String k => Iterable Promise a => Promise [a[k]]`
-- [source](https://github.com/marpple/FxJS/blob/master/pluck.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pluck.js)
 
 ```javascript
 pluck('id', [{ id: 1 }, { id: 3 }]);
@@ -423,7 +424,7 @@ pluck('id', [{ id: 1 }, { id: 3 }]);
 - `(a => Boolean) => Iterable Promise a => Promise [a]`
 - `(a => Promise Boolean) => Iterable a => Promise [a]`
 - `(a => Promise Boolean) => Iterable Promise a => Promise [a]`
-- [source](https://github.com/marpple/FxJS/blob/master/filter.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/filter.js)
 
 ```javascript
 filter(a => a % 2, [1, 2, 3]);
@@ -456,7 +457,7 @@ filter(a => Promise.resolve(a % 2), [
 - `(a => Boolean) => Iterable Promise a => Promise []`
 - `(a => Promise Boolean) => Iterable a => Promise []`
 - `(a => Promise Boolean) => Iterable Promise a => Promise []`
-- [source](https://github.com/marpple/FxJS/blob/master/reject.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/reject.js)
 
 ```javascript
 reject(a => a % 2, [1, 2, 3]);
@@ -484,7 +485,40 @@ reject(a => Promise.resolve(a % 2), [
 ```
 
 ### compact
+
+- `Iterable a => [a]`
+- `Iterable Promise a => Promise [a]`
+- `Iterable a => Promise [a]`
+- `Iterable Promise a => Promise [a]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/compact.js)
+
+```javascript
+compact([1, 2, 0, false, true, null]);
+// [1, 2, true]
+```
+
 ### unique
+
+```javascript
+unique([1, 2, 3, 1, 2, 4]);
+// [1, 2, 3, 4]
+```
+
+### uniqueBy
+
+```javascript
+const users = [
+  {name: 'aa'},
+  {name: 'Aa'},
+  {name: 'bb'},
+  {name: 'cc'},
+  {name: 'bb'}
+];
+
+uniqueBy(u => u.name.toUpperCase(), users);
+// [{name: 'aa'}, {name: 'bb'}, {name: 'cc'}]
+```
+
 ### difference
 ### differenceBy
 ### intersection
@@ -500,7 +534,7 @@ reject(a => Promise.resolve(a % 2), [
 - `((acc, b) => acc) => acc => Iterable b => acc`
 - `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
 - `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
-- [source](https://github.com/marpple/FxJS/blob/master/reduce.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/reduce.js)
 
 ```javascript
 const add = (a, b) => a + b

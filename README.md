@@ -22,8 +22,8 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
 - [Extention Libraries](#Extention-Libraries)
-  - FxSQL
-  - FxDOM
+  - [FxSQL](https://github.com/marpple/FxSQL)
+  - [FxDOM](https://github.com/marpple/FxDOM)
 
 # Getting Started
 
@@ -422,8 +422,8 @@ try {
 
 # Extention Libraries
 
-The following libraries are based on FxJS. These are libraries that can handle DOM and SQL queries through functional APIs, respectively.
+The following libraries are based on FxJS. These are libraries that can handle SQL and DOM through functional APIs, respectively.
 
-- [FxDOM](https://github.com/marpple/FxDOM)
 - [FxSQL](https://github.com/marpple/FxSQL)
+- [FxDOM](https://github.com/marpple/FxDOM)
 
