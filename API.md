@@ -627,3 +627,57 @@ await reduce(add, [
 ### isArray
 ### isString
 ### isUndefined
+
+## Lazy
+
+### L.compact
+### L.deepFlat
+### L.difference
+### L.differenceBy
+### L.drop
+### L.dropUntil
+### L.dropWhile
+### L.entries
+
+### L.filter
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/filter.js)
+
+```javascript
+const iterator = L.filter(a => a % 2, [1, 2, 3]);
+iterator.next(); // { value: 1, done: false }
+iterator.next(); // { value: 3, done: false }
+iterator.next(); // { value: undefined, done: true }
+
+go(
+  L.range(1, Infinity),
+  L.filter(a => a % 2),
+  take(2));
+// [1, 3]
+
+await go(
+  L.range(Infinity),
+  L.map(a => Promise.resolve(a)),
+  L.filter(a => a % 2),
+  take(2));
+// [1, 3]
+```
+
+### L.flat
+### L.flatMap
+### L.indexValues
+### L.intersection
+### L.intersectionBy
+### L.interval
+### L.keys
+### L.map
+### L.mapEntries
+### L.range
+### L.reject
+### L.reverse
+### L.take
+### L.takeUntil
+### L.takeWhile
+### L.union
+### L.unionBy
+### L.values
