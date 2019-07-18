@@ -206,8 +206,8 @@ go(
 
 ### curry
 
-- `(a, b, ...) => e => a => (b, ...) => e`
-- `(a, b, ...) => e => (a, b, ...) => e`
+- `((a, b, ...) => e) => a => (b, ...) => e`
+- `((a, b, ...) => e) => (a, b, ...) => e`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/curry.js)
 
 ```javascript
@@ -488,8 +488,6 @@ reject(a => Promise.resolve(a % 2), [
 
 - `Iterable a => [a]`
 - `Iterable Promise a => Promise [a]`
-- `Iterable a => Promise [a]`
-- `Iterable Promise a => Promise [a]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/compact.js)
 
 ```javascript
@@ -499,12 +497,22 @@ compact([1, 2, 0, false, true, null]);
 
 ### unique
 
+- `Iterable a => [a]`
+- `Iterable a => Promise [a]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/unique.js)
+
 ```javascript
 unique([1, 2, 3, 1, 2, 4]);
 // [1, 2, 3, 4]
 ```
 
 ### uniqueBy
+
+- `(a => b) => Iterable a => [a]`
+- `(a => b) => Iterable Promise a => Promise [a]`
+- `(a => Promise b) => Iterable a => Promise [a]`
+- `(a => Promise b) => Iterable Promise a => Promise [a]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/uniqueBy.js)
 
 ```javascript
 const users = [
@@ -528,9 +536,9 @@ uniqueBy(u => u.name.toUpperCase(), users);
 
 ### reduce
 
-- `((a, b) => c) => Iterable(a, b) => c`
-- `((a, b) => Promise c) => Iterable(a, b) => Promise c`
-- `((a, b) => c) => Iterable(Promise a, Promise b) => Promise c`
+- `((a, b) => c) => Iterable a => c`
+- `((a, b) => Promise c) => Iterable a => Promise c`
+- `((a, b) => c) => Iterable Promise a => Promise c`
 - `((acc, b) => acc) => acc => Iterable b => acc`
 - `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
 - `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
