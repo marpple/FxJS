@@ -350,6 +350,7 @@ try {
   - [union](https://github.com/marpple/FxJS/blob/master/API.md#union)
   - [unionBy](https://github.com/marpple/FxJS/blob/master/API.md#unionBy)
   - [unique](https://github.com/marpple/FxJS/blob/master/API.md#unique)
+  - [uniqueBy](https://github.com/marpple/FxJS/blob/master/API.md#uniqueBy)
   - [unzip](https://github.com/marpple/FxJS/blob/master/API.md#unzip)
   - [values](https://github.com/marpple/FxJS/blob/master/API.md#values)
   - [zip](https://github.com/marpple/FxJS/blob/master/API.md#zip)

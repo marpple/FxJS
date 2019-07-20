@@ -1,275 +1,159 @@
 # API
 
 - [Function](#Function)
-  - [go](#go)
-  - [pipe](#pipe)
-  - [curry](#curry)
-  - [tap](#tap)
-  - [constant](#constant)
-  - [negate](#negate)
-  - [call](#call)
   - [apply](#apply)
+  - [call](#call)
   - [calls](#calls)
+  - [constant](#constant)
+  - [curry](#curry)
+  - [go](#go)
+  - [negate](#negate)
+  - [pipe](#pipe)
+  - [tap](#tap)
 - [Strict](#strict)
-  - [range](#range)
+  - [baseSel](#baseSel)
+  - [compact](#compact)
+  - [countBy](#countBy)
+  - [deepFlat](#deepFlat)
+  - [defaults](#defaults)
+  - [delay](#delay)
+  - [difference](#difference)
+  - [differenceBy](#differenceBy)
+  - [drop](#drop)
+  - [dropRight](#dropRight)
+  - [dropUntil](#dropUntil)
+  - [dropWhile](#dropWhile)
+  - [each](#each)
+  - [entries](#entries)
+  - [extend](#extend)
+  - [filter](#filter)
+  - [find](#find)
+  - [findWhere](#findWhere)
+  - [flat](#flat)
+  - [flatMap](#flatMap)
+  - [groupBy](#groupBy)
+  - [head](#head)
+  - [identity](#identity)
+  - [indexBy](#indexBy)
+  - [initial](#initial)
+  - [intersection](#intersection)
+  - [intersectionBy](#intersectionBy)
+  - [keys](#keys)
+  - [last](#last)
   - [map](#map)
   - [mapEntries](#mapEntries)
   - [mapObject](#mapObject)
-  - [pluck](#pluck)
-  - [flat](#flat)
-  - [deepFlat](#deepFlat)
-  - [flatMap](#flatMap)
-  - [filter](#filter)
-  - [reject](#reject)
-  - [compact](#compact)
-  - [unique](#unique)
-  - [uniqueBy](#uniqueBy)
-  - [difference](#difference)
-  - [differenceBy](#differenceBy)
-  - [intersection](#intersection)
-  - [intersectionBy](#intersectionBy)
-  - [union](#union)
-  - [unionBy](#unionBy)
-  - [reduce](#reduce)
-  - [each](#each)
-  - [partition](#partition)
-  - [countBy](#countBy)
-  - [groupBy](#groupBy)
-  - [indexBy](#indexBy)
   - [max](#max)
   - [maxBy](#maxBy)
   - [min](#min)
   - [minBy](#minBy)
+  - [noop](#noop)
+  - [object](#object)
+  - [omit](#omit)
+  - [partition](#partition)
+  - [pick](#pick)
+  - [pluck](#pluck)
+  - [promiseAllEntries](#promiseAllEntries)
+  - [promiseAllObject](#promiseAllObject)
+  - [range](#range)
+  - [reduce](#reduce)
+  - [reject](#reject)
+  - [sel](#sel)
   - [sort](#sort)
   - [sortBy](#sortBy)
-  - [sortDesc](#sortDesc)
   - [sortByDesc](#sortByDesc)
-  - [object](#object)
-  - [pick](#pick)
-  - [omit](#omit)
-  - [values](#values)
-  - [keys](#keys)
-  - [entries](#entries)
-  - [extend](#extend)
-  - [defaults](#defaults)
-  - [baseSel](#baseSel)
-  - [sel](#sel)
-  - [take](#take)
-  - [takeWhile](#takeWhile)
-  - [takeUntil](#takeUntil)
-  - [takeAll](#takeAll)
-  - [drop](#drop)
-  - [dropWhile](#dropWhile)
-  - [dropUntil](#dropUntil)
-  - [dropRight](#dropRight)
-  - [head](#head)
+  - [sortDesc](#sortDesc)
   - [tail](#tail)
-  - [last](#last)
-  - [initial](#initial)
-  - [find](#find)
-  - [findWhere](#findWhere)
-  - [zip](#zip)
+  - [take](#take)
+  - [takeAll](#takeAll)
+  - [takeUntil](#takeUntil)
+  - [takeWhile](#takeWhile)
+  - [union](#union)
+  - [unionBy](#unionBy)
+  - [unique](#unique)
+  - [uniqueBy](#uniqueBy)
   - [unzip](#unzip)
+  - [values](#values)
+  - [zip](#zip)
   - [zipObj](#zipObj)
   - [zipWith](#zipWith)
-  - [delay](#delay)
-  - [promiseAllObject](#promiseAllObject)
-  - [promiseAllEntries](#promiseAllEntries)
-  - [noop](#noop)
-  - [identity](#identity)
-  - [throttle](#throttle)
-  - [debounce](#debounce)
 - [Predicates](#Predicates)
-  - [some](#some)
   - [every](#every)
-  - [match](#match)
-  - [isMatch](#isMatch)
-  - [isIterable](#isIterable)
-  - [isFunction](#isFunction)
   - [isArray](#isArray)
+  - [isFunction](#isFunction)
+  - [isIterable](#isIterable)
+  - [isMatch](#isMatch)
   - [isString](#isString)
   - [isUndefined](#isUndefined)
+  - [match](#match)
+  - [some](#some)
 - [Lazy](#lazy)
-  - [L.range](#lrange)
-  - [L.map](#lmap)
-  - [L.filter](#lfilter)
-  - [L.reject](#lreject)
-  - [L.compact](#lcompact)
-  - [L.mapEntries](#lmapEntries)
-  - [L.entries](#lentries)
-  - [L.values](#lvalues)
-  - [L.keys](#lkeys)
-  - [L.indexValues](#lindexValues)
-  - [L.flat](#lflat)
-  - [L.flatMap](#lflatMap)
-  - [L.deepFlat](#ldeepFlat)
-  - [L.reverse](#lreverse)
-  - [L.take](#ltake)
-  - [L.takeWhile](#ltakeWhile)
-  - [L.takeUntil](#ltakeUntil)
-  - [L.drop](#ldrop)
-  - [L.dropWhile](#ldropWhile)
-  - [L.dropUntil](#ldropUntil)
-  - [L.difference](#ldifference)
-  - [L.differenceBy](#ldifferenceBy)
-  - [L.intersection](#lintersection)
-  - [L.intersectionBy](#lintersectionBy)
-  - [L.union](#lunion)
-  - [L.unionBy](#lunionBy)
-  - [L.interval](#linterval)
+  - [L.compact](#L.compact)
+  - [L.deepFlat](#L.deepFlat)
+  - [L.difference](#L.difference)
+  - [L.differenceBy](#L.differenceBy)
+  - [L.drop](#L.drop)
+  - [L.dropUntil](#L.dropUntil)
+  - [L.dropWhile](#L.dropWhile)
+  - [L.entries](#L.entries)
+  - [L.filter](#L.filter)
+  - [L.flat](#L.flat)
+  - [L.flatMap](#L.flatMap)
+  - [L.indexValues](#L.indexValues)
+  - [L.intersection](#L.intersection)
+  - [L.intersectionBy](#L.intersectionBy)
+  - [L.interval](#L.interval)
+  - [L.keys](#L.keys)
+  - [L.map](#L.map)
+  - [L.mapEntries](#L.mapEntries)
+  - [L.range](#L.range)
+  - [L.reject](#L.reject)
+  - [L.reverse](#L.reverse)
+  - [L.take](#L.take)
+  - [L.takeUntil](#L.takeUntil)
+  - [L.takeWhile](#L.takeWhile)
+  - [L.union](#L.union)
+  - [L.unionBy](#L.unionBy)
+  - [L.values](#L.values)
 - [Concurrency](#concurrency)
-  - [C.calls](#ccalls)
-  - [C.takeAll](#ctakeAll)
-  - [C.takeRace](#ctakeRace)
-  - [C.race](#crace)
-  - [C.map](#cmap)
-  - [C.mapEntries](#cmapEntries)
-  - [C.filter](#cfilter)
-  - [C.compact](#ccompact)
-  - [C.reduce](#creduce)
-  - [C.take](#ctake)
-  - [C.drop](#cdrop)
-  - [C.take1](#ctake1)
-  - [C.head](#chead)
-  - [C.tail](#ctail)
-  - [C.find](#cfind)
-  - [C.every](#cevery)
-  - [C.some](#csome)
+  - [C.calls](#C.calls)
+  - [C.compact](#C.compact)
+  - [C.drop](#C.drop)
+  - [C.every](#C.every)
+  - [C.filter](#C.filter)
+  - [C.find](#C.find)
+  - [C.head](#C.head)
+  - [C.map](#C.map)
+  - [C.mapEntries](#C.mapEntries)
+  - [C.race](#C.race)
+  - [C.reduce](#C.reduce)
+  - [C.some](#C.some)
+  - [C.tail](#C.tail)
+  - [C.take](#C.take)
+  - [C.take1](#C.take1)
+  - [C.takeAll](#C.takeAll)
+  - [C.takeRace](#C.takeRace)
 - [Stoppable](#stoppable)
   - [reduceS, stop](#reduces-stop)
   - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
 - [String](#String)
-  - [string](#string)
-  - [strMap](#strMap)
-  - [join](#join)
   - [html](#html)
+  - [join](#join)
+  - [strMap](#strMap)
+  - [string](#string)
 
 ## Function
-
-### go
-- `(a, a => b, b => c, ..., y => z) => z`
-- `(Promise a, a => b, b => c, ..., y => z) => Promise z`
-- `(a, a => Promise b, b => Promise c, ..., y => z) => Promise z`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/go.js)
-
-```javascript
-go(0,
-  a => a + 1,
-  a => a + 10,
-  log); // 11
-
-go(0,
-  a => Promise.resolve(a + 1),
-  a => a + 10,
-  log); // 11
-
-const b = go(0,
-  a => a + 1,
-  a => a + 10);
-log(b); // 11
-
-const pb = go(0,
-  a => Promise.resolve(a + 1),
-  a => a + 10);
-pb.then(log); // 11
-```
-
-### pipe
-
-- `((a, b, ...) => d, d => e, ..., y => z) => (a, b, ...) => z`
-- `((a, b, ...) => Promise d, d => e, e => Promise f, ..., y => z) => (a, b, ...) => Promise z`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/pipe.js)
-
-```javascript
-const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
-const b = f1('a');
-log(b); // true
-
-const total = f => pipe(
-  map(f),
-  reduce((a, b) => a + b));
-
-const totalAge = total(({age}) => age);
-
-go(
-  fetchUsers(),
-  totalAge,
-  log);
-  // 186
-
-go(
-  fetchProducts(),
-  total(({price}) => price),
-  log);
-  // 156000
-```
-
-### curry
-
-- `((a, b, ...) => e) => a => (b, ...) => e`
-- `((a, b, ...) => e) => (a, b, ...) => e`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/curry.js)
-
-```javascript
-const add = curry((a, b) => a + b);
-
-const add10 = add(10);
-add10(5); // 15
-add10(6); // 16
-
-add(10, 5); // 15
-```
-
-### tap
-
-- `(g, f) => a => (f(g(a), a)`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/tap.js)
-
-```javascript
-go(
-  10,
-  a => a + 5,
-  tap(
-    a => a + 5,
-    log), // 20
-  a => a + 10,
-  log); // 25
-```
-
-### constant
-
-- `a => _ => a`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/constant.js)
-
-```javascript
-const a = constant('A');
-a(); // A
-a(); // A
-```
-
-### negate
-
-- `f => a => !f(a)`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/negate.js)
-
-```javascript
-const a = negate(a => a);
-log(a(true)); // false
-log(a(false)); // true
-```
-
-### call
-
-- `(f, ...args) => f(...args)`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/call.js)
-
 ### apply
-
 - `(f, iterable) => f(...iterable)`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/apply.js)
 
-### calls
 
+### call
+- `(f, ...args) => f(...args)`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/call.js)
+
+
+### calls
 - `([(a, b) => c, (a, b) => d, ...], a, b) => [c, d, ...]`
 - `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
 - `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
@@ -304,122 +188,147 @@ calls({
 // {a: 1, b: 2, c: 3}
 ```
 
-## Strict
 
-### range
-
-- `([start=0], end, [step=1]) => [Number a, ...]`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/range.js)
+### constant
+- `a => _ => a`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/constant.js)
 
 ```javascript
-range(4);
-// => [0, 1, 2, 3]
-
-range(-4);
-// => [0, -1, -2, -3]
-
-range(1, 5);
-// => [1, 2, 3, 4]
-
-range(0, 20, 5);
-// => [0, 5, 10, 15]
-
-range(0, -4, -1);
-// => [0, -1, -2, -3]
+const a = constant('A');
+a(); // A
+a(); // A
 ```
 
-### map
 
-- `(a => b) => Iterable a => [b]`
-- `(a => b) => Iterable Promise a => Promise [b]`
-- `(a => Promise b) => Iterable a => Promise [b]`
-- `(a => Promise b) => Iterable Promise a => Promise [b]`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/map.js)
+### curry
+- `((a, b, ...) => e) => a => (b, ...) => e`
+- `((a, b, ...) => e) => (a, b, ...) => e`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/curry.js)
 
 ```javascript
-map(a => a + 10, [1, 2, 3]);
-// [11, 12, 13]
+const add = curry((a, b) => a + b);
 
-map(a => Promise.resolve(a + 10), [1, 2, 3]).then(log);
-// [11, 12, 13]
+const add10 = add(10);
+add10(5); // 15
+add10(6); // 16
 
-map(a => a.nodeName, document.querySelectorAll('head *'));
-// ["META", "TITLE", "SCRIPT"]
-
-map(a => a + 10, function* () {
-  yield 4;
-  yield 5;
-} ());
-// [14, 15]
+add(10, 5); // 15
 ```
 
-### mapEntries
 
-- `(a => b) => Iterable [k, a] => [[k, b]]`
-- `(a => b) => Iterable [k, Promise a] => Promise [[k, b]]`
-- `(a => Promise b) => Iterable [k, a] => Promise [[k, b]]`
-- `(a => Promise b) => Iterable [k, Promise a] => Promise [[k, b]]`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapEntries.js)
+### go
+- `(a, a => b, b => c, ..., y => z) => z`
+- `(Promise a, a => b, b => c, ..., y => z) => Promise z`
+- `(a, a => Promise b, b => Promise c, ..., y => z) => Promise z`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/go.js)
 
 ```javascript
-mapEntries(a => a + 10, [['a', 1], ['b', 2]]);
-// [['a', 11], ['b', 12]]
+go(0,
+  a => a + 1,
+  a => a + 10,
+  log); // 11
 
-mapEntries(a => Promise.resolve(a + 10), [['a', 1], ['b', 2]]).then(log);
-// [['a', 11], ['b', 12]]
+go(0,
+  a => Promise.resolve(a + 1),
+  a => a + 10,
+  log); // 11
 
-// entries == Object.entries
-// object == Object.fromEntries
-object(mapEntries(a => a + 10, entries({ a: 1, b: 2})));
-// { a: 11, b: 12 }
+const b = go(0,
+  a => a + 1,
+  a => a + 10);
+log(b); // 11
 
-go({ a: 1, b: 2},
-  entries,
-  mapEntries(a => Promise.resolve(a + 10)),
-  object
-).then(log);
-// { a: 11, b: 12 }
+const pb = go(0,
+  a => Promise.resolve(a + 1),
+  a => a + 10);
+pb.then(log); // 11
 ```
 
-### mapObject
 
-- `(a => b) => { k: a } => { k: b }`
-- `(a => b) => { k: Promise a } => Promise { k: b }`
-- `(a => Promise b) => { k: a } => Promise { k: b }`
-- `(a => Promise b) => { k: Promise a } => Promise { k: b }`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapObject.js)
+### negate
+- `f => a => !f(a)`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/negate.js)
 
 ```javascript
-mapObject(a => a + 10, { a: 1, b: 2 });
-// { a: 11, b: 12 }
+const a = negate(a => a);
+log(a(true)); // false
+log(a(false)); // true
+```
 
-mapObject(a => Promise.resolve(a + 10), { a: 1, b: 2 }).then(log);
-// { a: 11, b: 12 }
+
+### pipe
+- `((a, b, ...) => d, d => e, ..., y => z) => (a, b, ...) => z`
+- `((a, b, ...) => Promise d, d => e, e => Promise f, ..., y => z) => (a, b, ...) => Promise z`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pipe.js)
+
+```javascript
+const f1 = pipe(a => a.toUpperCase(), a => a == 'A');
+const b = f1('a');
+log(b); // true
+
+const total = f => pipe(
+  map(f),
+  reduce((a, b) => a + b));
+
+const totalAge = total(({age}) => age);
 
 go(
-  { a: 1, b: 2 },
-  mapObject(a => Promise.resolve(a + 10)),
+  fetchUsers(),
+  totalAge,
   log);
-  // { a: 11, b: 12 }
+  // 186
+
+go(
+  fetchProducts(),
+  total(({price}) => price),
+  log);
+  // 156000
 ```
 
-### pluck
 
-- `String k => Iterable a => [a[k]]`
-- `String k => Iterable Promise a => Promise [a[k]]`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/pluck.js)
+### tap
+- `(g, f) => a => (f(g(a), a)`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/tap.js)
 
 ```javascript
-pluck('id', [{ id: 1 }, { id: 3 }]);
-// [1, 3]
+go(
+  10,
+  a => a + 5,
+  tap(
+    a => a + 5,
+    log), // 20
+  a => a + 10,
+  log); // 25
 ```
 
-### flat
+
+## Strict
+### baseSel
+### compact
+- `Iterable a => [a]`
+- `Iterable Promise a => Promise [a]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/compact.js)
+
+```javascript
+compact([1, 2, 0, false, true, null]);
+// [1, 2, true]
+```
+
+
+### countBy
 ### deepFlat
-### flatMap
-
+### defaults
+### delay
+### difference
+### differenceBy
+### drop
+### dropRight
+### dropUntil
+### dropWhile
+### each
+### entries
+### extend
 ### filter
-
 - `(a => Boolean) => Iterable a => [a]`
 - `(a => Boolean) => Iterable Promise a => Promise [a]`
 - `(a => Promise Boolean) => Iterable a => Promise [a]`
@@ -451,8 +360,167 @@ filter(a => Promise.resolve(a % 2), [
 // [1, 3]
 ```
 
-### reject
 
+### find
+### findWhere
+### flat
+### flatMap
+### groupBy
+### head
+### identity
+### indexBy
+### initial
+### intersection
+### intersectionBy
+### keys
+### last
+### map
+- `(a => b) => Iterable a => [b]`
+- `(a => b) => Iterable Promise a => Promise [b]`
+- `(a => Promise b) => Iterable a => Promise [b]`
+- `(a => Promise b) => Iterable Promise a => Promise [b]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/map.js)
+
+```javascript
+map(a => a + 10, [1, 2, 3]);
+// [11, 12, 13]
+
+map(a => Promise.resolve(a + 10), [1, 2, 3]).then(log);
+// [11, 12, 13]
+
+map(a => a.nodeName, document.querySelectorAll('head *'));
+// ["META", "TITLE", "SCRIPT"]
+
+map(a => a + 10, function* () {
+  yield 4;
+  yield 5;
+} ());
+// [14, 15]
+```
+
+
+### mapEntries
+- `(a => b) => Iterable [k, a] => [[k, b]]`
+- `(a => b) => Iterable [k, Promise a] => Promise [[k, b]]`
+- `(a => Promise b) => Iterable [k, a] => Promise [[k, b]]`
+- `(a => Promise b) => Iterable [k, Promise a] => Promise [[k, b]]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapEntries.js)
+
+```javascript
+mapEntries(a => a + 10, [['a', 1], ['b', 2]]);
+// [['a', 11], ['b', 12]]
+
+mapEntries(a => Promise.resolve(a + 10), [['a', 1], ['b', 2]]).then(log);
+// [['a', 11], ['b', 12]]
+
+// entries == Object.entries
+// object == Object.fromEntries
+object(mapEntries(a => a + 10, entries({ a: 1, b: 2})));
+// { a: 11, b: 12 }
+
+go({ a: 1, b: 2},
+  entries,
+  mapEntries(a => Promise.resolve(a + 10)),
+  object
+).then(log);
+// { a: 11, b: 12 }
+```
+
+
+### mapObject
+- `(a => b) => { k: a } => { k: b }`
+- `(a => b) => { k: Promise a } => Promise { k: b }`
+- `(a => Promise b) => { k: a } => Promise { k: b }`
+- `(a => Promise b) => { k: Promise a } => Promise { k: b }`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/mapObject.js)
+
+```javascript
+mapObject(a => a + 10, { a: 1, b: 2 });
+// { a: 11, b: 12 }
+
+mapObject(a => Promise.resolve(a + 10), { a: 1, b: 2 }).then(log);
+// { a: 11, b: 12 }
+
+go(
+  { a: 1, b: 2 },
+  mapObject(a => Promise.resolve(a + 10)),
+  log);
+  // { a: 11, b: 12 }
+```
+
+
+### max
+### maxBy
+### min
+### minBy
+### noop
+### object
+### omit
+### partition
+### pick
+### pluck
+- `String k => Iterable a => [a[k]]`
+- `String k => Iterable Promise a => Promise [a[k]]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pluck.js)
+
+```javascript
+pluck('id', [{ id: 1 }, { id: 3 }]);
+// [1, 3]
+```
+
+
+### promiseAllEntries
+### promiseAllObject
+### range
+- `([start=0], end, [step=1]) => [Number a, ...]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/range.js)
+
+```javascript
+range(4);
+// => [0, 1, 2, 3]
+
+range(-4);
+// => [0, -1, -2, -3]
+
+range(1, 5);
+// => [1, 2, 3, 4]
+
+range(0, 20, 5);
+// => [0, 5, 10, 15]
+
+range(0, -4, -1);
+// => [0, -1, -2, -3]
+```
+
+
+### reduce
+- `((a, b) => c) => Iterable a => c`
+- `((a, b) => Promise c) => Iterable a => Promise c`
+- `((a, b) => c) => Iterable Promise a => Promise c`
+- `((acc, b) => acc) => acc => Iterable b => acc`
+- `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
+- `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/reduce.js)
+
+```javascript
+const add = (a, b) => a + b
+
+reduce(add, [1, 2, 3]);
+// 6
+
+reduce(add, 10, [1, 2, 3]);
+// 16
+
+await reduce(add, [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+])
+// 6
+```
+
+
+### reject
 - `(a => Boolean) => Iterable a => []`
 - `(a => Boolean) => Iterable Promise a => Promise []`
 - `(a => Promise Boolean) => Iterable a => Promise []`
@@ -484,19 +552,20 @@ reject(a => Promise.resolve(a % 2), [
 // [2]
 ```
 
-### compact
 
-- `Iterable a => [a]`
-- `Iterable Promise a => Promise [a]`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/compact.js)
-
-```javascript
-compact([1, 2, 0, false, true, null]);
-// [1, 2, true]
-```
-
+### sel
+### sort
+### sortBy
+### sortByDesc
+### sortDesc
+### tail
+### take
+### takeAll
+### takeUntil
+### takeWhile
+### union
+### unionBy
 ### unique
-
 - `Iterable a => [a]`
 - `Iterable a => Promise [a]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/unique.js)
@@ -506,8 +575,8 @@ unique([1, 2, 3, 1, 2, 4]);
 // [1, 2, 3, 4]
 ```
 
-### uniqueBy
 
+### uniqueBy
 - `(a => b) => Iterable a => [a]`
 - `(a => b) => Iterable Promise a => Promise [a]`
 - `(a => Promise b) => Iterable a => Promise [a]`
@@ -527,109 +596,27 @@ uniqueBy(u => u.name.toUpperCase(), users);
 // [{name: 'aa'}, {name: 'bb'}, {name: 'cc'}]
 ```
 
-### difference
-### differenceBy
-### intersection
-### intersectionBy
-### union
-### unionBy
 
-### reduce
-
-- `((a, b) => c) => Iterable a => c`
-- `((a, b) => Promise c) => Iterable a => Promise c`
-- `((a, b) => c) => Iterable Promise a => Promise c`
-- `((acc, b) => acc) => acc => Iterable b => acc`
-- `((acc, b) => Promise acc) => acc => Iterable b => Promise acc`
-- `((acc, b) => acc) => acc => Iterable Promise b => Promise acc`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/reduce.js)
-
-```javascript
-const add = (a, b) => a + b
-
-reduce(add, [1, 2, 3]);
-// 6
-
-reduce(add, 10, [1, 2, 3]);
-// 16
-
-await reduce(add, [
-  Promise.resolve(1),
-  Promise.resolve(2),
-  Promise.resolve(3)
-])
-// 6
-```
-
-### each
-
-### partition
-### countBy
-### groupBy
-### indexBy
-### max
-### maxBy
-### min
-### minBy
-
-### sort
-### sortBy
-### sortDesc
-### sortByDesc
-
-### object
-### pick
-### omit
-### values
-### keys
-### entries
-### extend
-### defaults
-### baseSel
-### sel
-
-### take
-### takeWhile
-### takeUntil
-### takeAll
-### drop
-### dropWhile
-### dropUntil
-### dropRight
-### head
-### tail, rest
-### last
-### initial
-
-### find
-### findWhere
-
-### zip
 ### unzip
+### values
+### zip
 ### zipObj
 ### zipWith
 
-### delay
-### promiseAllObject
-### promiseAllEntries
-
-### noop
-### identity
 
 ## Predicates
-
-### some
 ### every
-### match
-### isMatch
-### isIterable
-### isFunction
 ### isArray
+### isFunction
+### isIterable
+### isMatch
 ### isString
 ### isUndefined
+### match
+### some
+
 
 ## Lazy
-
 ### L.compact
 ### L.deepFlat
 ### L.difference
@@ -638,9 +625,7 @@ await reduce(add, [
 ### L.dropUntil
 ### L.dropWhile
 ### L.entries
-
 ### L.filter
-
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/filter.js)
 
 ```javascript
@@ -663,6 +648,7 @@ await go(
 // [1, 3]
 ```
 
+
 ### L.flat
 ### L.flatMap
 ### L.indexValues
@@ -681,3 +667,34 @@ await go(
 ### L.union
 ### L.unionBy
 ### L.values
+
+## Concurrency
+### C.calls
+### C.compact
+### C.drop
+### C.every
+### C.filter
+### C.find
+### C.head
+### C.map
+### C.mapEntries
+### C.race
+### C.reduce
+### C.some
+### C.tail
+### C.take
+### C.take1
+### C.takeAll
+### C.takeRace
+
+
+## Stoppable
+### reduceS stop
+### goS pipeS stop stopIf
+
+
+## String
+### html
+### join
+### strMap
+### string
