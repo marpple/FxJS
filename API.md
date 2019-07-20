@@ -176,8 +176,8 @@ pb.then(log); // 11
 
 ### pipe
 
-- `((a, b, ...) => e, e => f, f => g, ..., y => z) => (a, b, ...) => z`
-- `((a, b, ...) => Promise e, e => f, f => Promise g, ..., y => z) => Promise z`
+- `((a, b, ...) => d, d => e, ..., y => z) => (a, b, ...) => z`
+- `((a, b, ...) => Promise d, d => e, e => Promise f, ..., y => z) => (a, b, ...) => Promise z`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/pipe.js)
 
 ```javascript
