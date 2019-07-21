@@ -35,13 +35,15 @@ const {
   omit,
   chunk,
   splitEvery,
-  flatMap
+  flatMap,
+  range
 } = Fx;
 
 (function() {
 
   describe('flatMap', function () {
     it('(a => Promise [Promise b]) => Iterable Promise a => Promise [b]', async () => {
+      expect(flatMap(a => range(a), [1, 2])).to.eql([0, 0, 1]);
       expect(await flatMap(a => Promise.resolve([a + 1]), [1])).to.eql([2]);
       expect(await flatMap(a => Promise.resolve([Promise.resolve(a + 1)]), [1])).to.eql([2]);
     });
