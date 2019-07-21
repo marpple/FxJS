@@ -7,7 +7,7 @@ export { default as find } from './findC.js';
 export { default as head } from './headC.js';
 export { default as map } from './mapC.js';
 export { default as mapEntries } from './mapEntriesC.js';
-export { default as object } from "./objectC.js";
+export { default as object, default as fromEntries, default as from_entries } from "./objectC.js";
 export { default as race } from "./raceC.js";
 export { default as reduce } from './reduceC.js';
 export { default as some } from './someC.js';

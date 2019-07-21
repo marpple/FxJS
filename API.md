@@ -121,7 +121,7 @@
   - [L.filter](#L.filter)
   - [L.flat](#L.flat)
   - [L.flatMap](#L.flatMap)
-  - [L.indexValues](#L.indexValues)
+  - [L.zipIndexs](#L.zipIndexs)
   - [L.intersection](#L.intersection)
   - [L.intersectionBy](#L.intersectionBy)
   - [L.intersectionWith](#L.intersectionWith)
@@ -706,7 +706,7 @@ await go(
 
 ### L.flat
 ### L.flatMap
-### L.indexValues
+### L.zipIndexs
 ### L.intersection
 ### L.intersectionBy
 ### L.intersectionWith
