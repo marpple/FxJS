@@ -6,19 +6,26 @@
   - [calls](#calls)
   - [constant](#constant)
   - [curry](#curry)
+  - [debounce](#debounce)
   - [go](#go)
   - [negate](#negate)
   - [pipe](#pipe)
   - [tap](#tap)
+  - [throttle](#throttle)
 - [Strict](#strict)
+  - [add](#add)
+  - [append](#append)
   - [baseSel](#baseSel)
+  - [chunk](#chunk)
   - [compact](#compact)
   - [countBy](#countBy)
   - [deepFlat](#deepFlat)
   - [defaults](#defaults)
+  - [defaultTo](#defaultTo)
   - [delay](#delay)
   - [difference](#difference)
   - [differenceBy](#differenceBy)
+  - [differenceWith](#differenceWith)
   - [drop](#drop)
   - [dropRight](#dropRight)
   - [dropUntil](#dropUntil)
@@ -38,6 +45,8 @@
   - [initial](#initial)
   - [intersection](#intersection)
   - [intersectionBy](#intersectionBy)
+  - [intersectionWith](#intersectionWith)
+  - [join](#join)
   - [keys](#keys)
   - [last](#last)
   - [map](#map)
@@ -53,21 +62,27 @@
   - [partition](#partition)
   - [pick](#pick)
   - [pluck](#pluck)
+  - [prepend](#prepend)
   - [promiseAllEntries](#promiseAllEntries)
   - [promiseAllObject](#promiseAllObject)
   - [range](#range)
   - [reduce](#reduce)
   - [reject](#reject)
+  - [rest](#rest)
   - [sel](#sel)
   - [sort](#sort)
   - [sortBy](#sortBy)
   - [sortByDesc](#sortByDesc)
   - [sortDesc](#sortDesc)
+  - [split](#split)
+  - [splitEvery](#splitEvery)
   - [tail](#tail)
   - [take](#take)
+  - [take1](#take1)
   - [takeAll](#takeAll)
   - [takeUntil](#takeUntil)
   - [takeWhile](#takeWhile)
+  - [toIter](#toIter)
   - [union](#union)
   - [unionBy](#unionBy)
   - [unique](#unique)
@@ -79,6 +94,7 @@
   - [zipWith](#zipWith)
 - [Predicates](#Predicates)
   - [every](#every)
+  - [has](#has)
   - [isArray](#isArray)
   - [isFunction](#isFunction)
   - [isIterable](#isIterable)
@@ -88,13 +104,19 @@
   - [match](#match)
   - [some](#some)
 - [Lazy](#lazy)
+  - [L.append](#L.append)
+  - [L.chunk](#L.chunk)
   - [L.compact](#L.compact)
+  - [L.concat](#L.concat)
+  - [L.constant](#L.constant)
   - [L.deepFlat](#L.deepFlat)
   - [L.difference](#L.difference)
   - [L.differenceBy](#L.differenceBy)
+  - [L.differenceWith](#L.differenceWith)
   - [L.drop](#L.drop)
   - [L.dropUntil](#L.dropUntil)
   - [L.dropWhile](#L.dropWhile)
+  - [L.empty](#L.empty)
   - [L.entries](#L.entries)
   - [L.filter](#L.filter)
   - [L.flat](#L.flat)
@@ -102,6 +124,7 @@
   - [L.indexValues](#L.indexValues)
   - [L.intersection](#L.intersection)
   - [L.intersectionBy](#L.intersectionBy)
+  - [L.intersectionWith](#L.intersectionWith)
   - [L.interval](#L.interval)
   - [L.keys](#L.keys)
   - [L.map](#L.map)
@@ -109,12 +132,16 @@
   - [L.range](#L.range)
   - [L.reject](#L.reject)
   - [L.reverse](#L.reverse)
+  - [L.splitEvery](#L.splitEvery)
   - [L.take](#L.take)
   - [L.takeUntil](#L.takeUntil)
   - [L.takeWhile](#L.takeWhile)
   - [L.union](#L.union)
   - [L.unionBy](#L.unionBy)
+  - [L.unique](#L.unique)
+  - [L.uniqueBy](#L.uniqueBy)
   - [L.values](#L.values)
+  - [L.zip](#L.zip)
 - [Concurrency](#concurrency)
   - [C.calls](#C.calls)
   - [C.compact](#C.compact)
@@ -125,6 +152,7 @@
   - [C.head](#C.head)
   - [C.map](#C.map)
   - [C.mapEntries](#C.mapEntries)
+  - [C.object](#C.object)
   - [C.race](#C.race)
   - [C.reduce](#C.reduce)
   - [C.some](#C.some)
@@ -216,6 +244,7 @@ add(10, 5); // 15
 ```
 
 
+### debounce
 ### go
 - `(a, a => b, b => c, ..., y => z) => z`
 - `(Promise a, a => b, b => c, ..., y => z) => Promise z`
@@ -302,8 +331,15 @@ go(
 ```
 
 
+### throttle
+
+
+
 ## Strict
+### add
+### append
 ### baseSel
+### chunk
 ### compact
 - `Iterable a => [a]`
 - `Iterable Promise a => Promise [a]`
@@ -318,9 +354,11 @@ compact([1, 2, 0, false, true, null]);
 ### countBy
 ### deepFlat
 ### defaults
+### defaultTo
 ### delay
 ### difference
 ### differenceBy
+### differenceWith
 ### drop
 ### dropRight
 ### dropUntil
@@ -372,6 +410,8 @@ filter(a => Promise.resolve(a % 2), [
 ### initial
 ### intersection
 ### intersectionBy
+### intersectionWith
+### join
 ### keys
 ### last
 ### map
@@ -469,6 +509,7 @@ pluck('id', [{ id: 1 }, { id: 3 }]);
 ```
 
 
+### prepend
 ### promiseAllEntries
 ### promiseAllObject
 ### range
@@ -553,16 +594,21 @@ reject(a => Promise.resolve(a % 2), [
 ```
 
 
+### rest
 ### sel
 ### sort
 ### sortBy
 ### sortByDesc
 ### sortDesc
+### split
+### splitEvery
 ### tail
 ### take
+### take1
 ### takeAll
 ### takeUntil
 ### takeWhile
+### toIter
 ### union
 ### unionBy
 ### unique
@@ -604,8 +650,10 @@ uniqueBy(u => u.name.toUpperCase(), users);
 ### zipWith
 
 
+
 ## Predicates
 ### every
+### has
 ### isArray
 ### isFunction
 ### isIterable
@@ -616,14 +664,21 @@ uniqueBy(u => u.name.toUpperCase(), users);
 ### some
 
 
+
 ## Lazy
+### L.append
+### L.chunk
 ### L.compact
+### L.concat
+### L.constant
 ### L.deepFlat
 ### L.difference
 ### L.differenceBy
+### L.differenceWith
 ### L.drop
 ### L.dropUntil
 ### L.dropWhile
+### L.empty
 ### L.entries
 ### L.filter
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/filter.js)
@@ -654,6 +709,7 @@ await go(
 ### L.indexValues
 ### L.intersection
 ### L.intersectionBy
+### L.intersectionWith
 ### L.interval
 ### L.keys
 ### L.map
@@ -661,12 +717,18 @@ await go(
 ### L.range
 ### L.reject
 ### L.reverse
+### L.splitEvery
 ### L.take
 ### L.takeUntil
 ### L.takeWhile
 ### L.union
 ### L.unionBy
+### L.unique
+### L.uniqueBy
 ### L.values
+### L.zip
+
+
 
 ## Concurrency
 ### C.calls
@@ -678,6 +740,7 @@ await go(
 ### C.head
 ### C.map
 ### C.mapEntries
+### C.object
 ### C.race
 ### C.reduce
 ### C.some
@@ -688,9 +751,11 @@ await go(
 ### C.takeRace
 
 
+
 ## Stoppable
 ### reduceS stop
 ### goS pipeS stop stopIf
+
 
 
 ## String
