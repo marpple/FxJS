@@ -245,6 +245,8 @@ add(10, 5); // 15
 
 
 ### debounce
+
+
 ### go
 - `(a, a => b, b => c, ..., y => z) => z`
 - `(Promise a, a => b, b => c, ..., y => z) => Promise z`
@@ -316,7 +318,7 @@ go(
 
 
 ### tap
-- `(g, f) => a => (f(g(a), a)`
+- `(g, f, ...) => a => go(a, g, f, ..., _ => a)`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/tap.js)
 
 ```javascript
@@ -334,12 +336,30 @@ go(
 ### throttle
 
 
-
 ## Strict
+
 ### add
+- Number => Number => Number
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/add.js)
+
+```javascript
+add(10, 5);
+// 15
+
+add(10)(5);
+// 15
+```
+
+
 ### append
+
+
 ### baseSel
+
+
 ### chunk
+
+
 ### compact
 - `Iterable a => [a]`
 - `Iterable Promise a => Promise [a]`
@@ -352,20 +372,112 @@ compact([1, 2, 0, false, true, null]);
 
 
 ### countBy
+- (a => b) => Iterable a => { [b]: n }
+- (a => b) => Iterable Promise a => Promise { [b]: n }
+- (a => Promise b) => Iterable a => Promise { [b]: n }
+- (a => Promise b) => Iterable Promise a => Promise { [b]: n }
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/countBy.js)
+
+```javascript
+countBy(a => a % 2 ? 'odd' : 'even', [1, 2, 3, 4, 5]);
+// { odd: 3, even: 2 }
+```
+
+
 ### deepFlat
+- [[[[a]]]] => [a]
+- Iterable Iterable Iterable ... Iterable a => [a]
+- [Promise [[Promise a]]] => Promise [a]
+- [Promise [[Iterable Promise a]]] => Promise [a]
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/deepFlat.js)
+
+```javascript
+deepFlat([[1, 2, [3, [4, 5, [6], [[7]]]]]]);
+// [1, 2, 3, 4, 5, 6, 7];
+```
+
+
 ### defaults
+- ({}, {}, ..., {}) => {}
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/defaults.js)
+
+```javascript
+defaults({flavor: "chocolate"}, {flavor: "vanilla", sprinkles: "lots"});
+// {flavor: "chocolate", sprinkles: "lots"}
+```
+
+
 ### defaultTo
+
+
 ### delay
+- time => a => a
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/delay.js)
+
+```javascript
+go(
+  'hi',
+  delay(1000),
+  log); // After 1 second "hi"
+```
+
+
 ### difference
+
+
 ### differenceBy
+
+
 ### differenceWith
+
+
 ### drop
+
+
 ### dropRight
+
+
 ### dropUntil
+
+
 ### dropWhile
+
+
 ### each
+- (a => b) => Iterable a => Iterable a
+- (a => b) => Iterable Promise a => Promise Iterable Promise a
+- (a => Promise b) => Iterable a => Promise Iterable a
+- (a => Promise b) => Iterable Promise a => Promise Iterable Promise a
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/each.js)
+
+```javascript
+go(
+  document.querySelectorAll('.post'),
+  each(el => el.innerHTML = ''),
+  log); // [div.post, div.post, div.post];
+```
+
+
 ### entries
+- { k: v } => [[k, v]]
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/entries.js)
+
+```javascript
+entries({a: 1, b: 2, c: 3});
+// [['a', 1], ['b', 2], ['c', 3]]
+```
+
+
 ### extend
+- ({}, {}, ..., {}) => {}
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/extend.js)
+
+```javascript
+extend({flavor: "vanilla", sprinkles: "lots"}, {flavor: "chocolate"});
+// {flavor: "chocolate", sprinkles: "lots"}
+```
+
+
 ### filter
 - `(a => Boolean) => Iterable a => [a]`
 - `(a => Boolean) => Iterable Promise a => Promise [a]`
@@ -400,20 +512,91 @@ filter(a => Promise.resolve(a % 2), [
 
 
 ### find
+- (a => Boolean) => Iterable a => a
+- (a => Promise Boolean) => Iterable a => Promise a
+- (a => Boolean) => Iterable Promise a => Promise a
+- (a => Promise Boolean) => Iterable Promise a => Promise a
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/find.js)
+
+```javascript
+find(a => a > 3, [1, 2, 3, 4, 5]);
+// 4
+
+find(({age}) => age == 23, [
+  { name: 'a', age: 15, ... },
+  { name: 'b', age: 19, ... },
+  { name: 'c', age: 23, ... },
+  { name: 'd', age: 17, ... },
+  { name: 'e', age: 23, ... }
+]);
+// { name: 'c', age: 23, ... }
+```
+
+
 ### findWhere
+- {k: v} => Iterable {k: v} => {k: v}
+- {k: v} => Iterable Promise {k: v} => Promise {k: v}
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/findWhere.js)
+
+```javascript
+findWhere({ age: 23 }, [
+  { name: 'a', age: 15, ... },
+  { name: 'b', age: 19, ... },
+  { name: 'c', age: 23, ... },
+  { name: 'd', age: 17, ... },
+  { name: 'e', age: 23, ... }
+]);
+// { name: 'c', age: 23, ... }
+
+findWhere({ name: 'e', age: 23 }, [
+  { name: 'a', age: 15, ... },
+  { name: 'b', age: 19, ... },
+  { name: 'c', age: 23, ... },
+  { name: 'd', age: 17, ... },
+  { name: 'e', age: 23, ... }
+]);
+// { name: 'e', age: 23, ... }
+```
+
 ### flat
+
+
 ### flatMap
+
+
 ### groupBy
+
+
 ### head
+
+
 ### identity
+
+
 ### indexBy
+
+
 ### initial
+
+
 ### intersection
+
+
 ### intersectionBy
+
+
 ### intersectionWith
+
+
 ### join
+
+
 ### keys
+
+
 ### last
+
+
 ### map
 - `(a => b) => Iterable a => [b]`
 - `(a => b) => Iterable Promise a => Promise [b]`
