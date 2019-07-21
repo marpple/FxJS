@@ -512,6 +512,7 @@ filter(a => Promise.resolve(a % 2), [
 
 
 ### find
+- find = head . L.filter
 - (a => Boolean) => Iterable a => a
 - (a => Promise Boolean) => Iterable a => Promise a
 - (a => Boolean) => Iterable Promise a => Promise a
@@ -559,10 +560,46 @@ findWhere({ name: 'e', age: 23 }, [
 ```
 
 ### flat
+- (Iterable Iterable a, Number depth) => [a]
+- (Iterable Promise Iterable a, Number depth) => Promise [a]
+- (Iterable Iterable Promise a, Number depth) => Promise [a]
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/flat.js)
+
+```javascript
+flat([[1, 2], [3, 4]]);
+// [1, 2, 3, 4]
+
+flat([[1, [2]], [[[3]]]);
+// [1, [2], [[3]]];
+
+flat([[1, [2]], [[[3]]], 2);
+// [1, 2, [3]];
+
+flat([[1, [2]], [[[3]]], 3);
+// [1, 2, 3];
+
+await flat([Promise.resolve([1, 2]), [Promise.resolve(3), 4]]);
+// [1, 2, 3, 4]
+```
 
 
 ### flatMap
+- flatMap = flat . mapLazy
+- (a => Iterable b) => Iterable a => [b]
+- (a => Iterable b) => Iterable Promise a => Promise [b]
+- (a => Iterable Promise b) => Iterable a => Promise [b]
+- (a => Promise Iterable b) => Iterable Promise a => Promise [b]
+- (a => Promise Iterable Promise b) => Iterable a => Promise [b]
+- (a => Promise Iterable Promise b) => Iterable Promise a => Promise [b]
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/flatMap.js)
 
+```javascript
+flatMap(a => range(a), [1, 2]);
+// [0, 0, 1]
+
+await flatMap(a => Promise.resolve(range(a)), [1, 2]);
+// [0, 0, 1]
+```
 
 ### groupBy
 
@@ -681,6 +718,8 @@ go(
 ### omit
 ### partition
 ### pick
+
+
 ### pluck
 - `String k => Iterable a => [a[k]]`
 - `String k => Iterable Promise a => Promise [a[k]]`
@@ -695,6 +734,8 @@ pluck('id', [{ id: 1 }, { id: 3 }]);
 ### prepend
 ### promiseAllEntries
 ### promiseAllObject
+
+
 ### range
 - `([start=0], end, [step=1]) => [Number a, ...]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/range.js)
@@ -794,6 +835,8 @@ reject(a => Promise.resolve(a % 2), [
 ### toIter
 ### union
 ### unionBy
+
+
 ### unique
 - `Iterable a => [a]`
 - `Iterable a => Promise [a]`
@@ -863,6 +906,8 @@ uniqueBy(u => u.name.toUpperCase(), users);
 ### L.dropWhile
 ### L.empty
 ### L.entries
+
+
 ### L.filter
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/filter.js)
 
