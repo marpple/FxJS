@@ -67,7 +67,7 @@ export { default as negate } from './negate.js';
 export { default as noop } from './noop.js';
 export { default as nop } from './nop.js';
 export { default as not } from './not.js';
-export { default as object } from './object.js';
+export { default as object, default as fromEntries, default as from_entries } from './object.js';
 export { default as omit } from './omit.js';
 export { default as partition } from './partition.js';
 export { default as pick } from './pick.js';
