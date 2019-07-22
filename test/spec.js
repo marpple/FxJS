@@ -36,10 +36,19 @@ const {
   chunk,
   splitEvery,
   flatMap,
-  range
+  range,
+  each
 } = Fx;
 
 (function() {
+  describe('each', function () {
+    it('each', async () => {
+      let i = 0;
+      expect(each(a => {
+        expect(a).to.eql(i++);
+      }, [0, 1, 2, 3][Symbol.iterator]())).to.eql([0, 1, 2, 3]);
+    });
+  });
 
   describe('flatMap', function () {
     it('(a => Promise [Promise b]) => Iterable Promise a => Promise [b]', async () => {

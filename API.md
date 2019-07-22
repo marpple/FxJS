@@ -444,10 +444,10 @@ go(
 
 
 ### each
-- (a => b) => Iterable a => Iterable a
-- (a => b) => Iterable Promise a => Promise Iterable Promise a
-- (a => Promise b) => Iterable a => Promise Iterable a
-- (a => Promise b) => Iterable Promise a => Promise Iterable Promise a
+- (a => b) => Iterable a => [a]
+- (a => b) => Iterable Promise a => Promise [a]
+- (a => Promise b) => Iterable a => Promise [a]
+- (a => Promise b) => Iterable Promise a => Promise [a]
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/each.js)
 
 ```javascript
