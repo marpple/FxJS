@@ -1,4 +1,4 @@
-export { default as add } from "./add";
+export { default as add } from "./add.js";
 export { default as append } from './append.js';
 export { default as apply } from './apply.js';
 export { default as baseSel, default as base_sel } from './baseSel.js';
