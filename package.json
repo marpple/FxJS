@@ -9,7 +9,7 @@
     "build": "npm run build-modern && npm run build-legacy",
     "build-modern": "webpack --config webpack.config.modern.js --env.NODE_ENV=production",
     "build-legacy": "webpack --config webpack.config.legacy.js --env.NODE_ENV=production",
-    "test": "mocha -R spec test/**/*.js"
+    "test": "mocha 'test/spec.js' --require esm"
   },
   "files": [
     ".internal",
@@ -17,7 +17,6 @@
     "Lazy",
     "Strict",
     "dist",
-    "index.cjs",
     "index.js"
   ],
   "repository": {
@@ -46,16 +45,16 @@
   "homepage": "https://github.com/marpple/FxJS#readme",
   "dependencies": {
     "core-js": "^3.0.1",
-    "esm": "^3.0.80",
     "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
-    "lodash": ">=4.17.13",
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "babel-loader": "^8.0.5",
     "chai": "^4.1.2",
+    "esm": "^3.2.25",
+    "lodash": ">=4.17.13",
     "mocha": "^5.2.0",
     "terser-webpack-plugin": "^1.2.3",
     "uglifyjs-webpack-plugin": "^2.1.2",

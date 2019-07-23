@@ -1,7 +1,5 @@
-const { expect } = require('chai');
-const Fx = require('../index.cjs');
-
-const {
+import { expect } from "chai";
+import {
   html,
   L, flat, deepFlat, stop,
   take, C, takeWhile, takeUntil, go,
@@ -38,7 +36,7 @@ const {
   flatMap,
   range,
   each
-} = Fx;
+} from "../index.js";
 
 (function() {
   describe('each', function () {
