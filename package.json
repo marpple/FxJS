@@ -3,7 +3,7 @@
   "version": "0.9.5",
   "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
-  "module": "fx.js",
+  "type": "module",
   "sideEffects": false,
   "scripts": {
     "build": "npm run build-modern && npm run build-legacy",
@@ -17,8 +17,8 @@
     "Lazy",
     "Strict",
     "dist",
-    "index.js",
-    "fx.js"
+    "index.cjs",
+    "index.js"
   ],
   "repository": {
     "type": "git",

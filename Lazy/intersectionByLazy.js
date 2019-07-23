@@ -1,6 +1,6 @@
 import filterLazy from './filterLazy.js';
 import mapLazy from './mapLazy.js';
-import uniqueLazy from './uniqueLazy';
+import uniqueLazy from './uniqueLazy.js';
 import curry from "../Strict/curry.js";
 import go1 from '../Strict/go1.js';
 import go from '../Strict/go.js';

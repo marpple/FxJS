@@ -1,6 +1,6 @@
 import curry from "./curry.js";
 import go from "./go.js";
-import { map as mapLazy, takeUntil as takeUntilLazy } from "../Lazy";
+import { map as mapLazy, takeUntil as takeUntilLazy } from "../Lazy/index.js";
 import identity from "./identity.js";
 import reduce from "./reduce.js";
 

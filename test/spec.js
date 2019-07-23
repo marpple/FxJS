@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const Fx = require('../index.js');
+const Fx = require('../index.cjs');
 
 const {
   html,
