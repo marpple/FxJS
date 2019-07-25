@@ -353,7 +353,7 @@ try {
   - [sortDesc](https://github.com/marpple/FxJS/blob/master/API.md#sortDesc)
   - [split](https://github.com/marpple/FxJS/blob/master/API.md#split)
   - [splitEvery](https://github.com/marpple/FxJS/blob/master/API.md#splitEvery)
-  - [tail](https://github.com/marpple/FxJS/blob/master/API.md#tail)
+  - [tail](https://github.com/marpple/FxJS/blob/master/API.md#tail-rest)
   - [take](https://github.com/marpple/FxJS/blob/master/API.md#take)
   - [take1](https://github.com/marpple/FxJS/blob/master/API.md#take1)
   - [takeAll](https://github.com/marpple/FxJS/blob/master/API.md#takeAll)
@@ -451,6 +451,7 @@ try {
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)
+
 The above libraries are based on FxJS.
 FxSQL and FxDOM are libraries that can handle SQL and DOM through functional APIs,respectively.
 FxContrib is contributors' library for FxJS, FxSQL and FxDOM.

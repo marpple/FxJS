@@ -364,7 +364,7 @@ try {
   - [sortDesc](https://github.com/marpple/FxJS/blob/master/API.md#sortDesc)
   - [split](https://github.com/marpple/FxJS/blob/master/API.md#split)
   - [splitEvery](https://github.com/marpple/FxJS/blob/master/API.md#splitEvery)
-  - [tail](https://github.com/marpple/FxJS/blob/master/API.md#tail)
+  - [tail](https://github.com/marpple/FxJS/blob/master/API.md#tail-rest)
   - [take](https://github.com/marpple/FxJS/blob/master/API.md#take)
   - [take1](https://github.com/marpple/FxJS/blob/master/API.md#take1)
   - [takeAll](https://github.com/marpple/FxJS/blob/master/API.md#takeAll)
@@ -462,6 +462,7 @@ try {
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)
+
 위의 라이브러리들은 FxJS를 기반으로 만들어졌습니다.
 FxSQL과 FxDOM은 각각 SQL과 DOM을 함수형 API를 통해 다룰 수 있는 라이브러리 입니다.
 그리고 FxContrib는 FxJS와 FxDOM, FxSQL의 Contributor를 위해 만들어 졌습니다.
