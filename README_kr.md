@@ -24,6 +24,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 - [Extention Libraries](#Extention-Libraries)
   - [FxSQL](https://github.com/marpple/FxSQL)
   - [FxDOM](https://github.com/marpple/FxDOM)
+  - [FxContrib](https://github.com/marpple/FxContrib)
 
 # Getting Started
 
@@ -458,9 +459,9 @@ try {
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
   
 # Extention Libraries
-
-아래의 라이브러리들은 FxJS를 기반으로 만들어졌습니다. 각각 SQL과 DOM을 함수형 API를 통해 다룰 수 있게 해주는 라이브러리 입니다.
-
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
-
+- [FxContrib](https://github.com/marpple/FxContrib)
+위의 라이브러리들은 FxJS를 기반으로 만들어졌습니다.
+FxSQL과 FxDOM은 각각 SQL과 DOM을 함수형 API를 통해 다룰 수 있는 라이브러리 입니다.
+그리고 FxContrib는 FxJS와 FxDOM, FxSQL의 Contributor를 위해 만들어 졌습니다.
