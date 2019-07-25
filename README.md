@@ -345,7 +345,6 @@ try {
   - [range](https://github.com/marpple/FxJS/blob/master/API.md#range)
   - [reduce](https://github.com/marpple/FxJS/blob/master/API.md#reduce)
   - [reject](https://github.com/marpple/FxJS/blob/master/API.md#reject)
-  - [rest](https://github.com/marpple/FxJS/blob/master/API.md#rest)
   - [sel](https://github.com/marpple/FxJS/blob/master/API.md#sel)
   - [sort](https://github.com/marpple/FxJS/blob/master/API.md#sort)
   - [sortBy](https://github.com/marpple/FxJS/blob/master/API.md#sortBy)

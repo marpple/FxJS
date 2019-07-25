@@ -818,7 +818,6 @@ reject(a => Promise.resolve(a % 2), [
 ```
 
 
-### rest
 ### sel
 ### sort
 ### sortBy
@@ -826,7 +825,7 @@ reject(a => Promise.resolve(a % 2), [
 ### sortDesc
 ### split
 ### splitEvery
-### tail
+### tail (rest)
 ### take
 ### take1
 ### takeAll

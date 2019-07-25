@@ -212,7 +212,6 @@ __webpack_require__.d(Strict_namespaceObject, "range", function() { return range
 __webpack_require__.d(Strict_namespaceObject, "reduce", function() { return reduce; });
 __webpack_require__.d(Strict_namespaceObject, "reduceS", function() { return reduceS; });
 __webpack_require__.d(Strict_namespaceObject, "reject", function() { return Strict_reject; });
-__webpack_require__.d(Strict_namespaceObject, "rest", function() { return rest; });
 __webpack_require__.d(Strict_namespaceObject, "sel", function() { return Strict_sel; });
 __webpack_require__.d(Strict_namespaceObject, "some", function() { return Strict_some; });
 __webpack_require__.d(Strict_namespaceObject, "sort", function() { return sort; });
@@ -233,6 +232,7 @@ __webpack_require__.d(Strict_namespaceObject, "strMap", function() { return Stri
 __webpack_require__.d(Strict_namespaceObject, "str_map", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "scat", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "tail", function() { return tail; });
+__webpack_require__.d(Strict_namespaceObject, "rest", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "take", function() { return Strict_take; });
 __webpack_require__.d(Strict_namespaceObject, "take1", function() { return Strict_take1; });
 __webpack_require__.d(Strict_namespaceObject, "takeAll", function() { return takeAll; });
@@ -1469,12 +1469,6 @@ function range(..._) {
 /* harmony default export */ var Strict_reject = (curry(function reject(f, iter) {
   return Strict_filter(a => go1(f(a), not), iter);
 }));
-// CONCATENATED MODULE: ./Strict/rest.js
-
-
-function rest(a) {
-  return Strict_drop(1, a);
-}
 // CONCATENATED MODULE: ./Strict/sel.js
 
 
@@ -1828,7 +1822,6 @@ function unzip(iter) {
 
 
  //ok
-
 
 
 
