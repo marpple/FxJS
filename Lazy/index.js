@@ -15,7 +15,7 @@ export { default as entries } from './entriesLazy.js';
 export { default as filter } from './filterLazy.js';
 export { default as flat } from './flatLazy.js';
 export { default as flatMap, default as flat_map } from './flatMapLazy.js';
-export { default as zipIndexs, default as zip_indexs, default as indexValues, default as index_values } from './zipIndexs.js';
+export { default as zipIndexs, default as zip_indexs, default as indexValues, default as index_values, default as ipp } from './zipIndexs.js';
 export { default as intersection } from './intersectionLazy.js';
 export { default as intersectionWith, default as intersection_with } from './intersectionWithLazy.js';
 export { default as intersectionBy, default as intersection_by } from './intersectionByLazy.js';
