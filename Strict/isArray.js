@@ -1,3 +1,2 @@
-export const { isArray } = Array;
-
+const { isArray } = Array;
 export default isArray;

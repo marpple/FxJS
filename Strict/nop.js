@@ -1,3 +1,2 @@
-export const nop = Symbol.for('nop');
-
+const nop = Symbol.for('nop');
 export default nop;
