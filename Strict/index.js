@@ -95,6 +95,8 @@ export { default as stop } from './stop.js';
 export { default as stopIf, default as stop_if } from './stopIf.js';
 export { default as string } from './string.js';
 export { default as strMap, default as str_map, default as scat } from './strMap.js';
+export { default as sum } from './sum.js';
+export { default as sumBy, default as sum_by } from './sumBy.js';
 export { default as tail, default as rest } from './tail.js';
 export { default as take } from './take.js';
 export { default as take1 } from './take1.js';

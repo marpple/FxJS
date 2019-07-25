@@ -35,7 +35,9 @@ import {
   splitEvery,
   flatMap,
   range,
-  each
+  each,
+  sumBy,
+  sel
 } from "../index.js";
 
 (function() {
@@ -936,4 +938,10 @@ import {
     });
   });
 
+  describe('sumBy', function() {
+    it('#', function() {
+      const arr = [{ a: 1 }, { a: 2 }, { a: 3 }];
+      expect(sumBy(sel('a'), arr)).to.eql(6);
+    });
+  });
 } ());
