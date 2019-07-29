@@ -6,7 +6,12 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "transpile": "BABEL_ENV=cjs babel Strict --out-dir cjs",
+    "transpile:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal",
+    "transpile:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict",
+    "transpile:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy",
+    "transpile:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency",
+    "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.js",
+    "transpile": "npm run transpile:internal && npm run transpile:strict && npm run transpile:lazy && npm run transpile:concurrency && npm run transpile:index",
     "build": "npm run build-modern && npm run build-legacy",
     "build-modern": "webpack --config webpack.config.modern.js --env.NODE_ENV=production",
     "build-legacy": "webpack --config webpack.config.legacy.js --env.NODE_ENV=production",
