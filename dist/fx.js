@@ -105,6 +105,7 @@ __webpack_require__.d(Strict_namespaceObject, "constant", function() { return co
 __webpack_require__.d(Strict_namespaceObject, "countBy", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "count_by", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "curry", function() { return curry; });
+__webpack_require__.d(Strict_namespaceObject, "curry2", function() { return curry2; });
 __webpack_require__.d(Strict_namespaceObject, "debounce", function() { return Strict_debounce; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlat", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlatten", function() { return deepFlat; });
@@ -115,8 +116,8 @@ __webpack_require__.d(Strict_namespaceObject, "defaultTo", function() { return d
 __webpack_require__.d(Strict_namespaceObject, "default_to", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "delay", function() { return delay; });
 __webpack_require__.d(Strict_namespaceObject, "difference", function() { return Strict_difference; });
-__webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { return Strict_differenceBy; });
-__webpack_require__.d(Strict_namespaceObject, "difference_by", function() { return Strict_differenceBy; });
+__webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { return differenceBy; });
+__webpack_require__.d(Strict_namespaceObject, "difference_by", function() { return differenceBy; });
 __webpack_require__.d(Strict_namespaceObject, "differenceWith", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "difference_with", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "drop", function() { return Strict_drop; });
@@ -231,6 +232,9 @@ __webpack_require__.d(Strict_namespaceObject, "string", function() { return stri
 __webpack_require__.d(Strict_namespaceObject, "strMap", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "str_map", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "scat", function() { return Strict_strMap; });
+__webpack_require__.d(Strict_namespaceObject, "sum", function() { return sum; });
+__webpack_require__.d(Strict_namespaceObject, "sumBy", function() { return Strict_sumBy; });
+__webpack_require__.d(Strict_namespaceObject, "sum_by", function() { return Strict_sumBy; });
 __webpack_require__.d(Strict_namespaceObject, "tail", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "rest", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "take", function() { return Strict_take; });
@@ -290,6 +294,7 @@ __webpack_require__.d(Lazy_namespaceObject, "zipIndexs", function() { return zip
 __webpack_require__.d(Lazy_namespaceObject, "zip_indexs", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "indexValues", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "index_values", function() { return zipIndexs; });
+__webpack_require__.d(Lazy_namespaceObject, "ipp", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "intersection", function() { return Lazy_intersectionLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "intersectionWith", function() { return Lazy_intersectionWithLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "intersection_with", function() { return Lazy_intersectionWithLazy; });
@@ -365,7 +370,6 @@ function toIter(iterable) {
 }
 // CONCATENATED MODULE: ./Strict/nop.js
 const nop = Symbol.for('nop');
-
 /* harmony default export */ var Strict_nop = (nop);
 // CONCATENATED MODULE: ./Strict/take.js
 
@@ -420,7 +424,6 @@ function takeAll(iter) {
 }));
 // CONCATENATED MODULE: ./Strict/isArray.js
 const { isArray } = Array;
-
 /* harmony default export */ var Strict_isArray = (isArray);
 // CONCATENATED MODULE: ./Strict/go1.js
 /* harmony default export */ var go1 = ((a, f) => a instanceof Promise ? a.then(f) : f(a));
@@ -719,6 +722,14 @@ function incSel(parent, k) {
 /* harmony default export */ var Strict_countBy = (curry(function countBy(f, iter) {
   return reduce((counts, a) => incSel(counts, f(a)), {}, iter);
 }));
+// CONCATENATED MODULE: ./Strict/curry2.js
+function curry2(f) {
+  return (a, ..._) => _.length > 1
+    ? f(a, ..._)
+    : (b, ..._) => _.length
+      ? f(a, b, ..._)
+      : (..._) => f(a, b, ..._);
+}
 // CONCATENATED MODULE: ./Strict/delay.js
 
 
@@ -853,12 +864,12 @@ function defaults(obj, ...objs) {
 
 
 
-/* harmony default export */ var Lazy_differenceByLazy = (curry(function differenceByLazy(f, iter2, iter) {
+/* harmony default export */ var Lazy_differenceByLazy = (curry2(function differenceByLazy(f, iter2, iter1) {
   let set;
   return Lazy_rejectLazy(a => go1(
     set || go1(Strict_map(f, iter2), b => set = new Set(b)),
     set => go(a, f, b => set.has(b))
-  ), iter);
+  ), iter1);
 }));
 // CONCATENATED MODULE: ./Lazy/differenceLazy.js
 
@@ -887,30 +898,41 @@ function defaults(obj, ...objs) {
 
 
 
-/* harmony default export */ var Strict_differenceBy = (curry(function differenceBy(f, b, a) {
+/* harmony default export */ var differenceBy = (curry2(function differenceBy2(f, b, a) {
   return go(
     Lazy_differenceByLazy(f, b, a),
     takeAll
   )
+}));
+// CONCATENATED MODULE: ./Strict/some.js
+
+
+
+
+
+
+/* harmony default export */ var Strict_some = (curry(function some(f, iter) {
+  return go(
+    Lazy_mapLazy(f, iter),
+    Lazy_takeUntilLazy(identity),
+    reduce((a, b) => a || b),
+    (a = false) => a,
+    Boolean);
 }));
 // CONCATENATED MODULE: ./Lazy/differenceWithLazy.js
 
 
 
 
-
-
-/* harmony default export */ var Lazy_differenceWithLazy = (curry(function differenceWithLazy(f, iter1, iter2) {
-  return Lazy_rejectLazy(
-    a => go1(Strict_take(1, Lazy_filterLazy(b => f(a, b), iter2)), b => b.length),
-    iter1);
+/* harmony default export */ var Lazy_differenceWithLazy = (curry2(function differenceWithLazy(f, iter1, iter2) {
+  return Lazy_rejectLazy(a => Strict_some(b => f(a, b), iter2), iter1);
 }));
 // CONCATENATED MODULE: ./Strict/differenceWith.js
 
 
 
 
-/* harmony default export */ var Strict_differenceWith = (curry(function differenceWith(f, iter1, iter2) {
+/* harmony default export */ var Strict_differenceWith = (curry2(function differenceWith(f, iter1, iter2) {
   return takeAll(Lazy_differenceWithLazy(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Lazy/dropLazy.js
@@ -1106,7 +1128,6 @@ function tap(f, ...fs) {
 }
 // CONCATENATED MODULE: ./Strict/log.js
 const { log } = console;
-
 /* harmony default export */ var Strict_log = (log);
 // CONCATENATED MODULE: ./Strict/hi.js
 
@@ -1152,16 +1173,14 @@ function pipe(f, ...fs) {
 
 
 
-const uniqueByLazy_uniqueByLazy = curry(function uniqueByLazy(f, iter) {
+/* harmony default export */ var Lazy_uniqueByLazy = (curry(function uniqueByLazy(f, iter) {
   const s = new Set();
   return go1(
     iter,
     Lazy_filterLazy(pipe(
       f,
       b => s.has(b) ? false : s.add(b))));
-});
-
-/* harmony default export */ var Lazy_uniqueByLazy = (uniqueByLazy_uniqueByLazy);
+}));
 // CONCATENATED MODULE: ./Lazy/uniqueLazy.js
 
 
@@ -1177,7 +1196,7 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Lazy_intersectionByLazy = (curry(function intersectionByLazy(f, iter2, iter) {
+/* harmony default export */ var Lazy_intersectionByLazy = (curry2(function intersectionByLazy(f, iter2, iter1) {
   let set = null;
   return uniqueLazy(
     Lazy_filterLazy(
@@ -1185,7 +1204,7 @@ function uniqueLazy(obj) {
         set || go1(Lazy_mapLazy(f, iter2), l => set = new Set(l)),
         set => go(a, f, b => set.has(b))
       ),
-      iter));
+      iter1));
 }));
 // CONCATENATED MODULE: ./Lazy/intersectionLazy.js
 
@@ -1213,9 +1232,8 @@ function uniqueLazy(obj) {
 
 
 
-
-/* harmony default export */ var Strict_intersectionBy = (curry(function intersectionBy(f, b, a) {
-  return go(Lazy_intersectionByLazy(f, b, a), takeAll);
+/* harmony default export */ var Strict_intersectionBy = (curry2(function intersectionBy(f, b, a) {
+  return takeAll(Lazy_intersectionByLazy(f, b, a))
 }));
 // CONCATENATED MODULE: ./Lazy/intersectionWithLazy.js
 
@@ -1224,7 +1242,7 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Lazy_intersectionWithLazy = (curry(function intersectionWithLazy(f, iter1, iter2) {
+/* harmony default export */ var Lazy_intersectionWithLazy = (curry2(function intersectionWithLazy(f, iter1, iter2) {
   return Lazy_filterLazy(
     a => go1(Strict_take(1, Lazy_filterLazy(b => f(a, b), iter2)), b => b.length),
     iter1);
@@ -1234,7 +1252,7 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Strict_intersectionWith = (curry(function intersectionWith(f, iter1, iter2) {
+/* harmony default export */ var Strict_intersectionWith = (curry2(function intersectionWith(f, iter1, iter2) {
   return takeAll(Lazy_intersectionWithLazy(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/isFunction.js
@@ -1473,21 +1491,6 @@ function range(..._) {
 
 
 /* harmony default export */ var Strict_sel = (baseSel('.'));
-// CONCATENATED MODULE: ./Strict/some.js
-
-
-
-
-
-
-/* harmony default export */ var Strict_some = (curry(function some(f, iter) {
-  return go(
-    Lazy_mapLazy(f, iter),
-    Lazy_takeUntilLazy(identity),
-    reduce((a, b) => a || b),
-    (a = false) => a,
-    Boolean);
-}));
 // CONCATENATED MODULE: ./.internal/baseSortBy.js
 
 
@@ -1586,6 +1589,22 @@ function string(iter) {
 /* harmony default export */ var Strict_strMap = (curry(function strMap(f, iter) {
   return string(Lazy_mapLazy(f, iter));
 }));
+// CONCATENATED MODULE: ./Strict/sum.js
+
+
+
+function sum(iter) {
+  return reduce(add, iter);
+}
+// CONCATENATED MODULE: ./Strict/sumBy.js
+
+
+
+
+
+/* harmony default export */ var Strict_sumBy = (curry(function sumBy(f, iter) {
+  return reduce(add, Lazy_mapLazy(f, iter));
+}));
 // CONCATENATED MODULE: ./Strict/tail.js
 
 
@@ -1594,9 +1613,7 @@ function tail(iter) {
 }
 // CONCATENATED MODULE: ./Strict/take1.js
 
-
 const take1 = Strict_take(1);
-
 /* harmony default export */ var Strict_take1 = (take1);
 // CONCATENATED MODULE: ./Strict/takeUntil.js
 
@@ -1663,7 +1680,7 @@ const take1 = Strict_take(1);
 
 
 
-/* harmony default export */ var Lazy_unionByLazy = (curry(function unionByLazy(f, a, b) {
+/* harmony default export */ var Lazy_unionByLazy = (curry2(function unionByLazy(f, a, b) {
   return go(
     [a, b],
     flatLazy,
@@ -1695,7 +1712,7 @@ const take1 = Strict_take(1);
 
 
 
-/* harmony default export */ var Strict_unionBy = (curry(function unionBy(f, a, b) {
+/* harmony default export */ var Strict_unionBy = (curry2(function unionBy(f, a, b) {
   return go1(Lazy_unionByLazy(f, a, b), takeAll);
 }));
 
@@ -1821,7 +1838,10 @@ function unzip(iter) {
 
 
 
+
  //ok
+
+
 
 
 

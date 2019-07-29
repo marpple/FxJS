@@ -1924,53 +1924,12 @@ module.exports = function (it) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var INCORRECT_ITERATION = !__webpack_require__(58)(function (iterable) {
-  Array.from(iterable);
-});
-
-// `Array.from` method
-// https://tc39.github.io/ecma262/#sec-array.from
-__webpack_require__(12)({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
-  from: __webpack_require__(125)
-});
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports) {
-
-// `RequireObjectCoercible` abstract operation
-// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
-module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on " + it);
-  return it;
-};
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toInteger = __webpack_require__(43);
-var min = Math.min;
-
-// `ToLength` abstract operation
-// https://tc39.github.io/ecma262/#sec-tolength
-module.exports = function (argument) {
-  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
-};
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 var isArray = __webpack_require__(52);
 var isObject = __webpack_require__(13);
 var toObject = __webpack_require__(29);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var createProperty = __webpack_require__(78);
 var arraySpeciesCreate = __webpack_require__(79);
 var IS_CONCAT_SPREADABLE = __webpack_require__(9)('isConcatSpreadable');
@@ -2020,12 +1979,53 @@ __webpack_require__(12)({ target: 'Array', proto: true, forced: FORCED }, {
 
 
 /***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var INCORRECT_ITERATION = !__webpack_require__(58)(function (iterable) {
+  Array.from(iterable);
+});
+
+// `Array.from` method
+// https://tc39.github.io/ecma262/#sec-array.from
+__webpack_require__(12)({ target: 'Array', stat: true, forced: INCORRECT_ITERATION }, {
+  from: __webpack_require__(125)
+});
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+// `RequireObjectCoercible` abstract operation
+// https://tc39.github.io/ecma262/#sec-requireobjectcoercible
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on " + it);
+  return it;
+};
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__(43);
+var min = Math.min;
+
+// `ToLength` abstract operation
+// https://tc39.github.io/ecma262/#sec-tolength
+module.exports = function (argument) {
+  return argument > 0 ? min(toInteger(argument), 0x1FFFFFFFFFFFFF) : 0; // 2 ** 53 - 1 == 9007199254740991
+};
+
+
+/***/ }),
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
 var IndexedObject = __webpack_require__(68);
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -2124,7 +2124,7 @@ module.exports = {
 /* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 
 // `ToObject` abstract operation
 // https://tc39.github.io/ecma262/#sec-toobject
@@ -2518,7 +2518,7 @@ module.exports = function (METHOD_NAME) {
 var bind = __webpack_require__(39);
 var IndexedObject = __webpack_require__(68);
 var toObject = __webpack_require__(29);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var arraySpeciesCreate = __webpack_require__(79);
 
 // `Array.prototype.{ forEach, map, filter, some, every, find, findIndex }` methods implementation
@@ -2682,7 +2682,7 @@ module.exports = function (it, Constructor, name) {
 
 var anObject = __webpack_require__(14);
 var isArrayIteratorMethod = __webpack_require__(88);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var bind = __webpack_require__(39);
 var getIteratorMethod = __webpack_require__(89);
 var callWithSafeIterationClosing = __webpack_require__(90);
@@ -3135,7 +3135,7 @@ module.exports = function (object, names) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var toIndexedObject = __webpack_require__(26);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var toAbsoluteIndex = __webpack_require__(104);
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
@@ -3422,7 +3422,7 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(43);
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 // CONVERT_TO_STRING: true  -> String#at
 // CONVERT_TO_STRING: false -> String#codePointAt
 module.exports = function (that, pos, CONVERT_TO_STRING) {
@@ -3747,10 +3747,10 @@ __webpack_require__(34)[METADATA] = true;
 
 var isRegExp = __webpack_require__(63);
 var anObject = __webpack_require__(14);
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 var speciesConstructor = __webpack_require__(91);
 var advanceStringIndex = __webpack_require__(64);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var callRegExpExec = __webpack_require__(65);
 var regexpExec = __webpack_require__(66);
 var fails = __webpack_require__(10);
@@ -3928,7 +3928,7 @@ __webpack_require__(12)({ target: 'String', proto: true, forced: !CORRECT_IS_REG
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 var whitespace = '[' + __webpack_require__(101) + ']';
 var ltrim = RegExp('^' + whitespace + whitespace + '*');
 var rtrim = RegExp(whitespace + whitespace + '*$');
@@ -4684,7 +4684,7 @@ var bind = __webpack_require__(39);
 var toObject = __webpack_require__(29);
 var callWithSafeIterationClosing = __webpack_require__(90);
 var isArrayIteratorMethod = __webpack_require__(88);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var createProperty = __webpack_require__(78);
 var getIteratorMethod = __webpack_require__(89);
 
@@ -4811,7 +4811,7 @@ __webpack_require__(59)('RegExp');
 
 // helper for String#{startsWith, endsWith, includes}
 var isRegExp = __webpack_require__(63);
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 
 module.exports = function (that, searchString, NAME) {
   if (isRegExp(searchString)) {
@@ -4847,8 +4847,8 @@ module.exports = function (METHOD_NAME) {
 
 
 var anObject = __webpack_require__(14);
-var toLength = __webpack_require__(24);
-var requireObjectCoercible = __webpack_require__(23);
+var toLength = __webpack_require__(25);
+var requireObjectCoercible = __webpack_require__(24);
 var advanceStringIndex = __webpack_require__(64);
 var regExpExec = __webpack_require__(65);
 
@@ -4999,9 +4999,9 @@ __webpack_require__(12)({ target: 'Number', stat: true }, {
 
 var anObject = __webpack_require__(14);
 var toObject = __webpack_require__(29);
-var toLength = __webpack_require__(24);
+var toLength = __webpack_require__(25);
 var toInteger = __webpack_require__(43);
-var requireObjectCoercible = __webpack_require__(23);
+var requireObjectCoercible = __webpack_require__(24);
 var advanceStringIndex = __webpack_require__(64);
 var regExpExec = __webpack_require__(65);
 var max = Math.max;
@@ -5182,6 +5182,7 @@ __webpack_require__.d(Strict_namespaceObject, "constant", function() { return co
 __webpack_require__.d(Strict_namespaceObject, "countBy", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "count_by", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "curry", function() { return curry; });
+__webpack_require__.d(Strict_namespaceObject, "curry2", function() { return curry2; });
 __webpack_require__.d(Strict_namespaceObject, "debounce", function() { return Strict_debounce; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlat", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlatten", function() { return deepFlat; });
@@ -5192,8 +5193,8 @@ __webpack_require__.d(Strict_namespaceObject, "defaultTo", function() { return d
 __webpack_require__.d(Strict_namespaceObject, "default_to", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "delay", function() { return delay; });
 __webpack_require__.d(Strict_namespaceObject, "difference", function() { return Strict_difference; });
-__webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { return Strict_differenceBy; });
-__webpack_require__.d(Strict_namespaceObject, "difference_by", function() { return Strict_differenceBy; });
+__webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { return differenceBy; });
+__webpack_require__.d(Strict_namespaceObject, "difference_by", function() { return differenceBy; });
 __webpack_require__.d(Strict_namespaceObject, "differenceWith", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "difference_with", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "drop", function() { return Strict_drop; });
@@ -5308,6 +5309,9 @@ __webpack_require__.d(Strict_namespaceObject, "string", function() { return stri
 __webpack_require__.d(Strict_namespaceObject, "strMap", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "str_map", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "scat", function() { return Strict_strMap; });
+__webpack_require__.d(Strict_namespaceObject, "sum", function() { return sum; });
+__webpack_require__.d(Strict_namespaceObject, "sumBy", function() { return Strict_sumBy; });
+__webpack_require__.d(Strict_namespaceObject, "sum_by", function() { return Strict_sumBy; });
 __webpack_require__.d(Strict_namespaceObject, "tail", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "rest", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "take", function() { return Strict_take; });
@@ -5367,6 +5371,7 @@ __webpack_require__.d(Lazy_namespaceObject, "zipIndexs", function() { return zip
 __webpack_require__.d(Lazy_namespaceObject, "zip_indexs", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "indexValues", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "index_values", function() { return zipIndexs; });
+__webpack_require__.d(Lazy_namespaceObject, "ipp", function() { return zipIndexs; });
 __webpack_require__.d(Lazy_namespaceObject, "intersection", function() { return Lazy_intersectionLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "intersectionWith", function() { return Lazy_intersectionWithLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "intersection_with", function() { return Lazy_intersectionWithLazy; });
@@ -5423,7 +5428,7 @@ __webpack_require__.d(Concurrency_namespaceObject, "takeRace", function() { retu
 var es_symbol = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.concat.js
-var es_array_concat = __webpack_require__(25);
+var es_array_concat = __webpack_require__(22);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__(108);
@@ -5590,7 +5595,7 @@ regeneratorRuntime.mark(function appendLazy(a, iter) {
   return takeAll(appendLazy(a, iter));
 }));
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
-var es_array_from = __webpack_require__(22);
+var es_array_from = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__(20);
@@ -5623,7 +5628,6 @@ var es_string_split = __webpack_require__(97);
 
 // CONCATENATED MODULE: ./Strict/isArray.js
 var isArray = Array.isArray;
-
 /* harmony default export */ var Strict_isArray = (isArray);
 // CONCATENATED MODULE: ./Strict/go1.js
 
@@ -6530,6 +6534,29 @@ function incSel(parent, k) {
     return incSel(counts, f(a));
   }, {}, iter);
 }));
+// CONCATENATED MODULE: ./Strict/curry2.js
+
+function curry2(f) {
+  return function (a) {
+    for (var _len = arguments.length, _ = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      _[_key - 1] = arguments[_key];
+    }
+
+    return _.length > 1 ? f.apply(void 0, [a].concat(_)) : function (b) {
+      for (var _len2 = arguments.length, _ = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        _[_key2 - 1] = arguments[_key2];
+      }
+
+      return _.length ? f.apply(void 0, [a, b].concat(_)) : function () {
+        for (var _len3 = arguments.length, _ = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+          _[_key3] = arguments[_key3];
+        }
+
+        return f.apply(void 0, [a, b].concat(_));
+      };
+    };
+  };
+}
 // CONCATENATED MODULE: ./Strict/delay.js
 
 
@@ -6769,7 +6796,7 @@ var es_set = __webpack_require__(60);
 
 
 
-/* harmony default export */ var Lazy_differenceByLazy = (curry(function differenceByLazy(f, iter2, iter) {
+/* harmony default export */ var Lazy_differenceByLazy = (curry2(function differenceByLazy(f, iter2, iter1) {
   var set;
   return Lazy_rejectLazy(function (a) {
     return go1(set || go1(Strict_map(f, iter2), function (b) {
@@ -6779,7 +6806,7 @@ var es_set = __webpack_require__(60);
         return set.has(b);
       });
     });
-  }, iter);
+  }, iter1);
 }));
 // CONCATENATED MODULE: ./Lazy/differenceLazy.js
 
@@ -6801,29 +6828,39 @@ var es_set = __webpack_require__(60);
 
 
 
-/* harmony default export */ var Strict_differenceBy = (curry(function differenceBy(f, b, a) {
+/* harmony default export */ var differenceBy = (curry2(function differenceBy2(f, b, a) {
   return go(Lazy_differenceByLazy(f, b, a), takeAll);
+}));
+// CONCATENATED MODULE: ./Strict/some.js
+
+
+
+
+
+/* harmony default export */ var Strict_some = (curry(function some(f, iter) {
+  return go(Lazy_mapLazy(f, iter), Lazy_takeUntilLazy(identity), reduce(function (a, b) {
+    return a || b;
+  }), function () {
+    var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    return a;
+  }, Boolean);
 }));
 // CONCATENATED MODULE: ./Lazy/differenceWithLazy.js
 
 
 
-
-
-/* harmony default export */ var Lazy_differenceWithLazy = (curry(function differenceWithLazy(f, iter1, iter2) {
+/* harmony default export */ var Lazy_differenceWithLazy = (curry2(function differenceWithLazy(f, iter1, iter2) {
   return Lazy_rejectLazy(function (a) {
-    return go1(Strict_take(1, Lazy_filterLazy(function (b) {
+    return Strict_some(function (b) {
       return f(a, b);
-    }, iter2)), function (b) {
-      return b.length;
-    });
+    }, iter2);
   }, iter1);
 }));
 // CONCATENATED MODULE: ./Strict/differenceWith.js
 
 
 
-/* harmony default export */ var Strict_differenceWith = (curry(function differenceWith(f, iter1, iter2) {
+/* harmony default export */ var Strict_differenceWith = (curry2(function differenceWith(f, iter1, iter2) {
   return takeAll(Lazy_differenceWithLazy(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Lazy/dropLazy.js
@@ -7464,7 +7501,6 @@ function tap(f) {
 // CONCATENATED MODULE: ./Strict/log.js
 var _console = console,
     log = _console.log;
-
 /* harmony default export */ var Strict_log = (log);
 // CONCATENATED MODULE: ./Strict/hi.js
 
@@ -7537,13 +7573,12 @@ function pipe(f) {
 
 
 
-var uniqueByLazy_uniqueByLazy = curry(function uniqueByLazy(f, iter) {
+/* harmony default export */ var Lazy_uniqueByLazy = (curry(function uniqueByLazy(f, iter) {
   var s = new Set();
   return go1(iter, Lazy_filterLazy(pipe(f, function (b) {
     return s.has(b) ? false : s.add(b);
   })));
-});
-/* harmony default export */ var Lazy_uniqueByLazy = (uniqueByLazy_uniqueByLazy);
+}));
 // CONCATENATED MODULE: ./Lazy/uniqueLazy.js
 
 
@@ -7563,7 +7598,7 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Lazy_intersectionByLazy = (curry(function intersectionByLazy(f, iter2, iter) {
+/* harmony default export */ var Lazy_intersectionByLazy = (curry2(function intersectionByLazy(f, iter2, iter1) {
   var set = null;
   return uniqueLazy(Lazy_filterLazy(function (a) {
     return go1(set || go1(Lazy_mapLazy(f, iter2), function (l) {
@@ -7573,7 +7608,7 @@ function uniqueLazy(obj) {
         return set.has(b);
       });
     });
-  }, iter));
+  }, iter1));
 }));
 // CONCATENATED MODULE: ./Lazy/intersectionLazy.js
 
@@ -7594,16 +7629,15 @@ function uniqueLazy(obj) {
 
 
 
-
-/* harmony default export */ var Strict_intersectionBy = (curry(function intersectionBy(f, b, a) {
-  return go(Lazy_intersectionByLazy(f, b, a), takeAll);
+/* harmony default export */ var Strict_intersectionBy = (curry2(function intersectionBy(f, b, a) {
+  return takeAll(Lazy_intersectionByLazy(f, b, a));
 }));
 // CONCATENATED MODULE: ./Lazy/intersectionWithLazy.js
 
 
 
 
-/* harmony default export */ var Lazy_intersectionWithLazy = (curry(function intersectionWithLazy(f, iter1, iter2) {
+/* harmony default export */ var Lazy_intersectionWithLazy = (curry2(function intersectionWithLazy(f, iter1, iter2) {
   return Lazy_filterLazy(function (a) {
     return go1(Strict_take(1, Lazy_filterLazy(function (b) {
       return f(a, b);
@@ -7616,7 +7650,7 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Strict_intersectionWith = (curry(function intersectionWith(f, iter1, iter2) {
+/* harmony default export */ var Strict_intersectionWith = (curry2(function intersectionWith(f, iter1, iter2) {
   return takeAll(Lazy_intersectionWithLazy(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/isFunction.js
@@ -8032,20 +8066,6 @@ function range() {
 // CONCATENATED MODULE: ./Strict/sel.js
 
 /* harmony default export */ var Strict_sel = (baseSel('.'));
-// CONCATENATED MODULE: ./Strict/some.js
-
-
-
-
-
-/* harmony default export */ var Strict_some = (curry(function some(f, iter) {
-  return go(Lazy_mapLazy(f, iter), Lazy_takeUntilLazy(identity), reduce(function (a, b) {
-    return a || b;
-  }), function () {
-    var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-    return a;
-  }, Boolean);
-}));
 // CONCATENATED MODULE: ./.internal/baseSortBy.js
 
 
@@ -8181,6 +8201,20 @@ function string(iter) {
 
 /* harmony default export */ var Strict_strMap = (curry(function strMap(f, iter) {
   return string(Lazy_mapLazy(f, iter));
+}));
+// CONCATENATED MODULE: ./Strict/sum.js
+
+
+function sum(iter) {
+  return reduce(add, iter);
+}
+// CONCATENATED MODULE: ./Strict/sumBy.js
+
+
+
+
+/* harmony default export */ var Strict_sumBy = (curry(function sumBy(f, iter) {
+  return reduce(add, Lazy_mapLazy(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/tail.js
 
@@ -8340,7 +8374,7 @@ function takeWhile_typeof(obj) { if (typeof Symbol === "function" && typeof Symb
 
 
 
-/* harmony default export */ var Lazy_unionByLazy = (curry(function unionByLazy(f, a, b) {
+/* harmony default export */ var Lazy_unionByLazy = (curry2(function unionByLazy(f, a, b) {
   return go([a, b], flatLazy, Lazy_uniqueByLazy(f));
 }));
 // CONCATENATED MODULE: ./Lazy/unionLazy.js
@@ -8363,7 +8397,7 @@ function takeWhile_typeof(obj) { if (typeof Symbol === "function" && typeof Symb
 
 
 
-/* harmony default export */ var Strict_unionBy = (curry(function unionBy(f, a, b) {
+/* harmony default export */ var Strict_unionBy = (curry2(function unionBy(f, a, b) {
   return go1(Lazy_unionByLazy(f, a, b), takeAll);
 }));
 // CONCATENATED MODULE: ./Strict/uniqueBy.js
@@ -8665,7 +8699,10 @@ function zipWith_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i =
 
 
 
+
  //ok
+
+
 
 
 
