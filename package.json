@@ -58,6 +58,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "babel-loader": "^8.0.5",
+    "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chai": "^4.1.2",
     "esm": "^3.2.25",
     "lodash": ">=4.17.13",

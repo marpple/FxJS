@@ -1,6 +1,7 @@
 module.exports = function (api) {
   api.cache(false);
-  const target = process.env.BABEL_ENV === 'cjs' ? { node: 6 } : { ie: 11 };
+  const is_cjs = process.env.BABEL_ENV === 'cjs';
+  const target = is_cjs ? { node: 6 } : { ie: 11 };
   const presets = [
     [
       "@babel/env",
@@ -11,5 +12,6 @@ module.exports = function (api) {
       }
     ]
   ];
-  return { presets };
+  const plugins = is_cjs ? ["transform-es2015-modules-simple-commonjs"] : [];
+  return { presets, plugins };
 };
