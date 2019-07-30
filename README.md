@@ -48,24 +48,42 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 <script src="path/fx.es5.min.js"></script>
 ```
 
-### In Node.js
+### In Node.js (CommonJS)
 
 The functions of FxJS are written in ECMAScript Module.
 Also, since each function is well separated into individual files,
 Tree-Shaking is possible when a bundler like a webpack is bundling.
 
+
+#### Installation
 ```
-npm install fxjs2
+npm install fxjs
 ```
 
+
+#### Usage
 ```javascript
-import { map, filter, reduce, L, C } from "fxjs2";
+const FxJS = require("fxjs");
+const _ = require("fxjs/Strict");
+const L = require("fxjs/Lazy");
+const C = require("fxjs/Concurrency");
+
+// You can also import the functions individually.
+const rangeLazy = require("fxjs/Lazy/rangeLazy");
+
+_.go(
+  rangeLazy(1, 5),
+  L.filter(a => a % 2),
+  L.map(a => a * 10),
+  _.reduce(_.add),
+  _.log); // 40
 ```
 
-We use [esm](https://github.com/standard-things/esm) to import the FxJS functions created in the ECMAScript Module into the CommonJS Module.
-```javascrip
-const { map, filter, reduce, L, C } = require("fxjs2");
-```
+### ECMAScript Module
+FxJS publishes the `fxjs2` package, which is written only with the native ECMAScript Module.
+In the `fxjs2` package, the `type` field is defined as `module` in the `package.json` file.
+Development tools like mocha and jest do not yet support Native ESM, so be careful about using it.
+
 
 ## Iteration protocols
 

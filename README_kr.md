@@ -60,23 +60,41 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 // 9;
 ```
 
-### In Node.js
+### In Node.js (CommonJS)
 FxJS의 함수들은 ECMAScript Module로 작성되어 있습니다.
 또한 각각의 함수들이 개별 파일로 잘 분리되어 있기 때문에,
 Webpack과 같은 bundler가 Tree-Shaking을 할 수 있습니다.
 
+
+#### 설치
 ```
-npm install fxjs2
+npm install fxjs
 ```
 
+
+#### 사용법
 ```javascript
-import { map, filter, reduce, L, C } from "fxjs2";
+const FxJS = require("fxjs");
+const _ = require("fxjs/Strict");
+const L = require("fxjs/Lazy");
+const C = require("fxjs/Concurrency");
+
+// 함수를 개별적으로 가져올 수도 있습니다.
+const rangeLazy = require("fxjs/Lazy/rangeLazy");
+
+_.go(
+  rangeLazy(1, 5),
+  L.filter(a => a % 2),
+  L.map(a => a * 10),
+  _.reduce(_.add),
+  _.log); // 40
 ```
 
-ECMAScript Module로 작성된 FxJS를 CommonJS Module로 사용할 수 있도록 [esm](https://github.com/standard-things/esm)을 사용합니다.
-```javascript
-const { map, filter, reduce, L, C } = require("fxjs2");
-```
+### ECMAScript Module
+FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 배포하고 있습니다.
+`fxjs2`패키지는 `package.json`파일에 `type: "module"`로 정의되어 있습니다.
+*mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다.*
+
 
 ## Iteration protocols
 
