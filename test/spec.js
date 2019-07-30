@@ -905,6 +905,10 @@ import {
       expect(take(3, L.chunk(2, L.range(10)))).to.eql([[0, 1], [2, 3], [4, 5]]);
     });
 
+    it('chunk(4, [1, 2, 3, 4])', function() {
+      expect(chunk(2, [1, 2, 3, 4])).to.eql([[1, 2], [3, 4]]);
+    });
+
     it('chunk(4, "abcdefghij")', function() {
       expect(chunk(4, "abcdefghij")).to.eql([["a", "b", "c", "d"], ["e", "f", "g", "h"], ["i", "j"]]);
     });
