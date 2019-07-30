@@ -26,9 +26,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [FxDOM](https://github.com/marpple/FxDOM)
   - [FxContrib](https://github.com/marpple/FxContrib)
 
-# Getting Started
-
-## Installation
+## Getting Started
 
 ### In Modern Browsers Supporting ES6
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
@@ -36,7 +34,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
 
 ```html
-<script src="path/fx.min.js"></script>
+<script src="https://unpkg.com/fxjs/dist/fx.min.js"></script>
 ```
 
 ```javascript
@@ -52,7 +50,7 @@ map(a => a + 1, [1, 2, 3]);
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
 
 ```html
-<script src="path/fx.es5.min.js"></script>
+<script src="https://unpkg.com/fxjs/dist/fx.es5.min.js"></script>
 ```
 
 ```javascript
@@ -61,18 +59,12 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 ```
 
 ### In Node.js (CommonJS)
-FxJS의 함수들은 ECMAScript Module로 작성되어 있습니다.
-또한 각각의 함수들이 개별 파일로 잘 분리되어 있기 때문에,
-Webpack과 같은 bundler가 Tree-Shaking을 할 수 있습니다.
 
-
-#### 설치
 ```
 npm install fxjs
 ```
 
 
-#### 사용법
 ```javascript
 const FxJS = require("fxjs");
 const _ = require("fxjs/Strict");
@@ -95,6 +87,20 @@ FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 �
 `fxjs2`패키지는 `package.json`파일에 `type: "module"`로 정의되어 있습니다.
 *mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다.*
 
+```
+npm install fxjs2
+```
+
+```javascript
+import { go, reduce, add, log, L } from "fxjs2";
+
+go(
+  L.range(1, 5),
+  L.filter(a => a % 2),
+  L.map(a => a * 10),
+  reduce(add),
+  log); // 40
+```
 
 ## Iteration protocols
 
@@ -305,7 +311,7 @@ try {
 // { hi: 'ho' }
 ```
 
-# API
+## API
 
 - [Function](https://github.com/marpple/FxJS/blob/master/API.md#Function)
   - [apply](https://github.com/marpple/FxJS/blob/master/API.md#apply)
@@ -476,7 +482,7 @@ try {
   - [strMap](https://github.com/marpple/FxJS/blob/master/API.md#strMap)
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
   
-# Extention Libraries
+## Extention Libraries
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)

@@ -26,9 +26,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [FxDOM](https://github.com/marpple/FxDOM)
   - [FxContrib](https://github.com/marpple/FxContrib)
 
-# Getting Started
-
-## Installation
+## Getting Started
 
 ### In Modern Browsers Supporting ES6
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
@@ -36,7 +34,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
 
 ```html
-<script src="path/fx.min.js"></script>
+<script src="https://unpkg.com/fxjs/dist/fx.min.js"></script>
 ```
 
 ### In Legacy ES5 Browsers
@@ -45,23 +43,16 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
 
 ```html
-<script src="path/fx.es5.min.js"></script>
+<script src="https://unpkg.com/fxjs/dist/fx.es5.min.js"></script>
 ```
 
 ### In Node.js (CommonJS)
 
-The functions of FxJS are written in ECMAScript Module.
-Also, since each function is well separated into individual files,
-Tree-Shaking is possible when a bundler like a webpack is bundling.
-
-
-#### Installation
 ```
 npm install fxjs
 ```
 
 
-#### Usage
 ```javascript
 const FxJS = require("fxjs");
 const _ = require("fxjs/Strict");
@@ -84,6 +75,20 @@ FxJS publishes the `fxjs2` package, which is written only with the native ECMASc
 In the `fxjs2` package, the `type` field is defined as `module` in the `package.json` file.
 Development tools like mocha and jest do not yet support Native ESM, so be careful about using it.
 
+```
+npm install fxjs2
+```
+
+```javascript
+import { go, reduce, add, log, L } from "fxjs2";
+
+go(
+  L.range(1, 5),
+  L.filter(a => a % 2),
+  L.map(a => a * 10),
+  reduce(add),
+  log); // 40
+```
 
 ## Iteration protocols
 
@@ -294,7 +299,7 @@ try {
 // { hi: 'ho' }
 ```
 
-# API
+## API
 
 - [Function](https://github.com/marpple/FxJS/blob/master/API.md#Function)
   - [apply](https://github.com/marpple/FxJS/blob/master/API.md#apply)
@@ -465,7 +470,7 @@ try {
   - [strMap](https://github.com/marpple/FxJS/blob/master/API.md#strMap)
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
 
-# Extention Libraries
+## Extention Libraries
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)
