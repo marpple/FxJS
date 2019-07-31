@@ -45,6 +45,7 @@ map(a => a + 1, [1, 2, 3]);
 ```
 
 ### In Legacy ES5 Browsers
+IE11 브라우저를 target으로 빌드하였습니다.
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
@@ -59,7 +60,7 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 ```
 
 ### In Node.js (CommonJS)
-
+node 6버전까지 지원합니다.
 ```
 npm install fxjs
 ```
