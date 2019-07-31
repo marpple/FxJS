@@ -63,7 +63,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 #### In Node.js
 FxJS is developed as ECMAScript Module.
 However, the files published in the `fxjs` package are the CommonJS Module,
-which is transpiled as the **Node.js 6** version.
+which is transpiled to support **Node.js 6** version.
 
 
 ```
