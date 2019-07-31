@@ -28,7 +28,9 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 
 ## Getting Started
 
-### In Modern Browsers Supporting ES6
+### Installation
+
+#### In Modern Browsers Supporting ES6
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
@@ -44,7 +46,7 @@ map(a => a + 1, [1, 2, 3]);
 // [2, 3, 4];
 ```
 
-### In Legacy ES5 Browsers
+#### In Legacy ES5 Browsers
 IE11 브라우저를 target으로 빌드하였습니다.
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
@@ -59,7 +61,7 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 // 9;
 ```
 
-### In Node.js (CommonJS)
+#### In Node.js (CommonJS)
 node 6버전까지 지원합니다.
 ```
 npm install fxjs
@@ -83,7 +85,7 @@ _.go(
   _.log); // 40
 ```
 
-### ECMAScript Module
+#### ECMAScript Module
 FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 배포하고 있습니다.
 `fxjs2`패키지는 `package.json`파일에 `type: "module"`로 정의되어 있습니다.
 *mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다.*
@@ -103,7 +105,7 @@ go(
   log); // 40
 ```
 
-## Iteration protocols
+### Iteration protocols
 
 제너레이터를 통해 만든 이터레이터를 FxJS의 함수들로 평가할 수 있습니다.
 
@@ -131,7 +133,7 @@ reduce((a, b) => a + b, f());
 // 10
 ```
 
-## Iterable programming
+### Iterable programming
 
 어떤 값이든 `[Symbol.iterator]()` 메서드를 가진 이터러블이라면 FxJS와 사용할 수 있습니다.
 
@@ -144,7 +146,7 @@ const res = go(
 log(res); // 9
 ```
 
-## Lazy evaluation
+### Lazy evaluation
 
 `L` 네임스페이스의 함수를 통해 지연 평가를 할 수 있습니다.
 
@@ -158,7 +160,7 @@ const res = go(
 log(res); // 9
 ```
 
-## RFP style
+### RFP style
 
 Reactive functional programming 스타일을 작성할 수 있습니다.
 
@@ -174,7 +176,7 @@ go(
 // 3초 후 12
 ```
 
-## Promise/async/await
+### Promise/async/await
 
 FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 잘 따르고 있어 async/await과도 함께 사용할 수 있습니다.
 
@@ -205,7 +207,7 @@ log(res);
 // 63
 ```
 
-## Concurrency
+### Concurrency
 
 `C` 네임스페이스의 함수를 통해 동시/병렬적인 평가가 가능합니다.
 
@@ -258,7 +260,7 @@ go(
 // { html: 78, css: 36, is: 192 ... }
 ```
 
-## Error handling
+### Error handling
 
 FxJS는 자바스크립트의 기본 프로토콜을 지키고 있기 때문에 자바스크립트 표준 에러 핸들링을 사용할 수 있습니다.
 
