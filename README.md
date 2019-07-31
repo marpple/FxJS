@@ -31,6 +31,12 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 ### Installation
 
 #### In Modern Browsers Supporting ES6
+`fx.js` is a bundle of FxJS written in the ECMAScript Module as a single script file that can be run in a browser.
+
+
+**Note: `fx.js` uses the` fx`, `_`,` L`, and `C` properties of the window object as namespaces.**
+
+
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
@@ -40,6 +46,12 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 ```
 
 #### In Legacy ES5 Browsers
+`fx.es5.js` is the build of FxJS as an **IE11** browser target.
+
+
+**Note: Like `fx.js`, `fx.es5.js` also use the window object's` fx`, `_`,` L`, and `C` properties as namespace.**
+
+
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
@@ -48,7 +60,11 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 <script src="https://unpkg.com/fxjs/dist/fx.es5.min.js"></script>
 ```
 
-#### In Node.js (CommonJS)
+#### In Node.js
+FxJS is developed as ECMAScript Module.
+However, the files published in the `fxjs` package are the CommonJS Module,
+which is transpiled as the **Node.js 6** version.
+
 
 ```
 npm install fxjs

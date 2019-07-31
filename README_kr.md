@@ -31,6 +31,12 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 ### Installation
 
 #### In Modern Browsers Supporting ES6
+`fx.js`는 ECMAScript Module로 작성된 FxJS를 브라우저에서 실행할 수 있는 하나의 스크립트 파일로 번들링한 것입니다.
+
+
+**주의: `fx.js`는 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
+
+
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
 - [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
@@ -47,7 +53,12 @@ map(a => a + 1, [1, 2, 3]);
 ```
 
 #### In Legacy ES5 Browsers
-IE11 브라우저를 target으로 빌드하였습니다.
+`fx.es5.js`는 **IE11** 브라우저를 타겟으로 FxJS를 빌드한 스크립트 파일입니다.
+
+
+**주의: `fx.js`와 마찬가지로, `fx.es5.js`역시 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
+
+
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
 - [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
@@ -61,8 +72,11 @@ _.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
 // 9;
 ```
 
-#### In Node.js (CommonJS)
-node 6버전까지 지원합니다.
+#### In Node.js
+FxJS는 ECMAScript Module으로 개발되고 있습니다.
+하지만 `fxjs`패키지에 배포하는 파일들은 **Node.js 6**버전을 target으로 변환된 CommonJS Module입니다.
+
+
 ```
 npm install fxjs
 ```
