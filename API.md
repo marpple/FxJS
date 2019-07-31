@@ -75,6 +75,8 @@
   - [sortDesc](#sortDesc)
   - [split](#split)
   - [splitEvery](#splitEvery)
+  - [sum](#sum)
+  - [sumBy](#sumBy)
   - [tail](#tail-rest)
   - [take](#take)
   - [take1](#take1)
@@ -92,6 +94,10 @@
   - [zipObj](#zipObj)
   - [zipWith](#zipWith)
 - [Predicates](#Predicates)
+  - [equals](#equals)
+  - [equals2](#equals2)
+  - [equalsBy](#equalsBy)
+  - [equalsBy2](#equalsBy2)
   - [every](#every)
   - [has](#has)
   - [isArray](#isArray)
@@ -824,6 +830,8 @@ reject(a => Promise.resolve(a % 2), [
 ### sortDesc
 ### split
 ### splitEvery
+### sum
+### sumBy
 ### tail (rest)
 ### take
 ### take1
@@ -876,6 +884,10 @@ uniqueBy(u => u.name.toUpperCase(), users);
 
 
 ## Predicates
+### equals
+### equals2
+### equalsBy
+### equalsBy2
 ### every
 ### has
 ### isArray
