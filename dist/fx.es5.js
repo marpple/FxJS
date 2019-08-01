@@ -5188,7 +5188,7 @@ __webpack_require__.d(Strict_namespaceObject, "deepFlat", function() { return de
 __webpack_require__.d(Strict_namespaceObject, "deepFlatten", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deep_flat", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deep_flatten", function() { return deepFlat; });
-__webpack_require__.d(Strict_namespaceObject, "defaults", function() { return Strict_defaults; });
+__webpack_require__.d(Strict_namespaceObject, "defaults", function() { return defaults; });
 __webpack_require__.d(Strict_namespaceObject, "defaultTo", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "default_to", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "delay", function() { return delay; });
@@ -5859,6 +5859,10 @@ function go() {
 
   return reduce(go1Sync, _);
 }
+// CONCATENATED MODULE: ./Strict/not.js
+function not(a) {
+  return !a;
+}
 // CONCATENATED MODULE: ./Lazy/mapLazy.js
 
 
@@ -6091,11 +6095,8 @@ regeneratorRuntime.mark(function takeUntilLazy(f, iter) {
     }
   }, takeUntilLazy, null, [[4, 17, 21, 29], [22,, 24, 28]]);
 })));
-// CONCATENATED MODULE: ./Strict/not.js
-function not(a) {
-  return !a;
-}
 // CONCATENATED MODULE: ./Strict/every.js
+
 
 
 
@@ -6479,6 +6480,157 @@ function rangeLazy() {
     }
   }, rangeLazy_marked);
 }
+// CONCATENATED MODULE: ./Lazy/takeWhileLazy.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var resolved = Promise.resolve();
+/* harmony default export */ var Lazy_takeWhileLazy = (curry(
+/*#__PURE__*/
+regeneratorRuntime.mark(function takeWhileLazy(f, iter) {
+  var prev, ok, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _loop, _iterator, _step, _ret;
+
+  return regeneratorRuntime.wrap(function takeWhileLazy$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          prev = resolved, ok = true;
+          _iteratorNormalCompletion = true;
+          _didIteratorError = false;
+          _iteratorError = undefined;
+          _context2.prev = 4;
+          _loop =
+          /*#__PURE__*/
+          regeneratorRuntime.mark(function _loop() {
+            var a, _ok;
+
+            return regeneratorRuntime.wrap(function _loop$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    a = _step.value;
+                    _ok = ok && go1(a, f);
+
+                    if (!(_ok instanceof Promise)) {
+                      _context.next = 9;
+                      break;
+                    }
+
+                    _ok.catch(noop);
+
+                    _context.next = 6;
+                    return prev = prev.then(function (_) {
+                      return _ok;
+                    }).then(function (_ok) {
+                      return (ok = _ok) ? a : Promise.reject(Strict_nop);
+                    });
+
+                  case 6:
+                    prev = prev.catch(noop);
+                    _context.next = 12;
+                    break;
+
+                  case 9:
+                    if (!(ok = _ok)) {
+                      _context.next = 12;
+                      break;
+                    }
+
+                    _context.next = 12;
+                    return a;
+
+                  case 12:
+                    if (ok) {
+                      _context.next = 14;
+                      break;
+                    }
+
+                    return _context.abrupt("return", "break");
+
+                  case 14:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _loop);
+          });
+          _iterator = toIter(iter)[Symbol.iterator]();
+
+        case 7:
+          if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+            _context2.next = 15;
+            break;
+          }
+
+          return _context2.delegateYield(_loop(), "t0", 9);
+
+        case 9:
+          _ret = _context2.t0;
+
+          if (!(_ret === "break")) {
+            _context2.next = 12;
+            break;
+          }
+
+          return _context2.abrupt("break", 15);
+
+        case 12:
+          _iteratorNormalCompletion = true;
+          _context2.next = 7;
+          break;
+
+        case 15:
+          _context2.next = 21;
+          break;
+
+        case 17:
+          _context2.prev = 17;
+          _context2.t1 = _context2["catch"](4);
+          _didIteratorError = true;
+          _iteratorError = _context2.t1;
+
+        case 21:
+          _context2.prev = 21;
+          _context2.prev = 22;
+
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+
+        case 24:
+          _context2.prev = 24;
+
+          if (!_didIteratorError) {
+            _context2.next = 27;
+            break;
+          }
+
+          throw _iteratorError;
+
+        case 27:
+          return _context2.finish(24);
+
+        case 28:
+          return _context2.finish(21);
+
+        case 29:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  }, takeWhileLazy, null, [[4, 17, 21, 29], [22,, 24, 28]]);
+})));
 // CONCATENATED MODULE: ./Lazy/chunkLazy.js
 
 
@@ -6491,8 +6643,8 @@ function rangeLazy() {
   iter = toIter(iter);
   return go(rangeLazy(Infinity), Lazy_mapLazy(function (_) {
     return Strict_take(n, iter);
-  }), Lazy_takeUntilLazy(function (c) {
-    return c.length < n;
+  }), Lazy_takeWhileLazy(function (c) {
+    return c.length;
   }));
 }));
 // CONCATENATED MODULE: ./Strict/chunk.js
@@ -6754,7 +6906,6 @@ function defaults(obj) {
 
   return baseExtend(defaults_setter, obj, objs);
 }
-/* harmony default export */ var Strict_defaults = (defaults);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__(131);
 
@@ -6832,6 +6983,7 @@ var es_set = __webpack_require__(60);
   return go(Lazy_differenceByLazy(f, b, a), takeAll);
 }));
 // CONCATENATED MODULE: ./Strict/some.js
+
 
 
 
@@ -8419,157 +8571,6 @@ function takeWhile_typeof(obj) { if (typeof Symbol === "function" && typeof Symb
 function unique(a) {
   return Strict_uniqueBy(identity, a);
 }
-// CONCATENATED MODULE: ./Lazy/takeWhileLazy.js
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var resolved = Promise.resolve();
-/* harmony default export */ var Lazy_takeWhileLazy = (curry(
-/*#__PURE__*/
-regeneratorRuntime.mark(function takeWhileLazy(f, iter) {
-  var prev, ok, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _loop, _iterator, _step, _ret;
-
-  return regeneratorRuntime.wrap(function takeWhileLazy$(_context2) {
-    while (1) {
-      switch (_context2.prev = _context2.next) {
-        case 0:
-          prev = resolved, ok = true;
-          _iteratorNormalCompletion = true;
-          _didIteratorError = false;
-          _iteratorError = undefined;
-          _context2.prev = 4;
-          _loop =
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _loop() {
-            var a, _ok;
-
-            return regeneratorRuntime.wrap(function _loop$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    a = _step.value;
-                    _ok = ok && go1(a, f);
-
-                    if (!(_ok instanceof Promise)) {
-                      _context.next = 9;
-                      break;
-                    }
-
-                    _ok.catch(noop);
-
-                    _context.next = 6;
-                    return prev = prev.then(function (_) {
-                      return _ok;
-                    }).then(function (_ok) {
-                      return (ok = _ok) ? a : Promise.reject(Strict_nop);
-                    });
-
-                  case 6:
-                    prev = prev.catch(noop);
-                    _context.next = 12;
-                    break;
-
-                  case 9:
-                    if (!(ok = _ok)) {
-                      _context.next = 12;
-                      break;
-                    }
-
-                    _context.next = 12;
-                    return a;
-
-                  case 12:
-                    if (ok) {
-                      _context.next = 14;
-                      break;
-                    }
-
-                    return _context.abrupt("return", "break");
-
-                  case 14:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _loop);
-          });
-          _iterator = toIter(iter)[Symbol.iterator]();
-
-        case 7:
-          if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-            _context2.next = 15;
-            break;
-          }
-
-          return _context2.delegateYield(_loop(), "t0", 9);
-
-        case 9:
-          _ret = _context2.t0;
-
-          if (!(_ret === "break")) {
-            _context2.next = 12;
-            break;
-          }
-
-          return _context2.abrupt("break", 15);
-
-        case 12:
-          _iteratorNormalCompletion = true;
-          _context2.next = 7;
-          break;
-
-        case 15:
-          _context2.next = 21;
-          break;
-
-        case 17:
-          _context2.prev = 17;
-          _context2.t1 = _context2["catch"](4);
-          _didIteratorError = true;
-          _iteratorError = _context2.t1;
-
-        case 21:
-          _context2.prev = 21;
-          _context2.prev = 22;
-
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-
-        case 24:
-          _context2.prev = 24;
-
-          if (!_didIteratorError) {
-            _context2.next = 27;
-            break;
-          }
-
-          throw _iteratorError;
-
-        case 27:
-          return _context2.finish(24);
-
-        case 28:
-          return _context2.finish(21);
-
-        case 29:
-        case "end":
-          return _context2.stop();
-      }
-    }
-  }, takeWhileLazy, null, [[4, 17, 21, 29], [22,, 24, 28]]);
-})));
 // CONCATENATED MODULE: ./Lazy/zipLazy.js
 
 
@@ -9175,7 +9176,6 @@ function catchNoop(arr) {
   });
   return arr;
 }
-/* harmony default export */ var _internal_catchNoop = (catchNoop);
 // CONCATENATED MODULE: ./Concurrency/takeC.js
 
 
@@ -9199,7 +9199,7 @@ function takeC_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0
 
 
 /* harmony default export */ var Concurrency_takeC = (curry(function takeC(l, iter) {
-  return Strict_take(l, _internal_catchNoop(takeC_toConsumableArray(iter)));
+  return Strict_take(l, catchNoop(takeC_toConsumableArray(iter)));
 }));
 // CONCATENATED MODULE: ./Concurrency/takeAllC.js
 
@@ -9261,7 +9261,7 @@ function reduceC_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i =
 
 
 /* harmony default export */ var Concurrency_reduceC = (curry(function reduceC(f, acc, iter) {
-  return arguments.length == 2 ? reduce(f, _internal_catchNoop(reduceC_toConsumableArray(acc))) : reduce(f, acc, _internal_catchNoop(reduceC_toConsumableArray(iter)));
+  return arguments.length == 2 ? reduce(f, catchNoop(reduceC_toConsumableArray(acc))) : reduce(f, acc, catchNoop(reduceC_toConsumableArray(iter)));
 }));
 // CONCATENATED MODULE: ./Concurrency/objectC.js
 
@@ -9330,7 +9330,7 @@ function dropC_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0
 
 
 /* harmony default export */ var Concurrency_dropC = (curry(function dropC(l, iter) {
-  return Strict_drop(l, _internal_catchNoop(dropC_toConsumableArray(iter)));
+  return Strict_drop(l, catchNoop(dropC_toConsumableArray(iter)));
 }));
 // CONCATENATED MODULE: ./Concurrency/everyC.js
 

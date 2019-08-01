@@ -111,7 +111,7 @@ __webpack_require__.d(Strict_namespaceObject, "deepFlat", function() { return de
 __webpack_require__.d(Strict_namespaceObject, "deepFlatten", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deep_flat", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deep_flatten", function() { return deepFlat; });
-__webpack_require__.d(Strict_namespaceObject, "defaults", function() { return Strict_defaults; });
+__webpack_require__.d(Strict_namespaceObject, "defaults", function() { return defaults; });
 __webpack_require__.d(Strict_namespaceObject, "defaultTo", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "default_to", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "delay", function() { return delay; });
@@ -492,6 +492,10 @@ function reduce(f, acc, iter) {
 function go(..._) {
   return reduce(go1Sync, _);
 }
+// CONCATENATED MODULE: ./Strict/not.js
+function not(a) {
+  return !a;
+}
 // CONCATENATED MODULE: ./Lazy/mapLazy.js
 
 
@@ -526,11 +530,8 @@ function noop() {};
     if (ok) break;
   }
 }));
-// CONCATENATED MODULE: ./Strict/not.js
-function not(a) {
-  return !a;
-}
 // CONCATENATED MODULE: ./Strict/every.js
+
 
 
 
@@ -670,6 +671,28 @@ function* rangeLazy(start = 0, stop = start, step = 1) {
     }
   }
 }
+// CONCATENATED MODULE: ./Lazy/takeWhileLazy.js
+
+
+
+
+
+
+const resolved = Promise.resolve();
+/* harmony default export */ var Lazy_takeWhileLazy = (curry(function* takeWhileLazy(f, iter) {
+  let prev = resolved, ok = true;
+  for (const a of toIter(iter)) {
+    const _ok = ok && go1(a, f);
+    if (_ok instanceof Promise) {
+      _ok.catch(noop);
+      yield prev = prev.then(_ => _ok).then(_ok => (ok = _ok) ? a : Promise.reject(Strict_nop));
+      prev = prev.catch(noop);
+    } else if (ok = _ok) {
+      yield a;
+    }
+    if (!ok) break;
+  }
+}));
 // CONCATENATED MODULE: ./Lazy/chunkLazy.js
 
 
@@ -684,7 +707,7 @@ function* rangeLazy(start = 0, stop = start, step = 1) {
   return go(
     rangeLazy(Infinity),
     Lazy_mapLazy(_ => Strict_take(n, iter)),
-    Lazy_takeUntilLazy(c => c.length < n))
+    Lazy_takeWhileLazy(c => c.length))
 }));
 // CONCATENATED MODULE: ./Strict/chunk.js
 
@@ -838,8 +861,6 @@ const setter = (obj, [k, v]) => {
 function defaults(obj, ...objs) {
   return baseExtend(setter, obj, objs);
 }
-
-/* harmony default export */ var Strict_defaults = (defaults);
 // CONCATENATED MODULE: ./Strict/defaultTo.js
 
 
@@ -905,6 +926,7 @@ function defaults(obj, ...objs) {
   )
 }));
 // CONCATENATED MODULE: ./Strict/some.js
+
 
 
 
@@ -1737,28 +1759,6 @@ const take1 = Strict_take(1);
 function unique(a) {
   return Strict_uniqueBy(identity, a);
 }
-// CONCATENATED MODULE: ./Lazy/takeWhileLazy.js
-
-
-
-
-
-
-const resolved = Promise.resolve();
-/* harmony default export */ var Lazy_takeWhileLazy = (curry(function* takeWhileLazy(f, iter) {
-  let prev = resolved, ok = true;
-  for (const a of toIter(iter)) {
-    const _ok = ok && go1(a, f);
-    if (_ok instanceof Promise) {
-      _ok.catch(noop);
-      yield prev = prev.then(_ => _ok).then(_ok => (ok = _ok) ? a : Promise.reject(Strict_nop));
-      prev = prev.catch(noop);
-    } else if (ok = _ok) {
-      yield a;
-    }
-    if (!ok) break;
-  }
-}));
 // CONCATENATED MODULE: ./Lazy/zipLazy.js
 
 
@@ -2035,15 +2035,13 @@ function catchNoop(arr) {
   arr.forEach(a => a instanceof Promise ? a.catch(function() {}) : a);
   return arr;
 }
-
-/* harmony default export */ var _internal_catchNoop = (catchNoop);
 // CONCATENATED MODULE: ./Concurrency/takeC.js
 
 
 
 
 /* harmony default export */ var Concurrency_takeC = (curry(function takeC(l, iter) {
-  return Strict_take(l, _internal_catchNoop([...iter]));
+  return Strict_take(l, catchNoop([...iter]));
 }));
 // CONCATENATED MODULE: ./Concurrency/takeAllC.js
 
@@ -2085,8 +2083,8 @@ function takeAllC(n, iter) {
 
 /* harmony default export */ var Concurrency_reduceC = (curry(function reduceC(f, acc, iter) {
   return arguments.length == 2 ?
-    reduce(f, _internal_catchNoop([...acc])) :
-    reduce(f, acc, _internal_catchNoop([...iter]));
+    reduce(f, catchNoop([...acc])) :
+    reduce(f, acc, catchNoop([...iter]));
 }));
 // CONCATENATED MODULE: ./Concurrency/objectC.js
 
@@ -2118,7 +2116,7 @@ function objectC(iter) {
 
 
 /* harmony default export */ var Concurrency_dropC = (curry(function dropC(l, iter) {
-  return Strict_drop(l, _internal_catchNoop([...iter]));
+  return Strict_drop(l, catchNoop([...iter]));
 }));
 // CONCATENATED MODULE: ./Concurrency/everyC.js
 
