@@ -413,7 +413,7 @@ try {
   - [zipObj](https://github.com/marpple/FxJS/blob/master/API.md#zipObj)
   - [zipWith](https://github.com/marpple/FxJS/blob/master/API.md#zipWith)
 - [Predicates](https://github.com/marpple/FxJS/blob/master/API.md#Predicates)
-- [equals](https://github.com/marpple/FxJS/blob/master/API.md#equals)
+  - [equals](https://github.com/marpple/FxJS/blob/master/API.md#equals)
   - [equals2](https://github.com/marpple/FxJS/blob/master/API.md#equals2)
   - [equalsBy](https://github.com/marpple/FxJS/blob/master/API.md#equalsBy)
   - [equalsBy2](https://github.com/marpple/FxJS/blob/master/API.md#equalsBy2)
