@@ -311,6 +311,8 @@ __webpack_require__.d(Lazy_namespaceObject, "reject", function() { return Lazy_r
 __webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "split_every", function() { return Lazy_splitEveryLazy; });
+__webpack_require__.d(Lazy_namespaceObject, "takeAllC", function() { return takeAllLazyC; });
+__webpack_require__.d(Lazy_namespaceObject, "take_all_c", function() { return takeAllLazyC; });
 __webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "take_while", function() { return Lazy_takeWhileLazy; });
@@ -1968,6 +1970,31 @@ function* reverseLazy(arr) {
   var l = arr.length;
   while (l--) yield arr[l];
 }
+// CONCATENATED MODULE: ./Lazy/takeAllLazyC.js
+
+
+
+
+
+
+
+
+function takeAllLazyC(n, iter) {
+  if (arguments.length == 1) return typeof n == 'number' ?
+      _ => takeAllLazyC(n, _) :
+      takeAllLazyC(Infinity, n);
+
+  iter = toIter(iter);
+  return go(
+    rangeLazy(Infinity),
+    Lazy_mapLazy(_ => go(
+      rangeLazy(n),
+      Lazy_mapLazy(_ => iter.next()),
+      Strict_reject(a => a.done)
+    )),
+    Lazy_takeUntilLazy(a => a.length < n),
+    Lazy_flatMapLazy(Lazy_mapLazy(a => a.value)));
+}
 // CONCATENATED MODULE: ./Lazy/takeLazy.js
 
 
@@ -2030,6 +2057,7 @@ function* reverseLazy(arr) {
 
 
 
+
 // CONCATENATED MODULE: ./.internal/catchNoop.js
 function catchNoop(arr) {
   arr.forEach(a => a instanceof Promise ? a.catch(function() {}) : a);
@@ -2048,26 +2076,13 @@ function catchNoop(arr) {
 
 
 
-
-
-
-
-
-
 function takeAllC(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ? _ => takeAllC(n, _) : Concurrency_takeC(Infinity, n);
-  iter = toIter(iter);
-  let closed = false;
-  return go(
-    rangeLazy(Infinity),
-    Lazy_mapLazy(_ => go(
-      rangeLazy(n),
-      Lazy_mapLazy(_ => iter.next()),
-      Strict_takeWhile(({done}) => !(closed = done)),
-      Strict_map(({value}) => value))),
-    Lazy_takeUntilLazy(_ => closed),
-    flat);
+  return arguments.length > 1 ?
+    takeAll(takeAllLazyC(n, iter)) :
+    typeof n == 'number' ? _ => takeAllC(n, _) : Concurrency_takeC(Infinity, n);
 }
+
+
 // CONCATENATED MODULE: ./Concurrency/mapC.js
 
 

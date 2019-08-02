@@ -5388,6 +5388,8 @@ __webpack_require__.d(Lazy_namespaceObject, "reject", function() { return Lazy_r
 __webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "split_every", function() { return Lazy_splitEveryLazy; });
+__webpack_require__.d(Lazy_namespaceObject, "takeAllC", function() { return takeAllLazyC; });
+__webpack_require__.d(Lazy_namespaceObject, "take_all_c", function() { return takeAllLazyC; });
 __webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileLazy; });
 __webpack_require__.d(Lazy_namespaceObject, "take_while", function() { return Lazy_takeWhileLazy; });
@@ -8977,6 +8979,31 @@ function reverseLazy(arr) {
     }
   }, reverseLazy_marked);
 }
+// CONCATENATED MODULE: ./Lazy/takeAllLazyC.js
+
+
+
+
+
+
+
+function takeAllLazyC(n, iter) {
+  if (arguments.length == 1) return typeof n == 'number' ? function (_) {
+    return takeAllLazyC(n, _);
+  } : takeAllLazyC(Infinity, n);
+  iter = toIter(iter);
+  return go(rangeLazy(Infinity), Lazy_mapLazy(function (_) {
+    return go(rangeLazy(n), Lazy_mapLazy(function (_) {
+      return iter.next();
+    }), Strict_reject(function (a) {
+      return a.done;
+    }));
+  }), Lazy_takeUntilLazy(function (a) {
+    return a.length < n;
+  }), Lazy_flatMapLazy(Lazy_mapLazy(function (a) {
+    return a.value;
+  })));
+}
 // CONCATENATED MODULE: ./Lazy/takeLazy.js
 
 
@@ -9166,6 +9193,7 @@ regeneratorRuntime.mark(function takeLazy(l, iter) {
 
 
 
+
 // CONCATENATED MODULE: ./.internal/catchNoop.js
 
 
@@ -9205,31 +9233,10 @@ function takeC_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0
 
 
 
-
-
-
-
-
-
 function takeAllC(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ? function (_) {
+  return arguments.length > 1 ? takeAll(takeAllLazyC(n, iter)) : typeof n == 'number' ? function (_) {
     return takeAllC(n, _);
   } : Concurrency_takeC(Infinity, n);
-  iter = toIter(iter);
-  var closed = false;
-  return go(rangeLazy(Infinity), Lazy_mapLazy(function (_) {
-    return go(rangeLazy(n), Lazy_mapLazy(function (_) {
-      return iter.next();
-    }), Strict_takeWhile(function (_ref) {
-      var done = _ref.done;
-      return !(closed = done);
-    }), Strict_map(function (_ref2) {
-      var value = _ref2.value;
-      return value;
-    }));
-  }), Lazy_takeUntilLazy(function (_) {
-    return closed;
-  }), flat);
 }
 // CONCATENATED MODULE: ./Concurrency/mapC.js
 
