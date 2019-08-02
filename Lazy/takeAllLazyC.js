@@ -17,7 +17,7 @@ export default function takeAllLazyC(n, iter) {
     mapLazy(_ => go(
       rangeLazy(n),
       mapLazy(_ => iter.next()),
-      reject(({done}) => done)
+      reject(a => a.done)
     )),
     takeUntilLazy(a => a.length < n),
     mapLazy(mapLazy(a => a.value)),
