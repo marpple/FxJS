@@ -3,6 +3,7 @@
   "version": "0.11.2",
   "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
+  "module": "index.js",
   "type": "module",
   "sideEffects": false,
   "scripts": {
