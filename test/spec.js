@@ -41,29 +41,6 @@ import {
 } from "../index.js";
 
 (function() {
-  describe('each', function () {
-    it('each', async () => {
-      let i = 0;
-      expect(each(a => {
-        expect(a).to.eql(i++);
-      }, [0, 1, 2, 3][Symbol.iterator]())).to.eql([0, 1, 2, 3]);
-    });
-  });
-
-  describe('flatMap', function () {
-    it('(a => Promise [Promise b]) => Iterable Promise a => Promise [b]', async () => {
-      expect(flatMap(a => range(a), [1, 2])).to.eql([0, 0, 1]);
-      expect(await flatMap(a => Promise.resolve([a + 1]), [1])).to.eql([2]);
-      expect(await flatMap(a => Promise.resolve([Promise.resolve(a + 1)]), [1])).to.eql([2]);
-    });
-  });
-
-  describe('html', function () {
-    it('html', async () => {
-      expect(html `a${'b'}c${'d'}${undefined}e`).to.eql('abcde');
-      expect(await html `a${Promise.resolve('b')}c${Promise.resolve('d')}${Promise.resolve(undefined)}e`).to.eql('abcde');
-    });
-  });
 
   describe('C.race', function () {
     it('C.takeRace(1, iter)', async () => {
@@ -163,6 +140,30 @@ import {
     });
     it('Promise + L.takeUntil + L.filter + C.takeAll', async () => {
       expect(await C.takeAll(L.takeUntil(a => a < 600, L.filter(a => a % 2, L.map(a => delay(a, a), [601, 500, 401, 300, 201, 100, 51, 31]))))).to.eql([601, 401]);
+    });
+  });
+
+  describe('each', function () {
+    it('each', async () => {
+      let i = 0;
+      expect(each(a => {
+        expect(a).to.eql(i++);
+      }, [0, 1, 2, 3][Symbol.iterator]())).to.eql([0, 1, 2, 3]);
+    });
+  });
+
+  describe('flatMap', function () {
+    it('(a => Promise [Promise b]) => Iterable Promise a => Promise [b]', async () => {
+      expect(flatMap(a => range(a), [1, 2])).to.eql([0, 0, 1]);
+      expect(await flatMap(a => Promise.resolve([a + 1]), [1])).to.eql([2]);
+      expect(await flatMap(a => Promise.resolve([Promise.resolve(a + 1)]), [1])).to.eql([2]);
+    });
+  });
+
+  describe('html', function () {
+    it('html', async () => {
+      expect(html `a${'b'}c${'d'}${undefined}e`).to.eql('abcde');
+      expect(await html `a${Promise.resolve('b')}c${Promise.resolve('d')}${Promise.resolve(undefined)}e`).to.eql('abcde');
     });
   });
 

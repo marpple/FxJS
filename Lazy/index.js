@@ -28,6 +28,7 @@ export { default as range } from './rangeLazy.js';
 export { default as reject } from './rejectLazy.js';
 export { default as reverse } from './reverseLazy.js';
 export { default as splitEvery, default as split_every } from "./splitEveryLazy.js";
+export { default as takeAllC, default as take_all_c } from './takeAllLazyC.js';
 export { default as take } from './takeLazy.js';
 export { default as takeWhile, default as take_while } from './takeWhileLazy.js';
 export { default as takeUntil, default as take_until } from './takeUntilLazy.js';
