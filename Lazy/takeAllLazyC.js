@@ -4,7 +4,7 @@ import rangeLazy from "../Lazy/rangeLazy.js";
 import mapLazy from "../Lazy/mapLazy.js";
 import takeUntilLazy from "../Lazy/takeUntilLazy.js";
 import reject from "../Strict/reject.js";
-import flatLazy from "../Lazy/flatLazy.js";
+import flatMapLazy from "../Lazy/flatMapLazy.js";
 
 export default function takeAllLazyC(n, iter) {
   if (arguments.length == 1) return typeof n == 'number' ?
@@ -20,6 +20,5 @@ export default function takeAllLazyC(n, iter) {
       reject(a => a.done)
     )),
     takeUntilLazy(a => a.length < n),
-    mapLazy(mapLazy(a => a.value)),
-    flatLazy);
+    flatMapLazy(mapLazy(a => a.value)));
 }
