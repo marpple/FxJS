@@ -7,9 +7,8 @@ import reject from "../Strict/reject.js";
 import flatMapLazy from "../Lazy/flatMapLazy.js";
 
 export default function takeAllLazyC(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ?
-      _ => takeAllLazyC(n, _) :
-      takeAllLazyC(Infinity, n);
+  if (arguments.length == 1) return typeof n == 'number' ? _ => takeAllLazyC(n, _) : n;
+  if (n == Infinity) return iter;
 
   iter = toIter(iter);
   return go(

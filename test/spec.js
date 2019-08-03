@@ -41,7 +41,6 @@ import {
 } from "../index.js";
 
 (function() {
-
   describe('C.race', function () {
     it('C.takeRace(1, iter)', async () => {
       expect(await C.race(L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql(50);
@@ -87,6 +86,14 @@ import {
     it('C.takeAll(5)(iter) Currying', async () => {
       expect(await C.takeAll(5)(L.filter(a => a % 2, L.map(a => delay(500, a), L.range(20))))).to.eql([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
     }).timeout(2100);
+    it('C.takeAll Infinity', async () => {
+      expect(await C.takeAll(L.range(5))).to.eql([0, 1, 2, 3, 4]);
+      expect(await C.takeAll(Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
+    }).timeout(600);
+    it('C.takeAll Infinity 2', async () => {
+      expect(await reduce((a, b) => a + b, L.takeAllC(L.range(5)))).to.eql(10);
+      expect(await reduce((a, b) => a + b, L.takeAllC(Infinity, L.range(5)))).to.eql(10);
+    }).timeout(600);
   });
 
   describe('L.take + C.takeAll', function () {
