@@ -249,6 +249,8 @@ __webpack_require__.d(Strict_namespaceObject, "tap", function() { return tap; })
 __webpack_require__.d(Strict_namespaceObject, "throttle", function() { return Strict_throttle; });
 __webpack_require__.d(Strict_namespaceObject, "toIter", function() { return toIter; });
 __webpack_require__.d(Strict_namespaceObject, "to_iter", function() { return toIter; });
+__webpack_require__.d(Strict_namespaceObject, "undefinedTo", function() { return undefinedTo; });
+__webpack_require__.d(Strict_namespaceObject, "undefined_to", function() { return undefinedTo; });
 __webpack_require__.d(Strict_namespaceObject, "union", function() { return Strict_union; });
 __webpack_require__.d(Strict_namespaceObject, "unionBy", function() { return Strict_unionBy; });
 __webpack_require__.d(Strict_namespaceObject, "union_by", function() { return Strict_unionBy; });
@@ -1603,7 +1605,7 @@ function stopIf(f, stopVal) {
 
 
 function string(iter) {
-  return reduce((a, b) => `${a}${b}`, iter);
+  return reduce((a, b) => `${a}${b}`, '', iter);
 }
 // CONCATENATED MODULE: ./Strict/strMap.js
 
@@ -1697,6 +1699,12 @@ const take1 = Strict_take(1);
     delay(time, null).then(_ => (block = false));
     return f(...args);
   };
+}));
+// CONCATENATED MODULE: ./Strict/undefinedTo.js
+
+
+/* harmony default export */ var undefinedTo = (curry(function undefinedTo(a, b) {
+  return b === undefined ? a : b;
 }));
 // CONCATENATED MODULE: ./Lazy/unionByLazy.js
 
@@ -1929,6 +1937,7 @@ function unzip(iter) {
 
 
 
+
 // CONCATENATED MODULE: ./Lazy/compactLazy.js
 
 
@@ -1970,6 +1979,10 @@ function* reverseLazy(arr) {
   var l = arr.length;
   while (l--) yield arr[l];
 }
+// CONCATENATED MODULE: ./.internal/catchNoopIter.js
+/* harmony default export */ var catchNoopIter = (arr => (
+  arr.forEach(a => a.value instanceof Promise && a.value.catch(function() {})),
+  arr));
 // CONCATENATED MODULE: ./Lazy/takeAllLazyC.js
 
 
@@ -1979,10 +1992,10 @@ function* reverseLazy(arr) {
 
 
 
+
 function takeAllLazyC(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ?
-      _ => takeAllLazyC(n, _) :
-      takeAllLazyC(Infinity, n);
+  if (arguments.length == 1) return typeof n == 'number' ? _ => takeAllLazyC(n, _) : n;
+  if (n == Infinity) return iter;
 
   iter = toIter(iter);
   return go(
@@ -1990,7 +2003,8 @@ function takeAllLazyC(n, iter) {
     Lazy_mapLazy(_ => go(
       rangeLazy(n),
       Lazy_mapLazy(_ => iter.next()),
-      Strict_reject(a => a.done)
+      Strict_reject(a => a.done),
+      catchNoopIter
     )),
     Lazy_takeUntilLazy(a => a.length < n),
     Lazy_flatMapLazy(Lazy_mapLazy(a => a.value)));
@@ -2059,10 +2073,9 @@ function takeAllLazyC(n, iter) {
 
 
 // CONCATENATED MODULE: ./.internal/catchNoop.js
-function catchNoop(arr) {
-  arr.forEach(a => a instanceof Promise ? a.catch(function() {}) : a);
-  return arr;
-}
+/* harmony default export */ var catchNoop = (arr => (
+  arr.forEach(a => a instanceof Promise && a.catch(function() {})),
+  arr));
 // CONCATENATED MODULE: ./Concurrency/takeC.js
 
 
