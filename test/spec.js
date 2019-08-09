@@ -30,6 +30,7 @@ import {
   partition,
   join,
   pick,
+  pickBy,
   omit,
   chunk,
   splitEvery,
@@ -188,6 +189,19 @@ import {
       expect(pick(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
     });
   });
+  
+  describe('pickBy', function() {
+    it.only("pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+    it.only("pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
+    });
+    it.only("pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
+    });
+  });
+
 
   describe('omit', function() {
     it("omit([], {a: 1, b: 2, c: 3, d: 4})", function() {

@@ -72,6 +72,7 @@ export { default as object, default as fromEntries, default as from_entries } fr
 export { default as omit } from './omit.js';
 export { default as partition } from './partition.js';
 export { default as pick } from './pick.js';
+export { default as pickBy, default as pick_by } from './pickBy.js';
 export { default as pipe } from './pipe.js';
 export { default as pipe1 } from './pipe1.js';
 export { default as pipeS } from './pipeS.js';
