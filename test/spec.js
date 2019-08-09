@@ -2,7 +2,9 @@ import { expect } from "chai";
 import {
   html,
   L, flat, deepFlat, stop,
-  take, C, takeWhile, takeUntil, go,
+  take, C, takeWhile, takeUntil,
+  times,
+  go,
   takeAll,
   delay,
   map,
@@ -220,13 +222,13 @@ import {
   });
 
   describe('omitBy', function() {
-    it.only("omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
     });
-    it.only("omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
     });
-    it.only("omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
     });
   });
@@ -481,6 +483,16 @@ import {
         L.map(a => Promise.resolve([a, a])),
         L.flat,
         takeUntil((_, res) => res.length == 7))).to.eql([0, 0, 1, 1, 2, 2, 3]);
+    });
+  });
+
+  describe('times', function() {
+    it('times(String, 3)', () => {
+      expect(times(String, 3)).to.eql(['0', '1', '2']);
+    });
+
+    it('times(Promise.resolve.bind(Promise), 3)', async () => {
+      expect(await times(Promise.resolve.bind(Promise), 3)).to.eql([0, 1, 2]);
     });
   });
 

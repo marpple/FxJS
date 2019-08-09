@@ -107,6 +107,7 @@ export { default as takeUntil, default as take_until } from './takeUntil.js';
 export { default as takeWhile, default as take_while } from './takeWhile.js';
 export { default as tap } from './tap.js';
 export { default as throttle } from './throttle.js';
+export { default as times } from './times.js';
 export { default as toIter, default as to_iter } from './toIter.js';
 export { default as undefinedTo, default as undefined_to } from './undefinedTo.js';
 export { default as union } from './union.js';

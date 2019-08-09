@@ -32,6 +32,7 @@ export { default as takeAllC, default as take_all_c } from './takeAllLazyC.js';
 export { default as take } from './takeLazy.js';
 export { default as takeWhile, default as take_while } from './takeWhileLazy.js';
 export { default as takeUntil, default as take_until } from './takeUntilLazy.js';
+export { default as times } from './timesLazy.js';
 export { default as unionBy, default as union_by } from './unionByLazy.js';
 export { default as union } from './unionLazy.js';
 export { default as uniqueBy, default as unique_by, } from './uniqueByLazy.js';
