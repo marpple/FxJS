@@ -32,6 +32,7 @@ import {
   pick,
   pickBy,
   omit,
+  omitBy,
   chunk,
   splitEvery,
   flatMap,
@@ -189,15 +190,15 @@ import {
       expect(pick(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({});
     });
   });
-  
+
   describe('pickBy', function() {
-    it.only("pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
     });
-    it.only("pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
     });
-    it.only("pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})", function() {
+    it("pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
     });
   });
@@ -215,6 +216,18 @@ import {
     });
     it("omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, b: 2, c: 3, d: 4});
+    });
+  });
+
+  describe('omitBy', function() {
+    it.only("omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+    it.only("omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
+    });
+    it.only("omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
     });
   });
 

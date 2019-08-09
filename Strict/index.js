@@ -70,6 +70,7 @@ export { default as nop } from './nop.js';
 export { default as not } from './not.js';
 export { default as object, default as fromEntries, default as from_entries } from './object.js';
 export { default as omit } from './omit.js';
+export { default as omitBy, default as omit_by } from './omitBy.js';
 export { default as partition } from './partition.js';
 export { default as pick } from './pick.js';
 export { default as pickBy, default as pick_by } from './pickBy.js';
