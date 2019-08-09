@@ -26,6 +26,7 @@ export { default as map } from './mapLazy.js';
 export { default as prepend } from "./prependLazy.js";
 export { default as range } from './rangeLazy.js';
 export { default as reject } from './rejectLazy.js';
+export { default as repeat } from './repeatLazy.js';
 export { default as reverse } from './reverseLazy.js';
 export { default as splitEvery, default as split_every } from "./splitEveryLazy.js";
 export { default as takeAllC, default as take_all_c } from './takeAllLazyC.js';

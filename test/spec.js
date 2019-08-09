@@ -20,6 +20,7 @@ import {
   difference,
   initial,
   rest,
+  repeat,
   intersectionBy,
   intersectionWith,
   intersection,
@@ -827,6 +828,12 @@ import {
   describe('rest', function () {
     it('rest([1, 2, 3])', function() {
       expect(rest([1, 2, 3])).to.eql([2, 3]);
+    })
+  });
+
+  describe('repeat', function () {
+    it("repeat('hi', 5)", function() {
+      expect(repeat('hi', 5)).to.eql(['hi', 'hi', 'hi', 'hi', 'hi']);
     })
   });
 
