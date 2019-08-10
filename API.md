@@ -168,7 +168,7 @@
   - [C.takeRace](#C.takeRace)
 - [Stoppable](#stoppable)
   - [reduceS, stop](#reduces-stop)
-  - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
+  - [goS, pipeS, stop, stopIf](#gos,-pipes,-stop,-stopif)
 - [String](#String)
   - [html](#html)
   - [join](#join)
@@ -250,6 +250,7 @@ add(10, 5); // 15
 
 
 ### debounce
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/debounce.js)
 
 
 ### go
@@ -339,6 +340,7 @@ go(
 
 
 ### throttle
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/throttle.js)
 
 
 ## Strict
@@ -357,12 +359,35 @@ add(10)(5);
 
 
 ### append
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/append.js)
 
 ### baseSel
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/baseSel.js)
+
+```javascript
+const sel = baseSel('.');
+sel('a.b', { a: { b: 10 }});
+// 10
+
+sel('a.b', { b: { c: 20 }});
+// undefined
+
+const sel2 = baseSel('>');
+sel2('a>b', { a: { b: 10 }});
+// 10
+
+sel2('a>b', { b: { c: 20 }});
+// undefined
+```
 
 
 ### chunk
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/chunk.js)
+
+```javascript
+chunk(2, [1, 2, 3, 4, 5]);
+// [[1, 2], [3, 4], [5]]
+```
 
 
 ### compact
@@ -413,6 +438,19 @@ defaults({flavor: "chocolate"}, {flavor: "vanilla", sprinkles: "lots"});
 
 
 ### defaultTo
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/defaultTo.js)
+
+```javascript
+const obj = {a: 1, c: null, d: NaN};
+defaultTo(0, obj.a);
+// 1
+defaultTo(0, obj.b);
+// 0
+defaultTo(0, obj.c);
+// 0
+defaultTo(0, obj.d);
+// 0
+```
 
 
 ### delay
@@ -428,24 +466,47 @@ go(
 
 
 ### difference
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/difference.js)
 
 ### differenceBy
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/differenceBy.js)
 
 ### differenceWith
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/differenceWith.js)
 
 ### drop
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/drop.js)
 
+```javascript
+drop([1, 2, 3, 4]);
+// [2, 3, 4]
+```
 
 ### dropRight
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/dropRight.js)
+
+```javascript
+dropRight([1, 2, 3, 4]);
+// [1, 2, 3]
+```
 
 
 ### dropUntil
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/dropUntil.js)
+
+```javascript
+dropUntil(a => a > 1, [1, 2, 3, 4]);
+// [3, 4]
+```
 
 
 ### dropWhile
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/dropWhile.js)
+
+```javascript
+dropWhile(a => a < 3, [1, 2, 3, 4]);
+// [3, 4]
+```
 
 
 ### each
@@ -607,37 +668,64 @@ await flatMap(a => Promise.resolve(range(a)), [1, 2]);
 ```
 
 ### groupBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/groupBy.js)
+
+```javascript
+groupBy(a => a % 2 ? 'odd' : 'even', [1, 2, 3, 4, 5]);
+// { odd: [1, 3, 5], even: [2, 4] }
+```
 
 
 ### head
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/head.js)
+
+```javascript
+head([1, 2, 3, 4]);
+// 1
+```
 
 
 ### identity
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/identity.js)
+
+```javascript
+const identity = a => a;
+```
 
 
 ### indexBy
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/indexBy.js)
+```javascript
+const products = [{id: 1, price: 100}, {id: 3, price: 100}, {id: 5, price: 100}];
+indexBy(p => p.id, products);
+// {1: {id: 1, price: 100}, 3: {id: 3, price: 100}, 5: {id: 5, price: 100}}
+```
 
 ### initial
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/initial.js)
 
 ### intersection
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/intersection.js)
 
 ### intersectionBy
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/intersectionBy.js)
 
 ### intersectionWith
-
-
-### join
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/intersectionWith.js)
 
 ### keys
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/keys.js)
+```javascript
+keys({a: 1, b: 2, c: 3});
+// ['a', 'b', 'c']
+```
 
 ### last
-
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/last.js)
+```javascript
+last([1, 2, 3]);
+// 3
+```
 
 ### map
 - `(a => b) => Iterable a => [b]`
@@ -715,14 +803,66 @@ go(
 
 
 ### max
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/max.js)
+```javascript
+max([1, 3, 7, 4]);
+// 7
+```
+
 ### maxBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/maxBy.js)
+```javascript
+maxBy(a => a * -1, [1, 3, 7, 4]);
+// 1
+```
+
 ### min
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/min.js)
+```javascript
+min([1, 3, 7, 4]);
+// 1
+```
+
 ### minBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/minBy.js)
+```javascript
+minBy(a => a * -1, [1, 3, 7, 4]);
+// 7
+```
+
 ### noop
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/noop.js)
+```javascript
+function noop() {}
+```
+
 ### object
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/object.js)
+```javascript
+object([['a', 1], ['b', 2], ['c', 3]]);
+// {a: 1, b: 2, c: 3}
+```
+
 ### omit
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/omit.js)
+```javascript
+omit(['a, c'], {a: 1, b: 2, c: 3, d: 4});
+// {b: 2, d: 4}
+```
+
 ### partition
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/partition.js)
+```javascript
+partition(a => a % 2, [1, 2, 3, 4, 5]);
+// [[1, 3, 5], [2, 4]]
+```
+
 ### pick
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pick.js)
+```javascript
+pick(['a, c'], {a: 1, b: 2, c: 3, d: 4});
+// {a: 1, c: 3}
+```
 
 
 ### pluck
@@ -737,8 +877,13 @@ pluck('id', [{ id: 1 }, { id: 3 }]);
 
 
 ### prepend
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/prepend.js)
+
 ### promiseAllEntries
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/promiseAllEntries.js)
+
 ### promiseAllObject
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/promiseAllObject.js)
 
 
 ### range
@@ -824,23 +969,58 @@ reject(a => Promise.resolve(a % 2), [
 
 
 ### sel
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sel.js)
+
 ### sort
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sort.js)
+
 ### sortBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sortBy.js)
+
 ### sortByDesc
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sortByDesc.js)
+
 ### sortDesc
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sortDesc.js)
+
 ### split
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/split.js)
+
 ### splitEvery
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/splitEvery.js)
+
 ### sum
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sum.js)
+
 ### sumBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/sumBy.js)
+
 ### tail (rest)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/tail (rest).js)
+
 ### take
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/take.js)
+
 ### take1
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/take1.js)
+
 ### takeAll
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/takeAll.js)
+
 ### takeUntil
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/takeUntil.js)
+
 ### takeWhile
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/takeWhile.js)
+
 ### toIter
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/toIter.js)
+
 ### union
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/union.js)
+
 ### unionBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/unionBy.js)
 
 
 ### unique
@@ -876,50 +1056,114 @@ uniqueBy(u => u.name.toUpperCase(), users);
 
 
 ### unzip
-### values
-### zip
-### zipObj
-### zipWith
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/unzip.js)
 
+### values
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/values.js)
+
+### zip
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/zip.js)
+
+### zipObj
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/zipObj.js)
+
+### zipWith
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/zipWith.js)
 
 
 ## Predicates
 ### equals
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/equals.js)
+
 ### equals2
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/equals2.js)
+
 ### equalsBy
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/equalsBy.js)
+
 ### equalsBy2
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/equalsBy2.js)
+
 ### every
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/every.js)
+
 ### has
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/has.js)
+
 ### isArray
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isArray.js)
+
 ### isFunction
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isFunction.js)
+
 ### isIterable
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isIterable.js)
+
 ### isMatch
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isMatch.js)
+
 ### isString
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isString.js)
+
 ### isUndefined
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isUndefined.js)
+
 ### match
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/match.js)
+
 ### some
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/some.js)
+
 
 
 
 ## Lazy
+
 ### L.append
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/appendLazy.js)
+
 ### L.chunk
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/chunkLazy.js)
+
 ### L.compact
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/compactLazy.js)
+
 ### L.concat
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/concatLazy.js)
+
 ### L.constant
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/constantLazy.js)
+
 ### L.deepFlat
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/deepFlatLazy.js)
+
 ### L.difference
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceLazy.js)
+
 ### L.differenceBy
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceByLazy.js)
+
 ### L.differenceWith
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceWithLazy.js)
+
 ### L.drop
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropLazy.js)
+
 ### L.dropUntil
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropUntilLazy.js)
+
 ### L.dropWhile
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropWhileLazy.js)
+
 ### L.empty
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/emptyLazy.js)
+
 ### L.entries
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/entriesLazy.js)
 
 
 ### L.filter
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/filter.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/filterLazy.js)
 
 ```javascript
 const iterator = L.filter(a => a % 2, [1, 2, 3]);
@@ -943,61 +1187,190 @@ await go(
 
 
 ### L.flat
-### L.flatMap
-### L.zipIndexs
-### L.intersection
-### L.intersectionBy
-### L.intersectionWith
-### L.interval
-### L.keys
-### L.map
-### L.mapEntries
-### L.range
-### L.reject
-### L.reverse
-### L.splitEvery
-### L.take
-### L.takeUntil
-### L.takeWhile
-### L.union
-### L.unionBy
-### L.unique
-### L.uniqueBy
-### L.values
-### L.zip
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatLazy.js)
 
+### L.flatMap
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatMapLazy.js)
+
+### L.intersection
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionLazy.js)
+
+### L.intersectionBy
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionByLazy.js)
+
+### L.intersectionWith
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionWithLazy.js)
+
+### L.interval
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intervalLazy.js)
+
+### L.keys
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/keysLazy.js)
+
+### L.map
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapLazy.js)
+
+### L.mapEntries
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapEntriesLazy.js)
+
+### L.range
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rangeLazy.js)
+
+### L.reject
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rejectLazy.js)
+
+### L.reverse
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/reverseLazy.js)
+
+### L.splitEvery
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/splitEveryLazy.js)
+
+### L.takeAllC
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeAllLazyC.js)
+
+### L.take
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeLazy.js)
+
+### L.takeUntil
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeUntilLazy.js)
+
+### L.takeWhile
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeWhileLazy.js)
+
+### L.union
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionLazy.js)
+
+### L.unionBy
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionByLazy.js)
+
+### L.unique
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueLazy.js)
+
+### L.uniqueBy
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueByLazy.js)
+
+### L.values
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/valuesLazy.js)
+
+### L.zipIndexs
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipIndexsLazy.js)
+
+### L.zip
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipLazy.js)
 
 
 ## Concurrency
+
 ### C.calls
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/callsC.js)
+
 ### C.compact
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/compactC.js)
+
 ### C.drop
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/dropC.js)
+
 ### C.every
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/everyC.js)
+
 ### C.filter
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/filterC.js)
+
 ### C.find
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/findC.js)
+
 ### C.head
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/headC.js)
+
 ### C.map
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/mapC.js)
+
 ### C.mapEntries
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/mapEntriesC.js)
+
 ### C.object
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/objectC.js)
+
 ### C.race
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/raceC.js)
+
 ### C.reduce
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/reduceC.js)
+
 ### C.some
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/someC.js)
+
 ### C.tail
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/tailC.js)
+
 ### C.take
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/takeC.js)
+
 ### C.take1
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/take1C.js)
+
 ### C.takeAll
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/takeAllC.js)
+
 ### C.takeRace
+- [source](https://github.com/marpple/FxJS/blob/master/Concurrency/takeRaceC.js)
+
 
 
 
 ## Stoppable
+
 ### reduceS stop
-### goS pipeS stop stopIf
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/reduceS.js)
 
+```javascript
+reduceS((a, b) => {
+ const res = a + b;
+ return res > 5  ? stop(res) : res;
+}, [1, 2, 3, 4]);
+// 6
+```
 
+### goS, pipeS, stop, stopIf
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/goS.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pipeS.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/stop.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/stopIf.js)
+
+```javascript
+const f1 = pipeS(a => a % 2 ? stop(a) : a, a => a + 10);
+f1(1);
+// 1
+f1(2);
+// 12
+
+const f2 = pipeS(stopIf(a => a % 2), a => a + 10);
+f2(1);
+// 1
+f2(2);
+// 12
+
+goS({a: 1, b: 2}, stopIf({a: 1}), ({a, b}) => ({a: a + 10, b}));
+// {a: 1, b: 2}
+
+goS({a: 2, b: 2}, stopIf({a: 1}), ({a, b}) => ({a: a + 10, b}));
+// {a: 12, b: 2}
+
+goS({a: 1, b: 2},
+  stopIf({a: 1}, null),
+  ({a, b}) => ({a: a + 10, b}));
+// null
+```
 
 ## String
 ### html
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/html.js)
+
 ### join
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/join.js)
+
 ### strMap
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/strMap.js)
+
 ### string
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/string.js)
