@@ -776,6 +776,7 @@ import {
 
     it('difference([1,1,1,1,1], [2,2,2,2])', function () {
       expect(difference([2,2,2,2], [1,1,1,1,1])).to.eql([1, 1, 1, 1, 1]);
+      expect(difference([2], [1, 2, 3, 4])).to.eql([1, 3, 4]);
     });
   });
 

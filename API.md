@@ -454,7 +454,8 @@ defaultTo(0, obj.d);
 
 
 ### delay
-- time => a => a
+- time => a => Promise a
+- (time, a) => Promise a
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/delay.js)
 
 ```javascript
@@ -467,12 +468,33 @@ go(
 
 ### difference
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/difference.js)
+```javascript
+difference([2, 3], [2, 1]);
+// [1]
+difference([2, 2, 2, 2], [1, 1, 1, 1, 1]);
+// [1, 1, 1, 1, 1]
+difference([1, 2, 3, 4], [1]);
+// []
+difference([2], [1, 2, 3, 4]);
+// [1, 3, 4]
+```
 
 ### differenceBy
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/differenceBy.js)
+```javascript
+differenceBy(a => a.x, [{ x: 1 }], [{ x: 2 }, { x: 1 }]);
+// [{ x: 2 }]
+```
 
 ### differenceWith
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/differenceWith.js)
+```javascript
+const cmp = (x, y) => x.a === y.a;
+const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+const l2 = [{a: 3}, {a: 4}];
+differenceWith(cmp, l1, l2);
+// [{a: 1}, {a: 2}, {a: 5}]
+```
 
 ### drop
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/drop.js)
@@ -702,16 +724,40 @@ indexBy(p => p.id, products);
 ```
 
 ### initial
+- initial == dropRight
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/initial.js)
+```javascript
+initial([1, 2, 3]);
+// [1, 2]
+```
 
 ### intersection
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/intersection.js)
+```javascript
+intersection([2, 1], [2, 3]);
+// [2]
+intersection([1, 2, 1, 1, 3], [1, 1, 1, 2, 4]);
+// [1, 2]
+```
 
 ### intersectionBy
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/intersectionBy.js)
+```javascript
+intersectionBy(o => o.x, [{ x: 2 }, { x: 1 }], [{ x: 1 }]);
+// [{ x: 1 }]
+```
+
 
 ### intersectionWith
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/intersectionWith.js)
+```javascript
+const cmp = (x, y) => x.a === y.a;
+const l1 = [{a: 1}, {a: 2}, {a: 3}, {a: 4}, {a: 5}];
+const l2 = [{a: 3}, {a: 4}];
+intersectionWith(cmp, l1, l2);
+// [{a: 3}, {a: 4}]
+```
+
 
 ### keys
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/keys.js)
@@ -878,6 +924,7 @@ pluck('id', [{ id: 1 }, { id: 3 }]);
 
 ### prepend
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/prepend.js)
+
 
 ### promiseAllEntries
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/promiseAllEntries.js)
