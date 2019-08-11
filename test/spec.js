@@ -21,6 +21,7 @@ import {
   initial,
   rest,
   repeat,
+  insert,
   intersectionBy,
   intersectionWith,
   intersection,
@@ -835,6 +836,22 @@ import {
     it("repeat('hi', 5)", function() {
       expect(repeat('hi', 5)).to.eql(['hi', 'hi', 'hi', 'hi', 'hi']);
     })
+  });
+
+  describe('insert', function () {
+    it("insert (prepend)", function() {
+      expect(insert(-1, 0, [1, 2, 3])).to.eql([0, 1, 2, 3]);
+      expect(insert(0, 0, [1, 2, 3])).to.eql([0, 1, 2, 3]);
+    });
+
+    it("insert (middle)", function() {
+      expect(insert(2, 2.5, [1, 2, 3])).to.eql([1, 2, 2.5, 3]);
+    });
+
+    it("insert (append)", function() {
+      expect(insert(3, 4, [1, 2, 3])).to.eql([1, 2, 3, 4]);
+      expect(insert(100, 4, [1, 2, 3])).to.eql([1, 2, 3, 4]);
+    });
   });
 
   describe('intersectionBy', function () {

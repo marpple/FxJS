@@ -42,6 +42,7 @@ export { default as html } from './html.js';
 export { default as identity } from './identity.js';
 export { default as indexBy, default as index_by } from './indexBy.js';
 export { default as initial } from './initial.js';
+export { default as insert } from './insert.js';
 export { default as intersection } from './intersection.js';
 export { default as intersectionBy, default as intersection_by } from './intersectionBy.js';
 export { default as intersectionWith, default as intersection_with } from './intersectionWith.js';
