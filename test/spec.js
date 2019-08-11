@@ -41,6 +41,7 @@ import {
   splitEvery,
   flatMap,
   range,
+  remove,
   each,
   sumBy,
   sel
@@ -393,6 +394,33 @@ import {
     });
     it('L.range(0, -4, -1)', () => {
       expect([...L.range(0, -4, -1)]).to.eql([0, -1, -2, -3]);
+    });
+  });
+
+  describe('remove', function() {
+    it('remove with index', function() {
+      const iter = L.range(5);
+      expect(remove(0, iter)).to.eql([1, 2, 3, 4]);
+    });
+
+    it.only('remove with negative index', function() {
+      const iter = L.range(5);
+      expect(remove(-2, iter)).to.eql([0, 1, 2, 4]);
+    });
+
+    it.only('remove with negative index', function() {
+      const iter = L.range(5);
+      expect(remove(-1, iter)).to.eql([0, 1, 2, 3]);
+    });
+
+    it('remove with range', function() {
+      const iter = L.range(5);
+      expect(remove(1, 3, iter)).to.eql([0, 3, 4]);
+    });
+
+    it('remove with negative range', function() {
+      const iter = L.range(5);
+      expect(remove(-4, 3, iter)).to.eql([0, 3, 4]);
     });
   });
 

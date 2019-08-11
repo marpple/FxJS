@@ -87,6 +87,7 @@ export { default as range } from './range.js';
 export { default as reduce } from './reduce.js';
 export { default as reduceS } from './reduceS.js';
 export { default as reject } from './reject.js';
+export { default as remove } from './remove.js';
 export { default as repeat } from './repeat.js';
 export { default as sel } from './sel.js';
 export { default as some } from './some.js';
