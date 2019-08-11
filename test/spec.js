@@ -400,28 +400,24 @@ import {
 
   describe('remove', function() {
     it('remove with index', function() {
-      const iter = L.range(5);
-      expect(remove(0, iter)).to.eql([1, 2, 3, 4]);
+      expect(remove(0, L.range(5))).to.eql([1, 2, 3, 4]);
     });
 
-    it('remove with negative index', function() {
-      const iter = L.range(5);
-      expect(remove(-2, iter)).to.eql([0, 1, 2, 4]);
+    it('remove with negative index -2', function() {
+      expect(remove(-2, L.range(5))).to.eql([0, 1, 2, 4]);
+      expect(remove(-1, L.range(5))).to.eql([0, 1, 2, 3]);
     });
 
-    it('remove with negative index', function() {
-      const iter = L.range(5);
-      expect(remove(-1, iter)).to.eql([0, 1, 2, 3]);
+    it('remove with count', function() {
+      expect(remove(1, -Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
+      expect(remove(1, 2, L.range(5))).to.eql([0, 3, 4]);
+      expect(remove(1, Infinity, L.range(5))).to.eql([0]);
     });
 
-    it('remove with range', function() {
-      const iter = L.range(5);
-      expect(remove(1, 3, iter)).to.eql([0, 3, 4]);
-    });
-
-    it('remove with negative range', function() {
-      const iter = L.range(5);
-      expect(remove(-4, 3, iter)).to.eql([0, 3, 4]);
+    it('remove with negative index and count', function() {
+      expect(remove(-4, -Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
+      expect(remove(-4, 2, L.range(5))).to.eql([0, 3, 4]);
+      expect(remove(-4, Infinity, L.range(5))).to.eql([0]);
     });
   });
 
