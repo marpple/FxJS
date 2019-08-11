@@ -29,6 +29,7 @@ export { default as reject } from './rejectLazy.js';
 export { default as remove } from './removeLazy.js';
 export { default as repeat } from './repeatLazy.js';
 export { default as reverse } from './reverseLazy.js';
+export { default as slice } from './sliceLazy.js';
 export { default as splitEvery, default as split_every } from "./splitEveryLazy.js";
 export { default as takeAllC, default as take_all_c } from './takeAllLazyC.js';
 export { default as take } from './takeLazy.js';

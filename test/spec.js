@@ -44,7 +44,8 @@ import {
   remove,
   each,
   sumBy,
-  sel
+  sel,
+  slice
 } from "../index.js";
 
 (function() {
@@ -403,12 +404,12 @@ import {
       expect(remove(0, iter)).to.eql([1, 2, 3, 4]);
     });
 
-    it.only('remove with negative index', function() {
+    it('remove with negative index', function() {
       const iter = L.range(5);
       expect(remove(-2, iter)).to.eql([0, 1, 2, 4]);
     });
 
-    it.only('remove with negative index', function() {
+    it('remove with negative index', function() {
       const iter = L.range(5);
       expect(remove(-1, iter)).to.eql([0, 1, 2, 3]);
     });
@@ -421,6 +422,38 @@ import {
     it('remove with negative range', function() {
       const iter = L.range(5);
       expect(remove(-4, 3, iter)).to.eql([0, 3, 4]);
+    });
+  });
+
+  describe('slice', function() {
+    it('slice with index 0', function() {
+      const iter = L.range(5);
+      expect(slice(0, iter)).to.eql([0, 1, 2, 3, 4]);
+    });
+
+    it('slice with index 2', function() {
+      const iter = L.range(5);
+      expect(slice(2, iter)).to.eql([2, 3, 4]);
+    });
+
+    it('slice with negative index -2', function() {
+      const iter = L.range(5);
+      expect(slice(-2, iter)).to.eql([3, 4]);
+    });
+
+    it('slice with negative index -1', function() {
+      const iter = L.range(5);
+      expect(slice(-1, iter)).to.eql([4]);
+    });
+
+    it('slice with range', function() {
+      const iter = L.range(5);
+      expect(slice(1, 3, iter)).to.eql([1, 2]);
+    });
+
+    it('slice with negative range', function() {
+      const iter = L.range(5);
+      expect(slice(-4, 3, iter)).to.eql([1, 2]);
     });
   });
 

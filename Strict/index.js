@@ -90,6 +90,7 @@ export { default as reject } from './reject.js';
 export { default as remove } from './remove.js';
 export { default as repeat } from './repeat.js';
 export { default as sel } from './sel.js';
+export { default as slice } from './slice.js';
 export { default as some } from './some.js';
 export { default as sort } from './sort.js';
 export { default as sortBy, default as sort_by } from './sortBy.js';
