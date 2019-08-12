@@ -29,6 +29,7 @@ import {
   union,
   uniq,
   update,
+  updateBy,
   zip,
   unzip,
   zipObj,
@@ -665,12 +666,30 @@ import {
   });
 
   describe('update', function() {
-    it.only("update(1, '_', ['a', 'b', 'c'])", function() {
+    it("update(1, '_', ['a', 'b', 'c'])", function() {
       expect(update(1, '_', ['a', 'b', 'c'])).to.eql(['a', '_', 'c']);
     });
 
-    it.only("update(-1, '_', ['a', 'b', 'c'])", function() {
+    it("update(-1, '_', ['a', 'b', 'c'])", function() {
       expect(update(-1, '_', ['a', 'b', 'c'])).to.eql(['a', 'b', '_']);
+    });
+  });
+
+  describe('updateBy', function() {
+    it("updateBy(1, a => a.toUpperCase(), ['a', 'b', 'c'])", function() {
+      expect(updateBy(1, a => a.toUpperCase(), ['a', 'b', 'c'])).to.eql(['a', 'B', 'c']);
+    });
+
+    it("updateBy(1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])", async function() {
+      expect(await updateBy(1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])).to.eql(['a', 'B', 'c']);
+    });
+
+    it("updateBy(-1, a => a.toUpperCase(), ['a', 'b', 'c'])", function() {
+      expect(updateBy(-1, a => a.toUpperCase(), ['a', 'b', 'c'])).to.eql(['a', 'b', 'C']);
+    });
+
+    it("updateBy(-1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])", async function() {
+      expect(await updateBy(-1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])).to.eql(['a', 'b', 'C']);
     });
   });
 
