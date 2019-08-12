@@ -120,6 +120,7 @@ export { default as unionBy, default as union_by } from './unionBy.js';
 export { default as unique, default as uniq } from './unique.js';
 export { default as uniqueBy, default as unique_by } from './uniqueBy.js';
 export { default as unzip } from './unzip.js';
+export { default as update } from './update.js';
 export { default as values } from './values.js';
 export { default as zip } from './zip.js';
 export { default as zipObj, default as zip_obj } from './zipObj.js';

@@ -40,6 +40,7 @@ export { default as unionBy, default as union_by } from './unionByLazy.js';
 export { default as union } from './unionLazy.js';
 export { default as uniqueBy, default as unique_by, } from './uniqueByLazy.js';
 export { default as unique } from './uniqueLazy.js';
+export { default as update } from './updateLazy.js';
 export { default as values } from './valuesLazy.js';
 export { default as zipIndexs, default as zip_indexs, default as indexValues, default as index_values, default as ipp } from './zipIndexs.js';
 export { default as zip } from "./zipLazy.js";

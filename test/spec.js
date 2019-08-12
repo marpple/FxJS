@@ -8,7 +8,7 @@ import {
   takeAll,
   delay,
   map,
-  reduce, go1, find, some, every, deepFlatten, uniq,
+  reduce, go1, find, some, every, deepFlatten,
   reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
   promiseAllObject, promiseAllEntries,
@@ -27,6 +27,8 @@ import {
   intersection,
   unionBy,
   union,
+  uniq,
+  update,
   zip,
   unzip,
   zipObj,
@@ -659,6 +661,16 @@ import {
 
     it('uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})', function () {
       expect(uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})).to.eql({a: 1, b: 2, c: 3, f: 4});
+    });
+  });
+
+  describe('update', function() {
+    it.only("update(1, '_', ['a', 'b', 'c'])", function() {
+      expect(update(1, '_', ['a', 'b', 'c'])).to.eql(['a', '_', 'c']);
+    });
+
+    it.only("update(-1, '_', ['a', 'b', 'c'])", function() {
+      expect(update(-1, '_', ['a', 'b', 'c'])).to.eql(['a', 'b', '_']);
     });
   });
 
