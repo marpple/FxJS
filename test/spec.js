@@ -48,6 +48,8 @@ import {
   each,
   sumBy,
   sel,
+  selEquals,
+  selSatisfies,
   slice
 } from "../index.js";
 
@@ -421,6 +423,24 @@ import {
       expect(remove(-4, -Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
       expect(remove(-4, 2, L.range(5))).to.eql([0, 3, 4]);
       expect(remove(-4, Infinity, L.range(5))).to.eql([0]);
+    });
+  });
+
+  describe('selEquals', function() {
+    const dh = { name: "dh", age: 27, company: { name: 'marpple' } };
+    it("selEquals 1 depth", function () {
+      expect(selEquals('name', 'dh', dh)).to.eql(true);
+    });
+
+    it("selEquals 2 depth", function () {
+      expect(selEquals('company.name', 'marpple', dh)).to.eql(true);
+    });
+  });
+
+  describe('selSatisfies', function() {
+    const dh = { name: "dh", age: 27 };
+    it("#1", function () {
+      expect(selSatisfies(age => age === 27, 'age', dh)).to.eql(true);
     });
   });
 
