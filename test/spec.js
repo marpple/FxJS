@@ -2,11 +2,13 @@ import { expect } from "chai";
 import {
   html,
   L, flat, deepFlat, stop,
-  take, C, takeWhile, takeUntil, go,
+  take, C, takeWhile, takeUntil,
+  times,
+  go,
   takeAll,
   delay,
   map,
-  reduce, go1, find, some, every, deepFlatten, uniq,
+  reduce, go1, find, some, every, deepFlatten,
   reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
   promiseAllObject, promiseAllEntries,
@@ -18,11 +20,16 @@ import {
   difference,
   initial,
   rest,
+  repeat,
+  insert,
   intersectionBy,
   intersectionWith,
   intersection,
   unionBy,
   union,
+  uniq,
+  update,
+  updateBy,
   zip,
   unzip,
   zipObj,
@@ -30,14 +37,18 @@ import {
   partition,
   join,
   pick,
+  pickBy,
   omit,
+  omitBy,
   chunk,
   splitEvery,
   flatMap,
   range,
+  remove,
   each,
   sumBy,
-  sel
+  sel,
+  slice
 } from "../index.js";
 
 (function() {
@@ -189,6 +200,19 @@ import {
     });
   });
 
+  describe('pickBy', function() {
+    it("pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(_ => false, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+    it("pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(([k]) => k === 'a' || k === 'c', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
+    });
+    it("pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(pickBy(([_, v]) => v % 2 === 0, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
+    });
+  });
+
+
   describe('omit', function() {
     it("omit([], {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omit([], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, b: 2, c: 3, d: 4});
@@ -201,6 +225,18 @@ import {
     });
     it("omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})", function() {
       expect(omit(['aa', 'cc'], {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, b: 2, c: 3, d: 4});
+    });
+  });
+
+  describe('omitBy', function() {
+    it("omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(_ => true, {a: 1, b: 2, c: 3, d: 4})).to.eql({});
+    });
+    it("omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(([k]) => k === 'b' || k === 'd', {a: 1, b: 2, c: 3, d: 4})).to.eql({a: 1, c: 3});
+    });
+    it("omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})", function() {
+      expect(omitBy(([_, v]) => v % 2, {a: 1, b: 2, c: 3, d: 4})).to.eql({ b: 2, d: 4});
     });
   });
 
@@ -365,6 +401,61 @@ import {
     });
   });
 
+  describe('remove', function() {
+    it('remove with index', function() {
+      expect(remove(0, L.range(5))).to.eql([1, 2, 3, 4]);
+    });
+
+    it('remove with negative index -2', function() {
+      expect(remove(-2, L.range(5))).to.eql([0, 1, 2, 4]);
+      expect(remove(-1, L.range(5))).to.eql([0, 1, 2, 3]);
+    });
+
+    it('remove with count', function() {
+      expect(remove(1, -Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
+      expect(remove(1, 2, L.range(5))).to.eql([0, 3, 4]);
+      expect(remove(1, Infinity, L.range(5))).to.eql([0]);
+    });
+
+    it('remove with negative index and count', function() {
+      expect(remove(-4, -Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
+      expect(remove(-4, 2, L.range(5))).to.eql([0, 3, 4]);
+      expect(remove(-4, Infinity, L.range(5))).to.eql([0]);
+    });
+  });
+
+  describe('slice', function() {
+    it('slice with index 0', function() {
+      const iter = L.range(5);
+      expect(slice(0, iter)).to.eql([0, 1, 2, 3, 4]);
+    });
+
+    it('slice with index 2', function() {
+      const iter = L.range(5);
+      expect(slice(2, iter)).to.eql([2, 3, 4]);
+    });
+
+    it('slice with negative index -2', function() {
+      const iter = L.range(5);
+      expect(slice(-2, iter)).to.eql([3, 4]);
+    });
+
+    it('slice with negative index -1', function() {
+      const iter = L.range(5);
+      expect(slice(-1, iter)).to.eql([4]);
+    });
+
+    it('slice with range', function() {
+      const iter = L.range(5);
+      expect(slice(1, 3, iter)).to.eql([1, 2]);
+    });
+
+    it('slice with negative range', function() {
+      const iter = L.range(5);
+      expect(slice(-4, 3, iter)).to.eql([1, 2]);
+    });
+  });
+
   describe('flatten, deepFlatten', function () {
     it('flat([[], [], []])', () => {
       expect(flat([[], [], []])).to.eql([]);
@@ -454,6 +545,16 @@ import {
         L.map(a => Promise.resolve([a, a])),
         L.flat,
         takeUntil((_, res) => res.length == 7))).to.eql([0, 0, 1, 1, 2, 2, 3]);
+    });
+  });
+
+  describe('times', function() {
+    it('times(String, 3)', () => {
+      expect(times(String, 3)).to.eql(['0', '1', '2']);
+    });
+
+    it('times(Promise.resolve.bind(Promise), 3)', async () => {
+      expect(await times(Promise.resolve.bind(Promise), 3)).to.eql([0, 1, 2]);
     });
   });
 
@@ -561,6 +662,34 @@ import {
 
     it('uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})', function () {
       expect(uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})).to.eql({a: 1, b: 2, c: 3, f: 4});
+    });
+  });
+
+  describe('update', function() {
+    it("update(1, '_', ['a', 'b', 'c'])", function() {
+      expect(update(1, '_', ['a', 'b', 'c'])).to.eql(['a', '_', 'c']);
+    });
+
+    it("update(-1, '_', ['a', 'b', 'c'])", function() {
+      expect(update(-1, '_', ['a', 'b', 'c'])).to.eql(['a', 'b', '_']);
+    });
+  });
+
+  describe('updateBy', function() {
+    it("updateBy(1, a => a.toUpperCase(), ['a', 'b', 'c'])", function() {
+      expect(updateBy(1, a => a.toUpperCase(), ['a', 'b', 'c'])).to.eql(['a', 'B', 'c']);
+    });
+
+    it("updateBy(1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])", async function() {
+      expect(await updateBy(1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])).to.eql(['a', 'B', 'c']);
+    });
+
+    it("updateBy(-1, a => a.toUpperCase(), ['a', 'b', 'c'])", function() {
+      expect(updateBy(-1, a => a.toUpperCase(), ['a', 'b', 'c'])).to.eql(['a', 'b', 'C']);
+    });
+
+    it("updateBy(-1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])", async function() {
+      expect(await updateBy(-1, a => Promise.resolve(a.toUpperCase()), ['a', 'b', 'c'])).to.eql(['a', 'b', 'C']);
     });
   });
 
@@ -790,6 +919,28 @@ import {
     it('rest([1, 2, 3])', function() {
       expect(rest([1, 2, 3])).to.eql([2, 3]);
     })
+  });
+
+  describe('repeat', function () {
+    it("repeat('hi', 5)", function() {
+      expect(repeat('hi', 5)).to.eql(['hi', 'hi', 'hi', 'hi', 'hi']);
+    })
+  });
+
+  describe('insert', function () {
+    it("insert (prepend)", function() {
+      expect(insert(-1, 0, [1, 2, 3])).to.eql([0, 1, 2, 3]);
+      expect(insert(0, 0, [1, 2, 3])).to.eql([0, 1, 2, 3]);
+    });
+
+    it("insert (middle)", function() {
+      expect(insert(2, 2.5, [1, 2, 3])).to.eql([1, 2, 2.5, 3]);
+    });
+
+    it("insert (append)", function() {
+      expect(insert(3, 4, [1, 2, 3])).to.eql([1, 2, 3, 4]);
+      expect(insert(100, 4, [1, 2, 3])).to.eql([1, 2, 3, 4]);
+    });
   });
 
   describe('intersectionBy', function () {
