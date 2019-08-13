@@ -10,7 +10,7 @@ import {
   delay,
   map,
   mean,
-  reduce, go1, find, some, every, deepFlatten,
+  reduce, go1, find, someBy, everyBy, deepFlatten,
   reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
   promiseAllObject, promiseAllEntries,
@@ -654,29 +654,29 @@ import {
       expect(find(a => a > 1, [1, 2, 3])).to.eql(2);
     });
 
-    it('some(a => a > 1, [1, 2, 3])', function () {
-      expect(some(a => a > 1, [1, 2, 3])).to.eql(true);
+    it('someBy(a => a > 1, [1, 2, 3])', function () {
+      expect(someBy(a => a > 1, [1, 2, 3])).to.eql(true);
     });
 
-    it('some(a => a > 10, [1, 2, 3])', function () {
-      expect(some(a => a > 10, [1, 2, 3])).to.eql(false);
+    it('someBy(a => a > 10, [1, 2, 3])', function () {
+      expect(someBy(a => a > 10, [1, 2, 3])).to.eql(false);
     });
 
-    it('some(a => a > 1, [])', function () {
-      expect(some(a => a > 1, [])).to.eql(false);
+    it('someBy(a => a > 1, [])', function () {
+      expect(someBy(a => a > 1, [])).to.eql(false);
     });
 
-    it('every(a => a > 1, [1, 2, 3])', function () {
-      expect(every(a => a > 1, [1, 2, 3])).to.eql(false);
-      expect(every(a => a < 3, [1, 2, 3])).to.eql(false);
+    it('everyBy(a => a > 1, [1, 2, 3])', function () {
+      expect(everyBy(a => a > 1, [1, 2, 3])).to.eql(false);
+      expect(everyBy(a => a < 3, [1, 2, 3])).to.eql(false);
     });
 
-    it('every(a => a > 0, [1, 2, 3])', function () {
-      expect(every(a => a > 0, [1, 2, 3])).to.eql(true);
+    it('everyBy(a => a > 0, [1, 2, 3])', function () {
+      expect(everyBy(a => a > 0, [1, 2, 3])).to.eql(true);
     });
 
-    it('every(a => a > 0, [])', function () {
-      expect(every(a => a > 0, [])).to.eql(false);
+    it('everyBy(a => a > 0, [])', function () {
+      expect(everyBy(a => a > 0, [])).to.eql(false);
     });
   });
 
@@ -1203,11 +1203,11 @@ import {
   });
 
   describe('meanBy, mean', function() {
-    it.only('sync', function() {
+    it('sync', function() {
       expect(mean(L.range(1, 6))).to.eql(3);
     });
 
-    it.only('async', async function() {
+    it('async', async function() {
       expect(await mean(L.map(Promise.resolve.bind(Promise), L.range(1, 6)))).to.eql(3);
     });
   });

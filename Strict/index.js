@@ -29,6 +29,7 @@ export { default as each, default as forEach } from './each.js';
 export { default as either } from './either.js';
 export { default as entries } from './entries.js';
 export { default as every } from './every.js';
+export { default as everyBy, default as every_by } from './everyBy.js';
 export { default as extend } from './extend.js';
 export { default as filter } from './filter.js';
 export { default as find } from './find.js'; //ok
@@ -108,6 +109,7 @@ export { default as selEquals, default as sel_equals, default as selEq, default 
 export { default as selSatisfies, default as sel_satisfies } from './selSatisfies.js';
 export { default as slice } from './slice.js';
 export { default as some } from './some.js';
+export { default as someBy, default as some_by } from './someBy.js';
 export { default as sort } from './sort.js';
 export { default as sortBy, default as sort_by } from './sortBy.js';
 export { default as sortByDesc, default as sort_by_desc } from './sortByDesc.js';
