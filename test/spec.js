@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import {
+  add,
   html,
   L, flat, deepFlat, stop,
   take, C, takeWhile, takeUntil,
@@ -51,7 +52,9 @@ import {
   sel,
   selEquals,
   selSatisfies,
-  slice
+  slice,
+  both,
+  either
 } from "../index.js";
 
 (function() {
@@ -1149,6 +1152,52 @@ import {
     it('#', function() {
       const arr = [{ a: 1 }, { a: 2 }, { a: 3 }];
       expect(sumBy(sel('a'), arr)).to.eql(6);
+    });
+  });
+
+  describe('both', function() {
+    it('sync', function() {
+      const gt10 = a => a > 10;
+      const lt20 = a => a < 20;
+      const f = both(gt10, lt20);
+
+      expect(f(10)).to.eql(false);
+      expect(f(11)).to.eql(true);
+      expect(f(19)).to.eql(true);
+      expect(f(20)).to.eql(false);
+    });
+
+    it('async', async function() {
+      const gt10 = a => Promise.resolve(a > 10);
+      const lt20 = a => Promise.resolve(a < 20);
+      const f = both(gt10, lt20);
+
+      expect(await f(10)).to.eql(false);
+      expect(await f(11)).to.eql(true);
+      expect(await f(19)).to.eql(true);
+      expect(await f(20)).to.eql(false);
+    });
+  });
+
+  describe('either', function() {
+    it('sync', function() {
+      const lengthGt5 = (...nums) => nums.length > 5;
+      const sumEq10 = (...nums) => nums.reduce(add) === 10;
+      const f = either(lengthGt5, sumEq10);
+
+      expect(f(...L.range(3))).to.eql(false);
+      expect(f(...L.range(5))).to.eql(true);
+      expect(f(...L.range(7))).to.eql(true);
+    });
+
+    it('async', async function() {
+      const lengthGt5 = (...nums) => Promise.resolve(nums.length > 5);
+      const sumEq10 = (...nums) => Promise.resolve(nums.reduce(add) === 10);
+      const f = either(lengthGt5, sumEq10);
+
+      expect(await f(...L.range(3))).to.eql(false);
+      expect(await f(...L.range(5))).to.eql(true);
+      expect(await f(...L.range(7))).to.eql(true);
     });
   });
 } ());
