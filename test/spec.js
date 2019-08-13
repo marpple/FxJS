@@ -9,6 +9,7 @@ import {
   takeAll,
   delay,
   map,
+  mean,
   reduce, go1, find, some, every, deepFlatten,
   reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
@@ -1156,7 +1157,7 @@ import {
   });
 
   describe('both', function() {
-    it.only('sync', function() {
+    it('sync', function() {
       const gt10 = a => a > 10;
       const lt20 = a => a < 20;
       const f = both(gt10, lt20);
@@ -1167,7 +1168,7 @@ import {
       expect(f(20)).to.eql(false);
     });
 
-    it.only('async', async function() {
+    it('async', async function() {
       const gt10 = a => Promise.resolve(a > 10);
       const lt20 = a => Promise.resolve(a < 20);
       const f = both(gt10, lt20);
@@ -1180,7 +1181,7 @@ import {
   });
 
   describe('either', function() {
-    it.only('sync', function() {
+    it('sync', function() {
       const lengthGt5 = (...nums) => nums.length > 5;
       const sumEq10 = (...nums) => nums.reduce(add) === 10;
       const f = either(lengthGt5, sumEq10);
@@ -1190,7 +1191,7 @@ import {
       expect(f(...L.range(7))).to.eql(true);
     });
 
-    it.only('async', async function() {
+    it('async', async function() {
       const lengthGt5 = (...nums) => Promise.resolve(nums.length > 5);
       const sumEq10 = (...nums) => Promise.resolve(nums.reduce(add) === 10);
       const f = either(lengthGt5, sumEq10);
@@ -1198,6 +1199,16 @@ import {
       expect(await f(...L.range(3))).to.eql(false);
       expect(await f(...L.range(5))).to.eql(true);
       expect(await f(...L.range(7))).to.eql(true);
+    });
+  });
+
+  describe('meanBy, mean', function() {
+    it.only('sync', function() {
+      expect(mean(L.range(1, 6))).to.eql(3);
+    });
+
+    it.only('async', async function() {
+      expect(await mean(L.map(Promise.resolve.bind(Promise), L.range(1, 6)))).to.eql(3);
     });
   });
 } ());
