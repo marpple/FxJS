@@ -19,6 +19,7 @@ import {
   differenceWith,
   difference,
   initial,
+  ifElse,
   rest,
   repeat,
   insert,
@@ -926,6 +927,28 @@ import {
     it('difference([1,1,1,1,1], [2,2,2,2])', function () {
       expect(difference([2,2,2,2], [1,1,1,1,1])).to.eql([1, 1, 1, 1, 1]);
       expect(difference([2], [1, 2, 3, 4])).to.eql([1, 3, 4]);
+    });
+  });
+
+  describe('ifElse', function() {
+    it("ifElse sync", function() {
+      expect(
+        ifElse(
+          selEquals('name', 'dh'),
+          obj => (obj.age = 27, obj),
+          obj => (obj.name = 'hd', obj),
+          { name: 'dh', age: 26 }
+        )).to.eql({ name: 'dh', age: 27 })
+    });
+
+    it("ifElse async", async function() {
+      expect(
+        await ifElse(
+          selSatisfies(age => Promise.resolve(age === 26), 'age'),
+          obj => Promise.resolve((obj.age = 27, obj)),
+          obj => Promise.resolve((obj.name = 'hd', obj)),
+          { name: 'dh', age: 26 }
+        )).to.eql({ name: 'dh', age: 27 })
     });
   });
 
