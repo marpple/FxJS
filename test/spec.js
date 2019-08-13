@@ -1156,7 +1156,7 @@ import {
   });
 
   describe('both', function() {
-    it('sync', function() {
+    it.only('sync', function() {
       const gt10 = a => a > 10;
       const lt20 = a => a < 20;
       const f = both(gt10, lt20);
@@ -1167,7 +1167,7 @@ import {
       expect(f(20)).to.eql(false);
     });
 
-    it('async', async function() {
+    it.only('async', async function() {
       const gt10 = a => Promise.resolve(a > 10);
       const lt20 = a => Promise.resolve(a < 20);
       const f = both(gt10, lt20);
@@ -1180,7 +1180,7 @@ import {
   });
 
   describe('either', function() {
-    it('sync', function() {
+    it.only('sync', function() {
       const lengthGt5 = (...nums) => nums.length > 5;
       const sumEq10 = (...nums) => nums.reduce(add) === 10;
       const f = either(lengthGt5, sumEq10);
@@ -1190,7 +1190,7 @@ import {
       expect(f(...L.range(7))).to.eql(true);
     });
 
-    it('async', async function() {
+    it.only('async', async function() {
       const lengthGt5 = (...nums) => Promise.resolve(nums.length > 5);
       const sumEq10 = (...nums) => Promise.resolve(nums.reduce(add) === 10);
       const f = either(lengthGt5, sumEq10);
