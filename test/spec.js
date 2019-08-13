@@ -55,7 +55,14 @@ import {
   selSatisfies,
   slice,
   both,
-  either
+  either,
+  equals,
+  gt,
+  lt,
+  satisfiesEvery,
+  satisfiesSome,
+  equalsBy,
+  sum, pipe,
 } from "../index.js";
 
 (function() {
@@ -1209,6 +1216,87 @@ import {
 
     it('async', async function() {
       expect(await mean(L.map(Promise.resolve.bind(Promise), L.range(1, 6)))).to.eql(3);
+    });
+  });
+
+  describe('satisfiesEvery', function() {
+    it('sync functions with an argument', function() {
+      const fns = [
+        lt(1),
+        gt(10),
+        equals(5)
+      ];
+      expect(satisfiesEvery(fns, 5)).to.eql(true);
+    });
+
+    it('sync functions with many arguments', function() {
+      const fns = [
+        equalsBy(pipe(sum, lt(1)), true),
+        equalsBy(pipe(sum, gt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      expect(satisfiesEvery(fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+
+    it('async functions with an argument', async function() {
+      const fns = [
+        lt(1),
+        gt(10),
+        equals(5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesEvery(async_fns, 5)).to.eql(true);
+    });
+
+    it('async functions with many arguments', async function() {
+      const fns = [
+        equalsBy(pipe(sum, lt(1)), true),
+        equalsBy(pipe(sum, gt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesEvery(async_fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+  });
+
+  describe('satisfiesSome', function() {
+    it('sync functions with an argument', function() {
+      const fns = [
+        gt(1),
+        lt(10),
+        equals(5)
+      ];
+      expect(satisfiesSome(fns, 5)).to.eql(true);
+    });
+
+    it('sync functions with many arguments', function() {
+      const fns = [
+        equalsBy(pipe(sum, gt(1)), true),
+        equalsBy(pipe(sum, lt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      expect(satisfiesSome(fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+
+    it('async functions with an argument', async function() {
+      const fns = [
+        gt(1),
+        lt(10),
+        equals(5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesSome(async_fns, 5)).to.eql(true);
+    });
+
+
+    it('async functions with many arguments', async function() {
+      const fns = [
+        equalsBy(pipe(sum, gt(1)), true),
+        equalsBy(pipe(sum, lt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesSome(async_fns)(1, 1, 1, 1, 1)).to.eql(true);
     });
   });
 } ());
