@@ -1,5 +1,7 @@
 export { default as add } from "./add.js";
+export { default as all } from './all.js';
 export { default as and } from "./and.js";
+export { default as any } from './any.js';
 export { default as append } from './append.js';
 export { default as apply } from './apply.js';
 export { default as baseSel, default as base_sel } from './baseSel.js';
@@ -33,7 +35,6 @@ export { default as equalsBy, default as equals_by } from './equalsBy.js';
 export { default as equals2 } from './equals2.js';
 export { default as equalsBy2, default as equals_by2 } from './equalsBy2.js';
 export { default as every } from './every.js';
-export { default as everyBy, default as every_by } from './everyBy.js';
 export { default as extend } from './extend.js';
 export { default as filter } from './filter.js';
 export { default as find } from './find.js'; //ok
@@ -115,7 +116,6 @@ export { default as selEquals, default as sel_equals, default as selEq, default 
 export { default as selSatisfies, default as sel_satisfies } from './selSatisfies.js';
 export { default as slice } from './slice.js';
 export { default as some } from './some.js';
-export { default as someBy, default as some_by } from './someBy.js';
 export { default as sort } from './sort.js';
 export { default as sortBy, default as sort_by } from './sortBy.js';
 export { default as sortByDesc, default as sort_by_desc } from './sortByDesc.js';
