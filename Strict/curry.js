@@ -1,3 +1,3 @@
 export default function curry(f) {
-  return (a, ..._) => _.length < 1 ? (..._) => f(a, ..._) : f(a, ..._);
+  return (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
 }

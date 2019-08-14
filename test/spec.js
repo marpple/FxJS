@@ -63,9 +63,65 @@ import {
   satisfiesSome,
   equalsBy,
   sum, pipe,
+  curry2, curry3, curryN,
 } from "../index.js";
 
 (function() {
+
+  describe('curry', function() {
+    it('curry2', function() {
+      const addAll = curry2((...args) => args.reduce(add));
+      expect(addAll(1)(2)(3)).to.eql(6);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3)).to.eql(6);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3)).to.eql(6);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3)).to.eql(6);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+    });
+
+    it('curry3', function() {
+      const addAll = curry3((...args) => args.reduce(add));
+      expect(addAll(1)(2, 3)(4)).to.eql(10);
+      expect(addAll(1)(2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3)(4)).to.eql(10);
+      expect(addAll(1)(2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3)(4)).to.eql(10);
+      expect(addAll(1, 2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3)(4)).to.eql(10);
+      expect(addAll(1, 2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3, 4, 5)).to.eql(15);
+    });
+
+    it('curryN', function() {
+      const addAll = curryN(3, (...args) => args.reduce(add));
+      expect(addAll(1)(2, 3)(4)).to.eql(10);
+      expect(addAll(1)(2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3)(4)).to.eql(10);
+      expect(addAll(1)(2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3)(4)).to.eql(10);
+      expect(addAll(1, 2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3)(4)).to.eql(10);
+      expect(addAll(1, 2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3, 4, 5)).to.eql(15);
+    });
+  });
+
   describe('C.race', function () {
     it('C.takeRace(1, iter)', async () => {
       expect(await C.race(L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql(50);

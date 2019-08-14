@@ -4,6 +4,6 @@ export default curry(function curryN(n, f) {
   return function _recur(a, ..._) {
     return _.length >= n
       ? f(a, ..._)
-      : (b, ...__) => _recur(a, ..._, b, ...__);
+      : (...__) => _recur(a, ..._, ...__);
   }
 });

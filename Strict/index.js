@@ -14,6 +14,8 @@ export { default as constant } from './constant.js';
 export { default as countBy, default as count_by } from './countBy.js';
 export { default as curry } from './curry.js';
 export { default as curry2 } from './curry2.js';
+export { default as curry3 } from './curry3.js';
+export { default as curryN } from './curryN.js';
 export { default as debounce } from './debounce.js';
 export { default as deepFlat, default as deepFlatten, default as deep_flat, default as deep_flatten } from './deepFlat.js';
 export { default as defaults } from './defaults.js';
