@@ -144,6 +144,7 @@ export { default as toIter, default as to_iter } from './toIter.js';
 export { default as undefinedTo, default as undefined_to } from './undefinedTo.js';
 export { default as union } from './union.js';
 export { default as unionBy, default as union_by } from './unionBy.js';
+export { default as unionWith, default as union_with } from './unionWith.js';
 export { default as unique, default as uniq } from './unique.js';
 export { default as uniqueBy, default as unique_by, default as uniqBy, default as uniq_by } from './uniqueBy.js';
 export { default as uniqueWith, default as unique_with, default as uniqWith, default as uniq_with } from './uniqueWith.js';

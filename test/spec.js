@@ -30,6 +30,7 @@ import {
   intersection,
   unionBy,
   union,
+  unionWith,
   uniq,
   uniqWith,
   update,
@@ -1115,6 +1116,22 @@ import {
   describe('union', function () {
     it('union([2, 3], [2, 1, 4])', function () {
       expect(union([2, 3], [2, 1, 4])).to.eql([2, 3, 1, 4]);
+    });
+  });
+
+  describe('unionWith', function () {
+    it('sync ', function () {
+      const l1 = [{a: 1}, {a: 2}];
+      const l2 = [{a: 1}, {a: 4}];
+
+      expect(unionWith(equalsBy(sel('a')), l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 4}]);
+    });
+
+    it('async ', async function () {
+      const l1 = [{a: 1}, Promise.resolve({a: 2})];
+      const l2 = [Promise.resolve({a: 1}), {a: 4}];
+
+      expect(await unionWith(equalsBy(sel('a')), l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 4}]);
     });
   });
 
