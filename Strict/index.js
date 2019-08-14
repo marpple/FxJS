@@ -145,7 +145,8 @@ export { default as undefinedTo, default as undefined_to } from './undefinedTo.j
 export { default as union } from './union.js';
 export { default as unionBy, default as union_by } from './unionBy.js';
 export { default as unique, default as uniq } from './unique.js';
-export { default as uniqueBy, default as unique_by } from './uniqueBy.js';
+export { default as uniqueBy, default as unique_by, default as uniqBy, default as uniq_by } from './uniqueBy.js';
+export { default as uniqueWith, default as unique_with, default as uniqWith, default as uniq_with } from './uniqueWith.js';
 export { default as unzip } from './unzip.js';
 export { default as update } from './update.js';
 export { default as updateBy, default as update_by, default as adjust } from './updateBy.js';

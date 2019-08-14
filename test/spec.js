@@ -31,6 +31,7 @@ import {
   unionBy,
   union,
   uniq,
+  uniqWith,
   update,
   updateBy,
   zip,
@@ -750,6 +751,24 @@ import {
 
     it('uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})', function () {
       expect(uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})).to.eql({a: 1, b: 2, c: 3, f: 4});
+    });
+  });
+
+  describe('uniqWith', function () {
+    it('sync', function () {
+      const strEq = equalsBy(String);
+      expect(uniqWith(strEq, [1, '1', 2, 1])).to.eql([1, 2]);
+      expect(uniqWith(strEq, [{}, {}])).to.eql([{}]);
+      expect(uniqWith(strEq, [1, '1', 1])).to.eql([1]);
+      expect(uniqWith(strEq, ['1', 1, 1])).to.eql(['1']);
+    });
+
+    it('async', async function () {
+      const strEq = equalsBy(String);
+      expect(await uniqWith(strEq, [1, Promise.resolve('1'), Promise.resolve(2), 1])).to.eql([1, 2]);
+      expect(await uniqWith(strEq, [{}, Promise.resolve({})])).to.eql([{}]);
+      expect(await uniqWith(strEq, [1, Promise.resolve('1'), 1])).to.eql([1]);
+      expect(await uniqWith(strEq, ['1', Promise.resolve(1), 1])).to.eql(['1']);
     });
   });
 
