@@ -1,7 +1,6 @@
 import curry from "./curry.js";
-import any from "./any.js";
-import mapLazy from "../Lazy/mapLazy.js";
+import some from "./some.js";
 
 export default curry(function satisfiesSome(fns, ...args) {
-  return any(mapLazy(f => f(...args), fns));
+  return some(f => f(...args), fns);
 });
