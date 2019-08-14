@@ -456,7 +456,7 @@ try {
   - [L.filter](https://github.com/marpple/FxJS/blob/master/API.md#L.filter)
   - [L.flat](https://github.com/marpple/FxJS/blob/master/API.md#L.flat)
   - [L.flatMap](https://github.com/marpple/FxJS/blob/master/API.md#L.flatMap)
-  - [L.zipIndexs](https://github.com/marpple/FxJS/blob/master/API.md#L.zipIndexs)
+  - [L.zipWithIndex](https://github.com/marpple/FxJS/blob/master/API.md#L.zipWithIndex)
   - [L.intersection](https://github.com/marpple/FxJS/blob/master/API.md#L.intersection)
   - [L.intersectionBy](https://github.com/marpple/FxJS/blob/master/API.md#L.intersectionBy)
   - [L.intersectionWith](https://github.com/marpple/FxJS/blob/master/API.md#L.intersectionWith)

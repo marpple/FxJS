@@ -1,5 +1,5 @@
 import curry from "../Strict/curry.js";
-import ipp from "./zipIndexs.js";
+import ipp from "./zipWithIndex.js";
 import rejectLazy from "./rejectLazy.js";
 import mapLazy from "./mapLazy";
 import last from "../Strict/last";

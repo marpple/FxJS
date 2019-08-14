@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import {
+  add,
   html,
   L, flat, deepFlat, stop,
   take, C, takeWhile, takeUntil,
@@ -8,6 +9,7 @@ import {
   takeAll,
   delay,
   map,
+  mean,
   reduce, go1, find, some, every, deepFlatten,
   reduceS, goS, stopIf, stop_if, pipeS, calls,
   mapObject,
@@ -19,6 +21,7 @@ import {
   differenceWith,
   difference,
   initial,
+  ifElse,
   rest,
   repeat,
   insert,
@@ -27,7 +30,9 @@ import {
   intersection,
   unionBy,
   union,
+  unionWith,
   uniq,
+  uniqWith,
   update,
   updateBy,
   zip,
@@ -48,10 +53,77 @@ import {
   each,
   sumBy,
   sel,
-  slice
+  selEquals,
+  selSatisfies,
+  slice,
+  both,
+  either,
+  equals,
+  gt,
+  lt,
+  satisfiesEvery,
+  satisfiesSome,
+  equalsBy,
+  sum, pipe,
+  curry2, curry3, curryN,
 } from "../index.js";
 
 (function() {
+
+  describe('curry', function() {
+    it('curry2', function() {
+      const addAll = curry2((...args) => args.reduce(add));
+      expect(addAll(1)(2)(3)).to.eql(6);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3)).to.eql(6);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3)).to.eql(6);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3)).to.eql(6);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+    });
+
+    it('curry3', function() {
+      const addAll = curry3((...args) => args.reduce(add));
+      expect(addAll(1)(2, 3)(4)).to.eql(10);
+      expect(addAll(1)(2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3)(4)).to.eql(10);
+      expect(addAll(1)(2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3)(4)).to.eql(10);
+      expect(addAll(1, 2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3)(4)).to.eql(10);
+      expect(addAll(1, 2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3, 4, 5)).to.eql(15);
+    });
+
+    it('curryN', function() {
+      const addAll = curryN(3, (...args) => args.reduce(add));
+      expect(addAll(1)(2, 3)(4)).to.eql(10);
+      expect(addAll(1)(2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1)(2, 3, 4)).to.eql(10);
+      expect(addAll(1)(2, 3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3, 4)).to.eql(10);
+      expect(addAll(1)(2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1)(2)(3)(4)).to.eql(10);
+      expect(addAll(1)(2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3)(4)).to.eql(10);
+      expect(addAll(1, 2)(3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2)(3, 4)).to.eql(10);
+      expect(addAll(1, 2)(3, 4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3)(4)).to.eql(10);
+      expect(addAll(1, 2, 3)(4, 5)).to.eql(15);
+      expect(addAll(1, 2, 3, 4)).to.eql(10);
+      expect(addAll(1, 2, 3, 4, 5)).to.eql(15);
+    });
+  });
+
   describe('C.race', function () {
     it('C.takeRace(1, iter)', async () => {
       expect(await C.race(L.map(a => delay(a, a), [100, 50, 200, 70, 300, 80]))).to.eql(50);
@@ -424,6 +496,24 @@ import {
     });
   });
 
+  describe('selEquals', function() {
+    const dh = { name: "dh", age: 27, company: { name: 'marpple' } };
+    it("selEquals 1 depth", function () {
+      expect(selEquals('name', 'dh', dh)).to.eql(true);
+    });
+
+    it("selEquals 2 depth", function () {
+      expect(selEquals('company.name', 'marpple', dh)).to.eql(true);
+    });
+  });
+
+  describe('selSatisfies', function() {
+    const dh = { name: "dh", age: 27 };
+    it("#1", function () {
+      expect(selSatisfies(age => age === 27, 'age', dh)).to.eql(true);
+    });
+  });
+
   describe('slice', function() {
     it('slice with index 0', function() {
       const iter = L.range(5);
@@ -662,6 +752,24 @@ import {
 
     it('uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})', function () {
       expect(uniq({a: 1, b: 2, c: 3, d: 1, e: 2, f: 4})).to.eql({a: 1, b: 2, c: 3, f: 4});
+    });
+  });
+
+  describe('uniqWith', function () {
+    it('sync', function () {
+      const strEq = equalsBy(String);
+      expect(uniqWith(strEq, [1, '1', 2, 1])).to.eql([1, 2]);
+      expect(uniqWith(strEq, [{}, {}])).to.eql([{}]);
+      expect(uniqWith(strEq, [1, '1', 1])).to.eql([1]);
+      expect(uniqWith(strEq, ['1', 1, 1])).to.eql(['1']);
+    });
+
+    it('async', async function () {
+      const strEq = equalsBy(String);
+      expect(await uniqWith(strEq, [1, Promise.resolve('1'), Promise.resolve(2), 1])).to.eql([1, 2]);
+      expect(await uniqWith(strEq, [{}, Promise.resolve({})])).to.eql([{}]);
+      expect(await uniqWith(strEq, [1, Promise.resolve('1'), 1])).to.eql([1]);
+      expect(await uniqWith(strEq, ['1', Promise.resolve(1), 1])).to.eql(['1']);
     });
   });
 
@@ -909,6 +1017,28 @@ import {
     });
   });
 
+  describe('ifElse', function() {
+    it("ifElse sync", function() {
+      expect(
+        ifElse(
+          selEquals('name', 'dh'),
+          obj => (obj.age = 27, obj),
+          obj => (obj.name = 'hd', obj),
+          { name: 'dh', age: 26 }
+        )).to.eql({ name: 'dh', age: 27 })
+    });
+
+    it("ifElse async", async function() {
+      expect(
+        await ifElse(
+          selSatisfies(age => Promise.resolve(age === 26), 'age'),
+          obj => Promise.resolve((obj.age = 27, obj)),
+          obj => Promise.resolve((obj.name = 'hd', obj)),
+          { name: 'dh', age: 26 }
+        )).to.eql({ name: 'dh', age: 27 })
+    });
+  });
+
   describe('initial', function () {
     it('initial([1, 2, 3])', function() {
       expect(initial([1, 2, 3])).to.eql([1, 2]);
@@ -986,6 +1116,22 @@ import {
   describe('union', function () {
     it('union([2, 3], [2, 1, 4])', function () {
       expect(union([2, 3], [2, 1, 4])).to.eql([2, 3, 1, 4]);
+    });
+  });
+
+  describe('unionWith', function () {
+    it('sync ', function () {
+      const l1 = [{a: 1}, {a: 2}];
+      const l2 = [{a: 1}, {a: 4}];
+
+      expect(unionWith(equalsBy(sel('a')), l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 4}]);
+    });
+
+    it('async ', async function () {
+      const l1 = [{a: 1}, Promise.resolve({a: 2})];
+      const l2 = [Promise.resolve({a: 1}), {a: 4}];
+
+      expect(await unionWith(equalsBy(sel('a')), l1, l2)).to.eql([{a: 1}, {a: 2}, {a: 4}]);
     });
   });
 
@@ -1106,6 +1252,143 @@ import {
     it('#', function() {
       const arr = [{ a: 1 }, { a: 2 }, { a: 3 }];
       expect(sumBy(sel('a'), arr)).to.eql(6);
+    });
+  });
+
+  describe('both', function() {
+    it('sync', function() {
+      const gt10 = a => a > 10;
+      const lt20 = a => a < 20;
+      const f = both(gt10, lt20);
+
+      expect(f(10)).to.eql(false);
+      expect(f(11)).to.eql(true);
+      expect(f(19)).to.eql(true);
+      expect(f(20)).to.eql(false);
+    });
+
+    it('async', async function() {
+      const gt10 = a => Promise.resolve(a > 10);
+      const lt20 = a => Promise.resolve(a < 20);
+      const f = both(gt10, lt20);
+
+      expect(await f(10)).to.eql(false);
+      expect(await f(11)).to.eql(true);
+      expect(await f(19)).to.eql(true);
+      expect(await f(20)).to.eql(false);
+    });
+  });
+
+  describe('either', function() {
+    it('sync', function() {
+      const lengthGt5 = (...nums) => nums.length > 5;
+      const sumEq10 = (...nums) => nums.reduce(add) === 10;
+      const f = either(lengthGt5, sumEq10);
+
+      expect(f(...L.range(3))).to.eql(false);
+      expect(f(...L.range(5))).to.eql(true);
+      expect(f(...L.range(7))).to.eql(true);
+    });
+
+    it('async', async function() {
+      const lengthGt5 = (...nums) => Promise.resolve(nums.length > 5);
+      const sumEq10 = (...nums) => Promise.resolve(nums.reduce(add) === 10);
+      const f = either(lengthGt5, sumEq10);
+
+      expect(await f(...L.range(3))).to.eql(false);
+      expect(await f(...L.range(5))).to.eql(true);
+      expect(await f(...L.range(7))).to.eql(true);
+    });
+  });
+
+  describe('meanBy, mean', function() {
+    it('sync', function() {
+      expect(mean(L.range(1, 6))).to.eql(3);
+    });
+
+    it('async', async function() {
+      expect(await mean(L.map(Promise.resolve.bind(Promise), L.range(1, 6)))).to.eql(3);
+    });
+  });
+
+  describe('satisfiesEvery', function() {
+    it('sync functions with an argument', function() {
+      const fns = [
+        lt(1),
+        gt(10),
+        equals(5)
+      ];
+      expect(satisfiesEvery(fns, 5)).to.eql(true);
+    });
+
+    it('sync functions with many arguments', function() {
+      const fns = [
+        equalsBy(pipe(sum, lt(1)), true),
+        equalsBy(pipe(sum, gt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      expect(satisfiesEvery(fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+
+    it('async functions with an argument', async function() {
+      const fns = [
+        lt(1),
+        gt(10),
+        equals(5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesEvery(async_fns, 5)).to.eql(true);
+    });
+
+    it('async functions with many arguments', async function() {
+      const fns = [
+        equalsBy(pipe(sum, lt(1)), true),
+        equalsBy(pipe(sum, gt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesEvery(async_fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+  });
+
+  describe('satisfiesSome', function() {
+    it('sync functions with an argument', function() {
+      const fns = [
+        gt(1),
+        lt(10),
+        equals(5)
+      ];
+      expect(satisfiesSome(fns, 5)).to.eql(true);
+    });
+
+    it('sync functions with many arguments', function() {
+      const fns = [
+        equalsBy(pipe(sum, gt(1)), true),
+        equalsBy(pipe(sum, lt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      expect(satisfiesSome(fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+
+    it('async functions with an argument', async function() {
+      const fns = [
+        gt(1),
+        lt(10),
+        equals(5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesSome(async_fns, 5)).to.eql(true);
+    });
+
+
+    it('async functions with many arguments', async function() {
+      const fns = [
+        equalsBy(pipe(sum, gt(1)), true),
+        equalsBy(pipe(sum, lt(10)), true),
+        equalsBy(sum, 5)
+      ];
+      const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
+      expect(await satisfiesSome(async_fns)(1, 1, 1, 1, 1)).to.eql(true);
     });
   });
 } ());

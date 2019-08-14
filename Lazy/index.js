@@ -38,10 +38,12 @@ export { default as takeUntil, default as take_until } from './takeUntilLazy.js'
 export { default as times } from './timesLazy.js';
 export { default as unionBy, default as union_by } from './unionByLazy.js';
 export { default as union } from './unionLazy.js';
-export { default as uniqueBy, default as unique_by, } from './uniqueByLazy.js';
-export { default as unique } from './uniqueLazy.js';
+export { default as unionWith, default as union_with } from './unionWithLazy.js';
+export { default as uniqueBy, default as unique_by, default as uniqBy, default as uniq_by } from './uniqueByLazy.js';
+export { default as unique, default as uniq } from './uniqueLazy.js';
+export { default as uniqueWith, default as unique_with, default as uniqWith, default as uniq_with } from './uniqueWithLazy.js';
 export { default as update } from './updateLazy.js';
 export { default as updateBy, default as adjust } from './updateByLazy.js';
 export { default as values } from './valuesLazy.js';
-export { default as zipIndexs, default as zip_indexs, default as indexValues, default as index_values, default as ipp } from './zipIndexs.js';
+export { default as zipWithIndex, default as zip_with_index, default as indexValues, default as index_values, default as ipp } from './zipWithIndex.js';
 export { default as zip } from "./zipLazy.js";
