@@ -111,6 +111,7 @@ export { default as reduceS } from './reduceS.js';
 export { default as reject } from './reject.js';
 export { default as remove } from './remove.js';
 export { default as repeat } from './repeat.js';
+export { default as replace } from './replace.js';
 export { default as satisfiesEvery, default as satisfies_every } from './satisfiesEvery.js';
 export { default as satisfiesSome, default as satisfies_some } from './satisfiesSome.js';
 export { default as sel } from './sel.js';

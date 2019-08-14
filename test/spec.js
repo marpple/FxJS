@@ -66,6 +66,7 @@ import {
   equalsBy,
   sum, pipe,
   curry2, curry3, curryN,
+  replace,
 } from "../index.js";
 
 (function() {
@@ -1389,6 +1390,16 @@ import {
       ];
       const async_fns = map(f => pipe(f, Promise.resolve.bind(Promise)), fns);
       expect(await satisfiesSome(async_fns)(1, 1, 1, 1, 1)).to.eql(true);
+    });
+  });
+
+  describe('replace', function() {
+    it('search by string', function() {
+      expect(replace('foo', 'bar', 'foo foo foo')).to.eql('bar foo foo');
+    });
+
+    it('search by regex', function() {
+      expect(replace(/foo/g, 'bar', 'foo foo foo')).to.eql('bar bar bar');
     });
   });
 } ());
