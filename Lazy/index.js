@@ -45,5 +45,5 @@ export { default as uniqueWith, default as unique_with, default as uniqWith, def
 export { default as update } from './updateLazy.js';
 export { default as updateBy, default as adjust } from './updateByLazy.js';
 export { default as values } from './valuesLazy.js';
-export { default as zipIndexs, default as zip_indexs, default as indexValues, default as index_values, default as ipp } from './zipIndexs.js';
+export { default as zipWithIndex, default as zip_with_index, default as indexValues, default as index_values, default as ipp } from './zipWithIndex.js';
 export { default as zip } from "./zipLazy.js";

@@ -126,7 +126,7 @@
   - [L.filter](#L.filter)
   - [L.flat](#L.flat)
   - [L.flatMap](#L.flatMap)
-  - [L.zipIndexs](#L.zipIndexs)
+  - [L.zipWithIndex](#L.zipWithIndex)
   - [L.intersection](#L.intersection)
   - [L.intersectionBy](#L.intersectionBy)
   - [L.intersectionWith](#L.intersectionWith)
@@ -1299,8 +1299,8 @@ await go(
 ### L.values
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/valuesLazy.js)
 
-### L.zipIndexs
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipIndexsLazy.js)
+### L.zipWithIndex
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipWithIndexLazy.js)
 
 ### L.zip
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipLazy.js)
