@@ -247,6 +247,7 @@ __webpack_require__.d(Strict_namespaceObject, "reduceS", function() { return red
 __webpack_require__.d(Strict_namespaceObject, "reject", function() { return Strict_reject; });
 __webpack_require__.d(Strict_namespaceObject, "remove", function() { return Strict_remove; });
 __webpack_require__.d(Strict_namespaceObject, "repeat", function() { return Strict_repeat; });
+__webpack_require__.d(Strict_namespaceObject, "replace", function() { return replace; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesEvery", function() { return Strict_satisfiesEvery; });
 __webpack_require__.d(Strict_namespaceObject, "satisfies_every", function() { return Strict_satisfiesEvery; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesSome", function() { return Strict_satisfiesSome; });
@@ -1375,8 +1376,8 @@ function html(strs, ...datas) {
 
 
 
-/* harmony default export */ var Strict_ifElse = (curry3(function ifElse(cond, t, f, v) {
-  return go1(cond(v), b => b ? t(v) : f(v));
+/* harmony default export */ var Strict_ifElse = (curry3(function ifElse(cond, t, f, ...args) {
+  return go1(cond(...args), b => b ? t(...args) : f(...args));
 }));
 // CONCATENATED MODULE: ./Strict/indexBy.js
 
@@ -1874,6 +1875,12 @@ function* zipWithIndex(iter) {
 /* harmony default export */ var Strict_repeat = (curry(function repeat(value, count) {
   return takeAll(Lazy_repeatLazy(value, count));
 }));
+// CONCATENATED MODULE: ./Strict/replace.js
+
+
+/* harmony default export */ var replace = (curry2(function replace(pattern, replacement, str) {
+  return str.replace(pattern, replacement);
+}));
 // CONCATENATED MODULE: ./Strict/satisfiesEvery.js
 
 
@@ -2331,8 +2338,8 @@ function unzip(iter) {
 
 
 
-/* harmony default export */ var Strict_when = (curry2(function when(cond, f, v) {
-  return Strict_ifElse(cond, f, identity, v);
+/* harmony default export */ var Strict_when = (curry2(function when(cond, f, ...args) {
+  return Strict_ifElse(cond, f, identity, ...args);
 }));
 // CONCATENATED MODULE: ./Strict/zipObj.js
 
@@ -2393,6 +2400,7 @@ function unzip(iter) {
 
 
  //ok
+
 
 
 
