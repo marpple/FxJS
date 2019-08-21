@@ -1,8 +1,8 @@
 import curry from "../Strict/curry.js";
 import ipp from "./zipWithIndex.js";
 import rejectLazy from "./rejectLazy.js";
-import mapLazy from "./mapLazy";
-import last from "../Strict/last";
+import mapLazy from "./mapLazy.js";
+import last from "../Strict/last.js";
 import go from "../Strict/go.js";
 
 export default curry(function removeLazy(start, count, iter) {
