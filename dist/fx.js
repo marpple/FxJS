@@ -292,7 +292,7 @@ __webpack_require__.d(Strict_namespaceObject, "takeUntil", function() { return S
 __webpack_require__.d(Strict_namespaceObject, "take_until", function() { return Strict_takeUntil; });
 __webpack_require__.d(Strict_namespaceObject, "takeWhile", function() { return Strict_takeWhile; });
 __webpack_require__.d(Strict_namespaceObject, "take_while", function() { return Strict_takeWhile; });
-__webpack_require__.d(Strict_namespaceObject, "tap", function() { return Strict_tap; });
+__webpack_require__.d(Strict_namespaceObject, "tap", function() { return tap; });
 __webpack_require__.d(Strict_namespaceObject, "throttle", function() { return Strict_throttle; });
 __webpack_require__.d(Strict_namespaceObject, "times", function() { return Strict_times; });
 __webpack_require__.d(Strict_namespaceObject, "toIter", function() { return toIter; });
@@ -1347,10 +1347,9 @@ function goS(..._) {
 
 
 
-
-/* harmony default export */ var Strict_tap = (curry(function tap(f, ...fs) {
+function tap(f, ...fs) {
   return (a, ...as) => go1(reduce(go1Sync, f(a, ...as), fs), _ => a);
-}));
+};
 // CONCATENATED MODULE: ./Strict/log.js
 const { log } = console;
 /* harmony default export */ var Strict_log = (log);
@@ -1358,7 +1357,7 @@ const { log } = console;
 
 
 
-const hi_f = Strict_tap(Strict_log);
+const hi_f = tap(Strict_log);
 
 function hi(..._) { return hi_f(..._); }
 // CONCATENATED MODULE: ./Strict/html.js

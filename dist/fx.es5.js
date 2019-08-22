@@ -5369,7 +5369,7 @@ __webpack_require__.d(Strict_namespaceObject, "takeUntil", function() { return S
 __webpack_require__.d(Strict_namespaceObject, "take_until", function() { return Strict_takeUntil; });
 __webpack_require__.d(Strict_namespaceObject, "takeWhile", function() { return Strict_takeWhile; });
 __webpack_require__.d(Strict_namespaceObject, "take_while", function() { return Strict_takeWhile; });
-__webpack_require__.d(Strict_namespaceObject, "tap", function() { return Strict_tap; });
+__webpack_require__.d(Strict_namespaceObject, "tap", function() { return tap; });
 __webpack_require__.d(Strict_namespaceObject, "throttle", function() { return Strict_throttle; });
 __webpack_require__.d(Strict_namespaceObject, "times", function() { return Strict_times; });
 __webpack_require__.d(Strict_namespaceObject, "toIter", function() { return toIter; });
@@ -7889,8 +7889,7 @@ function goS() {
 
 
 
-
-/* harmony default export */ var Strict_tap = (curry(function tap(f) {
+function tap(f) {
   for (var _len = arguments.length, fs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     fs[_key - 1] = arguments[_key];
   }
@@ -7904,7 +7903,8 @@ function goS() {
       return a;
     });
   };
-}));
+}
+;
 // CONCATENATED MODULE: ./Strict/log.js
 var _console = console,
     log = _console.log;
@@ -7912,7 +7912,7 @@ var _console = console,
 // CONCATENATED MODULE: ./Strict/hi.js
 
 
-var hi_f = Strict_tap(Strict_log);
+var hi_f = tap(Strict_log);
 function hi() {
   return hi_f.apply(void 0, arguments);
 }
