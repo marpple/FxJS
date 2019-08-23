@@ -5182,6 +5182,7 @@ __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; 
 __webpack_require__.d(Strict_namespaceObject, "calls", function() { return Strict_calls; });
 __webpack_require__.d(Strict_namespaceObject, "chunk", function() { return Strict_chunk; });
 __webpack_require__.d(Strict_namespaceObject, "compact", function() { return compact; });
+__webpack_require__.d(Strict_namespaceObject, "cond", function() { return cond_cond; });
 __webpack_require__.d(Strict_namespaceObject, "constant", function() { return constant; });
 __webpack_require__.d(Strict_namespaceObject, "countBy", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "count_by", function() { return Strict_countBy; });
@@ -5391,6 +5392,7 @@ __webpack_require__.d(Strict_namespaceObject, "uniqueWith", function() { return 
 __webpack_require__.d(Strict_namespaceObject, "unique_with", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "uniqWith", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "uniq_with", function() { return Strict_uniqueWith; });
+__webpack_require__.d(Strict_namespaceObject, "unless", function() { return Strict_unless; });
 __webpack_require__.d(Strict_namespaceObject, "unzip", function() { return unzip; });
 __webpack_require__.d(Strict_namespaceObject, "update", function() { return Strict_update; });
 __webpack_require__.d(Strict_namespaceObject, "updateBy", function() { return Strict_updateBy; });
@@ -6840,6 +6842,51 @@ regeneratorRuntime.mark(function takeWhileLazy(f, iter) {
 /* harmony default export */ var compact = (Strict_filter(function (a) {
   return a;
 }));
+// CONCATENATED MODULE: ./Strict/cond.js
+
+
+
+
+
+
+
+
+function cond_slicedToArray(arr, i) { return cond_arrayWithHoles(arr) || cond_iterableToArrayLimit(arr, i) || cond_nonIterableRest(); }
+
+function cond_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function cond_iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function cond_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function cond_cond() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+
+  return function () {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return go(fns, Lazy_filterLazy(function (_ref) {
+      var _ref2 = cond_slicedToArray(_ref, 1),
+          c = _ref2[0];
+
+      return c.apply(void 0, args);
+    }), Lazy_mapLazy(function (_ref3) {
+      var _ref4 = cond_slicedToArray(_ref3, 2),
+          _ = _ref4[0],
+          f = _ref4[1];
+
+      return f.apply(void 0, args);
+    }), head);
+  };
+}
 // CONCATENATED MODULE: ./Strict/constant.js
 function constant(a) {
   return function (_) {
@@ -9411,6 +9458,18 @@ function unique(a) {
 /* harmony default export */ var Strict_uniqueWith = (curry(function uniqueWith(f, iter) {
   return takeAll(Lazy_uniqueWithLazy(f, iter));
 }));
+// CONCATENATED MODULE: ./Strict/unless.js
+
+
+
+
+/* harmony default export */ var Strict_unless = (curry2(function unless(cond, f) {
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  return Strict_ifElse.apply(void 0, [cond, identity, f].concat(args));
+}));
 // CONCATENATED MODULE: ./Lazy/zipLazy.js
 
 
@@ -9683,7 +9742,9 @@ function zipWith_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i =
 
 
 
+
  //ok
+
 
 
 

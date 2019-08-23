@@ -105,6 +105,7 @@ __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; 
 __webpack_require__.d(Strict_namespaceObject, "calls", function() { return Strict_calls; });
 __webpack_require__.d(Strict_namespaceObject, "chunk", function() { return Strict_chunk; });
 __webpack_require__.d(Strict_namespaceObject, "compact", function() { return compact; });
+__webpack_require__.d(Strict_namespaceObject, "cond", function() { return cond_cond; });
 __webpack_require__.d(Strict_namespaceObject, "constant", function() { return constant; });
 __webpack_require__.d(Strict_namespaceObject, "countBy", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "count_by", function() { return Strict_countBy; });
@@ -314,6 +315,7 @@ __webpack_require__.d(Strict_namespaceObject, "uniqueWith", function() { return 
 __webpack_require__.d(Strict_namespaceObject, "unique_with", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "uniqWith", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "uniq_with", function() { return Strict_uniqueWith; });
+__webpack_require__.d(Strict_namespaceObject, "unless", function() { return Strict_unless; });
 __webpack_require__.d(Strict_namespaceObject, "unzip", function() { return unzip; });
 __webpack_require__.d(Strict_namespaceObject, "update", function() { return Strict_update; });
 __webpack_require__.d(Strict_namespaceObject, "updateBy", function() { return Strict_updateBy; });
@@ -874,6 +876,20 @@ const resolved = Promise.resolve();
 
 
 /* harmony default export */ var compact = (Strict_filter(a => a));
+// CONCATENATED MODULE: ./Strict/cond.js
+
+
+
+
+
+function cond_cond(...fns) {
+  return (...args) => go(
+    fns,
+    Lazy_filterLazy(([c]) => c(...args)),
+    Lazy_mapLazy(([_, f]) => f(...args)),
+    head
+  )
+}
 // CONCATENATED MODULE: ./Strict/constant.js
 function constant(a) {
   return _ => a;
@@ -2254,6 +2270,14 @@ function unique(a) {
 /* harmony default export */ var Strict_uniqueWith = (curry(function uniqueWith(f, iter) {
   return takeAll(Lazy_uniqueWithLazy(f, iter));
 }));
+// CONCATENATED MODULE: ./Strict/unless.js
+
+
+
+
+/* harmony default export */ var Strict_unless = (curry2(function unless(cond, f, ...args) {
+  return Strict_ifElse(cond, identity, f, ...args);
+}));
 // CONCATENATED MODULE: ./Lazy/zipLazy.js
 
 
@@ -2398,7 +2422,9 @@ function unzip(iter) {
 
 
 
+
  //ok
+
 
 
 
