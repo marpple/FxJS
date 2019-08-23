@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import {
+  constant,
   add,
   html,
   L, flat, deepFlat, stop,
@@ -66,7 +67,7 @@ import {
   equalsBy,
   sum, pipe,
   curry2, curry3, curryN,
-  replace,
+  replace, cond,
 } from "../index.js";
 
 (function() {
@@ -1400,6 +1401,34 @@ import {
 
     it('search by regex', function() {
       expect(replace(/foo/g, 'bar', 'foo foo foo')).to.eql('bar bar bar');
+    });
+  });
+
+  describe('cond', function() {
+    it('sync', function() {
+      const grade_conditions = [
+        [lt(90), constant('A')],
+        [lt(80), constant('B')],
+        [lt(70), constant('C')],
+        [lt(60), constant('D')],
+        [constant(true), constant('F')]
+      ];
+      const grade = cond(...grade_conditions);
+      expect(grade(91)).to.eql('A');
+      expect(grade(60)).to.eql('F');
+    });
+
+    it('async', async function() {
+      const grade_conditions = [
+        [lt(90), constant(Promise.resolve('A'))],
+        [lt(80), constant('B')],
+        [lt(70), constant('C')],
+        [lt(60), constant('D')],
+        [constant(Promise.resolve(true)), constant(Promise.resolve('F'))]
+      ];
+      const grade = cond(...grade_conditions);
+      expect(await grade(91)).to.eql('A');
+      expect(await grade(60)).to.eql('F');
     });
   });
 } ());
