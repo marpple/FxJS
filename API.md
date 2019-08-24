@@ -6,9 +6,12 @@
   - [calls](#calls)
   - [constant](#constant)
   - [curry](#curry)
+  - [curryN](#curryN)
   - [debounce](#debounce)
   - [go](#go)
+  - [juxt](#juxt)
   - [negate](#negate)
+  - [once](#once)
   - [pipe](#pipe)
   - [tap](#tap)
   - [throttle](#throttle)
@@ -26,6 +29,7 @@
   - [difference](#difference)
   - [differenceBy](#differenceBy)
   - [differenceWith](#differenceWith)
+  - [divide](#divide)
   - [drop](#drop)
   - [dropRight](#dropRight)
   - [dropUntil](#dropUntil)
@@ -43,6 +47,7 @@
   - [identity](#identity)
   - [indexBy](#indexBy)
   - [initial](#initial)
+  - [insert](#insert)
   - [intersection](#intersection)
   - [intersectionBy](#intersectionBy)
   - [intersectionWith](#intersectionWith)
@@ -54,13 +59,17 @@
   - [mapObject](#mapObject)
   - [max](#max)
   - [maxBy](#maxBy)
+  - [mean](#mean)
+  - [meanBy](#meanBy)
   - [min](#min)
   - [minBy](#minBy)
   - [noop](#noop)
   - [object](#object)
   - [omit](#omit)
+  - [omitBy](#omitBy)
   - [partition](#partition)
   - [pick](#pick)
+  - [pickBy](#pickBy)
   - [pluck](#pluck)
   - [prepend](#prepend)
   - [promiseAllEntries](#promiseAllEntries)
@@ -68,6 +77,9 @@
   - [range](#range)
   - [reduce](#reduce)
   - [reject](#reject)
+  - [remove](#remove)
+  - [repeat](#repeat)
+  - [replace](#replace)
   - [sel](#sel)
   - [sort](#sort)
   - [sortBy](#sortBy)
@@ -75,6 +87,7 @@
   - [sortDesc](#sortDesc)
   - [split](#split)
   - [splitEvery](#splitEvery)
+  - [subtract](#subtract)
   - [sum](#sum)
   - [sumBy](#sumBy)
   - [tail](#tail-rest)
@@ -83,31 +96,55 @@
   - [takeAll](#takeAll)
   - [takeUntil](#takeUntil)
   - [takeWhile](#takeWhile)
+  - [times](#times)
   - [toIter](#toIter)
   - [union](#union)
   - [unionBy](#unionBy)
+  - [unionWith](#unionWith)
   - [unique](#unique)
   - [uniqueBy](#uniqueBy)
+  - [uniqueWith](#uniqueWith)
   - [unzip](#unzip)
+  - [update](#update)
+  - [updateBy](#updateBy)
   - [values](#values)
   - [zip](#zip)
   - [zipObj](#zipObj)
   - [zipWith](#zipWith)
 - [Predicates](#Predicates)
+  - [all](#all)
+  - [and](#and)
+  - [any](#any)
+  - [both](#both)
+  - [cond](#cond)
+  - [either](#either)
   - [equals](#equals)
   - [equals2](#equals2)
   - [equalsBy](#equalsBy)
   - [equalsBy2](#equalsBy2)
   - [every](#every)
+  - [gt](#gt)
+  - [gte](#gte)
   - [has](#has)
+  - [ifElse](#ifElse)
   - [isArray](#isArray)
   - [isFunction](#isFunction)
   - [isIterable](#isIterable)
   - [isMatch](#isMatch)
   - [isString](#isString)
   - [isUndefined](#isUndefined)
+  - [lt](#lt)
+  - [lte](#lte)
   - [match](#match)
+  - [not](#not)
+  - [or](#or)
+  - [satisfiesEvery](#satisfiesEvery)
+  - [satisfiesSome](#satisfiesSome)
+  - [selEquals](#selEquals)
+  - [selSatisfies](#selSatisfies)
   - [some](#some)
+  - [unless](#unless)
+  - [when](#when)
 - [Lazy](#lazy)
   - [L.append](#L.append)
   - [L.chunk](#L.chunk)
@@ -126,7 +163,7 @@
   - [L.filter](#L.filter)
   - [L.flat](#L.flat)
   - [L.flatMap](#L.flatMap)
-  - [L.zipWithIndex](#L.zipWithIndex)
+  - [L.insert](#L.insert)
   - [L.intersection](#L.intersection)
   - [L.intersectionBy](#L.intersectionBy)
   - [L.intersectionWith](#L.intersectionWith)
@@ -134,19 +171,30 @@
   - [L.keys](#L.keys)
   - [L.map](#L.map)
   - [L.mapEntries](#L.mapEntries)
+  - [L.prepend](#L.prepend)
   - [L.range](#L.range)
   - [L.reject](#L.reject)
+  - [L.remove](#L.remove)
+  - [L.repeat](#L.repeat)
   - [L.reverse](#L.reverse)
+  - [L.slice](#L.slice)
   - [L.splitEvery](#L.splitEvery)
   - [L.take](#L.take)
   - [L.takeUntil](#L.takeUntil)
   - [L.takeWhile](#L.takeWhile)
+  - [L.times](#L.times)
   - [L.union](#L.union)
   - [L.unionBy](#L.unionBy)
+  - [L.unionWith](#L.unionWith)
   - [L.unique](#L.unique)
   - [L.uniqueBy](#L.uniqueBy)
+  - [L.uniqueWith](#L.uniqueWith)
+  - [L.values](#L.values)
+  - [L.update](#L.update)
+  - [L.updateBy](#L.updateBy)
   - [L.values](#L.values)
   - [L.zip](#L.zip)
+  - [L.zipWithIndex](#L.zipWithIndex)
 - [Concurrency](#concurrency)
   - [C.calls](#C.calls)
   - [C.compact](#C.compact)
@@ -180,11 +228,23 @@
 - `(f, iterable) => f(...iterable)`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/apply.js)
 
+```javascript
+const args = [10, 20];
+add(...args); // 30
+apply(add, args); // 30
+apply(add)(args); // 30
+```
+
 
 ### call
 - `(f, ...args) => f(...args)`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/call.js)
 
+```javascript
+add(10, 20); // 30
+call(add, 10, 20); // 30
+call(add)(10, 20); // 30
+```
 
 ### calls
 - `([(a, b) => c, (a, b) => d, ...], a, b) => [c, d, ...]`
@@ -248,6 +308,24 @@ add10(6); // 16
 add(10, 5); // 15
 ```
 
+### curryN
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/curryN.js)
+
+```javascript
+const addAll = (...args) => args.reduce((a, b) => a + b);
+
+const add1 = curryN(1, addAll);
+log(add1(1)(2)); // 3
+log(add1(1, 2)); // 3
+// add1(1)(2)(3) => error! 
+
+const add2 = curryN(2, addAll);
+log(add2(1)(2)(3)); // 6
+log(add2(1, 2)(3)); // 6
+log(add2(1)(2, 3)); // 6
+log(add2(1, 2, 3)); // 6
+// add2(1)(2)(3)(4); => error!
+```
 
 ### debounce
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/debounce.js)
@@ -281,6 +359,13 @@ const pb = go(0,
 pb.then(log); // 11
 ```
 
+### juxt
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/juxt.js)
+
+```javascript
+const compute = juxt(min, max, sum, mean);
+log(...compute([1, 2, 3, 4, 5])); // 1, 5, 15, 3
+```
 
 ### negate
 - `f => a => !f(a)`
@@ -292,6 +377,14 @@ log(a(true)); // false
 log(a(false)); // true
 ```
 
+### once
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/once.js)
+
+```javascript
+const f = once(a => a + 10);
+log(f(5)); // 15
+log(f(5)); // 15
+```
 
 ### pipe
 - `((a, b, ...) => d, d => e, ..., y => z) => (a, b, ...) => z`
