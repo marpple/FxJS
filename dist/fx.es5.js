@@ -5270,7 +5270,7 @@ __webpack_require__.d(Strict_namespaceObject, "is_string", function() { return i
 __webpack_require__.d(Strict_namespaceObject, "isUndefined", function() { return isUndefined; });
 __webpack_require__.d(Strict_namespaceObject, "is_undefined", function() { return isUndefined; });
 __webpack_require__.d(Strict_namespaceObject, "join", function() { return Strict_join; });
-__webpack_require__.d(Strict_namespaceObject, "juxt", function() { return Strict_juxt; });
+__webpack_require__.d(Strict_namespaceObject, "juxt", function() { return juxt; });
 __webpack_require__.d(Strict_namespaceObject, "keys", function() { return keys; });
 __webpack_require__.d(Strict_namespaceObject, "last", function() { return last; });
 __webpack_require__.d(Strict_namespaceObject, "log", function() { return Strict_log; });
@@ -6384,16 +6384,22 @@ function curry2(f) {
 }));
 // CONCATENATED MODULE: ./Strict/juxt.js
 
-
-/* harmony default export */ var Strict_juxt = (curry(function juxt(fns) {
-  for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    args[_key - 1] = arguments[_key];
+function juxt() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
   }
 
-  return Strict_map(function (f) {
-    return f.apply(void 0, args);
-  }, fns);
-}));
+  return function () {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return Strict_map(function (f) {
+      return f.apply(void 0, args);
+    }, fns);
+  };
+}
+;
 // CONCATENATED MODULE: ./Strict/both.js
 
 
@@ -6404,7 +6410,7 @@ function curry2(f) {
     args[_key - 2] = arguments[_key];
   }
 
-  return Strict_apply(and, Strict_juxt([f1, f2]).apply(void 0, args));
+  return Strict_apply(and, juxt(f1, f2).apply(void 0, args));
 }));
 // CONCATENATED MODULE: ./Strict/call.js
 
@@ -7786,7 +7792,7 @@ function or(a, b) {
     args[_key - 2] = arguments[_key];
   }
 
-  return Strict_apply(or, Strict_juxt([f1, f2]).apply(void 0, args));
+  return Strict_apply(or, juxt(f1, f2).apply(void 0, args));
 }));
 // CONCATENATED MODULE: ./Strict/entries.js
 
@@ -8522,7 +8528,7 @@ function sum(iter) {
 
 
 /* harmony default export */ var Strict_meanBy = (curry(function meanBy(f, iter) {
-  return go(iter, Lazy_mapLazy(f), Array.from.bind(Array), Strict_juxt([sum, Strict_sel('length')]), Strict_apply(divide));
+  return go(iter, Lazy_mapLazy(f), Array.from.bind(Array), juxt(sum, Strict_sel('length')), Strict_apply(divide));
 }));
 // CONCATENATED MODULE: ./Strict/mean.js
 
@@ -8601,9 +8607,10 @@ function omit_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 }));
 // CONCATENATED MODULE: ./Strict/once.js
 function once(f) {
-  var done = false;
+  var done = false,
+      res = null;
   return function () {
-    return done ? undefined : (done = true, f.apply(void 0, arguments));
+    return done ? res : (done = true, res = f.apply(void 0, arguments));
   };
 }
 // CONCATENATED MODULE: ./Strict/pipe1.js

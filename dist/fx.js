@@ -193,7 +193,7 @@ __webpack_require__.d(Strict_namespaceObject, "is_string", function() { return i
 __webpack_require__.d(Strict_namespaceObject, "isUndefined", function() { return isUndefined; });
 __webpack_require__.d(Strict_namespaceObject, "is_undefined", function() { return isUndefined; });
 __webpack_require__.d(Strict_namespaceObject, "join", function() { return Strict_join; });
-__webpack_require__.d(Strict_namespaceObject, "juxt", function() { return Strict_juxt; });
+__webpack_require__.d(Strict_namespaceObject, "juxt", function() { return juxt; });
 __webpack_require__.d(Strict_namespaceObject, "keys", function() { return keys; });
 __webpack_require__.d(Strict_namespaceObject, "last", function() { return last; });
 __webpack_require__.d(Strict_namespaceObject, "log", function() { return Strict_log; });
@@ -746,10 +746,9 @@ function curry2(f) {
 // CONCATENATED MODULE: ./Strict/juxt.js
 
 
-
-/* harmony default export */ var Strict_juxt = (curry(function juxt(fns, ...args) {
-  return Strict_map(f => f(...args), fns);
-}));
+function juxt(...fns) {
+  return (...args) => Strict_map(f => f(...args), fns);
+};
 // CONCATENATED MODULE: ./Strict/both.js
 
 
@@ -757,7 +756,7 @@ function curry2(f) {
 
 
 /* harmony default export */ var Strict_both = (curry2(function both(f1, f2, ...args) {
-  return Strict_apply(and, Strict_juxt([f1, f2])(...args));
+  return Strict_apply(and, juxt(f1, f2)(...args));
 }));
 // CONCATENATED MODULE: ./Strict/call.js
 
@@ -1243,7 +1242,7 @@ function or(a, b) {
 
 
 /* harmony default export */ var Strict_either = (curry2(function either(f1, f2, ...args) {
-  return Strict_apply(or, Strict_juxt([f1, f2])(...args));
+  return Strict_apply(or, juxt(f1, f2)(...args));
 }));
 // CONCATENATED MODULE: ./Strict/entries.js
 
@@ -1683,7 +1682,7 @@ function sum(iter) {
     iter,
     Lazy_mapLazy(f),
     Array.from.bind(Array),
-    Strict_juxt([sum, Strict_sel('length')]),
+    juxt(sum, Strict_sel('length')),
     Strict_apply(divide)
   )
 }));
@@ -1743,10 +1742,9 @@ function negate(f) {
 }));
 // CONCATENATED MODULE: ./Strict/once.js
 function once(f) {
-  let done = false;
-  return function(...args) {
-    return done ? undefined : (done = true, f(...args));
-  }
+  let done = false, res = null;
+  return (...args) =>
+    done ? res : (done = true, res = f(...args));
 }
 // CONCATENATED MODULE: ./Strict/pipe1.js
 
