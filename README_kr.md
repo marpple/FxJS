@@ -9,7 +9,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Iteration protocols](#Iteration-protocols)
   - [Iterable programming](#Iterable-programming)
   - [Lazy evaluation](#Lazy-evaluation)
-  - [RFP style](#RFP-style)
+  - [FRP style](#FRP-style)
   - [Promise/async/await](#promiseasyncawait)
   - [Concurrency](#Concurrency)
   - [Error handling](#Error-handling)
@@ -174,9 +174,9 @@ const res = go(
 log(res); // 9
 ```
 
-### RFP style
+### FRP style
 
-Reactive functional programming 스타일을 작성할 수 있습니다.
+Functional reactive programming 스타일을 작성할 수 있습니다.
 
 ```javascript
 go(

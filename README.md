@@ -9,7 +9,7 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Iteration protocols](#Iteration-protocols)
   - [Iterable programming](#Iterable-programming)
   - [Lazy evaluation](#Lazy-evaluation)
-  - [RFP style](#RFP-style)
+  - [FRP style](#FRP-style)
   - [Promise/async/await](#promiseasyncawait)
   - [Concurrency](#Concurrency)
   - [Error handling](#Error-handling)
@@ -163,9 +163,9 @@ const res = go(
 log(res); // 9
 ```
 
-### RFP style
+### FRP style
 
-Reactive functional programming style.
+Functional reactive programming style.
 
 ```javascript
 go(
