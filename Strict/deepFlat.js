@@ -1,6 +1,6 @@
 import takeAll from "./takeAll.js";
-import deepFlatLazy from "../Lazy/deepFlatLazy.js";
+import deepFlatL from "../Lazy/deepFlatLazy.js";
 
 export default function deepFlat(iter) {
-  return takeAll(deepFlatLazy(iter));
+  return takeAll(deepFlatL(iter));
 }

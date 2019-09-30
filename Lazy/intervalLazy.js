@@ -1,7 +1,7 @@
 import delay from "../Strict/delay.js";
-import mapLazy from "./mapLazy.js";
-import rangeLazy from "./rangeLazy.js";
+import mapL from "./mapLazy.js";
+import rangeL from "./rangeLazy.js";
 
-export default function intervalLazy(time) {
-  return mapLazy(delay(time), rangeLazy(Infinity));
+export default function intervalL(time) {
+  return mapL(delay(time), rangeL(Infinity));
 }

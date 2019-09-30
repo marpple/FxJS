@@ -1,3 +1,3 @@
-export default function* entriesLazy(obj) {
+export default function* entriesL(obj) {
   for (const k in obj) yield [k, obj[k]];
 }

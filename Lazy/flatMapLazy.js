@@ -1,7 +1,7 @@
 import curry from "../Strict/curry.js";
-import flatLazy from "./flatLazy.js";
-import mapLazy from "./mapLazy.js";
+import flatL from "./flatLazy.js";
+import mapL from "./mapLazy.js";
 
-export default curry(function flatMapLazy(f, iter) {
-  return flatLazy(mapLazy(f, iter));
+export default curry(function flatMapL(f, iter) {
+  return flatL(mapL(f, iter));
 });

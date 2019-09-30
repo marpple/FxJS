@@ -1,7 +1,7 @@
 import curry from "../Strict/curry.js";
-import rangeLazy from "./rangeLazy.js";
-import mapLazy from "./mapLazy.js";
+import rangeL from "./rangeLazy.js";
+import mapL from "./mapLazy.js";
 
-export default curry(function timesLazy(f, n) {
-  return mapLazy(f, rangeLazy(n));
+export default curry(function timesL(f, n) {
+  return mapL(f, rangeL(n));
 });

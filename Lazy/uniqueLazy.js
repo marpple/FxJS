@@ -1,6 +1,6 @@
-import uniqueByLazy from './uniqueByLazy.js';
+import uniqueByL from './uniqueByLazy.js';
 import identity from '../Strict/identity.js';
 
-export default function uniqueLazy(obj) {
-  return uniqueByLazy(identity, obj);
+export default function uniqueL(obj) {
+  return uniqueByL(identity, obj);
 };

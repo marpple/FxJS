@@ -1,10 +1,10 @@
 import curry from "../Strict/curry.js";
-import emptyLazy from "./emptyLazy.js";
-import mapLazy from "./mapLazy.js";
-import rangeLazy from "./rangeLazy.js";
+import emptyL from "./emptyLazy.js";
+import mapL from "./mapLazy.js";
+import rangeL from "./rangeLazy.js";
 
 
-export default curry(function splitEveryLazy(n, str) {
-  if (!str) return emptyLazy();
-  return mapLazy(i => str.substr(i * n, n), rangeLazy(Math.ceil(str.length / n)));
+export default curry(function splitEveryL(n, str) {
+  if (!str) return emptyL();
+  return mapL(i => str.substr(i * n, n), rangeL(Math.ceil(str.length / n)));
 });

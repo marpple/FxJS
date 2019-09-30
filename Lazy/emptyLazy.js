@@ -1,2 +1,2 @@
 const emptyIter = (function *() {} ());
-export default function emptyLazy() { return emptyIter; };
+export default function emptyL() { return emptyIter; };

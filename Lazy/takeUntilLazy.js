@@ -4,7 +4,7 @@ import toIter from "../Strict/toIter.js";
 import noop from "../Strict/noop.js";
 import nop from "../Strict/nop.js";
 
-export default curry(function* takeUntilLazy(f, iter) {
+export default curry(function* takeUntilL(f, iter) {
   let prev = null, ok = false;
   for (const a of toIter(iter)) {
     const _ok = ok || go1(a, f);

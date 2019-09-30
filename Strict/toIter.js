@@ -1,5 +1,5 @@
-import emptyLazy from "../Lazy/emptyLazy.js";
+import emptyL from "../Lazy/emptyLazy.js";
 
 export default function toIter(iterable) {
-  return iterable && iterable[Symbol.iterator] ? iterable[Symbol.iterator]() : emptyLazy();
+  return iterable && iterable[Symbol.iterator] ? iterable[Symbol.iterator]() : emptyL();
 }

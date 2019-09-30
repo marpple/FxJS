@@ -3,7 +3,7 @@ import last from "../Strict/last.js";
 import toIter from "../Strict/toIter.js";
 import nop from "../Strict/nop.js";
 
-export default function flatLazy(iter, depth = 1) {
+export default function flatL(iter, depth = 1) {
   let concurCheck = null;
   const iterStack = [toIter(iter)];
   return {

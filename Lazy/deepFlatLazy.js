@@ -1,5 +1,5 @@
-import flatLazy from "./flatLazy.js";
+import flatL from "./flatLazy.js";
 
-export default function deepFlatLazy(iter) {
-  return flatLazy(iter, Infinity);
+export default function deepFlatL(iter) {
+  return flatL(iter, Infinity);
 }

@@ -1,7 +1,7 @@
 import curry from "./curry.js";
 import isArray from "./isArray.js";
 import every from "./every.js";
-import entriesLazy from "../Lazy/entriesLazy.js";
+import entriesL from "../Lazy/entriesLazy.js";
 
 export default curry(function isMatch(a, b) {
   return (
@@ -9,7 +9,7 @@ export default curry(function isMatch(a, b) {
       :
     isArray(a) && isArray(b) ? every(v => b.includes(v), a)
       :
-    typeof b == 'object' ? every(([k, v]) => b[k] == v, entriesLazy(a))
+    typeof b == 'object' ? every(([k, v]) => b[k] == v, entriesL(a))
       :
     a instanceof RegExp ? b.match(a)
       :

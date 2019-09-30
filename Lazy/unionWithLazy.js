@@ -1,7 +1,7 @@
 import curry2 from "../Strict/curry2.js";
-import uniqueWithLazy from "./uniqueWithLazy.js";
-import concatLazy from "./concatLazy.js";
+import uniqueWithL from "./uniqueWithLazy.js";
+import concatL from "./concatLazy.js";
 
-export default curry2(function unionWithLazy(f, iter1, iter2) {
-  return uniqueWithLazy(f, concatLazy(iter1, iter2));
+export default curry2(function unionWithL(f, iter1, iter2) {
+  return uniqueWithL(f, concatL(iter1, iter2));
 });

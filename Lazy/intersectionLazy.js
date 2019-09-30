@@ -1,7 +1,7 @@
 import curry from "../Strict/curry.js";
 import identity from '../Strict/identity.js';
-import intersectionByLazy from './intersectionByLazy.js';
+import intersectionByL from './intersectionByLazy.js';
 
-export default curry(function intersectionLazy(a, b) {
-  return intersectionByLazy(identity, a, b);
+export default curry(function intersectionL(a, b) {
+  return intersectionByL(identity, a, b);
 });

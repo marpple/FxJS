@@ -3,7 +3,7 @@ import toIter from "../Strict/toIter.js";
 import noop from "../Strict/noop.js";
 import nop from "../Strict/nop.js";
 
-export default curry(function* dropLazy(l, iter) {
+export default curry(function* dropL(l, iter) {
   if (l < 1) yield* iter;
   let prev = null, i = 0;
   iter = toIter(iter);

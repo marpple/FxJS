@@ -1,13 +1,13 @@
 import curry from "../Strict/curry.js";
 import go1 from "../Strict/go1.js";
 import pipe from "../Strict/pipe.js";
-import filterLazy from "./filterLazy.js";
+import filterL from "./filterLazy.js";
 
-export default curry(function uniqueByLazy(f, iter) {
+export default curry(function uniqueByL(f, iter) {
   const s = new Set();
   return go1(
     iter,
-    filterLazy(pipe(
+    filterL(pipe(
       f,
       b => s.has(b) ? false : s.add(b))));
 });

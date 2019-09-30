@@ -1,6 +1,6 @@
 import takeAll from "./takeAll.js";
-import rangeLazy from "../Lazy/rangeLazy.js";
+import rangeL from "../Lazy/rangeLazy.js";
 
 export default function range(..._) {
-  return takeAll(rangeLazy(..._));
+  return takeAll(rangeL(..._));
 }

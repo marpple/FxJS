@@ -3,9 +3,9 @@ import curry from "../Strict/curry.js";
 import toIter from "../Strict/toIter.js";
 import noop from "../Strict/noop.js";
 import nop from "../Strict/nop.js";
-import flatLazy from "./flatLazy.js";
+import flatL from "./flatLazy.js";
 
-export default curry(function* dropWhileLazy(f, iter) {
+export default curry(function* dropWhileL(f, iter) {
   let prev = null, ok = false;
   iter = toIter(iter);
   for(const a of iter) {
@@ -16,6 +16,6 @@ export default curry(function* dropWhileLazy(f, iter) {
         .then(_ => cond)
         .then(c => (ok = !c) ? a : Promise.reject(nop));
       prev = prev.catch(noop);
-    } else if (ok || (ok = !cond)) return yield* flatLazy([a, iter]);
+    } else if (ok || (ok = !cond)) return yield* flatL([a, iter]);
   }
 });

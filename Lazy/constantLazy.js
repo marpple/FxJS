@@ -1,1 +1,1 @@
-export default function* constantLazy(a) { yield a; }
+export default function* constantL(a) { yield a; }

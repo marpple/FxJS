@@ -5,12 +5,12 @@ import sum from "./sum.js";
 import sel from "./sel.js";
 import apply from "./apply.js";
 import divide from "./divide.js";
-import mapLazy from "../Lazy/mapLazy.js";
+import mapL from "../Lazy/mapLazy.js";
 
 export default curry(function meanBy(f, iter) {
   return go(
     iter,
-    mapLazy(f),
+    mapL(f),
     Array.from.bind(Array),
     juxt(sum, sel('length')),
     apply(divide)
