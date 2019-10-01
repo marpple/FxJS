@@ -57,6 +57,7 @@
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
+    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
     "@babel/preset-env": "^7.4.4",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",

@@ -12,6 +12,6 @@ module.exports = function (api) {
       }
     ]
   ];
-  const plugins = is_cjs ? ["transform-es2015-modules-simple-commonjs"] : [];
+  const plugins = is_cjs ? ["@babel/plugin-proposal-export-namespace-from", "transform-es2015-modules-simple-commonjs"] : [];
   return { presets, plugins };
 };
