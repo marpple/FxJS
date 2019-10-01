@@ -301,7 +301,7 @@ __webpack_require__.d(Lazy_namespaceObject, "repeat", function() { return Lazy_r
 __webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseL; });
 __webpack_require__.d(Lazy_namespaceObject, "slice", function() { return sliceL; });
 __webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryL; });
-__webpack_require__.d(Lazy_namespaceObject, "takeC", function() { return takeCL; });
+__webpack_require__.d(Lazy_namespaceObject, "limitLoad", function() { return limitLoadL; });
 __webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeL; });
 __webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileL; });
 __webpack_require__.d(Lazy_namespaceObject, "takeUntil", function() { return Lazy_takeUntilL; });
@@ -2487,7 +2487,7 @@ function* reverseL(arr) {
 /* harmony default export */ var catchNoopIter = (arr => (
   arr.forEach(a => a.value instanceof Promise && a.value.catch(function() {})),
   arr));
-// CONCATENATED MODULE: ./Lazy/takeCL.js
+// CONCATENATED MODULE: ./Lazy/limitLoadL.js
 
 
 
@@ -2497,8 +2497,8 @@ function* reverseL(arr) {
 
 
 
-function takeCL(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ? _ => takeCL(n, _) : n;
+function limitLoadL(n, iter) {
+  if (arguments.length == 1) return typeof n == 'number' ? _ => limitLoadL(n, _) : n;
   if (n == Infinity) return iter;
 
   iter = toIter(iter);
@@ -2604,7 +2604,7 @@ function takeCL(n, iter) {
 
 function takeAllC(n, iter) {
   return arguments.length > 1 ?
-    takeAll(takeCL(n, iter)) :
+    takeAll(limitLoadL(n, iter)) :
     typeof n == 'number' ? _ => takeAllC(n, _) : Concurrency_takeC(Infinity, n);
 }
 
