@@ -169,6 +169,7 @@
   - [L.intersectionWith](#L.intersectionWith)
   - [L.interval](#L.interval)
   - [L.keys](#L.keys)
+  - [L.limitLoad](#L.limitLoad)
   - [L.map](#L.map)
   - [L.mapEntries](#L.mapEntries)
   - [L.prepend](#L.prepend)
