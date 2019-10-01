@@ -3,8 +3,8 @@ import {
   constant,
   add,
   html,
-  L, flat, deepFlat, stop,
-  take, C, takeWhile, takeUntil,
+  flat, deepFlat, stop,
+  take, takeWhile, takeUntil,
   times,
   go,
   takeAll,
@@ -68,7 +68,9 @@ import {
   sum, pipe,
   curry2, curry3, curryN,
   replace, cond,
-} from "../index.js";
+} from "../Strict/index.js";
+import * as L from "../Lazy/index.js";
+import * as C from "../Concurrency/index.js";
 
 (function() {
 
