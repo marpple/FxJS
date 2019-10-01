@@ -31,7 +31,7 @@ export { default as repeat } from './repeatL.js';
 export { default as reverse } from './reverseL.js';
 export { default as slice } from './sliceL.js';
 export { default as splitEvery } from "./splitEveryL.js";
-export { default as takeC } from './takeCL.js';
+export { default as limitLoad } from './limitLoadL.js';
 export { default as take } from './takeL.js';
 export { default as takeWhile } from './takeWhileL.js';
 export { default as takeUntil } from './takeUntilL.js';

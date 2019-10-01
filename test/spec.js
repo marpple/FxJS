@@ -178,8 +178,8 @@ import * as C from "../Concurrency/index.js";
       expect(await C.takeAll(Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
     }).timeout(600);
     it('C.takeAll Infinity 2', async () => {
-      expect(await reduce((a, b) => a + b, L.takeC(L.range(5)))).to.eql(10);
-      expect(await reduce((a, b) => a + b, L.takeC(Infinity, L.range(5)))).to.eql(10);
+      expect(await reduce((a, b) => a + b, L.limitLoad(L.range(5)))).to.eql(10);
+      expect(await reduce((a, b) => a + b, L.limitLoad(Infinity, L.range(5)))).to.eql(10);
     }).timeout(600);
   });
 
