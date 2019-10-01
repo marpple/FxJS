@@ -1,6 +1,6 @@
 import curry2 from "./curry2.js";
 import takeAll from "./takeAll.js";
-import updateByL from "../Lazy/updateByLazy.js";
+import updateByL from "../Lazy/updateByL.js";
 
 export default curry2(function updateBy(index, f, iter) {
   if (index < 0) {

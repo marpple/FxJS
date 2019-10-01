@@ -1,4 +1,4 @@
-import timesL from "../Lazy/timesLazy.js";
+import timesL from "../Lazy/timesL.js";
 import curry from "./curry.js";
 import takeAll from "./takeAll.js";
 

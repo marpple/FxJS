@@ -1,4 +1,4 @@
-import mapL from "../Lazy/mapLazy.js";
+import mapL from "../Lazy/mapL.js";
 import takeAllC from "./takeAllC.js";
 import curry from "../Strict/curry.js";
 

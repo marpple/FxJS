@@ -1,4 +1,4 @@
-import filterL from "./filterLazy.js";
+import filterL from "./filterL.js";
 import curry2 from "../Strict/curry2.js";
 import take from "../Strict/take.js";
 import go1 from "../Strict/go1.js";

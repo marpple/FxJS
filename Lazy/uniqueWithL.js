@@ -1,5 +1,5 @@
 import curry from "../Strict/curry.js";
-import rejectL from "./rejectLazy.js";
+import rejectL from "./rejectL.js";
 import some from "../Strict/some.js";
 import ifElse from "../Strict/ifElse.js";
 

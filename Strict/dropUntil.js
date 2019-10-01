@@ -1,4 +1,4 @@
-import dropUntilL from "../Lazy/dropUntilLazy.js";
+import dropUntilL from "../Lazy/dropUntilL.js";
 import curry from "./curry.js";
 import takeAll from "./takeAll.js";
 

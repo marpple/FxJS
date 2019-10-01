@@ -2,8 +2,8 @@ import curry from "./curry.js";
 import go from "./go.js";
 import reduce from "./reduce.js";
 import not from "./not.js";
-import mapL from "../Lazy/mapLazy.js";
-import takeUntilL from "../Lazy/takeUntilLazy.js";
+import mapL from "../Lazy/mapL.js";
+import takeUntilL from "../Lazy/takeUntilL.js";
 
 export default curry(function every(f, iter) {
   return go(

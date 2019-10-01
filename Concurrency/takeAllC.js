@@ -1,5 +1,5 @@
 import takeAll from "../Strict/takeAll.js";
-import takeCL from "../Lazy/takeAllLazyC.js";
+import takeCL from "../Lazy/takeCL.js";
 import takeC from "./takeC.js";
 
 export default function takeAllC(n, iter) {

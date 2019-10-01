@@ -1,4 +1,4 @@
-import mapEntriesL from "../Lazy/mapEntriesLazy.js";
+import mapEntriesL from "../Lazy/mapEntriesL.js";
 import curry from "./curry.js";
 import takeAll from "./takeAll.js";
 

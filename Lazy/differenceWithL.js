@@ -1,4 +1,4 @@
-import rejectL from "./rejectLazy.js";
+import rejectL from "./rejectL.js";
 import curry2 from "../Strict/curry2.js";
 import some from "../Strict/some.js";
 

@@ -2,7 +2,7 @@ import curry2 from "../Strict/curry2.js";
 import map from "../Strict/map.js";
 import go1 from "../Strict/go1.js";
 import go from "../Strict/go.js";
-import rejectL from './rejectLazy.js';
+import rejectL from './rejectL.js';
 
 export default curry2(function differenceByL(f, iter2, iter1) {
   let set;

@@ -1,4 +1,4 @@
-import unionByL from '../Lazy/unionByLazy.js';
+import unionByL from '../Lazy/unionByL.js';
 import curry2 from './curry2.js';
 import go1 from './go1.js';
 import takeAll from './takeAll.js';

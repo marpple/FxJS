@@ -1,4 +1,4 @@
-import entriesL from "../Lazy/entriesLazy.js";
+import entriesL from "../Lazy/entriesL.js";
 import takeAll from "./takeAll.js";
 
 export default function entries(a) {

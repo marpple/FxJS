@@ -1,4 +1,4 @@
-import intersectionByL from '../Lazy/intersectionByLazy.js';
+import intersectionByL from '../Lazy/intersectionByL.js';
 import curry2 from './curry2.js';
 import takeAll from './takeAll.js';
 

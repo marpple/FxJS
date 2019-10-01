@@ -1,4 +1,4 @@
-import differenceWithL from "../Lazy/differenceWithLazy.js";
+import differenceWithL from "../Lazy/differenceWithL.js";
 import curry2 from "./curry2.js";
 import takeAll from "./takeAll.js";
 

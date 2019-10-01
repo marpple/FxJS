@@ -1,5 +1,5 @@
-import uniqueByL from "../Lazy/uniqueByLazy.js";
-import entriesL from '../Lazy/entriesLazy.js';
+import uniqueByL from "../Lazy/uniqueByL.js";
+import entriesL from '../Lazy/entriesL.js';
 import curry from './curry.js';
 import isIterable from './isIterable.js';
 import object from './object.js';

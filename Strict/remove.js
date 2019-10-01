@@ -1,6 +1,6 @@
 import curry from "./curry.js";
 import takeAll from "./takeAll.js";
-import removeL from "../Lazy/removeLazy.js";
+import removeL from "../Lazy/removeL.js";
 
 export default curry(function remove(start, count, iter) {
   if (iter === undefined) return remove(start, 1, count);

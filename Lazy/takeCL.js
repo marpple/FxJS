@@ -1,10 +1,10 @@
 import toIter from "../Strict/toIter.js";
 import go from "../Strict/go.js";
-import rangeL from "../Lazy/rangeLazy.js";
-import mapL from "../Lazy/mapLazy.js";
-import takeUntilL from "../Lazy/takeUntilLazy.js";
+import rangeL from "./rangeL.js";
+import mapL from "./mapL.js";
+import takeUntilL from "./takeUntilL.js";
 import reject from "../Strict/reject.js";
-import flatMapL from "../Lazy/flatMapLazy.js";
+import flatMapL from "./flatMapL.js";
 import catchNoopIter from "../.internal/catchNoopIter.js";
 
 export default function takeCL(n, iter) {

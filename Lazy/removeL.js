@@ -1,7 +1,7 @@
 import curry from "../Strict/curry.js";
-import ipp from "./zipWithIndex.js";
-import rejectL from "./rejectLazy.js";
-import mapL from "./mapLazy.js";
+import ipp from "./zipWithIndexL.js";
+import rejectL from "./rejectL.js";
+import mapL from "./mapL.js";
 import last from "../Strict/last.js";
 import go from "../Strict/go.js";
 

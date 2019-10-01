@@ -1,7 +1,7 @@
 import curry from "../Strict/curry.js";
 import go1 from "../Strict/go1.js";
 import pipe from "../Strict/pipe.js";
-import filterL from "./filterLazy.js";
+import filterL from "./filterL.js";
 
 export default curry(function uniqueByL(f, iter) {
   const s = new Set();

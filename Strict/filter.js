@@ -1,4 +1,4 @@
-import filterL from "../Lazy/filterLazy.js";
+import filterL from "../Lazy/filterL.js";
 import curry from "./curry.js";
 import takeAll from "./takeAll.js";
 

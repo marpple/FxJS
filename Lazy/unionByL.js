@@ -1,5 +1,5 @@
-import flatL from './flatLazy.js';
-import uniqueByL from './uniqueByLazy.js';
+import flatL from './flatL.js';
+import uniqueByL from './uniqueByL.js';
 import curry2 from '../Strict/curry2.js';
 import go from '../Strict/go.js';
 

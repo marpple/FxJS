@@ -4,7 +4,7 @@ import go from "./go.js";
 import map from "./map.js";
 import append from "./append.js";
 import apply from "./apply.js";
-import sliceL from "../Lazy/sliceLazy.js";
+import sliceL from "../Lazy/sliceL.js";
 
 export default curry(function slice(start, end, iter) {
   if (iter === undefined) return slice(start, Infinity, end);

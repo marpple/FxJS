@@ -1,6 +1,6 @@
 import go from "./go.js";
-import filterL from "../Lazy/filterLazy.js";
-import mapL from "../Lazy/mapLazy.js";
+import filterL from "../Lazy/filterL.js";
+import mapL from "../Lazy/mapL.js";
 import head from "./head.js";
 
 export default function cond(...fns) {

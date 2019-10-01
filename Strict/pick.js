@@ -1,7 +1,7 @@
 import curry from "./curry.js";
 import object from "./object.js";
-import rejectL from "../Lazy/rejectLazy.js";
-import mapL from "../Lazy/mapLazy.js";
+import rejectL from "../Lazy/rejectL.js";
+import mapL from "../Lazy/mapL.js";
 
 export default curry(function pick(ks, obj) {
   return object(
