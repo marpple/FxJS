@@ -77,15 +77,37 @@ const _ = require("fxjs/Strict");
 const L = require("fxjs/Lazy");
 const C = require("fxjs/Concurrency");
 
+// The default module that imported has all the functions in fxjs, including Lazy and Concurrency.
+const { reduce, filterL, mapC } = FxJS;
+
 // You can also import the functions individually.
-const rangeLazy = require("fxjs/Lazy/rangeLazy");
+const rangeL = require("fxjs/Lazy/rangeL");
 
 _.go(
-  rangeLazy(1, 5),
-  L.filter(a => a % 2),
+  rangeL(1, 5),
+  filterL(a => a % 2),
   L.map(a => a * 10),
-  _.reduce(_.add),
+  reduce(_.add),
   _.log); // 40
+```
+
+Module bundlers generally don't support Tree-Shaking to CommonJS modules, so when using the `fxjs` package, it is recommended that you import functions individually.
+
+```javascript
+import rangeL from "fxjs/Lazy/rangeL";
+import filterL from "fxjs/Lazy/filterL";
+import mapL from "fxjs/Lazy/mapL";
+import go from "fxjs/Strict/go";
+import add from "fxjs/Strict/add";
+import reduce from "fxjs/Strict/reduce";
+import log from "fxjs/Strict/log";
+
+go(
+  rangeL(1, 5),
+  filterL(a => a % 2),
+  mapL(a => a * 10),
+  reduce(add),
+  log); // 40
 ```
 
 #### ECMAScript Module
@@ -98,7 +120,8 @@ npm install fxjs2
 ```
 
 ```javascript
-import { go, reduce, add, log, L } from "fxjs2";
+import { go, reduce, add, log } from "fxjs2";
+import * as L from "fxjs2/Lazy/index.js";
 
 go(
   L.range(1, 5),

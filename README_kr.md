@@ -88,16 +88,39 @@ const _ = require("fxjs/Strict");
 const L = require("fxjs/Lazy");
 const C = require("fxjs/Concurrency");
 
+// fxjs의 default export module 객체는 Lazy, Concurrency를 포함한 모든 함수를 가지고 있습니다.
+const { reduce, filterL, mapC } = FxJS;
+
 // 함수를 개별적으로 가져올 수도 있습니다.
-const rangeLazy = require("fxjs/Lazy/rangeLazy");
+const rangeL = require("fxjs/Lazy/rangeL");
+
 
 _.go(
-  rangeLazy(1, 5),
-  L.filter(a => a % 2),
+  rangeL(1, 5),
+  filterL(a => a % 2),
   L.map(a => a * 10),
-  _.reduce(_.add),
+  reduce(_.add),
   _.log); // 40
 ```
+
+CommonJS 모듈은 기본적으로 번들러가 Tree-Shaking을 지원되지 않기 때문에 `fxjs` package를 사용할 때, 개별 함수를 불러오는 방식으로 사용하는 것을 권장합니다.
+```javascript
+import rangeL from "fxjs/Lazy/rangeL";
+import filterL from "fxjs/Lazy/filterL";
+import mapL from "fxjs/Lazy/mapL";
+import go from "fxjs/Strict/go";
+import add from "fxjs/Strict/add";
+import reduce from "fxjs/Strict/reduce";
+import log from "fxjs/Strict/log";
+
+go(
+  rangeL(1, 5),
+  filterL(a => a % 2),
+  mapL(a => a * 10),
+  reduce(add),
+  log); // 40
+```
+ 
 
 #### ECMAScript Module
 FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 배포하고 있습니다.
@@ -109,7 +132,8 @@ npm install fxjs2
 ```
 
 ```javascript
-import { go, reduce, add, log, L } from "fxjs2";
+import { go, reduce, add, log } from "fxjs2";
+import * as L from "fxjs2/Lazy/index.js";
 
 go(
   L.range(1, 5),
