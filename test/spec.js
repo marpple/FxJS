@@ -12,7 +12,7 @@ import {
   map,
   mean,
   reduce, go1, find, some, every, deepFlatten,
-  reduceS, goS, stopIf, stop_if, pipeS, calls,
+  reduceS, goS, stopIf, pipeS, calls,
   mapObject,
   promiseAllObject, promiseAllEntries,
   dropRight,
@@ -178,8 +178,8 @@ import * as C from "../Concurrency/index.js";
       expect(await C.takeAll(Infinity, L.range(5))).to.eql([0, 1, 2, 3, 4]);
     }).timeout(600);
     it('C.takeAll Infinity 2', async () => {
-      expect(await reduce((a, b) => a + b, L.takeAllC(L.range(5)))).to.eql(10);
-      expect(await reduce((a, b) => a + b, L.takeAllC(Infinity, L.range(5)))).to.eql(10);
+      expect(await reduce((a, b) => a + b, L.takeC(L.range(5)))).to.eql(10);
+      expect(await reduce((a, b) => a + b, L.takeC(Infinity, L.range(5)))).to.eql(10);
     }).timeout(600);
   });
 
@@ -907,7 +907,7 @@ import * as C from "../Concurrency/index.js";
       expect(goS(1, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(1);
       expect(goS(2, a => a % 2 ? stop(a) : a, a => a + 10)).to.eql(12);
       expect(goS(1, stopIf(a => a % 2), a => a + 10)).to.eql(1);
-      expect(goS(2, stop_if(a => a % 2), a => a + 10)).to.eql(12);
+      expect(goS(2, stopIf(a => a % 2), a => a + 10)).to.eql(12);
 
       const f1 = pipeS(a => a % 2 ? stop(a) : a, a => a + 10);
       const f2 = pipeS(stopIf(a => a % 2), a => a + 10);
