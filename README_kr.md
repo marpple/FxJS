@@ -525,6 +525,7 @@ try {
   - [L.intersectionWith](https://github.com/marpple/FxJS/blob/master/API.md#L.intersectionWith)
   - [L.interval](https://github.com/marpple/FxJS/blob/master/API.md#L.interval)
   - [L.keys](https://github.com/marpple/FxJS/blob/master/API.md#L.keys)
+  - [L.limitLoad](https://github.com/marpple/FxJS/blob/master/API.md#L.limitLoad)
   - [L.map](https://github.com/marpple/FxJS/blob/master/API.md#L.map)
   - [L.mapEntries](https://github.com/marpple/FxJS/blob/master/API.md#L.mapEntries)
   - [L.prepend](https://github.com/marpple/FxJS/blob/master/API.md#L.prepend)

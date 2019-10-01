@@ -1260,50 +1260,50 @@ uniqueBy(u => u.name.toUpperCase(), users);
 ## Lazy
 
 ### L.append
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/appendLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/appendL.js)
 
 ### L.chunk
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/chunkLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/chunkL.js)
 
 ### L.compact
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/compactLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/compactL.js)
 
 ### L.concat
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/concatLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/concatL.js)
 
 ### L.constant
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/constantLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/constantL.js)
 
 ### L.deepFlat
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/deepFlatLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/deepFlatL.js)
 
 ### L.difference
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceL.js)
 
 ### L.differenceBy
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceByLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceByL.js)
 
 ### L.differenceWith
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceWithLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/differenceWithL.js)
 
 ### L.drop
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropL.js)
 
 ### L.dropUntil
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropUntilLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropUntilL.js)
 
 ### L.dropWhile
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropWhileLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropWhileL.js)
 
 ### L.empty
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/emptyLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/emptyL.js)
 
 ### L.entries
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/entriesLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/entriesL.js)
 
 
 ### L.filter
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/filterLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/filterL.js)
 
 ```javascript
 const iterator = L.filter(a => a % 2, [1, 2, 3]);
@@ -1327,76 +1327,76 @@ await go(
 
 
 ### L.flat
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatL.js)
 
 ### L.flatMap
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatMapLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatMapL.js)
 
 ### L.intersection
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionL.js)
 
 ### L.intersectionBy
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionByLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionByL.js)
 
 ### L.intersectionWith
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionWithLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionWithL.js)
 
 ### L.interval
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intervalLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/intervalL.js)
 
 ### L.keys
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/keysLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/keysL.js)
+
+### L.limitLoad
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/limitLoadL.js)
 
 ### L.map
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapL.js)
 
 ### L.mapEntries
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapEntriesLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapEntriesL.js)
 
 ### L.range
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rangeLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rangeL.js)
 
 ### L.reject
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rejectLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/rejectL.js)
 
 ### L.reverse
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/reverseLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/reverseL.js)
 
 ### L.splitEvery
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/splitEveryLazy.js)
-
-### L.takeAllC
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeAllLazyC.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/splitEveryL.js)
 
 ### L.take
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeL.js)
 
 ### L.takeUntil
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeUntilLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeUntilL.js)
 
 ### L.takeWhile
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeWhileLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeWhileL.js)
 
 ### L.union
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionL.js)
 
 ### L.unionBy
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionByLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionByL.js)
 
 ### L.unique
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueL.js)
 
 ### L.uniqueBy
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueByLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueByL.js)
 
 ### L.values
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/valuesLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/valuesL.js)
 
 ### L.zipWithIndex
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipWithIndexLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipWithIndexL.js)
 
 ### L.zip
-- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipLazy.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/zipL.js)
 
 
 ## Concurrency
