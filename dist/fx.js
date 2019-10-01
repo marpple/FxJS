@@ -99,7 +99,6 @@ __webpack_require__.d(Strict_namespaceObject, "any", function() { return any; })
 __webpack_require__.d(Strict_namespaceObject, "append", function() { return Strict_append; });
 __webpack_require__.d(Strict_namespaceObject, "apply", function() { return Strict_apply; });
 __webpack_require__.d(Strict_namespaceObject, "baseSel", function() { return baseSel; });
-__webpack_require__.d(Strict_namespaceObject, "base_sel", function() { return baseSel; });
 __webpack_require__.d(Strict_namespaceObject, "both", function() { return Strict_both; });
 __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; });
 __webpack_require__.d(Strict_namespaceObject, "calls", function() { return Strict_calls; });
@@ -108,7 +107,6 @@ __webpack_require__.d(Strict_namespaceObject, "compact", function() { return com
 __webpack_require__.d(Strict_namespaceObject, "cond", function() { return cond_cond; });
 __webpack_require__.d(Strict_namespaceObject, "constant", function() { return constant; });
 __webpack_require__.d(Strict_namespaceObject, "countBy", function() { return Strict_countBy; });
-__webpack_require__.d(Strict_namespaceObject, "count_by", function() { return Strict_countBy; });
 __webpack_require__.d(Strict_namespaceObject, "curry", function() { return curry; });
 __webpack_require__.d(Strict_namespaceObject, "curry2", function() { return curry2; });
 __webpack_require__.d(Strict_namespaceObject, "curry3", function() { return curry3; });
@@ -116,50 +114,37 @@ __webpack_require__.d(Strict_namespaceObject, "curryN", function() { return curr
 __webpack_require__.d(Strict_namespaceObject, "debounce", function() { return Strict_debounce; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlat", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "deepFlatten", function() { return deepFlat; });
-__webpack_require__.d(Strict_namespaceObject, "deep_flat", function() { return deepFlat; });
-__webpack_require__.d(Strict_namespaceObject, "deep_flatten", function() { return deepFlat; });
 __webpack_require__.d(Strict_namespaceObject, "defaults", function() { return defaults; });
 __webpack_require__.d(Strict_namespaceObject, "defaultTo", function() { return defaultTo; });
-__webpack_require__.d(Strict_namespaceObject, "default_to", function() { return defaultTo; });
 __webpack_require__.d(Strict_namespaceObject, "delay", function() { return delay; });
 __webpack_require__.d(Strict_namespaceObject, "difference", function() { return Strict_difference; });
 __webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { return differenceBy; });
-__webpack_require__.d(Strict_namespaceObject, "difference_by", function() { return differenceBy; });
 __webpack_require__.d(Strict_namespaceObject, "differenceWith", function() { return Strict_differenceWith; });
-__webpack_require__.d(Strict_namespaceObject, "difference_with", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "divide", function() { return divide; });
 __webpack_require__.d(Strict_namespaceObject, "drop", function() { return Strict_drop; });
 __webpack_require__.d(Strict_namespaceObject, "dropRight", function() { return dropRight; });
-__webpack_require__.d(Strict_namespaceObject, "drop_right", function() { return dropRight; });
 __webpack_require__.d(Strict_namespaceObject, "dropUntil", function() { return dropUntil; });
-__webpack_require__.d(Strict_namespaceObject, "drop_until", function() { return dropUntil; });
 __webpack_require__.d(Strict_namespaceObject, "dropWhile", function() { return Strict_dropWhile; });
-__webpack_require__.d(Strict_namespaceObject, "drop_while", function() { return Strict_dropWhile; });
 __webpack_require__.d(Strict_namespaceObject, "each", function() { return Strict_each; });
 __webpack_require__.d(Strict_namespaceObject, "forEach", function() { return Strict_each; });
 __webpack_require__.d(Strict_namespaceObject, "either", function() { return Strict_either; });
 __webpack_require__.d(Strict_namespaceObject, "entries", function() { return entries_entries; });
 __webpack_require__.d(Strict_namespaceObject, "equals", function() { return equals; });
 __webpack_require__.d(Strict_namespaceObject, "equalsBy", function() { return equalsBy; });
-__webpack_require__.d(Strict_namespaceObject, "equals_by", function() { return equalsBy; });
 __webpack_require__.d(Strict_namespaceObject, "equals2", function() { return equals2; });
 __webpack_require__.d(Strict_namespaceObject, "equalsBy2", function() { return equalsBy2; });
-__webpack_require__.d(Strict_namespaceObject, "equals_by2", function() { return equalsBy2; });
 __webpack_require__.d(Strict_namespaceObject, "every", function() { return Strict_every; });
 __webpack_require__.d(Strict_namespaceObject, "extend", function() { return extend; });
 __webpack_require__.d(Strict_namespaceObject, "filter", function() { return Strict_filter; });
 __webpack_require__.d(Strict_namespaceObject, "find", function() { return Strict_find; });
 __webpack_require__.d(Strict_namespaceObject, "findWhere", function() { return Strict_findWhere; });
-__webpack_require__.d(Strict_namespaceObject, "find_where", function() { return Strict_findWhere; });
 __webpack_require__.d(Strict_namespaceObject, "flat", function() { return flat; });
 __webpack_require__.d(Strict_namespaceObject, "flatten", function() { return flat; });
 __webpack_require__.d(Strict_namespaceObject, "flatMap", function() { return Strict_flatMap; });
-__webpack_require__.d(Strict_namespaceObject, "flat_map", function() { return Strict_flatMap; });
 __webpack_require__.d(Strict_namespaceObject, "go", function() { return go; });
 __webpack_require__.d(Strict_namespaceObject, "go1", function() { return go1; });
 __webpack_require__.d(Strict_namespaceObject, "goS", function() { return goS; });
 __webpack_require__.d(Strict_namespaceObject, "groupBy", function() { return Strict_groupBy; });
-__webpack_require__.d(Strict_namespaceObject, "group_by", function() { return Strict_groupBy; });
 __webpack_require__.d(Strict_namespaceObject, "gt", function() { return gt; });
 __webpack_require__.d(Strict_namespaceObject, "gte", function() { return gte; });
 __webpack_require__.d(Strict_namespaceObject, "has", function() { return has; });
@@ -168,30 +153,19 @@ __webpack_require__.d(Strict_namespaceObject, "hi", function() { return hi; });
 __webpack_require__.d(Strict_namespaceObject, "html", function() { return html; });
 __webpack_require__.d(Strict_namespaceObject, "identity", function() { return identity; });
 __webpack_require__.d(Strict_namespaceObject, "ifElse", function() { return Strict_ifElse; });
-__webpack_require__.d(Strict_namespaceObject, "if_else", function() { return Strict_ifElse; });
 __webpack_require__.d(Strict_namespaceObject, "indexBy", function() { return Strict_indexBy; });
-__webpack_require__.d(Strict_namespaceObject, "index_by", function() { return Strict_indexBy; });
 __webpack_require__.d(Strict_namespaceObject, "initial", function() { return initial; });
 __webpack_require__.d(Strict_namespaceObject, "insert", function() { return Strict_insert; });
 __webpack_require__.d(Strict_namespaceObject, "intersection", function() { return Strict_intersection; });
 __webpack_require__.d(Strict_namespaceObject, "intersectionBy", function() { return Strict_intersectionBy; });
-__webpack_require__.d(Strict_namespaceObject, "intersection_by", function() { return Strict_intersectionBy; });
 __webpack_require__.d(Strict_namespaceObject, "intersectionWith", function() { return Strict_intersectionWith; });
-__webpack_require__.d(Strict_namespaceObject, "intersection_with", function() { return Strict_intersectionWith; });
 __webpack_require__.d(Strict_namespaceObject, "isArray", function() { return Strict_isArray; });
-__webpack_require__.d(Strict_namespaceObject, "is_array", function() { return Strict_isArray; });
 __webpack_require__.d(Strict_namespaceObject, "isFunction", function() { return isFunction; });
-__webpack_require__.d(Strict_namespaceObject, "is_function", function() { return isFunction; });
 __webpack_require__.d(Strict_namespaceObject, "isIterable", function() { return isIterable; });
-__webpack_require__.d(Strict_namespaceObject, "is_iterable", function() { return isIterable; });
 __webpack_require__.d(Strict_namespaceObject, "isMatch", function() { return Strict_isMatch; });
-__webpack_require__.d(Strict_namespaceObject, "is_match", function() { return Strict_isMatch; });
 __webpack_require__.d(Strict_namespaceObject, "isStop", function() { return isStop; });
-__webpack_require__.d(Strict_namespaceObject, "is_stop", function() { return isStop; });
 __webpack_require__.d(Strict_namespaceObject, "isString", function() { return isString; });
-__webpack_require__.d(Strict_namespaceObject, "is_string", function() { return isString; });
 __webpack_require__.d(Strict_namespaceObject, "isUndefined", function() { return isUndefined; });
-__webpack_require__.d(Strict_namespaceObject, "is_undefined", function() { return isUndefined; });
 __webpack_require__.d(Strict_namespaceObject, "join", function() { return Strict_join; });
 __webpack_require__.d(Strict_namespaceObject, "juxt", function() { return juxt; });
 __webpack_require__.d(Strict_namespaceObject, "keys", function() { return keys; });
@@ -201,21 +175,15 @@ __webpack_require__.d(Strict_namespaceObject, "lt", function() { return lt; });
 __webpack_require__.d(Strict_namespaceObject, "lte", function() { return lte; });
 __webpack_require__.d(Strict_namespaceObject, "map", function() { return Strict_map; });
 __webpack_require__.d(Strict_namespaceObject, "mapEntries", function() { return Strict_mapEntries; });
-__webpack_require__.d(Strict_namespaceObject, "map_entries", function() { return Strict_mapEntries; });
 __webpack_require__.d(Strict_namespaceObject, "entriesMap", function() { return Strict_mapEntries; });
-__webpack_require__.d(Strict_namespaceObject, "entries_map", function() { return Strict_mapEntries; });
 __webpack_require__.d(Strict_namespaceObject, "mapObject", function() { return Strict_mapObject; });
-__webpack_require__.d(Strict_namespaceObject, "map_object", function() { return Strict_mapObject; });
 __webpack_require__.d(Strict_namespaceObject, "match", function() { return Strict_match; });
 __webpack_require__.d(Strict_namespaceObject, "max", function() { return max; });
 __webpack_require__.d(Strict_namespaceObject, "maxBy", function() { return Strict_maxBy; });
-__webpack_require__.d(Strict_namespaceObject, "max_by", function() { return Strict_maxBy; });
 __webpack_require__.d(Strict_namespaceObject, "mean", function() { return mean; });
 __webpack_require__.d(Strict_namespaceObject, "meanBy", function() { return Strict_meanBy; });
-__webpack_require__.d(Strict_namespaceObject, "mean_by", function() { return Strict_meanBy; });
 __webpack_require__.d(Strict_namespaceObject, "min", function() { return min; });
 __webpack_require__.d(Strict_namespaceObject, "minBy", function() { return Strict_minBy; });
-__webpack_require__.d(Strict_namespaceObject, "min_by", function() { return Strict_minBy; });
 __webpack_require__.d(Strict_namespaceObject, "multiply", function() { return multiply; });
 __webpack_require__.d(Strict_namespaceObject, "negate", function() { return negate; });
 __webpack_require__.d(Strict_namespaceObject, "noop", function() { return noop; });
@@ -223,25 +191,20 @@ __webpack_require__.d(Strict_namespaceObject, "nop", function() { return Strict_
 __webpack_require__.d(Strict_namespaceObject, "not", function() { return not; });
 __webpack_require__.d(Strict_namespaceObject, "object", function() { return object_object; });
 __webpack_require__.d(Strict_namespaceObject, "fromEntries", function() { return object_object; });
-__webpack_require__.d(Strict_namespaceObject, "from_entries", function() { return object_object; });
 __webpack_require__.d(Strict_namespaceObject, "omit", function() { return Strict_omit; });
 __webpack_require__.d(Strict_namespaceObject, "omitBy", function() { return Strict_omitBy; });
-__webpack_require__.d(Strict_namespaceObject, "omit_by", function() { return Strict_omitBy; });
 __webpack_require__.d(Strict_namespaceObject, "once", function() { return once; });
 __webpack_require__.d(Strict_namespaceObject, "or", function() { return or; });
 __webpack_require__.d(Strict_namespaceObject, "partition", function() { return Strict_partition; });
 __webpack_require__.d(Strict_namespaceObject, "pick", function() { return Strict_pick; });
 __webpack_require__.d(Strict_namespaceObject, "pickBy", function() { return Strict_pickBy; });
-__webpack_require__.d(Strict_namespaceObject, "pick_by", function() { return Strict_pickBy; });
 __webpack_require__.d(Strict_namespaceObject, "pipe", function() { return pipe; });
 __webpack_require__.d(Strict_namespaceObject, "pipe1", function() { return pipe1; });
 __webpack_require__.d(Strict_namespaceObject, "pipeS", function() { return pipeS; });
 __webpack_require__.d(Strict_namespaceObject, "pluck", function() { return Strict_pluck; });
 __webpack_require__.d(Strict_namespaceObject, "prepend", function() { return Strict_prepend; });
 __webpack_require__.d(Strict_namespaceObject, "promiseAllEntries", function() { return promiseAllEntries; });
-__webpack_require__.d(Strict_namespaceObject, "promise_all_entries", function() { return promiseAllEntries; });
 __webpack_require__.d(Strict_namespaceObject, "promiseAllObject", function() { return promiseAllObject; });
-__webpack_require__.d(Strict_namespaceObject, "promise_all_object", function() { return promiseAllObject; });
 __webpack_require__.d(Strict_namespaceObject, "range", function() { return range; });
 __webpack_require__.d(Strict_namespaceObject, "reduce", function() { return reduce; });
 __webpack_require__.d(Strict_namespaceObject, "reduceS", function() { return reduceS; });
@@ -250,164 +213,116 @@ __webpack_require__.d(Strict_namespaceObject, "remove", function() { return Stri
 __webpack_require__.d(Strict_namespaceObject, "repeat", function() { return Strict_repeat; });
 __webpack_require__.d(Strict_namespaceObject, "replace", function() { return replace; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesEvery", function() { return Strict_satisfiesEvery; });
-__webpack_require__.d(Strict_namespaceObject, "satisfies_every", function() { return Strict_satisfiesEvery; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesSome", function() { return Strict_satisfiesSome; });
-__webpack_require__.d(Strict_namespaceObject, "satisfies_some", function() { return Strict_satisfiesSome; });
 __webpack_require__.d(Strict_namespaceObject, "sel", function() { return Strict_sel; });
 __webpack_require__.d(Strict_namespaceObject, "selEquals", function() { return Strict_selEquals; });
-__webpack_require__.d(Strict_namespaceObject, "sel_equals", function() { return Strict_selEquals; });
 __webpack_require__.d(Strict_namespaceObject, "selEq", function() { return Strict_selEquals; });
-__webpack_require__.d(Strict_namespaceObject, "sel_eq", function() { return Strict_selEquals; });
 __webpack_require__.d(Strict_namespaceObject, "selSatisfies", function() { return Strict_selSatisfies; });
-__webpack_require__.d(Strict_namespaceObject, "sel_satisfies", function() { return Strict_selSatisfies; });
 __webpack_require__.d(Strict_namespaceObject, "slice", function() { return Strict_slice; });
 __webpack_require__.d(Strict_namespaceObject, "some", function() { return Strict_some; });
 __webpack_require__.d(Strict_namespaceObject, "sort", function() { return sort; });
 __webpack_require__.d(Strict_namespaceObject, "sortBy", function() { return Strict_sortBy; });
-__webpack_require__.d(Strict_namespaceObject, "sort_by", function() { return Strict_sortBy; });
 __webpack_require__.d(Strict_namespaceObject, "sortByDesc", function() { return Strict_sortByDesc; });
-__webpack_require__.d(Strict_namespaceObject, "sort_by_desc", function() { return Strict_sortByDesc; });
 __webpack_require__.d(Strict_namespaceObject, "sortDesc", function() { return sortDesc_sort; });
-__webpack_require__.d(Strict_namespaceObject, "sort_desc", function() { return sortDesc_sort; });
 __webpack_require__.d(Strict_namespaceObject, "split", function() { return split; });
 __webpack_require__.d(Strict_namespaceObject, "splitEvery", function() { return Strict_splitEvery; });
-__webpack_require__.d(Strict_namespaceObject, "split_every", function() { return Strict_splitEvery; });
 __webpack_require__.d(Strict_namespaceObject, "stop", function() { return stop; });
 __webpack_require__.d(Strict_namespaceObject, "stopIf", function() { return stopIf; });
-__webpack_require__.d(Strict_namespaceObject, "stop_if", function() { return stopIf; });
 __webpack_require__.d(Strict_namespaceObject, "string", function() { return string; });
 __webpack_require__.d(Strict_namespaceObject, "strMap", function() { return Strict_strMap; });
-__webpack_require__.d(Strict_namespaceObject, "str_map", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "scat", function() { return Strict_strMap; });
 __webpack_require__.d(Strict_namespaceObject, "subtract", function() { return subtract; });
 __webpack_require__.d(Strict_namespaceObject, "sum", function() { return sum; });
 __webpack_require__.d(Strict_namespaceObject, "sumBy", function() { return Strict_sumBy; });
-__webpack_require__.d(Strict_namespaceObject, "sum_by", function() { return Strict_sumBy; });
 __webpack_require__.d(Strict_namespaceObject, "tail", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "rest", function() { return tail; });
 __webpack_require__.d(Strict_namespaceObject, "take", function() { return Strict_take; });
 __webpack_require__.d(Strict_namespaceObject, "take1", function() { return Strict_take1; });
 __webpack_require__.d(Strict_namespaceObject, "takeAll", function() { return takeAll; });
-__webpack_require__.d(Strict_namespaceObject, "take_all", function() { return takeAll; });
 __webpack_require__.d(Strict_namespaceObject, "takeUntil", function() { return Strict_takeUntil; });
-__webpack_require__.d(Strict_namespaceObject, "take_until", function() { return Strict_takeUntil; });
 __webpack_require__.d(Strict_namespaceObject, "takeWhile", function() { return Strict_takeWhile; });
-__webpack_require__.d(Strict_namespaceObject, "take_while", function() { return Strict_takeWhile; });
 __webpack_require__.d(Strict_namespaceObject, "tap", function() { return tap; });
 __webpack_require__.d(Strict_namespaceObject, "throttle", function() { return Strict_throttle; });
 __webpack_require__.d(Strict_namespaceObject, "times", function() { return Strict_times; });
 __webpack_require__.d(Strict_namespaceObject, "toIter", function() { return toIter; });
-__webpack_require__.d(Strict_namespaceObject, "to_iter", function() { return toIter; });
 __webpack_require__.d(Strict_namespaceObject, "undefinedTo", function() { return undefinedTo; });
-__webpack_require__.d(Strict_namespaceObject, "undefined_to", function() { return undefinedTo; });
 __webpack_require__.d(Strict_namespaceObject, "union", function() { return Strict_union; });
 __webpack_require__.d(Strict_namespaceObject, "unionBy", function() { return Strict_unionBy; });
-__webpack_require__.d(Strict_namespaceObject, "union_by", function() { return Strict_unionBy; });
 __webpack_require__.d(Strict_namespaceObject, "unionWith", function() { return Strict_unionWith; });
-__webpack_require__.d(Strict_namespaceObject, "union_with", function() { return Strict_unionWith; });
 __webpack_require__.d(Strict_namespaceObject, "unique", function() { return unique; });
 __webpack_require__.d(Strict_namespaceObject, "uniq", function() { return unique; });
 __webpack_require__.d(Strict_namespaceObject, "uniqueBy", function() { return Strict_uniqueBy; });
-__webpack_require__.d(Strict_namespaceObject, "unique_by", function() { return Strict_uniqueBy; });
 __webpack_require__.d(Strict_namespaceObject, "uniqBy", function() { return Strict_uniqueBy; });
-__webpack_require__.d(Strict_namespaceObject, "uniq_by", function() { return Strict_uniqueBy; });
 __webpack_require__.d(Strict_namespaceObject, "uniqueWith", function() { return Strict_uniqueWith; });
-__webpack_require__.d(Strict_namespaceObject, "unique_with", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "uniqWith", function() { return Strict_uniqueWith; });
-__webpack_require__.d(Strict_namespaceObject, "uniq_with", function() { return Strict_uniqueWith; });
 __webpack_require__.d(Strict_namespaceObject, "unless", function() { return Strict_unless; });
 __webpack_require__.d(Strict_namespaceObject, "unzip", function() { return unzip; });
 __webpack_require__.d(Strict_namespaceObject, "update", function() { return Strict_update; });
 __webpack_require__.d(Strict_namespaceObject, "updateBy", function() { return Strict_updateBy; });
-__webpack_require__.d(Strict_namespaceObject, "update_by", function() { return Strict_updateBy; });
 __webpack_require__.d(Strict_namespaceObject, "adjust", function() { return Strict_updateBy; });
 __webpack_require__.d(Strict_namespaceObject, "values", function() { return values; });
 __webpack_require__.d(Strict_namespaceObject, "when", function() { return Strict_when; });
 __webpack_require__.d(Strict_namespaceObject, "zip", function() { return Strict_zip; });
 __webpack_require__.d(Strict_namespaceObject, "zipObj", function() { return Strict_zipObj; });
-__webpack_require__.d(Strict_namespaceObject, "zip_obj", function() { return Strict_zipObj; });
 __webpack_require__.d(Strict_namespaceObject, "zipWith", function() { return Strict_zipWith; });
-__webpack_require__.d(Strict_namespaceObject, "zip_with", function() { return Strict_zipWith; });
 var Lazy_namespaceObject = {};
 __webpack_require__.r(Lazy_namespaceObject);
-__webpack_require__.d(Lazy_namespaceObject, "append", function() { return appendLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "chunk", function() { return Lazy_chunkLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "compact", function() { return compactLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "concat", function() { return concatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "constant", function() { return constantLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "deepFlat", function() { return deepFlatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "deep_flat", function() { return deepFlatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "deepFlatten", function() { return deepFlatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "deep_flatten", function() { return deepFlatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "difference", function() { return Lazy_differenceLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "differenceWith", function() { return Lazy_differenceWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "difference_with", function() { return Lazy_differenceWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "differenceBy", function() { return Lazy_differenceByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "difference_by", function() { return Lazy_differenceByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "drop", function() { return Lazy_dropLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "dropUntil", function() { return Lazy_dropUntilLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "drop_until", function() { return Lazy_dropUntilLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "dropWhile", function() { return Lazy_dropWhileLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "drop_while", function() { return Lazy_dropWhileLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "empty", function() { return emptyLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "entries", function() { return entriesLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "filter", function() { return Lazy_filterLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "flat", function() { return flatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "flatMap", function() { return Lazy_flatMapLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "flat_map", function() { return Lazy_flatMapLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "insert", function() { return Lazy_insertLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "intersection", function() { return Lazy_intersectionLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "intersectionWith", function() { return Lazy_intersectionWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "intersection_with", function() { return Lazy_intersectionWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "intersectionBy", function() { return Lazy_intersectionByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "intersection_by", function() { return Lazy_intersectionByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "interval", function() { return intervalLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "keys", function() { return keysLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "mapEntries", function() { return Lazy_mapEntriesLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "map_entries", function() { return Lazy_mapEntriesLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "map", function() { return Lazy_mapLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "prepend", function() { return prependLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "range", function() { return rangeLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "reject", function() { return Lazy_rejectLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "remove", function() { return Lazy_removeLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "repeat", function() { return Lazy_repeatLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "slice", function() { return sliceLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "split_every", function() { return Lazy_splitEveryLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "takeAllC", function() { return takeAllLazyC; });
-__webpack_require__.d(Lazy_namespaceObject, "take_all_c", function() { return takeAllLazyC; });
-__webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "take_while", function() { return Lazy_takeWhileLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "takeUntil", function() { return Lazy_takeUntilLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "take_until", function() { return Lazy_takeUntilLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "times", function() { return Lazy_timesLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "unionBy", function() { return Lazy_unionByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "union_by", function() { return Lazy_unionByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "union", function() { return Lazy_unionLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "unionWith", function() { return Lazy_unionWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "union_with", function() { return Lazy_unionWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniqueBy", function() { return Lazy_uniqueByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "unique_by", function() { return Lazy_uniqueByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniqBy", function() { return Lazy_uniqueByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniq_by", function() { return Lazy_uniqueByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "unique", function() { return uniqueLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniq", function() { return uniqueLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniqueWith", function() { return Lazy_uniqueWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "unique_with", function() { return Lazy_uniqueWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniqWith", function() { return Lazy_uniqueWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "uniq_with", function() { return Lazy_uniqueWithLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "update", function() { return Lazy_updateLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "updateBy", function() { return Lazy_updateByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "adjust", function() { return Lazy_updateByLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "values", function() { return valuesLazy; });
-__webpack_require__.d(Lazy_namespaceObject, "zipWithIndex", function() { return zipWithIndex; });
-__webpack_require__.d(Lazy_namespaceObject, "zip_with_index", function() { return zipWithIndex; });
-__webpack_require__.d(Lazy_namespaceObject, "indexValues", function() { return zipWithIndex; });
-__webpack_require__.d(Lazy_namespaceObject, "index_values", function() { return zipWithIndex; });
-__webpack_require__.d(Lazy_namespaceObject, "ipp", function() { return zipWithIndex; });
-__webpack_require__.d(Lazy_namespaceObject, "zip", function() { return Lazy_zipLazy; });
+__webpack_require__.d(Lazy_namespaceObject, "append", function() { return appendL; });
+__webpack_require__.d(Lazy_namespaceObject, "chunk", function() { return Lazy_chunkL; });
+__webpack_require__.d(Lazy_namespaceObject, "compact", function() { return compactL; });
+__webpack_require__.d(Lazy_namespaceObject, "concat", function() { return concatL; });
+__webpack_require__.d(Lazy_namespaceObject, "constant", function() { return constantL; });
+__webpack_require__.d(Lazy_namespaceObject, "deepFlat", function() { return deepFlatL; });
+__webpack_require__.d(Lazy_namespaceObject, "deepFlatten", function() { return deepFlatL; });
+__webpack_require__.d(Lazy_namespaceObject, "difference", function() { return Lazy_differenceL; });
+__webpack_require__.d(Lazy_namespaceObject, "differenceWith", function() { return Lazy_differenceWithL; });
+__webpack_require__.d(Lazy_namespaceObject, "differenceBy", function() { return Lazy_differenceByL; });
+__webpack_require__.d(Lazy_namespaceObject, "drop", function() { return Lazy_dropL; });
+__webpack_require__.d(Lazy_namespaceObject, "dropUntil", function() { return Lazy_dropUntilL; });
+__webpack_require__.d(Lazy_namespaceObject, "dropWhile", function() { return Lazy_dropWhileL; });
+__webpack_require__.d(Lazy_namespaceObject, "empty", function() { return emptyL; });
+__webpack_require__.d(Lazy_namespaceObject, "entries", function() { return entriesL; });
+__webpack_require__.d(Lazy_namespaceObject, "filter", function() { return Lazy_filterL; });
+__webpack_require__.d(Lazy_namespaceObject, "flat", function() { return flatL; });
+__webpack_require__.d(Lazy_namespaceObject, "flatMap", function() { return Lazy_flatMapL; });
+__webpack_require__.d(Lazy_namespaceObject, "insert", function() { return Lazy_insertL; });
+__webpack_require__.d(Lazy_namespaceObject, "intersection", function() { return Lazy_intersectionL; });
+__webpack_require__.d(Lazy_namespaceObject, "intersectionWith", function() { return Lazy_intersectionWithL; });
+__webpack_require__.d(Lazy_namespaceObject, "intersectionBy", function() { return Lazy_intersectionByL; });
+__webpack_require__.d(Lazy_namespaceObject, "interval", function() { return intervalL; });
+__webpack_require__.d(Lazy_namespaceObject, "keys", function() { return keysL; });
+__webpack_require__.d(Lazy_namespaceObject, "mapEntries", function() { return Lazy_mapEntriesL; });
+__webpack_require__.d(Lazy_namespaceObject, "map", function() { return Lazy_mapL; });
+__webpack_require__.d(Lazy_namespaceObject, "prepend", function() { return prependL; });
+__webpack_require__.d(Lazy_namespaceObject, "range", function() { return rangeL; });
+__webpack_require__.d(Lazy_namespaceObject, "reject", function() { return Lazy_rejectL; });
+__webpack_require__.d(Lazy_namespaceObject, "remove", function() { return Lazy_removeL; });
+__webpack_require__.d(Lazy_namespaceObject, "repeat", function() { return Lazy_repeatL; });
+__webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseL; });
+__webpack_require__.d(Lazy_namespaceObject, "slice", function() { return sliceL; });
+__webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryL; });
+__webpack_require__.d(Lazy_namespaceObject, "takeC", function() { return takeCL; });
+__webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeL; });
+__webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileL; });
+__webpack_require__.d(Lazy_namespaceObject, "takeUntil", function() { return Lazy_takeUntilL; });
+__webpack_require__.d(Lazy_namespaceObject, "times", function() { return Lazy_timesL; });
+__webpack_require__.d(Lazy_namespaceObject, "unionBy", function() { return Lazy_unionByL; });
+__webpack_require__.d(Lazy_namespaceObject, "union", function() { return Lazy_unionL; });
+__webpack_require__.d(Lazy_namespaceObject, "unionWith", function() { return Lazy_unionWithL; });
+__webpack_require__.d(Lazy_namespaceObject, "uniqueBy", function() { return Lazy_uniqueByL; });
+__webpack_require__.d(Lazy_namespaceObject, "uniqBy", function() { return Lazy_uniqueByL; });
+__webpack_require__.d(Lazy_namespaceObject, "unique", function() { return uniqueL; });
+__webpack_require__.d(Lazy_namespaceObject, "uniq", function() { return uniqueL; });
+__webpack_require__.d(Lazy_namespaceObject, "uniqueWith", function() { return Lazy_uniqueWithL; });
+__webpack_require__.d(Lazy_namespaceObject, "uniqWith", function() { return Lazy_uniqueWithL; });
+__webpack_require__.d(Lazy_namespaceObject, "update", function() { return Lazy_updateL; });
+__webpack_require__.d(Lazy_namespaceObject, "updateBy", function() { return Lazy_updateByL; });
+__webpack_require__.d(Lazy_namespaceObject, "adjust", function() { return Lazy_updateByL; });
+__webpack_require__.d(Lazy_namespaceObject, "values", function() { return valuesL; });
+__webpack_require__.d(Lazy_namespaceObject, "zipWithIndex", function() { return zipWithIndexL; });
+__webpack_require__.d(Lazy_namespaceObject, "indexValues", function() { return zipWithIndexL; });
+__webpack_require__.d(Lazy_namespaceObject, "ipp", function() { return zipWithIndexL; });
+__webpack_require__.d(Lazy_namespaceObject, "zip", function() { return Lazy_zipL; });
 var Concurrency_namespaceObject = {};
 __webpack_require__.r(Concurrency_namespaceObject);
 __webpack_require__.d(Concurrency_namespaceObject, "calls", function() { return callsC; });
@@ -421,7 +336,6 @@ __webpack_require__.d(Concurrency_namespaceObject, "map", function() { return Co
 __webpack_require__.d(Concurrency_namespaceObject, "mapEntries", function() { return Concurrency_mapEntriesC; });
 __webpack_require__.d(Concurrency_namespaceObject, "object", function() { return objectC; });
 __webpack_require__.d(Concurrency_namespaceObject, "fromEntries", function() { return objectC; });
-__webpack_require__.d(Concurrency_namespaceObject, "from_entries", function() { return objectC; });
 __webpack_require__.d(Concurrency_namespaceObject, "race", function() { return raceC; });
 __webpack_require__.d(Concurrency_namespaceObject, "reduce", function() { return Concurrency_reduceC; });
 __webpack_require__.d(Concurrency_namespaceObject, "some", function() { return Concurrency_someC; });
@@ -442,15 +356,15 @@ function curry(f) {
   return a + b;
 }));
 
-// CONCATENATED MODULE: ./Lazy/emptyLazy.js
+// CONCATENATED MODULE: ./Lazy/emptyL.js
 const emptyIter = (function *() {} ());
-function emptyLazy() { return emptyIter; };
+function emptyL() { return emptyIter; };
 
 // CONCATENATED MODULE: ./Strict/toIter.js
 
 
 function toIter(iterable) {
-  return iterable && iterable[Symbol.iterator] ? iterable[Symbol.iterator]() : emptyLazy();
+  return iterable && iterable[Symbol.iterator] ? iterable[Symbol.iterator]() : emptyL();
 }
 // CONCATENATED MODULE: ./Strict/go1.js
 /* harmony default export */ var go1 = ((a, f) => a instanceof Promise ? a.then(f) : f(a));
@@ -529,24 +443,24 @@ function go(..._) {
 function not(a) {
   return !a;
 }
-// CONCATENATED MODULE: ./Lazy/mapLazy.js
+// CONCATENATED MODULE: ./Lazy/mapL.js
 
 
 
 
-/* harmony default export */ var Lazy_mapLazy = (curry(function* mapLazy(f, iter) {
+/* harmony default export */ var Lazy_mapL = (curry(function* mapL(f, iter) {
   for (const a of toIter(iter)) yield go1(a, f);
 }));
 // CONCATENATED MODULE: ./Strict/noop.js
 function noop() {};
-// CONCATENATED MODULE: ./Lazy/takeUntilLazy.js
+// CONCATENATED MODULE: ./Lazy/takeUntilL.js
 
 
 
 
 
 
-/* harmony default export */ var Lazy_takeUntilLazy = (curry(function* takeUntilLazy(f, iter) {
+/* harmony default export */ var Lazy_takeUntilL = (curry(function* takeUntilL(f, iter) {
   let prev = null, ok = false;
   for (const a of toIter(iter)) {
     const _ok = ok || go1(a, f);
@@ -573,8 +487,8 @@ function noop() {};
 
 /* harmony default export */ var Strict_every = (curry(function every(f, iter) {
   return go(
-    Lazy_mapLazy(f, iter),
-    Lazy_takeUntilLazy(not),
+    Lazy_mapL(f, iter),
+    Lazy_takeUntilL(not),
     reduce((a, b) => a && b),
     (a = false) => a,
     Boolean);
@@ -602,8 +516,8 @@ function and(a, b) {
 
 /* harmony default export */ var Strict_some = (curry(function some(f, iter) {
   return go(
-    Lazy_mapLazy(f, iter),
-    Lazy_takeUntilLazy(identity),
+    Lazy_mapL(f, iter),
+    Lazy_takeUntilL(identity),
     reduce((a, b) => a || b),
     (a = false) => a,
     Boolean);
@@ -621,10 +535,10 @@ function any(iter) {
 function takeAll(iter) {
   return Strict_take(Infinity, iter);
 }
-// CONCATENATED MODULE: ./Lazy/appendLazy.js
+// CONCATENATED MODULE: ./Lazy/appendL.js
 
 
-/* harmony default export */ var appendLazy = (curry(function *appendLazy(a, iter) {
+/* harmony default export */ var appendL = (curry(function *appendL(a, iter) {
   yield* iter;
   yield a;
 }));
@@ -634,7 +548,7 @@ function takeAll(iter) {
 
 
 /* harmony default export */ var Strict_append = (curry(function append(a, iter) {
-  return takeAll(appendLazy(a, iter));
+  return takeAll(appendL(a, iter));
 }));
 // CONCATENATED MODULE: ./Strict/apply.js
 
@@ -646,13 +560,13 @@ function takeAll(iter) {
 // CONCATENATED MODULE: ./Strict/isArray.js
 const { isArray } = Array;
 /* harmony default export */ var Strict_isArray = (isArray);
-// CONCATENATED MODULE: ./Lazy/filterLazy.js
+// CONCATENATED MODULE: ./Lazy/filterL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_filterLazy = (curry(function* filterLazy(f, iter) {
+/* harmony default export */ var Lazy_filterL = (curry(function* filterL(f, iter) {
   for (const a of toIter(iter)) {
     const b = go1(a, f);
     if (b instanceof Promise) yield b.then(b => b ? a : Promise.reject(Strict_nop));
@@ -665,10 +579,10 @@ const { isArray } = Array;
 
 
 /* harmony default export */ var Strict_find = (curry(function find(f, iter) {
-  return head(Lazy_filterLazy(f, iter));
+  return head(Lazy_filterL(f, iter));
 }));
-// CONCATENATED MODULE: ./Lazy/entriesLazy.js
-function* entriesLazy(obj) {
+// CONCATENATED MODULE: ./Lazy/entriesL.js
+function* entriesL(obj) {
   for (const k in obj) yield [k, obj[k]];
 }
 // CONCATENATED MODULE: ./Strict/isMatch.js
@@ -683,7 +597,7 @@ function* entriesLazy(obj) {
       :
     Strict_isArray(a) && Strict_isArray(b) ? Strict_every(v => b.includes(v), a)
       :
-    typeof b == 'object' ? Strict_every(([k, v]) => b[k] == v, entriesLazy(a))
+    typeof b == 'object' ? Strict_every(([k, v]) => b[k] == v, entriesL(a))
       :
     a instanceof RegExp ? b.match(a)
       :
@@ -741,7 +655,7 @@ function curry2(f) {
 
 
 /* harmony default export */ var Strict_map = (curry(function map(f, iter) {
-  return takeAll(Lazy_mapLazy(f, iter));
+  return takeAll(Lazy_mapL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/juxt.js
 
@@ -768,12 +682,12 @@ function juxt(...fns) {
 function isIterable(a) {
   return a != null && !!a[Symbol.iterator];
 }
-// CONCATENATED MODULE: ./Lazy/mapEntriesLazy.js
+// CONCATENATED MODULE: ./Lazy/mapEntriesL.js
 
 
 
 
-/* harmony default export */ var Lazy_mapEntriesLazy = (curry(function* mapEntriesLazy(f, iter) {
+/* harmony default export */ var Lazy_mapEntriesL = (curry(function* mapEntriesL(f, iter) {
   for (const [k, a] of toIter(iter)) yield go1(go1(a, f), b => [k, b]);
 }));
 // CONCATENATED MODULE: ./.internal/baseCalls.js
@@ -784,7 +698,7 @@ function isIterable(a) {
 const baseCalls = (map, object) => function calls(fs, ...args) {
   return isIterable(fs) ?
     map(f => f(...args), fs) :
-    object(Lazy_mapEntriesLazy(f => f(...args), entriesLazy(fs)));
+    object(Lazy_mapEntriesL(f => f(...args), entriesL(fs)));
 };
 
 /* harmony default export */ var _internal_baseCalls = (baseCalls);
@@ -800,8 +714,8 @@ function object_object(iter) {
 
 
 /* harmony default export */ var Strict_calls = (_internal_baseCalls(Strict_map, object_object));
-// CONCATENATED MODULE: ./Lazy/rangeLazy.js
-function* rangeLazy(start = 0, stop = start, step = 1) {
+// CONCATENATED MODULE: ./Lazy/rangeL.js
+function* rangeL(start = 0, stop = start, step = 1) {
   if (arguments.length === 1) start = 0;
   if (arguments.length < 3 && start > stop) step *= -1;
 
@@ -817,7 +731,7 @@ function* rangeLazy(start = 0, stop = start, step = 1) {
     }
   }
 }
-// CONCATENATED MODULE: ./Lazy/takeWhileLazy.js
+// CONCATENATED MODULE: ./Lazy/takeWhileL.js
 
 
 
@@ -825,7 +739,7 @@ function* rangeLazy(start = 0, stop = start, step = 1) {
 
 
 const resolved = Promise.resolve();
-/* harmony default export */ var Lazy_takeWhileLazy = (curry(function* takeWhileLazy(f, iter) {
+/* harmony default export */ var Lazy_takeWhileL = (curry(function* takeWhileL(f, iter) {
   let prev = resolved, ok = true;
   for (const a of toIter(iter)) {
     const _ok = ok && go1(a, f);
@@ -839,7 +753,7 @@ const resolved = Promise.resolve();
     if (!ok) break;
   }
 }));
-// CONCATENATED MODULE: ./Lazy/chunkLazy.js
+// CONCATENATED MODULE: ./Lazy/chunkL.js
 
 
 
@@ -848,12 +762,12 @@ const resolved = Promise.resolve();
 
 
 
-/* harmony default export */ var Lazy_chunkLazy = (curry(function chunkLazy(n, iter) {
+/* harmony default export */ var Lazy_chunkL = (curry(function chunkL(n, iter) {
   iter = toIter(iter);
   return go(
-    rangeLazy(Infinity),
-    Lazy_mapLazy(_ => Strict_take(n, iter)),
-    Lazy_takeWhileLazy(c => c.length))
+    rangeL(Infinity),
+    Lazy_mapL(_ => Strict_take(n, iter)),
+    Lazy_takeWhileL(c => c.length))
 }));
 // CONCATENATED MODULE: ./Strict/chunk.js
 
@@ -861,7 +775,7 @@ const resolved = Promise.resolve();
 
 
 /* harmony default export */ var Strict_chunk = (curry(function chunk(n, iter) {
-  return takeAll(Lazy_chunkLazy(n, iter));
+  return takeAll(Lazy_chunkL(n, iter));
 }));
 // CONCATENATED MODULE: ./Strict/filter.js
 
@@ -869,7 +783,7 @@ const resolved = Promise.resolve();
 
 
 /* harmony default export */ var Strict_filter = (curry(function filter(f, iter) {
-  return takeAll(Lazy_filterLazy(f, iter));
+  return takeAll(Lazy_filterL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/compact.js
 
@@ -884,8 +798,8 @@ const resolved = Promise.resolve();
 function cond_cond(...fns) {
   return (...args) => go(
     fns,
-    Lazy_filterLazy(([c]) => c(...args)),
-    Lazy_mapLazy(([_, f]) => f(...args)),
+    Lazy_filterL(([c]) => c(...args)),
+    Lazy_mapL(([_, f]) => f(...args)),
     head
   )
 }
@@ -954,13 +868,13 @@ function curry3(f) {
 function last(arr) {
   return arr[arr.length - 1];
 }
-// CONCATENATED MODULE: ./Lazy/flatLazy.js
+// CONCATENATED MODULE: ./Lazy/flatL.js
 
 
 
 
 
-function flatLazy(iter, depth = 1) {
+function flatL(iter, depth = 1) {
   let concurCheck = null;
   const iterStack = [toIter(iter)];
   return {
@@ -999,18 +913,18 @@ function flatLazy(iter, depth = 1) {
     [Symbol.iterator]() { return this; }
   };
 }
-// CONCATENATED MODULE: ./Lazy/deepFlatLazy.js
+// CONCATENATED MODULE: ./Lazy/deepFlatL.js
 
 
-function deepFlatLazy(iter) {
-  return flatLazy(iter, Infinity);
+function deepFlatL(iter) {
+  return flatL(iter, Infinity);
 }
 // CONCATENATED MODULE: ./Strict/deepFlat.js
 
 
 
 function deepFlat(iter) {
-  return takeAll(deepFlatLazy(iter));
+  return takeAll(deepFlatL(iter));
 }
 // CONCATENATED MODULE: ./.internal/baseExtend.js
 
@@ -1021,7 +935,7 @@ function baseExtend(set, obj, objs) {
   const type = typeof obj;
   obj &&
   (type == 'object' || type == 'function') &&
-  reduce(reduce(set), obj, Lazy_mapLazy(entriesLazy, objs));
+  reduce(reduce(set), obj, Lazy_mapL(entriesL, objs));
   return obj;
 }
 // CONCATENATED MODULE: ./Strict/has.js
@@ -1047,38 +961,37 @@ function defaults(obj, ...objs) {
 /* harmony default export */ var defaultTo = (curry(function defaultTo(a, b) {
   return (b == null || Number.isNaN(b)) ? a : b;
 }));
-// CONCATENATED MODULE: ./Lazy/rejectLazy.js
+// CONCATENATED MODULE: ./Lazy/rejectL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_rejectLazy = (curry(function rejectLazy(f, iter) {
-  return Lazy_filterLazy(a => go1(f(a), not), iter);
+/* harmony default export */ var Lazy_rejectL = (curry(function rejectL(f, iter) {
+  return Lazy_filterL(a => go1(f(a), not), iter);
 }));
-// CONCATENATED MODULE: ./Lazy/differenceByLazy.js
+// CONCATENATED MODULE: ./Lazy/differenceByL.js
 
 
 
 
 
 
-/* harmony default export */ var Lazy_differenceByLazy = (curry2(function differenceByLazy(f, iter2, iter1) {
+/* harmony default export */ var Lazy_differenceByL = (curry2(function differenceByL(f, iter2, iter1) {
   let set;
-  return Lazy_rejectLazy(a => go1(
+  return Lazy_rejectL(a => go1(
     set || go1(Strict_map(f, iter2), b => set = new Set(b)),
     set => go(a, f, b => set.has(b))
   ), iter1);
 }));
-// CONCATENATED MODULE: ./Lazy/differenceLazy.js
+// CONCATENATED MODULE: ./Lazy/differenceL.js
 
 
 
 
-/* harmony default export */ var Lazy_differenceLazy = (curry(function differenceLazy(b, a) {
-  return Lazy_differenceByLazy(identity, b, a);
+/* harmony default export */ var Lazy_differenceL = (curry(function differenceL(b, a) {
+  return Lazy_differenceByL(identity, b, a);
 }));
-  
 // CONCATENATED MODULE: ./Strict/difference.js
 
 
@@ -1087,7 +1000,7 @@ function defaults(obj, ...objs) {
 
 /* harmony default export */ var Strict_difference = (curry(function difference(b, a) {
   return go(
-    Lazy_differenceLazy(b, a),
+    Lazy_differenceL(b, a),
     takeAll
   );
 }));
@@ -1099,17 +1012,17 @@ function defaults(obj, ...objs) {
 
 /* harmony default export */ var differenceBy = (curry2(function differenceBy2(f, b, a) {
   return go(
-    Lazy_differenceByLazy(f, b, a),
+    Lazy_differenceByL(f, b, a),
     takeAll
   )
 }));
-// CONCATENATED MODULE: ./Lazy/differenceWithLazy.js
+// CONCATENATED MODULE: ./Lazy/differenceWithL.js
 
 
 
 
-/* harmony default export */ var Lazy_differenceWithLazy = (curry2(function differenceWithLazy(f, iter1, iter2) {
-  return Lazy_rejectLazy(a => Strict_some(b => f(a, b), iter2), iter1);
+/* harmony default export */ var Lazy_differenceWithL = (curry2(function differenceWithL(f, iter1, iter2) {
+  return Lazy_rejectL(a => Strict_some(b => f(a, b), iter2), iter1);
 }));
 // CONCATENATED MODULE: ./Strict/differenceWith.js
 
@@ -1117,7 +1030,7 @@ function defaults(obj, ...objs) {
 
 
 /* harmony default export */ var Strict_differenceWith = (curry2(function differenceWith(f, iter1, iter2) {
-  return takeAll(Lazy_differenceWithLazy(f, iter1, iter2));
+  return takeAll(Lazy_differenceWithL(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/divide.js
 
@@ -1125,13 +1038,13 @@ function defaults(obj, ...objs) {
 /* harmony default export */ var divide = (curry(function divide(a, b) {
   return a / b;
 }));
-// CONCATENATED MODULE: ./Lazy/dropLazy.js
+// CONCATENATED MODULE: ./Lazy/dropL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_dropLazy = (curry(function* dropLazy(l, iter) {
+/* harmony default export */ var Lazy_dropL = (curry(function* dropL(l, iter) {
   if (l < 1) yield* iter;
   let prev = null, i = 0;
   iter = toIter(iter);
@@ -1151,7 +1064,7 @@ function defaults(obj, ...objs) {
 
 
 /* harmony default export */ var Strict_drop = (curry(function drop(l, iter) {
-  return takeAll(Lazy_dropLazy(l, iter));
+  return takeAll(Lazy_dropL(l, iter));
 }));
 // CONCATENATED MODULE: ./Strict/dropRight.js
 
@@ -1162,14 +1075,14 @@ function defaults(obj, ...objs) {
 /* harmony default export */ var dropRight = (curry(function drop(l, iter) {
   return go1(takeAll(iter), arr => Strict_take(arr.length - l, arr));
 }));
-// CONCATENATED MODULE: ./Lazy/dropUntilLazy.js
+// CONCATENATED MODULE: ./Lazy/dropUntilL.js
 
 
 
 
 
 
-/* harmony default export */ var Lazy_dropUntilLazy = (curry(function* dropUntilLazy(f, iter) {
+/* harmony default export */ var Lazy_dropUntilL = (curry(function* dropUntilL(f, iter) {
   let prev = null, ok = false;
   iter = toIter(iter);
   for(const a of iter) {
@@ -1190,9 +1103,9 @@ function defaults(obj, ...objs) {
 
 
 /* harmony default export */ var dropUntil = (curry(function dropWhile(f, iter) {
-  return takeAll(Lazy_dropUntilLazy(f, iter));
+  return takeAll(Lazy_dropUntilL(f, iter));
 }));
-// CONCATENATED MODULE: ./Lazy/dropWhileLazy.js
+// CONCATENATED MODULE: ./Lazy/dropWhileL.js
 
 
 
@@ -1200,7 +1113,7 @@ function defaults(obj, ...objs) {
 
 
 
-/* harmony default export */ var Lazy_dropWhileLazy = (curry(function* dropWhileLazy(f, iter) {
+/* harmony default export */ var Lazy_dropWhileL = (curry(function* dropWhileL(f, iter) {
   let prev = null, ok = false;
   iter = toIter(iter);
   for(const a of iter) {
@@ -1211,7 +1124,7 @@ function defaults(obj, ...objs) {
         .then(_ => cond)
         .then(c => (ok = !c) ? a : Promise.reject(Strict_nop));
       prev = prev.catch(noop);
-    } else if (ok || (ok = !cond)) return yield* flatLazy([a, iter]);
+    } else if (ok || (ok = !cond)) return yield* flatL([a, iter]);
   }
 }));
 // CONCATENATED MODULE: ./Strict/dropWhile.js
@@ -1221,7 +1134,7 @@ function defaults(obj, ...objs) {
 
 
 /* harmony default export */ var Strict_dropWhile = (curry(function dropWhile(f, iter) {
-  return go1(iter, _iter => takeAll(Lazy_dropWhileLazy(f, _iter)));
+  return go1(iter, _iter => takeAll(Lazy_dropWhileL(f, _iter)));
 }));
 // CONCATENATED MODULE: ./Strict/each.js
 
@@ -1249,7 +1162,7 @@ function or(a, b) {
 
 
 function entries_entries(a) {
-  return takeAll(entriesLazy(a));
+  return takeAll(entriesL(a));
 }
 // CONCATENATED MODULE: ./Strict/equals.js
 
@@ -1288,7 +1201,7 @@ function extend(obj, ...objs) {
 
 
 function flat(iter, depth = 1) {
-  return takeAll(flatLazy(iter, depth));
+  return takeAll(flatL(iter, depth));
 }
 // CONCATENATED MODULE: ./Strict/flatMap.js
 
@@ -1296,7 +1209,7 @@ function flat(iter, depth = 1) {
 
 
 /* harmony default export */ var Strict_flatMap = (curry(function flatMap(f, iter) {
-  return flat(Lazy_mapLazy(f, iter));
+  return flat(Lazy_mapL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/isStop.js
 const SymbolStop = Symbol.for('stop');
@@ -1381,7 +1294,7 @@ function hi(..._) { return hi_f(..._); }
 
 
 function html(strs, ...datas) {
-  datas = Lazy_mapLazy(d => d === undefined ? '' : d, datas);
+  datas = Lazy_mapL(d => d === undefined ? '' : d, datas);
   return go1(
     reduce((res, str) => go1(datas.next().value, data => `${res}${data}${str}`), strs),
     a => a.replace(/\s*(\>|\<)\s*/g, '$1').trim());
@@ -1406,19 +1319,19 @@ function html(strs, ...datas) {
 function initial(a) {
   return dropRight(1, a);
 }
-// CONCATENATED MODULE: ./Lazy/prependLazy.js
+// CONCATENATED MODULE: ./Lazy/prependL.js
 
 
-/* harmony default export */ var prependLazy = (curry(function *prependLazy(a, iter) {
+/* harmony default export */ var prependL = (curry(function *prependL(a, iter) {
   yield a;
   yield* iter;
 }));
-// CONCATENATED MODULE: ./Lazy/insertLazy.js
+// CONCATENATED MODULE: ./Lazy/insertL.js
 
 
 
-/* harmony default export */ var Lazy_insertLazy = (curry2(function* insertLazy(index, item, iter) {
-  if (index < 0) return yield* prependLazy(item, iter);
+/* harmony default export */ var Lazy_insertL = (curry2(function* insertL(index, item, iter) {
+  if (index < 0) return yield* prependL(item, iter);
   let i = 0;
   for (const el of iter) {
     if (i++ === index) yield item;
@@ -1432,7 +1345,7 @@ function initial(a) {
 
 
 /* harmony default export */ var Strict_insert = (curry2(function insert(index, item, iter) {
-  return takeAll(Lazy_insertLazy(index, item, iter));
+  return takeAll(Lazy_insertL(index, item, iter));
 }));
 // CONCATENATED MODULE: ./Strict/pipe.js
 
@@ -1441,28 +1354,28 @@ function initial(a) {
 function pipe(f, ...fs) {
   return (...as) => reduce(go1Sync, f(...as), fs);
 }
-// CONCATENATED MODULE: ./Lazy/uniqueByLazy.js
+// CONCATENATED MODULE: ./Lazy/uniqueByL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_uniqueByLazy = (curry(function uniqueByLazy(f, iter) {
+/* harmony default export */ var Lazy_uniqueByL = (curry(function uniqueByL(f, iter) {
   const s = new Set();
   return go1(
     iter,
-    Lazy_filterLazy(pipe(
+    Lazy_filterL(pipe(
       f,
       b => s.has(b) ? false : s.add(b))));
 }));
-// CONCATENATED MODULE: ./Lazy/uniqueLazy.js
+// CONCATENATED MODULE: ./Lazy/uniqueL.js
 
 
 
-function uniqueLazy(obj) {
-  return Lazy_uniqueByLazy(identity, obj);
+function uniqueL(obj) {
+  return Lazy_uniqueByL(identity, obj);
 };
-// CONCATENATED MODULE: ./Lazy/intersectionByLazy.js
+// CONCATENATED MODULE: ./Lazy/intersectionByL.js
 
 
 
@@ -1470,23 +1383,23 @@ function uniqueLazy(obj) {
 
 
 
-/* harmony default export */ var Lazy_intersectionByLazy = (curry2(function intersectionByLazy(f, iter2, iter1) {
+/* harmony default export */ var Lazy_intersectionByL = (curry2(function intersectionByL(f, iter2, iter1) {
   let set = null;
-  return uniqueLazy(
-    Lazy_filterLazy(
+  return uniqueL(
+    Lazy_filterL(
       a => go1(
-        set || go1(Lazy_mapLazy(f, iter2), l => set = new Set(l)),
+        set || go1(Lazy_mapL(f, iter2), l => set = new Set(l)),
         set => go(a, f, b => set.has(b))
       ),
       iter1));
 }));
-// CONCATENATED MODULE: ./Lazy/intersectionLazy.js
+// CONCATENATED MODULE: ./Lazy/intersectionL.js
 
 
 
 
-/* harmony default export */ var Lazy_intersectionLazy = (curry(function intersectionLazy(a, b) {
-  return Lazy_intersectionByLazy(identity, a, b);
+/* harmony default export */ var Lazy_intersectionL = (curry(function intersectionL(a, b) {
+  return Lazy_intersectionByL(identity, a, b);
 }));
 // CONCATENATED MODULE: ./Strict/intersection.js
 
@@ -1497,7 +1410,7 @@ function uniqueLazy(obj) {
 /* harmony default export */ var Strict_intersection = (curry(function intersection(a, b) {
   return go(
     b,
-    Lazy_intersectionLazy(a),
+    Lazy_intersectionL(a),
     takeAll
   )
 }));
@@ -1507,18 +1420,18 @@ function uniqueLazy(obj) {
 
 
 /* harmony default export */ var Strict_intersectionBy = (curry2(function intersectionBy(f, b, a) {
-  return takeAll(Lazy_intersectionByLazy(f, b, a))
+  return takeAll(Lazy_intersectionByL(f, b, a))
 }));
-// CONCATENATED MODULE: ./Lazy/intersectionWithLazy.js
+// CONCATENATED MODULE: ./Lazy/intersectionWithL.js
 
 
 
 
 
 
-/* harmony default export */ var Lazy_intersectionWithLazy = (curry2(function intersectionWithLazy(f, iter1, iter2) {
-  return Lazy_filterLazy(
-    a => go1(Strict_take(1, Lazy_filterLazy(b => f(a, b), iter2)), b => b.length),
+/* harmony default export */ var Lazy_intersectionWithL = (curry2(function intersectionWithL(f, iter1, iter2) {
+  return Lazy_filterL(
+    a => go1(Strict_take(1, Lazy_filterL(b => f(a, b), iter2)), b => b.length),
     iter1);
 }));
 // CONCATENATED MODULE: ./Strict/intersectionWith.js
@@ -1527,7 +1440,7 @@ function uniqueLazy(obj) {
 
 
 /* harmony default export */ var Strict_intersectionWith = (curry2(function intersectionWith(f, iter1, iter2) {
-  return takeAll(Lazy_intersectionWithLazy(f, iter1, iter2));
+  return takeAll(Lazy_intersectionWithL(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/isFunction.js
 function isFunction(a) {
@@ -1546,8 +1459,8 @@ function isString(a) {
 /* harmony default export */ var Strict_join = (curry(function join(sep, iter) {
   return reduce((acc, a) => `${acc}${sep}${a}`, iter);
 }));
-// CONCATENATED MODULE: ./Lazy/keysLazy.js
-function* keysLazy(obj) {
+// CONCATENATED MODULE: ./Lazy/keysL.js
+function* keysL(obj) {
   for (const k in obj) yield k;
 };
 // CONCATENATED MODULE: ./Strict/keys.js
@@ -1555,7 +1468,7 @@ function* keysLazy(obj) {
 
 
 function keys(a) {
-  return takeAll(keysLazy(a));
+  return takeAll(keysL(a));
 }
 // CONCATENATED MODULE: ./Strict/lt.js
 
@@ -1575,7 +1488,7 @@ function keys(a) {
 
 
 /* harmony default export */ var Strict_mapEntries = (curry(function mapEntries(f, iter) {
-  return takeAll(Lazy_mapEntriesLazy(f, iter));
+  return takeAll(Lazy_mapEntriesL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/mapObject.js
 
@@ -1584,10 +1497,10 @@ function keys(a) {
 
 
 /* harmony default export */ var Strict_mapObject = (curry(function mapObject(f, obj) {
-  return object_object(Lazy_mapEntriesLazy(f, entriesLazy(obj)));
+  return object_object(Lazy_mapEntriesL(f, entriesL(obj)));
 }));
-// CONCATENATED MODULE: ./Lazy/valuesLazy.js
-function* valuesLazy(obj) {
+// CONCATENATED MODULE: ./Lazy/valuesL.js
+function* valuesL(obj) {
   for (const k in obj) yield obj[k];
 }
 // CONCATENATED MODULE: ./Strict/values.js
@@ -1595,7 +1508,7 @@ function* valuesLazy(obj) {
 
 
 function values(a) {
-  return takeAll(valuesLazy(a));
+  return takeAll(valuesL(a));
 }
 // CONCATENATED MODULE: ./Strict/match.js
 
@@ -1680,7 +1593,7 @@ function sum(iter) {
 /* harmony default export */ var Strict_meanBy = (curry(function meanBy(f, iter) {
   return go(
     iter,
-    Lazy_mapLazy(f),
+    Lazy_mapL(f),
     Array.from.bind(Array),
     juxt(sum, Strict_sel('length')),
     Strict_apply(divide)
@@ -1727,8 +1640,8 @@ function negate(f) {
 
 /* harmony default export */ var Strict_omit = (curry(function omit(ks, obj) {
   return object_object(
-    Lazy_rejectLazy(([k]) => ks.includes(k),
-      entriesLazy(obj)));
+    Lazy_rejectL(([k]) => ks.includes(k),
+      entriesL(obj)));
 }));
 // CONCATENATED MODULE: ./Strict/omitBy.js
 
@@ -1738,7 +1651,7 @@ function negate(f) {
 
 
 /* harmony default export */ var Strict_omitBy = (curry(function omitBy(f, obj) {
-  return go(obj, entriesLazy, Lazy_rejectLazy(f), object_object);
+  return go(obj, entriesL, Lazy_rejectL(f), object_object);
 }));
 // CONCATENATED MODULE: ./Strict/once.js
 function once(f) {
@@ -1770,8 +1683,8 @@ function once(f) {
 
 /* harmony default export */ var Strict_pick = (curry(function pick(ks, obj) {
   return object_object(
-    Lazy_rejectLazy(([_, v]) => v === undefined,
-      Lazy_mapLazy(k => [k, obj[k]], ks)));
+    Lazy_rejectL(([_, v]) => v === undefined,
+      Lazy_mapL(k => [k, obj[k]], ks)));
 }));
 // CONCATENATED MODULE: ./Strict/pickBy.js
 
@@ -1781,7 +1694,7 @@ function once(f) {
 
 
 /* harmony default export */ var Strict_pickBy = (curry(function pickBy(f, obj) {
-  return go(obj, entriesLazy, Lazy_filterLazy(f), object_object);
+  return go(obj, entriesL, Lazy_filterL(f), object_object);
 }));
 // CONCATENATED MODULE: ./Strict/pipeS.js
 
@@ -1803,7 +1716,7 @@ function pipeS(f, ...fs) {
 
 
 /* harmony default export */ var Strict_prepend = (curry(function prepend(a, iter) {
-  return takeAll(prependLazy(a, iter));
+  return takeAll(prependL(a, iter));
 }));
 // CONCATENATED MODULE: ./Strict/promiseAllEntries.js
 
@@ -1824,7 +1737,7 @@ function promiseAllObject(obj) {
 
 
 function range(..._) {
-  return takeAll(rangeLazy(..._));
+  return takeAll(rangeL(..._));
 }
 // CONCATENATED MODULE: ./Strict/reject.js
 
@@ -1835,14 +1748,14 @@ function range(..._) {
 /* harmony default export */ var Strict_reject = (curry(function reject(f, iter) {
   return Strict_filter(a => go1(f(a), not), iter);
 }));
-// CONCATENATED MODULE: ./Lazy/zipWithIndex.js
+// CONCATENATED MODULE: ./Lazy/zipWithIndexL.js
 
 
-function* zipWithIndex(iter) {
+function* zipWithIndexL(iter) {
   let i = -1;
   for (const a of toIter(iter)) yield [++i, a];
 };
-// CONCATENATED MODULE: ./Lazy/removeLazy.js
+// CONCATENATED MODULE: ./Lazy/removeL.js
 
 
 
@@ -1850,13 +1763,13 @@ function* zipWithIndex(iter) {
 
 
 
-/* harmony default export */ var Lazy_removeLazy = (curry(function removeLazy(start, count, iter) {
+/* harmony default export */ var Lazy_removeL = (curry(function removeL(start, count, iter) {
   if (count < 1) return iter;
   return go(
     iter,
-    zipWithIndex,
-    Lazy_rejectLazy(([i]) => i >= start && i < (start + count)),
-    Lazy_mapLazy(last)
+    zipWithIndexL,
+    Lazy_rejectL(([i]) => i >= start && i < (start + count)),
+    Lazy_mapL(last)
   );
 }));
 // CONCATENATED MODULE: ./Strict/remove.js
@@ -1870,15 +1783,15 @@ function* zipWithIndex(iter) {
     iter = Array.from(iter);
     start += iter.length;
   }
-  return takeAll(Lazy_removeLazy(start, count, iter));
+  return takeAll(Lazy_removeL(start, count, iter));
 }));
-// CONCATENATED MODULE: ./Lazy/repeatLazy.js
+// CONCATENATED MODULE: ./Lazy/repeatL.js
 
 
 
 
-/* harmony default export */ var Lazy_repeatLazy = (curry(function repeatLazy(value, count) {
-  return Lazy_mapLazy(_ => value, rangeLazy(count));
+/* harmony default export */ var Lazy_repeatL = (curry(function repeatL(value, count) {
+  return Lazy_mapL(_ => value, rangeL(count));
 }));
 // CONCATENATED MODULE: ./Strict/repeat.js
 
@@ -1886,7 +1799,7 @@ function* zipWithIndex(iter) {
 
 
 /* harmony default export */ var Strict_repeat = (curry(function repeat(value, count) {
-  return takeAll(Lazy_repeatLazy(value, count));
+  return takeAll(Lazy_repeatL(value, count));
 }));
 // CONCATENATED MODULE: ./Strict/replace.js
 
@@ -1923,10 +1836,10 @@ function* zipWithIndex(iter) {
 /* harmony default export */ var Strict_selSatisfies = (curry2(function selSatisfies(f, selector, obj) {
   return go(obj, Strict_sel(selector), f, Boolean);
 }));
-// CONCATENATED MODULE: ./Lazy/sliceLazy.js
+// CONCATENATED MODULE: ./Lazy/sliceL.js
 
 
-/* harmony default export */ var sliceLazy = (curry(function* sliceLazy(start, end, iter) {
+/* harmony default export */ var sliceL = (curry(function* sliceL(start, end, iter) {
   let i = 0;
   for (const item of iter) {
     if (i >= start && i < end) yield item;
@@ -1951,7 +1864,7 @@ function* zipWithIndex(iter) {
     [start, end],
     Strict_map(i => i < 0 ? (i + iter.length) : i),
     Strict_append(iter),
-    Strict_apply(sliceLazy),
+    Strict_apply(sliceL),
     takeAll);
 }));
 // CONCATENATED MODULE: ./.internal/baseSortBy.js
@@ -2006,16 +1919,16 @@ function sortDesc_sort(arr) {
 /* harmony default export */ var split = (curry(function split(sep, str) {
   return (str || "").split(sep);
 }));
-// CONCATENATED MODULE: ./Lazy/splitEveryLazy.js
+// CONCATENATED MODULE: ./Lazy/splitEveryL.js
 
 
 
 
 
 
-/* harmony default export */ var Lazy_splitEveryLazy = (curry(function splitEveryLazy(n, str) {
-  if (!str) return emptyLazy();
-  return Lazy_mapLazy(i => str.substr(i * n, n), rangeLazy(Math.ceil(str.length / n)));
+/* harmony default export */ var Lazy_splitEveryL = (curry(function splitEveryL(n, str) {
+  if (!str) return emptyL();
+  return Lazy_mapL(i => str.substr(i * n, n), rangeL(Math.ceil(str.length / n)));
 }));
 // CONCATENATED MODULE: ./Strict/splitEvery.js
 
@@ -2023,7 +1936,7 @@ function sortDesc_sort(arr) {
 
 
 /* harmony default export */ var Strict_splitEvery = (curry(function splitEvery(n, str) {
-  return takeAll(Lazy_splitEveryLazy(n, str));
+  return takeAll(Lazy_splitEveryL(n, str));
 }));
 // CONCATENATED MODULE: ./Strict/stop.js
 const stop_SymbolStop = Symbol.for('stop');
@@ -2050,7 +1963,7 @@ function string(iter) {
 
 
 /* harmony default export */ var Strict_strMap = (curry(function strMap(f, iter) {
-  return string(Lazy_mapLazy(f, iter));
+  return string(Lazy_mapL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/subtract.js
 
@@ -2065,7 +1978,7 @@ function string(iter) {
 
 
 /* harmony default export */ var Strict_sumBy = (curry(function sumBy(f, iter) {
-  return reduce(add, Lazy_mapLazy(f, iter));
+  return reduce(add, Lazy_mapL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/tail.js
 
@@ -2136,13 +2049,13 @@ const take1 = Strict_take(1);
     return f(...args);
   };
 }));
-// CONCATENATED MODULE: ./Lazy/timesLazy.js
+// CONCATENATED MODULE: ./Lazy/timesL.js
 
 
 
 
-/* harmony default export */ var Lazy_timesLazy = (curry(function timesLazy(f, n) {
-  return Lazy_mapLazy(f, rangeLazy(n));
+/* harmony default export */ var Lazy_timesL = (curry(function timesL(f, n) {
+  return Lazy_mapL(f, rangeL(n));
 }));
 // CONCATENATED MODULE: ./Strict/times.js
 
@@ -2150,7 +2063,7 @@ const take1 = Strict_take(1);
 
 
 /* harmony default export */ var Strict_times = (curry(function times(f, n) {
-  return takeAll(Lazy_timesLazy(f, n));
+  return takeAll(Lazy_timesL(f, n));
 }));
 // CONCATENATED MODULE: ./Strict/undefinedTo.js
 
@@ -2158,25 +2071,25 @@ const take1 = Strict_take(1);
 /* harmony default export */ var undefinedTo = (curry(function undefinedTo(a, b) {
   return b === undefined ? a : b;
 }));
-// CONCATENATED MODULE: ./Lazy/unionByLazy.js
+// CONCATENATED MODULE: ./Lazy/unionByL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_unionByLazy = (curry2(function unionByLazy(f, a, b) {
+/* harmony default export */ var Lazy_unionByL = (curry2(function unionByL(f, a, b) {
   return go(
     [a, b],
-    flatLazy,
-    Lazy_uniqueByLazy(f))
+    flatL,
+    Lazy_uniqueByL(f))
 }));
-// CONCATENATED MODULE: ./Lazy/unionLazy.js
+// CONCATENATED MODULE: ./Lazy/unionL.js
 
 
 
 
-/* harmony default export */ var Lazy_unionLazy = (curry(function unionLazy(a, b) {
-  return Lazy_unionByLazy(identity, a, b);
+/* harmony default export */ var Lazy_unionL = (curry(function unionL(a, b) {
+  return Lazy_unionByL(identity, a, b);
 }));
 // CONCATENATED MODULE: ./Strict/union.js
 
@@ -2186,7 +2099,7 @@ const take1 = Strict_take(1);
 
 /* harmony default export */ var Strict_union = (curry(function union(a, b) {
   return go1(
-    Lazy_unionLazy(a, b),
+    Lazy_unionL(a, b),
     takeAll
   )
 }));
@@ -2197,18 +2110,18 @@ const take1 = Strict_take(1);
 
 
 /* harmony default export */ var Strict_unionBy = (curry2(function unionBy(f, a, b) {
-  return go1(Lazy_unionByLazy(f, a, b), takeAll);
+  return go1(Lazy_unionByL(f, a, b), takeAll);
 }));
 
-// CONCATENATED MODULE: ./Lazy/uniqueWithLazy.js
+// CONCATENATED MODULE: ./Lazy/uniqueWithL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_uniqueWithLazy = (curry(function uniqueWithLazy(f, iter) {
+/* harmony default export */ var Lazy_uniqueWithL = (curry(function uniqueWithL(f, iter) {
   const res = [];
-  return Lazy_rejectLazy(
+  return Lazy_rejectL(
     Strict_ifElse(
       a => Strict_some(v => f(a, v), res),
       _ => true,
@@ -2216,20 +2129,20 @@ const take1 = Strict_take(1);
     ),
     iter);
 }));
-// CONCATENATED MODULE: ./Lazy/concatLazy.js
+// CONCATENATED MODULE: ./Lazy/concatL.js
 
 
-/* harmony default export */ var concatLazy = (curry(function *concatLazy(a, b) {
+/* harmony default export */ var concatL = (curry(function *concatL(a, b) {
   yield* a;
   yield* b;
 }));
-// CONCATENATED MODULE: ./Lazy/unionWithLazy.js
+// CONCATENATED MODULE: ./Lazy/unionWithL.js
 
 
 
 
-/* harmony default export */ var Lazy_unionWithLazy = (curry2(function unionWithLazy(f, iter1, iter2) {
-  return Lazy_uniqueWithLazy(f, concatLazy(iter1, iter2));
+/* harmony default export */ var Lazy_unionWithL = (curry2(function unionWithL(f, iter1, iter2) {
+  return Lazy_uniqueWithL(f, concatL(iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/unionWith.js
 
@@ -2237,7 +2150,7 @@ const take1 = Strict_take(1);
 
 
 /* harmony default export */ var Strict_unionWith = (curry2(function unionWith(f, iter1, iter2) {
-  return takeAll(Lazy_unionWithLazy(f, iter1, iter2));
+  return takeAll(Lazy_unionWithL(f, iter1, iter2));
 }));
 // CONCATENATED MODULE: ./Strict/uniqueBy.js
 
@@ -2250,8 +2163,8 @@ const take1 = Strict_take(1);
 
 /* harmony default export */ var Strict_uniqueBy = (curry(function uniqueBy(f, iter) {
   return isIterable(iter) ?
-    takeAll(Lazy_uniqueByLazy(f, iter)) :
-    object_object(Lazy_uniqueByLazy(e => f(last(e)), entriesLazy(iter)));
+    takeAll(Lazy_uniqueByL(f, iter)) :
+    object_object(Lazy_uniqueByL(e => f(last(e)), entriesL(iter)));
 }));
 // CONCATENATED MODULE: ./Strict/unique.js
 
@@ -2266,7 +2179,7 @@ function unique(a) {
 
 
 /* harmony default export */ var Strict_uniqueWith = (curry(function uniqueWith(f, iter) {
-  return takeAll(Lazy_uniqueWithLazy(f, iter));
+  return takeAll(Lazy_uniqueWithL(f, iter));
 }));
 // CONCATENATED MODULE: ./Strict/unless.js
 
@@ -2276,7 +2189,7 @@ function unique(a) {
 /* harmony default export */ var Strict_unless = (curry2(function unless(cond, f, ...args) {
   return Strict_ifElse(cond, identity, f, ...args);
 }));
-// CONCATENATED MODULE: ./Lazy/zipLazy.js
+// CONCATENATED MODULE: ./Lazy/zipL.js
 
 
 
@@ -2286,13 +2199,13 @@ function unique(a) {
 
 
 
-/* harmony default export */ var Lazy_zipLazy = (curry(function zipLazy(...iterables) {
+/* harmony default export */ var Lazy_zipL = (curry(function zipL(...iterables) {
   const iterators = Strict_map(toIter, iterables);
   return go(
-    rangeLazy(Infinity),
-    Lazy_mapLazy(_ => Strict_map(it => it.next(), iterators)),
-    Lazy_takeWhileLazy(Strict_some(cur => !cur.done)),
-    Lazy_mapLazy(Strict_map(cur => cur.value)))
+    rangeL(Infinity),
+    Lazy_mapL(_ => Strict_map(it => it.next(), iterators)),
+    Lazy_takeWhileL(Strict_some(cur => !cur.done)),
+    Lazy_mapL(Strict_map(cur => cur.value)))
 }));
 // CONCATENATED MODULE: ./Strict/zip.js
 
@@ -2302,7 +2215,7 @@ function unique(a) {
 
 
 /* harmony default export */ var Strict_zip = (curry(function zip(...iters) {
-  return go(iters, takeAll, Strict_apply(Lazy_zipLazy), takeAll);
+  return go(iters, takeAll, Strict_apply(Lazy_zipL), takeAll);
 }));
 // CONCATENATED MODULE: ./Strict/unzip.js
 
@@ -2310,23 +2223,23 @@ function unique(a) {
 function unzip(iter) {
   return Strict_zip(...iter);
 };
-// CONCATENATED MODULE: ./Lazy/updateByLazy.js
+// CONCATENATED MODULE: ./Lazy/updateByL.js
 
 
 
-/* harmony default export */ var Lazy_updateByLazy = (curry2(function* updateByLazy(index, f, iter) {
+/* harmony default export */ var Lazy_updateByL = (curry2(function* updateByL(index, f, iter) {
   let i = 0;
   for (const item of iter) {
     yield i++ === index ? go1(item, f) : item;
   }
 }));
-// CONCATENATED MODULE: ./Lazy/updateLazy.js
+// CONCATENATED MODULE: ./Lazy/updateL.js
 
 
 
 
-/* harmony default export */ var Lazy_updateLazy = (curry2(function updateLazy(index, value, iter) {
-  return Lazy_updateByLazy(index, constant(value), iter);
+/* harmony default export */ var Lazy_updateL = (curry2(function updateL(index, value, iter) {
+  return Lazy_updateByL(index, constant(value), iter);
 }));
 // CONCATENATED MODULE: ./Strict/update.js
 
@@ -2338,7 +2251,7 @@ function unzip(iter) {
     const arr = Array.from(iter);
     return update(arr.length + index, value, arr);
   } else {
-    return takeAll(Lazy_updateLazy(index, value, iter));
+    return takeAll(Lazy_updateL(index, value, iter));
   }
 }));
 // CONCATENATED MODULE: ./Strict/updateBy.js
@@ -2351,7 +2264,7 @@ function unzip(iter) {
     const arr = Array.from(iter);
     return updateBy(arr.length + index, f, arr);
   } else {
-    return takeAll(Lazy_updateByLazy(index, f, iter));
+    return takeAll(Lazy_updateByL(index, f, iter));
   }
 }));
 // CONCATENATED MODULE: ./Strict/when.js
@@ -2368,7 +2281,7 @@ function unzip(iter) {
 
 
 /* harmony default export */ var Strict_zipObj = (curry(function zipObj(...iterables) {
-  return object_object(Lazy_zipLazy(...iterables));
+  return object_object(Lazy_zipL(...iterables));
 }));
 // CONCATENATED MODULE: ./Strict/zipWith.js
 
@@ -2376,7 +2289,7 @@ function unzip(iter) {
 
 
 /* harmony default export */ var Strict_zipWith = (curry(function zipWith(f, ...iterables) {
-  return Strict_map(group => f(...group), Lazy_zipLazy(...iterables))
+  return Strict_map(group => f(...group), Lazy_zipL(...iterables))
 }));
 // CONCATENATED MODULE: ./Strict/index.js
 
@@ -2540,30 +2453,33 @@ function unzip(iter) {
 
 
 
-// CONCATENATED MODULE: ./Lazy/compactLazy.js
-
-
-/* harmony default export */ var compactLazy = (Lazy_filterLazy(a => a));
-// CONCATENATED MODULE: ./Lazy/constantLazy.js
-function* constantLazy(a) { yield a; }
-// CONCATENATED MODULE: ./Lazy/flatMapLazy.js
+// CONCATENATED MODULE: ./Lazy/compactL.js
 
 
 
-
-/* harmony default export */ var Lazy_flatMapLazy = (curry(function flatMapLazy(f, iter) {
-  return flatLazy(Lazy_mapLazy(f, iter));
-}));
-// CONCATENATED MODULE: ./Lazy/intervalLazy.js
-
-
-
-
-function intervalLazy(time) {
-  return Lazy_mapLazy(delay(time), rangeLazy(Infinity));
+function compactL(iter) {
+  return Lazy_filterL(identity, iter);
 }
-// CONCATENATED MODULE: ./Lazy/reverseLazy.js
-function* reverseLazy(arr) {
+// CONCATENATED MODULE: ./Lazy/constantL.js
+function* constantL(a) { yield a; }
+// CONCATENATED MODULE: ./Lazy/flatMapL.js
+
+
+
+
+/* harmony default export */ var Lazy_flatMapL = (curry(function flatMapL(f, iter) {
+  return flatL(Lazy_mapL(f, iter));
+}));
+// CONCATENATED MODULE: ./Lazy/intervalL.js
+
+
+
+
+function intervalL(time) {
+  return Lazy_mapL(delay(time), rangeL(Infinity));
+}
+// CONCATENATED MODULE: ./Lazy/reverseL.js
+function* reverseL(arr) {
   var l = arr.length;
   while (l--) yield arr[l];
 }
@@ -2571,7 +2487,7 @@ function* reverseLazy(arr) {
 /* harmony default export */ var catchNoopIter = (arr => (
   arr.forEach(a => a.value instanceof Promise && a.value.catch(function() {})),
   arr));
-// CONCATENATED MODULE: ./Lazy/takeAllLazyC.js
+// CONCATENATED MODULE: ./Lazy/takeCL.js
 
 
 
@@ -2581,29 +2497,29 @@ function* reverseLazy(arr) {
 
 
 
-function takeAllLazyC(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ? _ => takeAllLazyC(n, _) : n;
+function takeCL(n, iter) {
+  if (arguments.length == 1) return typeof n == 'number' ? _ => takeCL(n, _) : n;
   if (n == Infinity) return iter;
 
   iter = toIter(iter);
   return go(
-    rangeLazy(Infinity),
-    Lazy_mapLazy(_ => go(
-      rangeLazy(n),
-      Lazy_mapLazy(_ => iter.next()),
+    rangeL(Infinity),
+    Lazy_mapL(_ => go(
+      rangeL(n),
+      Lazy_mapL(_ => iter.next()),
       Strict_reject(a => a.done),
       catchNoopIter
     )),
-    Lazy_takeUntilLazy(a => a.length < n),
-    Lazy_flatMapLazy(Lazy_mapLazy(a => a.value)));
+    Lazy_takeUntilL(a => a.length < n),
+    Lazy_flatMapL(Lazy_mapL(a => a.value)));
 }
-// CONCATENATED MODULE: ./Lazy/takeLazy.js
+// CONCATENATED MODULE: ./Lazy/takeL.js
 
 
 
 
 
-/* harmony default export */ var Lazy_takeLazy = (curry(function* takeLazy(l, iter) {
+/* harmony default export */ var Lazy_takeL = (curry(function* takeL(l, iter) {
   if (l < 1) return;
   let prev = null;
   for (const a of toIter(iter)) {
@@ -2688,7 +2604,7 @@ function takeAllLazyC(n, iter) {
 
 function takeAllC(n, iter) {
   return arguments.length > 1 ?
-    takeAll(takeAllLazyC(n, iter)) :
+    takeAll(takeCL(n, iter)) :
     typeof n == 'number' ? _ => takeAllC(n, _) : Concurrency_takeC(Infinity, n);
 }
 
@@ -2699,7 +2615,7 @@ function takeAllC(n, iter) {
 
 
 /* harmony default export */ var Concurrency_mapC = (curry(function mapC(f, iter) {
-  return takeAllC(Lazy_mapLazy(f, iter));
+  return takeAllC(Lazy_mapL(f, iter));
 }));
 // CONCATENATED MODULE: ./Concurrency/reduceC.js
 
@@ -2729,7 +2645,7 @@ function objectC(iter) {
 
 
 /* harmony default export */ var Concurrency_filterC = (curry(function filterC(f, iter) {
-  return takeAllC(Lazy_filterLazy(f, iter));
+  return takeAllC(Lazy_filterL(f, iter));
 }));
 // CONCATENATED MODULE: ./Concurrency/compactC.js
 
@@ -2753,8 +2669,8 @@ function objectC(iter) {
 
 /* harmony default export */ var Concurrency_everyC = (curry(function everyC(f, iter) {
   return go(
-    Lazy_mapLazy(f, iter),
-    Lazy_takeUntilLazy(not),
+    Lazy_mapL(f, iter),
+    Lazy_takeUntilL(not),
     Concurrency_reduceC((a, b) => a && b),
     (a = false) => a,
     Boolean);
@@ -2772,7 +2688,7 @@ function headC(iter) {
 
 
 /* harmony default export */ var Concurrency_findC = (curry(function findC(f, iter) {
-  return headC(Lazy_filterLazy(f, iter));
+  return headC(Lazy_filterL(f, iter));
 }));
 // CONCATENATED MODULE: ./Concurrency/mapEntriesC.js
 
@@ -2780,7 +2696,7 @@ function headC(iter) {
 
 
 /* harmony default export */ var Concurrency_mapEntriesC = (curry(async function mapEntriesC(f, iter) {
-  return takeAllC(Lazy_mapEntriesLazy(f, iter));
+  return takeAllC(Lazy_mapEntriesL(f, iter));
 }));
 // CONCATENATED MODULE: ./Concurrency/takeRaceC.js
 
@@ -2817,8 +2733,8 @@ async function raceC(iter) {
 
 /* harmony default export */ var Concurrency_someC = (curry(function someC(f, iter) {
   return go(
-    Lazy_mapLazy(f, iter),
-    Lazy_takeUntilLazy(identity),
+    Lazy_mapL(f, iter),
+    Lazy_takeUntilL(identity),
     Concurrency_reduceC((a, b) => a || b),
     (a = false) => a,
     Boolean);
