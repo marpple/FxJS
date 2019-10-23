@@ -1195,6 +1195,10 @@ import * as C from "../Concurrency/index.js";
       expect(partition(a => a % 2, [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
     });
 
+    it("partition(a => a % 2, [2, 4])", function () {
+      expect(partition(a => a % 2, [2, 4])).to.eql([[], [2, 4]]);
+    });
+
     it("partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])", async function () {
       expect(await partition(a => Promise.resolve(a % 2), [1, 2, 3, 4])).to.eql([[1, 3], [2, 4]]);
     });
