@@ -66,6 +66,8 @@ export { default as isArray } from './isArray.js';
 export { default as isFunction } from './isFunction.js';
 export { default as isIterable } from './isIterable.js';
 export { default as isMatch } from './isMatch.js';
+export { default as isNil } from './isNil.js';
+export { default as isNull } from './isNull.js';
 export { default as isStop } from './isStop.js';
 export { default as isString } from './isString.js';
 export { default as isUndefined } from './isUndefined.js';
