@@ -5538,6 +5538,8 @@ __webpack_require__.d(Strict_namespaceObject, "isArray", function() { return Str
 __webpack_require__.d(Strict_namespaceObject, "isFunction", function() { return isFunction; });
 __webpack_require__.d(Strict_namespaceObject, "isIterable", function() { return isIterable; });
 __webpack_require__.d(Strict_namespaceObject, "isMatch", function() { return Strict_isMatch; });
+__webpack_require__.d(Strict_namespaceObject, "isNil", function() { return Strict_isNil; });
+__webpack_require__.d(Strict_namespaceObject, "isNull", function() { return Strict_isNull; });
 __webpack_require__.d(Strict_namespaceObject, "isStop", function() { return isStop; });
 __webpack_require__.d(Strict_namespaceObject, "isString", function() { return isString; });
 __webpack_require__.d(Strict_namespaceObject, "isUndefined", function() { return isUndefined; });
@@ -8496,6 +8498,18 @@ function uniqueL(obj) {
 function isFunction(a) {
   return typeof a == 'function';
 }
+// CONCATENATED MODULE: ./Strict/isNil.js
+var isNil = function isNil(a) {
+  return a === undefined || a === null;
+};
+
+/* harmony default export */ var Strict_isNil = (isNil);
+// CONCATENATED MODULE: ./Strict/isNull.js
+var isNull = function isNull(a) {
+  return a === null;
+};
+
+/* harmony default export */ var Strict_isNull = (isNull);
 // CONCATENATED MODULE: ./Strict/isString.js
 function isString(a) {
   return typeof a == 'string';
@@ -8849,7 +8863,7 @@ function once(f) {
 
 /* harmony default export */ var Strict_partition = (curry(function partition(f, iter) {
   return go1(Strict_groupBy(pipe1(f, Boolean), iter), function (group) {
-    return [group['true'], group['false']];
+    return [group['true'] || [], group['false']] || false;
   });
 }));
 // CONCATENATED MODULE: ./Strict/pick.js
@@ -9975,6 +9989,8 @@ function zipWith_arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i =
 
 
  //ok
+
+
 
 
 
