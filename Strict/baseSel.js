@@ -16,7 +16,7 @@ export default sep => curry(function sel(selector, acc) {
     :
     reduce(
       (acc, key, s = key[0]) =>
-        !acc ? acc :
+        !acc ? undefined :
         s == '#' ? findWhere({ id: key.substr(1) }, acc) :
         s == '[' || s == '{' ? findWhere(JSON.parse(key), acc) :
         acc[key],
