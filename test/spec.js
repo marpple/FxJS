@@ -2,6 +2,7 @@ import { expect } from "chai";
 import {
   constant,
   add,
+  divide,
   html,
   flat, deepFlat, stop,
   take, takeWhile, takeUntil,
@@ -68,6 +69,7 @@ import {
   sum, pipe,
   curry2, curry3, curryN,
   replace, cond,
+  fork,
 } from "../Strict/index.js";
 import * as L from "../Lazy/index.js";
 import * as C from "../Concurrency/index.js";
@@ -1435,6 +1437,20 @@ import * as C from "../Concurrency/index.js";
       const grade = cond(...grade_conditions);
       expect(await grade(91)).to.eql('A');
       expect(await grade(60)).to.eql('F');
+    });
+  });
+
+  describe('fork', function() {
+    it('sync', function() {
+      const length = iter => iter.length;
+      const getAverage = fork(divide, sum, length);
+      expect(getAverage([23, 30, 40])).to.eql(31)
+    });
+
+    it('async', async function() {
+      const length = iter => Promise.resolve(iter.length);
+      const getAverage = fork(divide, sum, length);
+      expect(await getAverage([23, 30, 40])).to.eql(31)
     });
   });
 } ());
