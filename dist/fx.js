@@ -153,6 +153,7 @@ __webpack_require__.d(Strict_namespaceObject, "hi", function() { return hi; });
 __webpack_require__.d(Strict_namespaceObject, "html", function() { return html; });
 __webpack_require__.d(Strict_namespaceObject, "identity", function() { return identity; });
 __webpack_require__.d(Strict_namespaceObject, "ifElse", function() { return Strict_ifElse; });
+__webpack_require__.d(Strict_namespaceObject, "fork", function() { return Strict_fork; });
 __webpack_require__.d(Strict_namespaceObject, "indexBy", function() { return Strict_indexBy; });
 __webpack_require__.d(Strict_namespaceObject, "initial", function() { return initial; });
 __webpack_require__.d(Strict_namespaceObject, "insert", function() { return Strict_insert; });
@@ -633,7 +634,7 @@ function* entriesL(obj) {
     :
     reduce(
       (acc, key, s = key[0]) =>
-        !acc ? acc :
+        !acc ? undefined :
         s == '#' ? Strict_findWhere({ id: key.substr(1) }, acc) :
         s == '[' || s == '{' ? Strict_findWhere(JSON.parse(key), acc) :
         acc[key],
@@ -1308,6 +1309,14 @@ function html(strs, ...datas) {
 /* harmony default export */ var Strict_ifElse = (curry3(function ifElse(cond, t, f, ...args) {
   return go1(cond(...args), b => b ? t(...args) : f(...args));
 }));
+// CONCATENATED MODULE: ./Strict/fork.js
+
+
+
+
+/* harmony default export */ var Strict_fork = (curry3(function fork(join, f1, f2, ...args) {
+  return Strict_apply(join, juxt(f1, f2)(...args));
+}));
 // CONCATENATED MODULE: ./Strict/indexBy.js
 
 
@@ -1681,7 +1690,7 @@ function once(f) {
 /* harmony default export */ var Strict_partition = (curry(function partition(f, iter) {
   return go1(
     Strict_groupBy(pipe1(f, Boolean), iter),
-    group => [group['true'] || [], group['false']] || false);
+    group => [group['true'] || [], group['false'] || []]);
 }));
 // CONCATENATED MODULE: ./Strict/pick.js
 
@@ -2228,9 +2237,24 @@ function unique(a) {
 // CONCATENATED MODULE: ./Strict/unzip.js
 
 
+
+
+
+
+
+
 function unzip(iter) {
-  return Strict_zip(...iter);
+  return go(
+    iter,
+    takeAll,
+    Strict_ifElse(
+      Strict_selEquals('length', 1),
+      list => Strict_map(Array.of, Strict_sel('0', list)),
+      list => Strict_zip(...list)
+    )
+  )
 };
+
 // CONCATENATED MODULE: ./Lazy/updateByL.js
 
 
@@ -2343,6 +2367,7 @@ function unzip(iter) {
 
 
  //ok
+
 
 
 
