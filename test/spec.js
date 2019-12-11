@@ -1169,7 +1169,14 @@ import * as C from "../Concurrency/index.js";
   });
 
   describe('unzip', function () {
-    it("unzip([['a', 1, true], ['b', 2, false]])", function () {
+    it("to empty list", function() {
+      expect(unzip([['a', 1, true]])).to.eql([['a'], [1], [true]]);
+    });
+
+    it("to single pair", function() {
+      expect(unzip([['a', 1, true]])).to.eql([['a'], [1], [true]]);
+    });
+    it("to multiple pairs", function () {
       expect(unzip([['a', 1, true], ['b', 2, false]])).to.eql([['a', 'b'], [1, 2], [true, false]]);
     });
   });
