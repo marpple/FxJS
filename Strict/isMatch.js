@@ -9,7 +9,7 @@ export default curry(function isMatch(a, b) {
       :
     isArray(a) && isArray(b) ? every(v => b.includes(v), a)
       :
-    typeof b == 'object' ? every(([k, v]) => b[k] == v, entriesL(a))
+    b && typeof b == 'object' ? every(([k, v]) => b[k] == v, entriesL(a))
       :
     a instanceof RegExp ? b.match(a)
       :
