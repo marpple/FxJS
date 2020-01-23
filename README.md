@@ -1,6 +1,11 @@
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
 
 # FxJS - Functional Extensions for Javascript
+![npm](https://img.shields.io/npm/v/fxjs)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/fxjs)
+![npm](https://img.shields.io/npm/dt/fxjs)
+![NPM](https://img.shields.io/npm/l/fxjs)
+
 
 FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterator, Generator, Promise.
 

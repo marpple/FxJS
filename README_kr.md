@@ -1,6 +1,10 @@
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
 
 # FxJS - Functional Extensions for Javascript
+![npm](https://img.shields.io/npm/v/fxjs)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/fxjs)
+![npm](https://img.shields.io/npm/dt/fxjs)
+![NPM](https://img.shields.io/npm/l/fxjs)
 
 FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니다. Iterable, Iterator, Generator, Promise를 다룹니다.
 
