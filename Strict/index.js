@@ -27,6 +27,7 @@ export { default as differenceBy } from './differenceBy.js';
 export { default as differenceWith } from './differenceWith.js';
 export { default as divide } from './divide.js';
 export { default as drop } from './drop.js';
+export { default as dropLast } from './dropLast.js';
 export { default as dropRight } from './dropRight.js';
 export { default as dropUntil } from './dropUntil.js';
 export { default as dropWhile } from './dropWhile.js';
@@ -40,7 +41,8 @@ export { default as equalsBy2 } from './equalsBy2.js';
 export { default as every } from './every.js';
 export { default as extend } from './extend.js';
 export { default as filter } from './filter.js';
-export { default as find } from './find.js'; //ok
+export { default as find } from './find.js';
+export { default as findIndex } from './findIndex.js';
 export { default as findWhere } from './findWhere.js';
 export { default as flat, default as flatten } from './flat.js';
 export { default as flatMap } from './flatMap.js';

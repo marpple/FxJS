@@ -1,78 +1,97 @@
-import { expect } from "chai";
+import {expect} from "chai";
+import * as C from "../Concurrency/index.js";
+import * as L from "../Lazy/index.js";
 import {
-  constant,
   add,
-  divide,
-  html,
-  flat, deepFlat, stop,
-  take, takeWhile, takeUntil,
-  times,
-  go,
-  takeAll,
+  both,
+  calls,
+  chunk,
+  cond,
+  constant,
+  curry2,
+  curry3,
+  curryN,
+  deepFlat,
+  deepFlatten,
   delay,
-  map,
-  mean,
-  reduce, go1, find, some, every, deepFlatten,
-  reduceS, goS, stopIf, pipeS, calls,
-  mapObject,
-  promiseAllObject, promiseAllEntries,
-  dropRight,
-  dropWhile,
-  dropUntil,
+  difference,
   differenceBy,
   differenceWith,
-  difference,
-  initial,
+  divide,
+  dropRight,
+  dropUntil,
+  dropWhile,
+  each,
+  either,
+  equals,
+  equalsBy,
+  every,
+  find,
+  findIndex,
+  flat,
+  flatMap,
+  fork,
+  go,
+  go1,
+  goS,
+  gt,
+  html,
   ifElse,
-  rest,
-  repeat,
+  initial,
   insert,
+  intersection,
   intersectionBy,
   intersectionWith,
-  intersection,
-  unionBy,
-  union,
-  unionWith,
-  uniq,
-  uniqWith,
-  update,
-  updateBy,
-  zip,
-  unzip,
-  zipObj,
-  zipWith,
-  partition,
   join,
-  pick,
-  pickBy,
+  lt,
+  map,
+  mapObject,
+  mean,
   omit,
   omitBy,
-  chunk,
-  splitEvery,
-  flatMap,
+  partition,
+  pick,
+  pickBy,
+  pipe,
+  pipeS,
+  promiseAllEntries,
+  promiseAllObject,
   range,
+  reduce,
+  reduceS,
   remove,
-  each,
-  sumBy,
+  repeat,
+  replace,
+  rest,
+  satisfiesEvery,
+  satisfiesSome,
   sel,
   selEquals,
   selSatisfies,
   slice,
-  both,
-  either,
-  equals,
-  gt,
-  lt,
-  satisfiesEvery,
-  satisfiesSome,
-  equalsBy,
-  sum, pipe,
-  curry2, curry3, curryN,
-  replace, cond,
-  fork,
+  some,
+  splitEvery,
+  stop,
+  stopIf,
+  sum,
+  sumBy,
+  take,
+  takeAll,
+  takeUntil,
+  takeWhile,
+  times,
+  union,
+  unionBy,
+  unionWith,
+  uniq,
+  uniqWith,
+  unzip,
+  update,
+  updateBy,
+  zip,
+  zipObj,
+  zipWith
 } from "../Strict/index.js";
-import * as L from "../Lazy/index.js";
-import * as C from "../Concurrency/index.js";
 
 (function() {
 
@@ -748,6 +767,32 @@ import * as C from "../Concurrency/index.js";
 
     it('every(a => a > 0, [])', function () {
       expect(every(a => a > 0, [])).to.eql(false);
+    });
+  });
+
+  describe.only('findIndex', function () {
+    it('해당하는 element가 존재하는 경우', function () {
+      expect(findIndex(a => a > 1, [1, 2, 3])).to.eql(1);
+    });
+
+    it('해당하는 element가 존재하지 않는 경우', function () {
+      expect(findIndex(a => a === 0, [1, 2, 3])).to.eql(-1);
+    });
+
+    it('해당하는 element가 존재하는 경우 (async)', async function () {
+      expect(await findIndex(a => Promise.resolve(a > 1), [1, 2, 3])).to.eql(1);
+    });
+
+    it('해당하는 element가 존재하지 않는 경우 (async)', async function () {
+      expect(await findIndex(a => Promise.resolve(a === 0), [1, 2, 3])).to.eql(-1);
+    });
+
+    it('list가 Promise로 wrapping된 경우', async function() {
+      expect(await findIndex(a => Promise.resolve(a > 2), Promise.resolve([1, 2, 3]))).to.eql(2);
+    });
+
+    it('element가 Promise인 경우', async function() {
+      expect(await findIndex(a => Promise.resolve(a > 2), [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)])).to.eql(2);
     });
   });
 
