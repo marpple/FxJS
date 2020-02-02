@@ -770,7 +770,7 @@ import {
     });
   });
 
-  describe.only('findIndex', function () {
+  describe('findIndex', function () {
     it('해당하는 element가 존재하는 경우', function () {
       expect(findIndex(a => a > 1, [1, 2, 3])).to.eql(1);
     });
