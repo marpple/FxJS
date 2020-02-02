@@ -39,6 +39,7 @@ export { default as equalsBy } from './equalsBy.js';
 export { default as equals2 } from './equals2.js';
 export { default as equalsBy2 } from './equalsBy2.js';
 export { default as every } from './every.js';
+export { default as evolve } from './evolve.js';
 export { default as extend } from './extend.js';
 export { default as filter } from './filter.js';
 export { default as find } from './find.js';

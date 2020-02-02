@@ -90,7 +90,8 @@ import {
   updateBy,
   zip,
   zipObj,
-  zipWith
+  zipWith,
+  evolve
 } from "../Strict/index.js";
 
 (function() {
@@ -1505,4 +1506,69 @@ import {
       expect(await getAverage([23, 30, 40])).to.eql(31)
     });
   });
+
+  describe('evolve', function() {
+    const res = {
+      str: 'HELLO',
+      num: 100,
+      sym: true,
+      nested: {
+        str2: 'world!',
+        num2: 200,
+        sym2: true
+      }
+    };
+
+    it('sync', function() {
+      const symbol = Symbol();
+      const symbol2 = Symbol();
+      const dictionary = {
+        str: str => str.toUpperCase(),
+        num: a => a * a,
+        sym: a => a === symbol,
+        nested: {
+          str2: a => a + '!',
+          num2: a => a * 100,
+          sym2: a => a === symbol2
+        }
+      };
+      const obj = {
+        str: 'hello',
+        num: 10,
+        sym: symbol,
+        nested: {
+          str2: 'world',
+          num2: 2,
+          sym2: symbol2
+        }
+      };
+      expect(evolve(dictionary, obj)).to.eql(res);
+    });
+
+    it('async', async function() {
+      const symbol = Symbol();
+      const symbol2 = Symbol();
+      const dictionary = {
+        str: str => Promise.resolve(str.toUpperCase()),
+        num: a => a * a,
+        sym: a => a === symbol,
+        nested: {
+          str2: a => a + '!',
+          num2: a => Promise.resolve(a * 100),
+          sym2: a => a === symbol2
+        }
+      };
+      const obj = {
+        str: Promise.resolve('hello'),
+        num: 10,
+        sym: Promise.resolve(symbol),
+        nested: {
+          str2: Promise.resolve('world'),
+          num2: 2,
+          sym2: Promise.resolve(symbol2)
+        }
+      };
+      expect(await evolve(dictionary, obj)).to.eql(res);
+    });
+  })
 } ());
