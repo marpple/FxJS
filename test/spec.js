@@ -26,6 +26,7 @@ import {
   equals,
   equalsBy,
   every,
+  evolve,
   find,
   findIndex,
   flat,
@@ -91,7 +92,7 @@ import {
   zip,
   zipObj,
   zipWith,
-  evolve
+  invert
 } from "../Strict/index.js";
 
 (function() {
@@ -1569,6 +1570,18 @@ import {
         }
       };
       expect(await evolve(dictionary, obj)).to.eql(res);
+    });
+  });
+
+  describe('invert', function() {
+    it('sync', function() {
+      expect(invert({a: 'hello', b: 'world'})).to.eql({hello: 'a', world: 'b'});
+      expect(invert({a: 'hello', b: 'world', c: 'hello'})).to.eql({ hello: 'c', world: 'b'});
+      expect(invert({c: 'hello', b: 'world', a: 'hello'})).to.eql({ hello: 'a', world: 'b'});
+    });
+
+    it('async', async function() {
+      expect(await invert({c: 'hello', b: Promise.resolve('world'), a: Promise.resolve('hello')})).to.eql({ hello: 'a', world: 'b'});
     });
   })
 } ());
