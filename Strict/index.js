@@ -67,6 +67,7 @@ export { default as intersection } from './intersection.js';
 export { default as intersectionBy } from './intersectionBy.js';
 export { default as intersectionWith } from './intersectionWith.js';
 export { default as invert } from './invert.js';
+export { default as invertBy } from './invertBy.js';
 export { default as isArray } from './isArray.js';
 export { default as isFunction } from './isFunction.js';
 export { default as isIterable } from './isIterable.js';

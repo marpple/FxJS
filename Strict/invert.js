@@ -2,11 +2,11 @@ import entries from "./entries.js";
 import map from "./map.js";
 import object from "./object.js";
 import pipe from "./pipe.js";
-import reverse from "./reverse.js";
+import reverse1 from "../.internal/reverse1.js";
 
 const invert = pipe(
   entries,
-  map(reverse),
+  map(reverse1),
   object
 );
 

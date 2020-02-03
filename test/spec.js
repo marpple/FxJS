@@ -37,12 +37,15 @@ import {
   goS,
   gt,
   html,
+  identity,
   ifElse,
   initial,
   insert,
   intersection,
   intersectionBy,
   intersectionWith,
+  invert,
+  invertBy,
   join,
   lt,
   map,
@@ -91,8 +94,7 @@ import {
   updateBy,
   zip,
   zipObj,
-  zipWith,
-  invert
+  zipWith
 } from "../Strict/index.js";
 
 (function() {
@@ -1581,7 +1583,34 @@ import {
     });
 
     it('async', async function() {
-      expect(await invert({c: 'hello', b: Promise.resolve('world'), a: Promise.resolve('hello')})).to.eql({ hello: 'a', world: 'b'});
+      expect(await invert(
+        {c: 'hello', b: Promise.resolve('world'), a: Promise.resolve('hello')}
+      )).to.eql({ hello: 'a', world: 'b'});
+    });
+  })
+
+  describe('invertBy', function() {
+    it('sync', function() {
+      expect(invertBy(
+        identity, {a: 'hello', b: 'world', c: 'hello'}
+      )).to.eql({hello: ['a', 'c'], world: ['b']});
+
+      expect(invertBy(
+        (v) => `${v}${v === 'hello' ? '~' : '!'}`,
+        {c: 'hello', b: 'world', a: 'hello'}
+      )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
+    });
+
+    it('async', async function() {
+      expect(await invertBy(
+        identity,
+        {a: Promise.resolve('hello'), b: Promise.resolve('world'), c: 'hello'}
+      )).to.eql({hello: ['a', 'c'], world: ['b']});
+
+      expect(await invertBy(
+        (v) => Promise.resolve(`${v}${v === 'hello' ? '~' : '!'}`),
+        {c: 'hello', b: Promise.resolve('world'), a: 'hello'}
+      )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
     });
   })
 } ());
