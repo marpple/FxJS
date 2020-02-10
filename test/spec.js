@@ -62,6 +62,7 @@ import {
   promiseAllObject,
   range,
   reduce,
+  reduceRight,
   reduceS,
   remove,
   repeat,
@@ -702,6 +703,16 @@ import {
     });
     it('reduce(add, L.filter(a => Promise.resolve(a % 2), L.map(a => Promise.resolve(a + 10), [1, 2, 3, 4])))', () => {
       go1(reduce(add, L.filter(a => Promise.resolve(a % 2), L.map(a => Promise.resolve(a + 10), [1, 2, 3, 4]))), _ => expect(_).to.eql(24));
+    });
+  });
+
+  describe('reduceRight', function() {
+    it('2 arguments', () => {
+      expect(reduceRight((a, b) => a - b, [1, 2, 3, 4])).to.eql(-2);
+    });
+
+    it('3 arguments', () => {
+      expect(reduceRight((a, b) => a - b, 0, [1, 2, 3, 4])).to.eql(-10);
     });
   });
 

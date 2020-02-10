@@ -120,6 +120,7 @@ export { default as promiseAllEntries } from './promiseAllEntries.js';
 export { default as promiseAllObject } from './promiseAllObject.js';
 export { default as range } from './range.js';
 export { default as reduce } from './reduce.js';
+export { default as reduceRight } from './reduceRight.js';
 export { default as reduceS } from './reduceS.js';
 export { default as reject } from './reject.js';
 export { default as remove } from './remove.js';
