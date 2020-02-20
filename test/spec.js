@@ -46,6 +46,7 @@ import {
   intersectionWith,
   invert,
   invertBy,
+  isEmpty,
   join,
   lt,
   map,
@@ -1622,6 +1623,25 @@ import {
         (v) => Promise.resolve(`${v}${v === 'hello' ? '~' : '!'}`),
         {c: 'hello', b: Promise.resolve('world'), a: 'hello'}
       )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
+    });
+  })
+
+  describe('isEmpty', function() {
+    it('string', function() {
+      expect(isEmpty('')).to.eql(true);
+      expect(isEmpty('abc')).to.eql(false);
+    });
+
+    it('object', function() {
+      expect(isEmpty({})).to.eql(true);
+      expect(isEmpty({a: 1})).to.eql(false);
+    });
+
+    it('iterable', function() {
+      expect(isEmpty([])).to.eql(true);
+      expect(isEmpty([1])).to.eql(false);
+      expect(isEmpty((function*(){})())).to.eql(true);
+      expect(isEmpty(L.range(1))).to.eql(false);
     });
   })
 } ());
