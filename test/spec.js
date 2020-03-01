@@ -70,6 +70,8 @@ import {
   curry2, curry3, curryN,
   replace, cond,
   fork,
+  isArguments,
+  isEmpty,
 } from "../Strict/index.js";
 import * as L from "../Lazy/index.js";
 import * as C from "../Concurrency/index.js";
@@ -1458,6 +1460,38 @@ import * as C from "../Concurrency/index.js";
       const length = iter => Promise.resolve(iter.length);
       const getAverage = fork(divide, sum, length);
       expect(await getAverage([23, 30, 40])).to.eql(31)
+    });
+  });
+
+  describe('isArguments', function() {
+    it('arguments', function() {
+      expect((args => isArguments(args))(1, 2, 3)).to.eql(true);
+    });
+
+    it('array', function() {
+      expect(isArguments([1, 2, 3])).to.eql(false);
+    });
+  });
+
+  describe('isEmpty', function() {
+    it('nil', function() {
+      expect(isEmpty(undefined)).to.eql(true);
+      expect(isEmpty(null)).to.eql(true);
+    });
+
+    it('array', function() {
+      expect(isEmpty([])).to.eql(true);
+      expect(isEmpty([1, 2, 3])).to.eql(false);
+    });
+
+    it('object', function() {
+      expect(isEmpty({})).to.eql(true);
+      expect(isEmpty({a: 1, b: 2, c: 3})).to.eql(false);
+    });
+
+    it('string', function() {
+      expect(isEmpty('')).to.eql(true);
+      expect(isEmpty('fxjs')).to.eql(false);
     });
   });
 } ());
