@@ -2,6 +2,7 @@ export { default as applyEach } from './applyEachC.js';
 export { default as callEach } from './callEachC.js';
 export { default as compact } from "./compactC.js";
 export { default as drop } from "./dropC.js";
+export { default as each } from "./eachC.js";
 export { default as every } from './everyC.js';
 export { default as filter } from './filterC.js';
 export { default as find } from './findC.js';
