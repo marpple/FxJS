@@ -4,7 +4,7 @@ import * as L from "../Lazy/index.js";
 import {
   add,
   both,
-  calls,
+  callEach,
   chunk,
   cond,
   constant,
@@ -987,29 +987,29 @@ import {
     });
   });
 
-  describe('calls', function () {
-    it(`calls`, async function () {
-      expect(await calls([
+  describe('callEach', function () {
+    it(`callEach`, async function () {
+      expect(await callEach([
         _ => Promise.resolve(1),
         _ => Promise.resolve(2),
         _ => Promise.resolve(3)
       ])).to.eql([1, 2, 3]);
 
-      expect(await calls({
+      expect(await callEach({
         a: _ => Promise.resolve(1),
         b: _ => Promise.resolve(2),
         c: _ => Promise.resolve(3)
       })).to.eql({a: 1, b: 2, c: 3});
     });
 
-    it(`C.calls`, async function () {
-      expect(await C.calls([
+    it(`C.callEach`, async function () {
+      expect(await C.callEach([
         _ => Promise.resolve(1),
         _ => Promise.resolve(2),
         _ => Promise.resolve(3)
       ])).to.eql([1, 2, 3]);
 
-      expect(await C.calls({
+      expect(await C.callEach({
         a: _ => Promise.resolve(1),
         b: _ => Promise.resolve(2),
         c: _ => Promise.resolve(3)

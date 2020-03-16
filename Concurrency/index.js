@@ -1,4 +1,5 @@
-export { default as calls } from './callsC.js';
+export { default as applyEach } from './applyEachC.js';
+export { default as callEach } from './callEachC.js';
 export { default as compact } from "./compactC.js";
 export { default as drop } from "./dropC.js";
 export { default as every } from './everyC.js';

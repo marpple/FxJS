@@ -48,7 +48,7 @@ export { default as valuesL } from './Lazy/valuesL.js';
 export { default as zipWithIndexL, default as indexValuesL, default as ippL } from './Lazy/zipWithIndexL.js';
 export { default as zipL } from "./Lazy/zipL.js";
 
-export { default as callsC } from './Concurrency/callsC.js';
+export { default as callsC } from './Concurrency/callEachC.js';
 export { default as compactC } from "./Concurrency/compactC.js";
 export { default as dropC } from "./Concurrency/dropC.js";
 export { default as everyC } from './Concurrency/everyC.js';
