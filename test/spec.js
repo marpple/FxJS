@@ -6,6 +6,7 @@ import {
   both,
   callEach,
   chunk,
+  clone,
   cond,
   constant,
   curry2,
@@ -1644,4 +1645,34 @@ import {
       expect(isEmpty(L.range(1))).to.eql(false);
     });
   })
+
+  describe('clone', function() {
+    it.only('copy deeply ', function() {
+      const a = {a: 1, b: {c: 2, d: {e: 3}}};
+      const res = clone(a);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+      expect(a === res).to.eql(false);
+      expect(a.b === res.b).to.eql(false);
+      expect(a.b.d === res.b.d).to.eql(false);
+    });
+
+    it.only('supports promise values', async function() {
+      const a = {a: 1, b: {c: Promise.resolve(2), d: {e: Promise.resolve(3)}}};
+      const res = await clone(a);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+      expect(a === res).to.eql(false);
+      expect(a.b === res.b).to.eql(false);
+      expect(a.b.d === res.b.d).to.eql(false);
+    });
+
+    it.only('deal with function to empty object', function() {
+      const a = _ => _;
+      const res = clone(a);
+      expect(res).to.eql({});
+
+      const b = { aa: () => {}, bb: { cc: () => {} } };
+      const res2 = clone(b);
+      expect(res2).to.eql({aa: {}, bb: { cc: {} }});
+    });
+  });
 } ());
