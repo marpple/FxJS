@@ -100,6 +100,7 @@ export { default as max } from "./max.js";
 export { default as maxBy } from "./maxBy.js";
 export { default as mean } from "./mean.js";
 export { default as meanBy } from "./meanBy.js";
+export { default as merge } from "./merge.js";
 export { default as min } from "./min.js";
 export { default as minBy } from "./minBy.js";
 export { default as multiply } from "./multiply.js";

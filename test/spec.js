@@ -53,6 +53,7 @@ import {
   map,
   mapObject,
   mean,
+  merge,
   omit,
   omitBy,
   partition,
@@ -1600,7 +1601,7 @@ import {
         {c: 'hello', b: Promise.resolve('world'), a: Promise.resolve('hello')}
       )).to.eql({ hello: 'a', world: 'b'});
     });
-  })
+  });
 
   describe('invertBy', function() {
     it('sync', function() {
@@ -1625,7 +1626,7 @@ import {
         {c: 'hello', b: Promise.resolve('world'), a: 'hello'}
       )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
     });
-  })
+  });
 
   describe('isEmpty', function() {
     it('string', function() {
@@ -1644,10 +1645,10 @@ import {
       expect(isEmpty((function*(){})())).to.eql(true);
       expect(isEmpty(L.range(1))).to.eql(false);
     });
-  })
+  });
 
   describe('clone', function() {
-    it.only('copy deeply ', function() {
+    it('copy deeply', function() {
       const a = {a: 1, b: {c: 2, d: {e: 3}}};
       const res = clone(a);
       expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
@@ -1656,7 +1657,7 @@ import {
       expect(a.b.d === res.b.d).to.eql(false);
     });
 
-    it.only('supports promise values', async function() {
+    it('supports promise values', async function() {
       const a = {a: 1, b: {c: Promise.resolve(2), d: {e: Promise.resolve(3)}}};
       const res = await clone(a);
       expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
@@ -1665,7 +1666,7 @@ import {
       expect(a.b.d === res.b.d).to.eql(false);
     });
 
-    it.only('deal with function to empty object', function() {
+    it('deal with function to empty object', function() {
       const a = _ => _;
       const res = clone(a);
       expect(res).to.eql({});
@@ -1673,6 +1674,37 @@ import {
       const b = { aa: () => {}, bb: { cc: () => {} } };
       const res2 = clone(b);
       expect(res2).to.eql({aa: {}, bb: { cc: {} }});
+    });
+  });
+
+  describe('merge', function() {
+    it('copy deeply', function() {
+      const a = {a: 1, b: {c: 2, d: {e: 3}}};
+      const b = {a: 1, b: {c: 2, d: {e: 3}}};
+
+      const res = merge(a, b);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+
+      expect(a === res).to.eql(false);
+      expect(b === res).to.eql(false);
+
+      expect(a.b === res.b).to.eql(false);
+      expect(b.b === res.b).to.eql(false);
+
+      expect(a.b.d === res.b.d).to.eql(false);
+      expect(b.b.d === res.b.d).to.eql(false);
+    });
+
+    it('sync', function() {
+      const a = {z: 0, a: 1, b: {c: 2, d: {e: 3}}, f: 5};
+      const b = {a: 2, b: {c: 3, d: {e: 4}}};
+      expect(merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
+    });
+
+    it('async', async function() {
+      const a = {z: 0, a: Promise.resolve(1), b: {c: 2, d: Promise.resolve({e: 3})}, f: Promise.resolve(5)};
+      const b = {a: 2, b: Promise.resolve({c: 3, d: {e: 4}})};
+      expect(await merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
     });
   });
 } ());
