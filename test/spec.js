@@ -40,6 +40,7 @@ import {
   html,
   identity,
   ifElse,
+  includes,
   initial,
   insert,
   intersection,
@@ -1705,6 +1706,31 @@ import {
       const a = {z: 0, a: Promise.resolve(1), b: {c: 2, d: Promise.resolve({e: 3})}, f: Promise.resolve(5)};
       const b = {a: 2, b: Promise.resolve({c: 3, d: {e: 4}})};
       expect(await merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
+    });
+  });
+
+  describe('includes', function() {
+    it('String, String', function() {
+      expect(includes('ppl', 'apple')).to.eql(true);
+      expect(includes('b', 'apple')).to.eql(false);
+    });
+
+    it('primitive value, Array', function() {
+      expect(includes('banana', ['apple', 'banana'])).to.eql(true);
+      expect(includes('kiwi', ['apple', 'banana'])).to.eql(false);
+    });
+
+    it('Object, Array<Object>', function() {
+      const fruits = [{type: 'fruit', name: 'apple'}, {type: 'fruit', name: 'banana'}];
+      expect(includes({type: 'fruit', name: 'apple'}, fruits)).to.eql(true);
+      expect(includes({type: 'company', name: 'apple'}, fruits)).to.eql(false);
+      expect(includes({type: 'company', name: 'apple'}, [1, 2, 3])).to.eql(false);
+    });
+
+    it('Array, Array<Array>', async function() {
+      expect(includes([42], [[42]])).to.eql(true);
+      expect(await includes([42], [Promise.resolve([42])])).to.eql(true);
+      expect(await includes([Promise.resolve(42)], [[42]])).to.eql(true);
     });
   });
 } ());

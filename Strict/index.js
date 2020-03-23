@@ -66,6 +66,7 @@ export { default as hi } from "./hi.js";
 export { default as html } from "./html.js";
 export { default as identity } from "./identity.js";
 export { default as ifElse } from "./ifElse.js";
+export { default as includes } from "./includes.js";
 export { default as indexBy } from "./indexBy.js";
 export { default as initial } from "./initial.js";
 export { default as insert } from "./insert.js";
