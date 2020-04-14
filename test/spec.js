@@ -1730,7 +1730,9 @@ import {
     it('Array, Array<Array>', async function() {
       expect(includes([42], [[42]])).to.eql(true);
       expect(await includes([42], [Promise.resolve([42])])).to.eql(true);
+      expect(await includes([41], [Promise.resolve([42])])).to.eql(false);
       expect(await includes([Promise.resolve(42)], [[42]])).to.eql(true);
+      expect(await includes([Promise.resolve(41)], [[42]])).to.eql(false);
     });
   });
 } ());
