@@ -1,10 +1,13 @@
-export { default as calls } from './callsC.js';
+export { default as applyEach } from './applyEachC.js';
+export { default as callEach } from './callEachC.js';
 export { default as compact } from "./compactC.js";
 export { default as drop } from "./dropC.js";
+export { default as each } from "./eachC.js";
 export { default as every } from './everyC.js';
 export { default as filter } from './filterC.js';
 export { default as find } from './findC.js';
 export { default as head } from './headC.js';
+export { default as juxt } from './juxtC.js';
 export { default as map } from './mapC.js';
 export { default as mapEntries } from './mapEntriesC.js';
 export { default as object, default as fromEntries } from "./objectC.js";

@@ -1,78 +1,107 @@
 import { expect } from "chai";
+import * as C from "../Concurrency/index.js";
+import * as L from "../Lazy/index.js";
 import {
-  constant,
   add,
-  divide,
-  html,
-  flat, deepFlat, stop,
-  take, takeWhile, takeUntil,
-  times,
-  go,
-  takeAll,
+  both,
+  callEach,
+  chunk,
+  clone,
+  cond,
+  constant,
+  curry2,
+  curry3,
+  curryN,
+  deepFlat,
+  deepFlatten,
   delay,
-  map,
-  mean,
-  reduce, go1, find, some, every, deepFlatten,
-  reduceS, goS, stopIf, pipeS, calls,
-  mapObject,
-  promiseAllObject, promiseAllEntries,
-  dropRight,
-  dropWhile,
-  dropUntil,
+  difference,
   differenceBy,
   differenceWith,
-  difference,
-  initial,
+  divide,
+  dropRight,
+  dropUntil,
+  dropWhile,
+  each,
+  either,
+  equals,
+  equalsBy,
+  every,
+  evolve,
+  find,
+  findIndex,
+  flat,
+  flatMap,
+  fork,
+  go,
+  go1,
+  goS,
+  gt,
+  html,
+  identity,
   ifElse,
-  rest,
-  repeat,
+  includes,
+  initial,
   insert,
+  intersection,
   intersectionBy,
   intersectionWith,
-  intersection,
-  unionBy,
-  union,
-  unionWith,
-  uniq,
-  uniqWith,
-  update,
-  updateBy,
-  zip,
-  unzip,
-  zipObj,
-  zipWith,
-  partition,
+  invert,
+  invertBy,
+  isEmpty,
   join,
-  pick,
-  pickBy,
+  lt,
+  map,
+  mapObject,
+  mean,
+  merge,
   omit,
   omitBy,
-  chunk,
-  splitEvery,
-  flatMap,
+  partition,
+  pick,
+  pickBy,
+  pipe,
+  pipeS,
+  promiseAllEntries,
+  promiseAllObject,
   range,
+  reduce,
+  reduceRight,
+  reduceS,
   remove,
-  each,
-  sumBy,
+  repeat,
+  replace,
+  rest,
+  satisfiesEvery,
+  satisfiesSome,
   sel,
   selEquals,
   selSatisfies,
   slice,
-  both,
-  either,
-  equals,
-  gt,
-  lt,
-  satisfiesEvery,
-  satisfiesSome,
-  equalsBy,
-  sum, pipe,
-  curry2, curry3, curryN,
-  replace, cond,
-  fork,
+  some,
+  splitEvery,
+  stop,
+  stopIf,
+  sum,
+  sumBy,
+  take,
+  takeAll,
+  takeUntil,
+  takeWhile,
+  times,
+  toIter,
+  union,
+  unionBy,
+  unionWith,
+  uniq,
+  uniqWith,
+  unzip,
+  update,
+  updateBy,
+  zip,
+  zipObj,
+  zipWith
 } from "../Strict/index.js";
-import * as L from "../Lazy/index.js";
-import * as C from "../Concurrency/index.js";
 
 (function() {
 
@@ -682,6 +711,16 @@ import * as C from "../Concurrency/index.js";
     });
   });
 
+  describe('reduceRight', function() {
+    it('2 arguments', () => {
+      expect(reduceRight((a, b) => a - b, [1, 2, 3, 4])).to.eql(-2);
+    });
+
+    it('3 arguments', () => {
+      expect(reduceRight((a, b) => a - b, 0, [1, 2, 3, 4])).to.eql(-10);
+    });
+  });
+
   describe('C.take', function () {
     function delay(val, time = 1000) {
       return new Promise(resolve => setTimeout(_ => resolve(val), time));
@@ -748,6 +787,32 @@ import * as C from "../Concurrency/index.js";
 
     it('every(a => a > 0, [])', function () {
       expect(every(a => a > 0, [])).to.eql(false);
+    });
+  });
+
+  describe('findIndex', function () {
+    it('해당하는 element가 존재하는 경우', function () {
+      expect(findIndex(a => a > 1, [1, 2, 3])).to.eql(1);
+    });
+
+    it('해당하는 element가 존재하지 않는 경우', function () {
+      expect(findIndex(a => a === 0, [1, 2, 3])).to.eql(-1);
+    });
+
+    it('해당하는 element가 존재하는 경우 (async)', async function () {
+      expect(await findIndex(a => Promise.resolve(a > 1), [1, 2, 3])).to.eql(1);
+    });
+
+    it('해당하는 element가 존재하지 않는 경우 (async)', async function () {
+      expect(await findIndex(a => Promise.resolve(a === 0), [1, 2, 3])).to.eql(-1);
+    });
+
+    it('list가 Promise로 wrapping된 경우', async function() {
+      expect(await findIndex(a => Promise.resolve(a > 2), Promise.resolve([1, 2, 3]))).to.eql(2);
+    });
+
+    it('element가 Promise인 경우', async function() {
+      expect(await findIndex(a => Promise.resolve(a > 2), [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)])).to.eql(2);
     });
   });
 
@@ -926,29 +991,29 @@ import * as C from "../Concurrency/index.js";
     });
   });
 
-  describe('calls', function () {
-    it(`calls`, async function () {
-      expect(await calls([
+  describe('callEach', function () {
+    it(`callEach`, async function () {
+      expect(await callEach([
         _ => Promise.resolve(1),
         _ => Promise.resolve(2),
         _ => Promise.resolve(3)
       ])).to.eql([1, 2, 3]);
 
-      expect(await calls({
+      expect(await callEach({
         a: _ => Promise.resolve(1),
         b: _ => Promise.resolve(2),
         c: _ => Promise.resolve(3)
       })).to.eql({a: 1, b: 2, c: 3});
     });
 
-    it(`C.calls`, async function () {
-      expect(await C.calls([
+    it(`C.callEach`, async function () {
+      expect(await C.callEach([
         _ => Promise.resolve(1),
         _ => Promise.resolve(2),
         _ => Promise.resolve(3)
       ])).to.eql([1, 2, 3]);
 
-      expect(await C.calls({
+      expect(await C.callEach({
         a: _ => Promise.resolve(1),
         b: _ => Promise.resolve(2),
         c: _ => Promise.resolve(3)
@@ -1458,6 +1523,237 @@ import * as C from "../Concurrency/index.js";
       const length = iter => Promise.resolve(iter.length);
       const getAverage = fork(divide, sum, length);
       expect(await getAverage([23, 30, 40])).to.eql(31)
+    });
+  });
+
+  describe('evolve', function() {
+    const res = {
+      str: 'HELLO',
+      num: 100,
+      sym: true,
+      nested: {
+        str2: 'world!',
+        num2: 200,
+        sym2: true
+      }
+    };
+
+    it('sync', function() {
+      const symbol = Symbol();
+      const symbol2 = Symbol();
+      const dictionary = {
+        str: str => str.toUpperCase(),
+        num: a => a * a,
+        sym: a => a === symbol,
+        nested: {
+          str2: a => a + '!',
+          num2: a => a * 100,
+          sym2: a => a === symbol2
+        }
+      };
+      const obj = {
+        str: 'hello',
+        num: 10,
+        sym: symbol,
+        nested: {
+          str2: 'world',
+          num2: 2,
+          sym2: symbol2
+        }
+      };
+      expect(evolve(dictionary, obj)).to.eql(res);
+    });
+
+    it('async', async function() {
+      const symbol = Symbol();
+      const symbol2 = Symbol();
+      const dictionary = {
+        str: str => Promise.resolve(str.toUpperCase()),
+        num: a => a * a,
+        sym: a => a === symbol,
+        nested: {
+          str2: a => a + '!',
+          num2: a => Promise.resolve(a * 100),
+          sym2: a => a === symbol2
+        }
+      };
+      const obj = {
+        str: Promise.resolve('hello'),
+        num: 10,
+        sym: Promise.resolve(symbol),
+        nested: {
+          str2: Promise.resolve('world'),
+          num2: 2,
+          sym2: Promise.resolve(symbol2)
+        }
+      };
+      expect(await evolve(dictionary, obj)).to.eql(res);
+    });
+  });
+
+  describe('invert', function() {
+    it('sync', function() {
+      expect(invert({a: 'hello', b: 'world'})).to.eql({hello: 'a', world: 'b'});
+      expect(invert({a: 'hello', b: 'world', c: 'hello'})).to.eql({ hello: 'c', world: 'b'});
+      expect(invert({c: 'hello', b: 'world', a: 'hello'})).to.eql({ hello: 'a', world: 'b'});
+    });
+
+    it('async', async function() {
+      expect(await invert(
+        {c: 'hello', b: Promise.resolve('world'), a: Promise.resolve('hello')}
+      )).to.eql({ hello: 'a', world: 'b'});
+    });
+  });
+
+  describe('invertBy', function() {
+    it('sync', function() {
+      expect(invertBy(
+        identity, {a: 'hello', b: 'world', c: 'hello'}
+      )).to.eql({hello: ['a', 'c'], world: ['b']});
+
+      expect(invertBy(
+        (v) => `${v}${v === 'hello' ? '~' : '!'}`,
+        {c: 'hello', b: 'world', a: 'hello'}
+      )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
+    });
+
+    it('async', async function() {
+      expect(await invertBy(
+        identity,
+        {a: Promise.resolve('hello'), b: Promise.resolve('world'), c: 'hello'}
+      )).to.eql({hello: ['a', 'c'], world: ['b']});
+
+      expect(await invertBy(
+        (v) => Promise.resolve(`${v}${v === 'hello' ? '~' : '!'}`),
+        {c: 'hello', b: Promise.resolve('world'), a: 'hello'}
+      )).to.eql({ 'hello~': ['c','a'], 'world!': ['b']});
+    });
+  });
+
+  describe('isEmpty', function() {
+    it('string', function() {
+      expect(isEmpty('')).to.eql(true);
+      expect(isEmpty('abc')).to.eql(false);
+    });
+
+    it('object', function() {
+      expect(isEmpty({})).to.eql(true);
+      expect(isEmpty({a: 1})).to.eql(false);
+    });
+
+    it('array', function() {
+      expect(isEmpty([])).to.eql(true);
+      expect(isEmpty([1])).to.eql(false);
+    });
+
+    it('iterable', function() {
+      expect(isEmpty((function*(){})())).to.eql(true);
+      const [res, iter] = isEmpty(L.range(3));
+      expect(res).to.eql(false);
+      expect([...iter]).to.eql([0, 1, 2]);
+    });
+  });
+
+  describe('clone', function() {
+    it('copy deeply', function() {
+      const a = {a: 1, b: {c: 2, d: {e: 3}}};
+      const res = clone(a);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+      expect(a === res).to.eql(false);
+      expect(a.b === res.b).to.eql(false);
+      expect(a.b.d === res.b.d).to.eql(false);
+    });
+
+    it('supports promise values', async function() {
+      const a = {a: 1, b: {c: Promise.resolve(2), d: {e: Promise.resolve(3)}}};
+      const res = await clone(a);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+      expect(a === res).to.eql(false);
+      expect(a.b === res.b).to.eql(false);
+      expect(a.b.d === res.b.d).to.eql(false);
+    });
+
+    it('deal with function to empty object', function() {
+      const a = _ => _;
+      const res = clone(a);
+      expect(res).to.eql({});
+
+      const b = { aa: () => {}, bb: { cc: () => {} } };
+      const res2 = clone(b);
+      expect(res2).to.eql({aa: {}, bb: { cc: {} }});
+    });
+
+    it('array', function() {
+      const array = [1, 2, 3];
+      const res = clone({a: array});
+      expect(res.a === array).to.eql(false);
+      expect(res).to.eql({a: [1, 2, 3]});
+    });
+
+    it('iterable', function() {
+      const iter = toIter([1, 2, 3]);
+      const res = clone({a: iter});
+      expect(res.a === iter).to.eql(false);
+      takeAll(iter);
+      expect(takeAll(res.a)).to.eql([]);
+    });
+  });
+
+  describe('merge', function() {
+    it('copy deeply', function() {
+      const a = {a: 1, b: {c: 2, d: {e: 3}}};
+      const b = {a: 1, b: {c: 2, d: {e: 3}}};
+
+      const res = merge(a, b);
+      expect(res).to.eql({a: 1, b: {c: 2, d: {e: 3}}});
+
+      expect(a === res).to.eql(false);
+      expect(b === res).to.eql(false);
+
+      expect(a.b === res.b).to.eql(false);
+      expect(b.b === res.b).to.eql(false);
+
+      expect(a.b.d === res.b.d).to.eql(false);
+      expect(b.b.d === res.b.d).to.eql(false);
+    });
+
+    it('sync', function() {
+      const a = {z: 0, a: 1, b: {c: 2, d: {e: 3}}, f: 5};
+      const b = {a: 2, b: {c: 3, d: {e: 4}}};
+      expect(merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
+    });
+
+    it('async', async function() {
+      const a = {z: 0, a: Promise.resolve(1), b: {c: 2, d: Promise.resolve({e: 3})}, f: Promise.resolve(5)};
+      const b = {a: 2, b: Promise.resolve({c: 3, d: {e: 4}})};
+      expect(await merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
+    });
+  });
+
+  describe('includes', function() {
+    it('String, String', function() {
+      expect(includes('ppl', 'apple')).to.eql(true);
+      expect(includes('b', 'apple')).to.eql(false);
+    });
+
+    it('primitive value, Array', function() {
+      expect(includes('banana', ['apple', 'banana'])).to.eql(true);
+      expect(includes('kiwi', ['apple', 'banana'])).to.eql(false);
+    });
+
+    it('Object, Array<Object>', function() {
+      const fruits = [{type: 'fruit', name: 'apple'}, {type: 'fruit', name: 'banana'}];
+      expect(includes({type: 'fruit', name: 'apple'}, fruits)).to.eql(true);
+      expect(includes({type: 'company', name: 'apple'}, fruits)).to.eql(false);
+      expect(includes({type: 'company', name: 'apple'}, [1, 2, 3])).to.eql(false);
+    });
+
+    it('Array, Array<Array>', async function() {
+      expect(includes([42], [[42]])).to.eql(true);
+      expect(await includes([42], [Promise.resolve([42])])).to.eql(true);
+      expect(await includes([41], [Promise.resolve([42])])).to.eql(false);
+      expect(await includes([Promise.resolve(42)], [[42]])).to.eql(true);
+      expect(await includes([Promise.resolve(41)], [[42]])).to.eql(false);
     });
   });
 } ());

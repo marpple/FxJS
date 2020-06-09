@@ -1,2 +1,1 @@
-const { isArray } = Array;
-export default isArray;
+export default Array.isArray.bind(Array);
