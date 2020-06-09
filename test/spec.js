@@ -1,4 +1,4 @@
-import {expect} from "chai";
+import { expect } from "chai";
 import * as C from "../Concurrency/index.js";
 import * as L from "../Lazy/index.js";
 import {
@@ -1630,7 +1630,7 @@ import {
     });
   });
 
-  describe.only('isEmpty', function() {
+  describe('isEmpty', function() {
     it('string', function() {
       expect(isEmpty('')).to.eql(true);
       expect(isEmpty('abc')).to.eql(false);
@@ -1681,6 +1681,21 @@ import {
       const b = { aa: () => {}, bb: { cc: () => {} } };
       const res2 = clone(b);
       expect(res2).to.eql({aa: {}, bb: { cc: {} }});
+    });
+
+    it('array', function() {
+      const array = [1, 2, 3];
+      const res = clone({a: array});
+      expect(res.a === array).to.eql(false);
+      expect(res).to.eql({a: [1, 2, 3]});
+    });
+
+    it('iterable', function() {
+      const iter = toIter([1, 2, 3]);
+      const res = clone({a: iter});
+      expect(res.a === iter).to.eql(false);
+      takeAll(iter);
+      expect(takeAll(res.a)).to.eql([]);
     });
   });
 
