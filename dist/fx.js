@@ -89,7 +89,10 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// NAMESPACE OBJECT: ./Strict/index.js
 var Strict_namespaceObject = {};
 __webpack_require__.r(Strict_namespaceObject);
 __webpack_require__.d(Strict_namespaceObject, "add", function() { return add; });
@@ -98,11 +101,16 @@ __webpack_require__.d(Strict_namespaceObject, "and", function() { return and; })
 __webpack_require__.d(Strict_namespaceObject, "any", function() { return any; });
 __webpack_require__.d(Strict_namespaceObject, "append", function() { return Strict_append; });
 __webpack_require__.d(Strict_namespaceObject, "apply", function() { return Strict_apply; });
+__webpack_require__.d(Strict_namespaceObject, "applyEach", function() { return applyEach; });
+__webpack_require__.d(Strict_namespaceObject, "applyMethod", function() { return Strict_applyMethod; });
 __webpack_require__.d(Strict_namespaceObject, "baseSel", function() { return baseSel; });
+__webpack_require__.d(Strict_namespaceObject, "bindMethod", function() { return Strict_bindMethod; });
 __webpack_require__.d(Strict_namespaceObject, "both", function() { return Strict_both; });
 __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; });
-__webpack_require__.d(Strict_namespaceObject, "calls", function() { return Strict_calls; });
+__webpack_require__.d(Strict_namespaceObject, "callMethod", function() { return Strict_callMethod; });
+__webpack_require__.d(Strict_namespaceObject, "callEach", function() { return callEach; });
 __webpack_require__.d(Strict_namespaceObject, "chunk", function() { return Strict_chunk; });
+__webpack_require__.d(Strict_namespaceObject, "clone", function() { return clone; });
 __webpack_require__.d(Strict_namespaceObject, "compact", function() { return compact; });
 __webpack_require__.d(Strict_namespaceObject, "cond", function() { return cond_cond; });
 __webpack_require__.d(Strict_namespaceObject, "constant", function() { return constant; });
@@ -122,7 +130,8 @@ __webpack_require__.d(Strict_namespaceObject, "differenceBy", function() { retur
 __webpack_require__.d(Strict_namespaceObject, "differenceWith", function() { return Strict_differenceWith; });
 __webpack_require__.d(Strict_namespaceObject, "divide", function() { return divide; });
 __webpack_require__.d(Strict_namespaceObject, "drop", function() { return Strict_drop; });
-__webpack_require__.d(Strict_namespaceObject, "dropRight", function() { return dropRight; });
+__webpack_require__.d(Strict_namespaceObject, "dropLast", function() { return dropLast; });
+__webpack_require__.d(Strict_namespaceObject, "dropRight", function() { return Strict_dropRight; });
 __webpack_require__.d(Strict_namespaceObject, "dropUntil", function() { return dropUntil; });
 __webpack_require__.d(Strict_namespaceObject, "dropWhile", function() { return Strict_dropWhile; });
 __webpack_require__.d(Strict_namespaceObject, "each", function() { return Strict_each; });
@@ -130,17 +139,23 @@ __webpack_require__.d(Strict_namespaceObject, "forEach", function() { return Str
 __webpack_require__.d(Strict_namespaceObject, "either", function() { return Strict_either; });
 __webpack_require__.d(Strict_namespaceObject, "entries", function() { return entries_entries; });
 __webpack_require__.d(Strict_namespaceObject, "equals", function() { return equals; });
-__webpack_require__.d(Strict_namespaceObject, "equalsBy", function() { return equalsBy; });
 __webpack_require__.d(Strict_namespaceObject, "equals2", function() { return equals2; });
+__webpack_require__.d(Strict_namespaceObject, "equalsBy", function() { return equalsBy; });
 __webpack_require__.d(Strict_namespaceObject, "equalsBy2", function() { return equalsBy2; });
 __webpack_require__.d(Strict_namespaceObject, "every", function() { return Strict_every; });
+__webpack_require__.d(Strict_namespaceObject, "evolve", function() { return Strict_evolve; });
 __webpack_require__.d(Strict_namespaceObject, "extend", function() { return extend; });
+__webpack_require__.d(Strict_namespaceObject, "assign", function() { return extend; });
+__webpack_require__.d(Strict_namespaceObject, "extendRight", function() { return Strict_extendRight; });
+__webpack_require__.d(Strict_namespaceObject, "assignRight", function() { return Strict_extendRight; });
 __webpack_require__.d(Strict_namespaceObject, "filter", function() { return Strict_filter; });
 __webpack_require__.d(Strict_namespaceObject, "find", function() { return Strict_find; });
+__webpack_require__.d(Strict_namespaceObject, "findIndex", function() { return Strict_findIndex; });
 __webpack_require__.d(Strict_namespaceObject, "findWhere", function() { return Strict_findWhere; });
 __webpack_require__.d(Strict_namespaceObject, "flat", function() { return flat; });
 __webpack_require__.d(Strict_namespaceObject, "flatten", function() { return flat; });
 __webpack_require__.d(Strict_namespaceObject, "flatMap", function() { return Strict_flatMap; });
+__webpack_require__.d(Strict_namespaceObject, "fork", function() { return Strict_fork; });
 __webpack_require__.d(Strict_namespaceObject, "go", function() { return go; });
 __webpack_require__.d(Strict_namespaceObject, "go1", function() { return go1; });
 __webpack_require__.d(Strict_namespaceObject, "goS", function() { return goS; });
@@ -153,19 +168,23 @@ __webpack_require__.d(Strict_namespaceObject, "hi", function() { return hi; });
 __webpack_require__.d(Strict_namespaceObject, "html", function() { return html; });
 __webpack_require__.d(Strict_namespaceObject, "identity", function() { return identity; });
 __webpack_require__.d(Strict_namespaceObject, "ifElse", function() { return Strict_ifElse; });
-__webpack_require__.d(Strict_namespaceObject, "fork", function() { return Strict_fork; });
+__webpack_require__.d(Strict_namespaceObject, "includes", function() { return Strict_includes; });
 __webpack_require__.d(Strict_namespaceObject, "indexBy", function() { return Strict_indexBy; });
 __webpack_require__.d(Strict_namespaceObject, "initial", function() { return initial; });
 __webpack_require__.d(Strict_namespaceObject, "insert", function() { return Strict_insert; });
 __webpack_require__.d(Strict_namespaceObject, "intersection", function() { return Strict_intersection; });
 __webpack_require__.d(Strict_namespaceObject, "intersectionBy", function() { return Strict_intersectionBy; });
 __webpack_require__.d(Strict_namespaceObject, "intersectionWith", function() { return Strict_intersectionWith; });
-__webpack_require__.d(Strict_namespaceObject, "isArray", function() { return Strict_isArray; });
+__webpack_require__.d(Strict_namespaceObject, "invert", function() { return Strict_invert; });
+__webpack_require__.d(Strict_namespaceObject, "invertBy", function() { return Strict_invertBy; });
+__webpack_require__.d(Strict_namespaceObject, "isArray", function() { return isArray; });
+__webpack_require__.d(Strict_namespaceObject, "isEmpty", function() { return isEmpty; });
 __webpack_require__.d(Strict_namespaceObject, "isFunction", function() { return isFunction; });
 __webpack_require__.d(Strict_namespaceObject, "isIterable", function() { return isIterable; });
 __webpack_require__.d(Strict_namespaceObject, "isMatch", function() { return Strict_isMatch; });
 __webpack_require__.d(Strict_namespaceObject, "isNil", function() { return Strict_isNil; });
 __webpack_require__.d(Strict_namespaceObject, "isNull", function() { return Strict_isNull; });
+__webpack_require__.d(Strict_namespaceObject, "isObject", function() { return Strict_isObject; });
 __webpack_require__.d(Strict_namespaceObject, "isStop", function() { return isStop; });
 __webpack_require__.d(Strict_namespaceObject, "isString", function() { return isString; });
 __webpack_require__.d(Strict_namespaceObject, "isUndefined", function() { return isUndefined; });
@@ -185,10 +204,12 @@ __webpack_require__.d(Strict_namespaceObject, "max", function() { return max; })
 __webpack_require__.d(Strict_namespaceObject, "maxBy", function() { return Strict_maxBy; });
 __webpack_require__.d(Strict_namespaceObject, "mean", function() { return mean; });
 __webpack_require__.d(Strict_namespaceObject, "meanBy", function() { return Strict_meanBy; });
+__webpack_require__.d(Strict_namespaceObject, "merge", function() { return Strict_merge; });
 __webpack_require__.d(Strict_namespaceObject, "min", function() { return min; });
 __webpack_require__.d(Strict_namespaceObject, "minBy", function() { return Strict_minBy; });
 __webpack_require__.d(Strict_namespaceObject, "multiply", function() { return multiply; });
 __webpack_require__.d(Strict_namespaceObject, "negate", function() { return negate; });
+__webpack_require__.d(Strict_namespaceObject, "none", function() { return Strict_none; });
 __webpack_require__.d(Strict_namespaceObject, "noop", function() { return noop; });
 __webpack_require__.d(Strict_namespaceObject, "nop", function() { return Strict_nop; });
 __webpack_require__.d(Strict_namespaceObject, "not", function() { return not; });
@@ -210,11 +231,13 @@ __webpack_require__.d(Strict_namespaceObject, "promiseAllEntries", function() { 
 __webpack_require__.d(Strict_namespaceObject, "promiseAllObject", function() { return promiseAllObject; });
 __webpack_require__.d(Strict_namespaceObject, "range", function() { return range; });
 __webpack_require__.d(Strict_namespaceObject, "reduce", function() { return reduce; });
+__webpack_require__.d(Strict_namespaceObject, "reduceRight", function() { return reduceRight; });
 __webpack_require__.d(Strict_namespaceObject, "reduceS", function() { return reduceS; });
 __webpack_require__.d(Strict_namespaceObject, "reject", function() { return Strict_reject; });
 __webpack_require__.d(Strict_namespaceObject, "remove", function() { return Strict_remove; });
 __webpack_require__.d(Strict_namespaceObject, "repeat", function() { return Strict_repeat; });
 __webpack_require__.d(Strict_namespaceObject, "replace", function() { return replace; });
+__webpack_require__.d(Strict_namespaceObject, "reverse", function() { return Strict_reverse; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesEvery", function() { return Strict_satisfiesEvery; });
 __webpack_require__.d(Strict_namespaceObject, "satisfiesSome", function() { return Strict_satisfiesSome; });
 __webpack_require__.d(Strict_namespaceObject, "sel", function() { return Strict_sel; });
@@ -268,6 +291,8 @@ __webpack_require__.d(Strict_namespaceObject, "when", function() { return Strict
 __webpack_require__.d(Strict_namespaceObject, "zip", function() { return Strict_zip; });
 __webpack_require__.d(Strict_namespaceObject, "zipObj", function() { return Strict_zipObj; });
 __webpack_require__.d(Strict_namespaceObject, "zipWith", function() { return Strict_zipWith; });
+
+// NAMESPACE OBJECT: ./Lazy/index.js
 var Lazy_namespaceObject = {};
 __webpack_require__.r(Lazy_namespaceObject);
 __webpack_require__.d(Lazy_namespaceObject, "append", function() { return appendL; });
@@ -277,9 +302,9 @@ __webpack_require__.d(Lazy_namespaceObject, "concat", function() { return concat
 __webpack_require__.d(Lazy_namespaceObject, "constant", function() { return constantL; });
 __webpack_require__.d(Lazy_namespaceObject, "deepFlat", function() { return deepFlatL; });
 __webpack_require__.d(Lazy_namespaceObject, "deepFlatten", function() { return deepFlatL; });
+__webpack_require__.d(Lazy_namespaceObject, "differenceBy", function() { return Lazy_differenceByL; });
 __webpack_require__.d(Lazy_namespaceObject, "difference", function() { return Lazy_differenceL; });
 __webpack_require__.d(Lazy_namespaceObject, "differenceWith", function() { return Lazy_differenceWithL; });
-__webpack_require__.d(Lazy_namespaceObject, "differenceBy", function() { return Lazy_differenceByL; });
 __webpack_require__.d(Lazy_namespaceObject, "drop", function() { return Lazy_dropL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropUntil", function() { return Lazy_dropUntilL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropWhile", function() { return Lazy_dropWhileL; });
@@ -289,11 +314,12 @@ __webpack_require__.d(Lazy_namespaceObject, "filter", function() { return Lazy_f
 __webpack_require__.d(Lazy_namespaceObject, "flat", function() { return flatL; });
 __webpack_require__.d(Lazy_namespaceObject, "flatMap", function() { return Lazy_flatMapL; });
 __webpack_require__.d(Lazy_namespaceObject, "insert", function() { return Lazy_insertL; });
+__webpack_require__.d(Lazy_namespaceObject, "intersectionBy", function() { return Lazy_intersectionByL; });
 __webpack_require__.d(Lazy_namespaceObject, "intersection", function() { return Lazy_intersectionL; });
 __webpack_require__.d(Lazy_namespaceObject, "intersectionWith", function() { return Lazy_intersectionWithL; });
-__webpack_require__.d(Lazy_namespaceObject, "intersectionBy", function() { return Lazy_intersectionByL; });
 __webpack_require__.d(Lazy_namespaceObject, "interval", function() { return intervalL; });
 __webpack_require__.d(Lazy_namespaceObject, "keys", function() { return keysL; });
+__webpack_require__.d(Lazy_namespaceObject, "limitLoad", function() { return limitLoadL; });
 __webpack_require__.d(Lazy_namespaceObject, "mapEntries", function() { return Lazy_mapEntriesL; });
 __webpack_require__.d(Lazy_namespaceObject, "map", function() { return Lazy_mapL; });
 __webpack_require__.d(Lazy_namespaceObject, "prepend", function() { return prependL; });
@@ -304,10 +330,9 @@ __webpack_require__.d(Lazy_namespaceObject, "repeat", function() { return Lazy_r
 __webpack_require__.d(Lazy_namespaceObject, "reverse", function() { return reverseL; });
 __webpack_require__.d(Lazy_namespaceObject, "slice", function() { return sliceL; });
 __webpack_require__.d(Lazy_namespaceObject, "splitEvery", function() { return Lazy_splitEveryL; });
-__webpack_require__.d(Lazy_namespaceObject, "limitLoad", function() { return limitLoadL; });
 __webpack_require__.d(Lazy_namespaceObject, "take", function() { return Lazy_takeL; });
-__webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileL; });
 __webpack_require__.d(Lazy_namespaceObject, "takeUntil", function() { return Lazy_takeUntilL; });
+__webpack_require__.d(Lazy_namespaceObject, "takeWhile", function() { return Lazy_takeWhileL; });
 __webpack_require__.d(Lazy_namespaceObject, "times", function() { return Lazy_timesL; });
 __webpack_require__.d(Lazy_namespaceObject, "unionBy", function() { return Lazy_unionByL; });
 __webpack_require__.d(Lazy_namespaceObject, "union", function() { return Lazy_unionL; });
@@ -318,23 +343,28 @@ __webpack_require__.d(Lazy_namespaceObject, "unique", function() { return unique
 __webpack_require__.d(Lazy_namespaceObject, "uniq", function() { return uniqueL; });
 __webpack_require__.d(Lazy_namespaceObject, "uniqueWith", function() { return Lazy_uniqueWithL; });
 __webpack_require__.d(Lazy_namespaceObject, "uniqWith", function() { return Lazy_uniqueWithL; });
-__webpack_require__.d(Lazy_namespaceObject, "update", function() { return Lazy_updateL; });
 __webpack_require__.d(Lazy_namespaceObject, "updateBy", function() { return Lazy_updateByL; });
 __webpack_require__.d(Lazy_namespaceObject, "adjust", function() { return Lazy_updateByL; });
+__webpack_require__.d(Lazy_namespaceObject, "update", function() { return Lazy_updateL; });
 __webpack_require__.d(Lazy_namespaceObject, "values", function() { return valuesL; });
+__webpack_require__.d(Lazy_namespaceObject, "zip", function() { return Lazy_zipL; });
 __webpack_require__.d(Lazy_namespaceObject, "zipWithIndex", function() { return zipWithIndexL; });
 __webpack_require__.d(Lazy_namespaceObject, "indexValues", function() { return zipWithIndexL; });
 __webpack_require__.d(Lazy_namespaceObject, "ipp", function() { return zipWithIndexL; });
-__webpack_require__.d(Lazy_namespaceObject, "zip", function() { return Lazy_zipL; });
+
+// NAMESPACE OBJECT: ./Concurrency/index.js
 var Concurrency_namespaceObject = {};
 __webpack_require__.r(Concurrency_namespaceObject);
-__webpack_require__.d(Concurrency_namespaceObject, "calls", function() { return callsC; });
+__webpack_require__.d(Concurrency_namespaceObject, "applyEach", function() { return applyEachC; });
+__webpack_require__.d(Concurrency_namespaceObject, "callEach", function() { return callEachC; });
 __webpack_require__.d(Concurrency_namespaceObject, "compact", function() { return compactC; });
 __webpack_require__.d(Concurrency_namespaceObject, "drop", function() { return Concurrency_dropC; });
+__webpack_require__.d(Concurrency_namespaceObject, "each", function() { return Concurrency_eachC; });
 __webpack_require__.d(Concurrency_namespaceObject, "every", function() { return Concurrency_everyC; });
 __webpack_require__.d(Concurrency_namespaceObject, "filter", function() { return Concurrency_filterC; });
 __webpack_require__.d(Concurrency_namespaceObject, "find", function() { return Concurrency_findC; });
 __webpack_require__.d(Concurrency_namespaceObject, "head", function() { return headC; });
+__webpack_require__.d(Concurrency_namespaceObject, "juxt", function() { return juxtC; });
 __webpack_require__.d(Concurrency_namespaceObject, "map", function() { return Concurrency_mapC; });
 __webpack_require__.d(Concurrency_namespaceObject, "mapEntries", function() { return Concurrency_mapEntriesC; });
 __webpack_require__.d(Concurrency_namespaceObject, "object", function() { return objectC; });
@@ -556,13 +586,62 @@ function takeAll(iter) {
 // CONCATENATED MODULE: ./Strict/apply.js
 
 
-
 /* harmony default export */ var Strict_apply = (curry(function apply(f, iter) {
-  return go1(iter, iter => f(...iter));
+  return f(...iter);
 }));
+// CONCATENATED MODULE: ./Strict/isIterable.js
+function isIterable(a) {
+  return a != null && !!a[Symbol.iterator];
+}
+// CONCATENATED MODULE: ./Lazy/entriesL.js
+function* entriesL(obj) {
+  for (const k in obj) yield [k, obj[k]];
+}
+// CONCATENATED MODULE: ./Lazy/mapEntriesL.js
+
+
+
+
+/* harmony default export */ var Lazy_mapEntriesL = (curry(function* mapEntriesL(f, iter) {
+  for (const [k, a] of toIter(iter)) yield go1(go1(a, f), b => [k, b]);
+}));
+// CONCATENATED MODULE: ./.internal/baseApplyEach.js
+
+
+
+
+const baseApplyEach = (map, object) => (fs, args) =>
+  isIterable(fs) ?
+    map(f => f(...args), fs) :
+    object(Lazy_mapEntriesL(f => f(...args), entriesL(fs)));
+
+/* harmony default export */ var _internal_baseApplyEach = (baseApplyEach);
+// CONCATENATED MODULE: ./Strict/map.js
+
+
+
+
+/* harmony default export */ var Strict_map = (curry(function map(f, iter) {
+  return takeAll(Lazy_mapL(f, iter));
+}));
+// CONCATENATED MODULE: ./Strict/object.js
+
+
+function object_object(iter) {
+  return reduce((obj, [k, v]) => (obj[k] = v, obj), {}, iter);
+}
+// CONCATENATED MODULE: ./Strict/applyEach.js
+
+
+
+
+/* harmony default export */ var applyEach = (_internal_baseApplyEach(Strict_map, object_object));
+// CONCATENATED MODULE: ./Strict/applyMethod.js
+
+const applyMethod = curry((name, obj, args) => obj[name].apply(obj, args));
+/* harmony default export */ var Strict_applyMethod = (applyMethod);
 // CONCATENATED MODULE: ./Strict/isArray.js
-const { isArray } = Array;
-/* harmony default export */ var Strict_isArray = (isArray);
+/* harmony default export */ var isArray = (Array.isArray.bind(Array));
 // CONCATENATED MODULE: ./Lazy/filterL.js
 
 
@@ -584,10 +663,6 @@ const { isArray } = Array;
 /* harmony default export */ var Strict_find = (curry(function find(f, iter) {
   return head(Lazy_filterL(f, iter));
 }));
-// CONCATENATED MODULE: ./Lazy/entriesL.js
-function* entriesL(obj) {
-  for (const k in obj) yield [k, obj[k]];
-}
 // CONCATENATED MODULE: ./Strict/isMatch.js
 
 
@@ -598,9 +673,9 @@ function* entriesL(obj) {
   return (
     typeof a == 'function' ? !!a(b)
       :
-    Strict_isArray(a) && Strict_isArray(b) ? Strict_every(v => b.includes(v), a)
+    isArray(a) && isArray(b) ? Strict_every(v => b.includes(v), a)
       :
-    typeof b == 'object' ? Strict_every(([k, v]) => b[k] == v, entriesL(a))
+    b && typeof b == 'object' ? Strict_every(([k, v]) => b[k] == v, entriesL(a))
       :
     a instanceof RegExp ? b.match(a)
       :
@@ -626,7 +701,7 @@ function* entriesL(obj) {
     !selector ?
       acc
     :
-    Strict_isArray(selector) ?
+    isArray(selector) ?
       reduce((acc, selector) => sel(selector, acc), acc, selector)
     :
     typeof selector == 'object' || typeof selector == 'function' ?
@@ -642,6 +717,10 @@ function* entriesL(obj) {
       selector.split(sep))
   );
 }));
+// CONCATENATED MODULE: ./Strict/bindMethod.js
+
+const bindMethod = curry((name, obj, ...args) => obj[name].bind(obj, ...args));
+/* harmony default export */ var Strict_bindMethod = (bindMethod);
 // CONCATENATED MODULE: ./Strict/curry2.js
 function curry2(f) {
   return (a, ..._) => _.length > 1
@@ -652,28 +731,46 @@ function curry2(f) {
       ? f(a, b, ..._)
       : (..._) => f(a, b, ..._)
 }
-// CONCATENATED MODULE: ./Strict/map.js
+// CONCATENATED MODULE: ./Strict/curry3.js
+function curry3(f) {
+  return (a, ..._) => _.length > 2
+    ? f(a, ..._)
+    : _.length === 2
+    ? (...__) => f(a, _[0], _[1], ...__)
+    : _.length === 1
+    ? (b, ...__) => __.length
+      ? f(a, _[0], b, ...__)
+      : (...__) => f(a, _[0], b, ...__)
+    : (b, ..._) => _.length > 1
+      ? f(a, b, ..._)
+      : _.length === 1
+      ? (...__) => f(a, b, _[0], ...__)
+      : (c, ..._) => _.length
+        ? f(a, b, c, ..._)
+        : (..._) => f(a, b, c, ..._)
+}
+// CONCATENATED MODULE: ./Strict/ifElse.js
 
 
 
-
-/* harmony default export */ var Strict_map = (curry(function map(f, iter) {
-  return takeAll(Lazy_mapL(f, iter));
+/* harmony default export */ var Strict_ifElse = (curry3(function ifElse(cond, t, f, ...args) {
+  return go1(cond(...args), b => b ? t(...args) : f(...args));
 }));
-// CONCATENATED MODULE: ./Strict/juxt.js
+// CONCATENATED MODULE: ./Strict/when.js
 
 
-function juxt(...fns) {
-  return (...args) => Strict_map(f => f(...args), fns);
-};
+
+
+/* harmony default export */ var Strict_when = (curry2(function when(cond, f, ...args) {
+  return Strict_ifElse(cond, f, identity, ...args);
+}));
 // CONCATENATED MODULE: ./Strict/both.js
 
 
 
 
-
 /* harmony default export */ var Strict_both = (curry2(function both(f1, f2, ...args) {
-  return Strict_apply(and, juxt(f1, f2)(...args));
+  return go(f1(...args), Strict_when(Boolean, () => f2(...args)), Boolean);
 }));
 // CONCATENATED MODULE: ./Strict/call.js
 
@@ -681,42 +778,27 @@ function juxt(...fns) {
 /* harmony default export */ var call = (curry(function call(f, ...args) {
   return f(...args);
 }));
-// CONCATENATED MODULE: ./Strict/isIterable.js
-function isIterable(a) {
-  return a != null && !!a[Symbol.iterator];
-}
-// CONCATENATED MODULE: ./Lazy/mapEntriesL.js
+// CONCATENATED MODULE: ./Strict/callMethod.js
+
+const callMethod = curry((name, obj, ...args) => obj[name].call(obj, ...args));
+/* harmony default export */ var Strict_callMethod = (callMethod);
+// CONCATENATED MODULE: ./.internal/baseCallEach.js
 
 
 
 
-/* harmony default export */ var Lazy_mapEntriesL = (curry(function* mapEntriesL(f, iter) {
-  for (const [k, a] of toIter(iter)) yield go1(go1(a, f), b => [k, b]);
-}));
-// CONCATENATED MODULE: ./.internal/baseCalls.js
-
-
-
-
-const baseCalls = (map, object) => function calls(fs, ...args) {
-  return isIterable(fs) ?
+const baseCallEach = (map, object) => (fs, ...args) =>
+  isIterable(fs) ?
     map(f => f(...args), fs) :
     object(Lazy_mapEntriesL(f => f(...args), entriesL(fs)));
-};
 
-/* harmony default export */ var _internal_baseCalls = (baseCalls);
-// CONCATENATED MODULE: ./Strict/object.js
-
-
-function object_object(iter) {
-  return reduce((obj, [k, v]) => (obj[k] = v, obj), {}, iter);
-}
-// CONCATENATED MODULE: ./Strict/calls.js
+/* harmony default export */ var _internal_baseCallEach = (baseCallEach);
+// CONCATENATED MODULE: ./Strict/callEach.js
 
 
 
 
-/* harmony default export */ var Strict_calls = (_internal_baseCalls(Strict_map, object_object));
+/* harmony default export */ var callEach = (_internal_baseCallEach(Strict_map, object_object));
 // CONCATENATED MODULE: ./Lazy/rangeL.js
 function* rangeL(start = 0, stop = start, step = 1) {
   if (arguments.length === 1) start = 0;
@@ -780,18 +862,6 @@ const resolved = Promise.resolve();
 /* harmony default export */ var Strict_chunk = (curry(function chunk(n, iter) {
   return takeAll(Lazy_chunkL(n, iter));
 }));
-// CONCATENATED MODULE: ./Strict/filter.js
-
-
-
-
-/* harmony default export */ var Strict_filter = (curry(function filter(f, iter) {
-  return takeAll(Lazy_filterL(f, iter));
-}));
-// CONCATENATED MODULE: ./Strict/compact.js
-
-
-/* harmony default export */ var compact = (Strict_filter(a => a));
 // CONCATENATED MODULE: ./Strict/cond.js
 
 
@@ -806,6 +876,103 @@ function cond_cond(...fns) {
     head
   )
 }
+// CONCATENATED MODULE: ./Strict/either.js
+
+
+
+
+
+/* harmony default export */ var Strict_either = (curry2(function either(f1, f2, ...args) {
+  return go(f1(...args), Strict_when(not, () => f2(...args)), Boolean);
+}));
+// CONCATENATED MODULE: ./Strict/isFunction.js
+function isFunction(a) {
+  return typeof a == 'function';
+}
+// CONCATENATED MODULE: ./Strict/isObject.js
+const isObject = a => a !== null && typeof a === 'object' && a.constructor === Object;
+/* harmony default export */ var Strict_isObject = (isObject);
+
+// CONCATENATED MODULE: ./.internal/clonedIterableSymbol.js
+/* harmony default export */ var clonedIterableSymbol = (Symbol('clonedIterable'));
+// CONCATENATED MODULE: ./.internal/entriesDeepL.js
+
+
+
+
+
+
+
+
+
+
+
+
+const delegateIterable = function* (iter) {
+  yield* iter;
+};
+
+const cloneIterable = iter => {
+  const cloned = delegateIterable(iter);
+  cloned[clonedIterableSymbol] = true;
+  return cloned;
+}
+
+function entriesDeepL(obj) {
+  return go(
+    obj,
+    entriesL,
+    Lazy_mapEntriesL(
+      cond_cond(
+        [isArray, arr => arr.slice()],
+        [isIterable, cloneIterable],
+        [Strict_either(Strict_isObject, isFunction), entriesDeepL],
+        [() => true, identity]
+      )
+    )
+  )
+}
+// CONCATENATED MODULE: ./.internal/objectDeep.js
+
+
+
+
+
+
+
+
+const isEntries = a => not(isArray(a)) && isIterable(a) && not(a[clonedIterableSymbol]);
+
+function objectDeep(entries) {
+  return reduce(
+    (acc, [k, v]) => go(
+      v,
+      Strict_when(isEntries, objectDeep),
+      res => (acc[k] = res, acc)
+    ),
+    {},
+    entries
+  );
+}
+// CONCATENATED MODULE: ./Strict/clone.js
+
+
+
+function clone(obj) {
+  return objectDeep(entriesDeepL(obj));
+}
+// CONCATENATED MODULE: ./Strict/filter.js
+
+
+
+
+/* harmony default export */ var Strict_filter = (curry(function filter(f, iter) {
+  return takeAll(Lazy_filterL(f, iter));
+}));
+// CONCATENATED MODULE: ./Strict/compact.js
+
+
+/* harmony default export */ var compact = (Strict_filter(a => a));
 // CONCATENATED MODULE: ./Strict/constant.js
 function constant(a) {
   return _ => a;
@@ -822,24 +989,6 @@ function incSel(parent, k) {
 /* harmony default export */ var Strict_countBy = (curry(function countBy(f, iter) {
   return reduce((counts, a) => incSel(counts, f(a)), {}, iter);
 }));
-// CONCATENATED MODULE: ./Strict/curry3.js
-function curry3(f) {
-  return (a, ..._) => _.length > 2
-    ? f(a, ..._)
-    : _.length === 2
-    ? (...__) => f(a, _[0], _[1], ...__)
-    : _.length === 1
-    ? (b, ...__) => __.length
-      ? f(a, _[0], b, ...__)
-      : (...__) => f(a, _[0], b, ...__)
-    : (b, ..._) => _.length > 1
-      ? f(a, b, ..._)
-      : _.length === 1
-      ? (...__) => f(a, b, _[0], ...__)
-      : (c, ..._) => _.length
-        ? f(a, b, c, ..._)
-        : (..._) => f(a, b, c, ..._)
-}
 // CONCATENATED MODULE: ./Strict/curryN.js
 
 
@@ -1075,9 +1224,14 @@ function defaults(obj, ...objs) {
 
 
 
-/* harmony default export */ var dropRight = (curry(function drop(l, iter) {
+/* harmony default export */ var Strict_dropRight = (curry(function dropRight(l, iter) {
   return go1(takeAll(iter), arr => Strict_take(arr.length - l, arr));
 }));
+// CONCATENATED MODULE: ./Strict/dropLast.js
+
+function dropLast(iter) {
+  return Strict_dropRight(1, iter);
+}
 // CONCATENATED MODULE: ./Lazy/dropUntilL.js
 
 
@@ -1147,19 +1301,6 @@ function defaults(obj, ...objs) {
 /* harmony default export */ var Strict_each = (curry(function each(f, iter) {
   return Strict_map(a => go1(f(a), _ => a), iter);
 }));
-// CONCATENATED MODULE: ./Strict/or.js
-function or(a, b) {
-  return Boolean(a || b);
-}
-// CONCATENATED MODULE: ./Strict/either.js
-
-
-
-
-
-/* harmony default export */ var Strict_either = (curry2(function either(f1, f2, ...args) {
-  return Strict_apply(or, juxt(f1, f2)(...args));
-}));
 // CONCATENATED MODULE: ./Strict/entries.js
 
 
@@ -1173,23 +1314,45 @@ function entries_entries(a) {
 /* harmony default export */ var equals = (curry(function equals(a, b) {
   return a === b;
 }));
-// CONCATENATED MODULE: ./Strict/equalsBy.js
-
-
-/* harmony default export */ var equalsBy = (curry2(function equalsBy(f, a, b) {
-  return f(a) === f(b);
-}));
 // CONCATENATED MODULE: ./Strict/equals2.js
 
 
 /* harmony default export */ var equals2 = (curry(function equals2(a, b) {
   return a == b;
 }));
+// CONCATENATED MODULE: ./Strict/equalsBy.js
+
+
+/* harmony default export */ var equalsBy = (curry2(function equalsBy(f, a, b) {
+  return f(a) === f(b);
+}));
 // CONCATENATED MODULE: ./Strict/equalsBy2.js
 
 
 /* harmony default export */ var equalsBy2 = (curry2(function equalsBy2(f, a, b) {
   return f(a) == f(b);
+}));
+// CONCATENATED MODULE: ./Strict/evolve.js
+
+
+
+
+
+
+
+/* harmony default export */ var Strict_evolve = (curry(function evolve(dict, obj) {
+  return go(
+    obj,
+    entries_entries,
+    Strict_map(([k, v]) => go(
+      v,
+      v => typeof v === 'object'
+        ? evolve(dict[k] || {}, v)
+        : (dict[k] || identity)(v),
+      v => [k, v]
+    )),
+    object_object
+  )
 }));
 // CONCATENATED MODULE: ./Strict/extend.js
 
@@ -1199,6 +1362,56 @@ const extend_setter = (obj, [k, v]) => (obj[k] = v, obj);
 function extend(obj, ...objs) {
   return baseExtend(extend_setter, obj, objs);
 }
+// CONCATENATED MODULE: ./Lazy/reverseL.js
+
+
+function* reverseL(arr) {
+  if (!Array.isArray(arr) && isIterable(arr)) return yield *reverseL(Array.from(arr));
+  let l = arr.length;
+  while (l--) yield arr[l];
+}
+// CONCATENATED MODULE: ./Strict/reverse.js
+
+
+
+const reverse = iter => takeAll(reverseL(iter));
+/* harmony default export */ var Strict_reverse = (reverse);
+// CONCATENATED MODULE: ./Strict/extendRight.js
+
+
+
+
+
+const extendRight = (...objs) => go(
+  objs,
+  Strict_reverse,
+  apply(extend)
+);
+/* harmony default export */ var Strict_extendRight = (curry(extendRight));
+// CONCATENATED MODULE: ./Lazy/zipWithIndexL.js
+
+
+function* zipWithIndexL(iter) {
+  let i = -1;
+  for (const a of toIter(iter)) yield [++i, a];
+};
+// CONCATENATED MODULE: ./Strict/findIndex.js
+
+
+
+
+
+
+
+const findIndex = (f, iter) => go(
+  iter,
+  zipWithIndexL,
+  Strict_find(([_i, a]) => go1(a, f)),
+  defaultTo([-1]),
+  head
+);
+
+/* harmony default export */ var Strict_findIndex = (findIndex);
 // CONCATENATED MODULE: ./Strict/flat.js
 
 
@@ -1213,6 +1426,21 @@ function flat(iter, depth = 1) {
 
 /* harmony default export */ var Strict_flatMap = (curry(function flatMap(f, iter) {
   return flat(Lazy_mapL(f, iter));
+}));
+// CONCATENATED MODULE: ./Strict/juxt.js
+
+
+function juxt(...fns) {
+  return (...args) => Strict_map(f => f(...args), fns);
+};
+// CONCATENATED MODULE: ./Strict/fork.js
+
+
+
+
+
+/* harmony default export */ var Strict_fork = (curry3(function fork(join, f1, f2, ...args) {
+  return go(args, Strict_apply(juxt(f1, f2)), Strict_apply(join));
 }));
 // CONCATENATED MODULE: ./Strict/isStop.js
 const SymbolStop = Symbol.for('stop');
@@ -1302,21 +1530,22 @@ function html(strs, ...datas) {
     reduce((res, str) => go1(datas.next().value, data => `${res}${data}${str}`), strs),
     a => a.replace(/\s*(\>|\<)\s*/g, '$1').trim());
 }
-// CONCATENATED MODULE: ./Strict/ifElse.js
-
-
-
-/* harmony default export */ var Strict_ifElse = (curry3(function ifElse(cond, t, f, ...args) {
-  return go1(cond(...args), b => b ? t(...args) : f(...args));
-}));
-// CONCATENATED MODULE: ./Strict/fork.js
+// CONCATENATED MODULE: ./Strict/includes.js
 
 
 
 
-/* harmony default export */ var Strict_fork = (curry3(function fork(join, f1, f2, ...args) {
-  return Strict_apply(join, juxt(f1, f2)(...args));
-}));
+
+const includes = (v, iter) => {
+  if (typeof v === "string" && typeof iter === "string") {
+    return iter.includes(v);
+  } else {
+    return go1(Strict_find(Strict_isMatch(v), iter), (a) => a !== undefined);
+  }
+};
+
+/* harmony default export */ var Strict_includes = (curry(includes));
+
 // CONCATENATED MODULE: ./Strict/indexBy.js
 
 
@@ -1328,7 +1557,7 @@ function html(strs, ...datas) {
 
 
 function initial(a) {
-  return dropRight(1, a);
+  return Strict_dropRight(1, a);
 }
 // CONCATENATED MODULE: ./Lazy/prependL.js
 
@@ -1453,9 +1682,64 @@ function uniqueL(obj) {
 /* harmony default export */ var Strict_intersectionWith = (curry2(function intersectionWith(f, iter1, iter2) {
   return takeAll(Lazy_intersectionWithL(f, iter1, iter2));
 }));
-// CONCATENATED MODULE: ./Strict/isFunction.js
-function isFunction(a) {
-  return typeof a == 'function';
+// CONCATENATED MODULE: ./.internal/reverse1.js
+
+/* harmony default export */ var reverse1 = (([a, b]) => go1(a, _a => go1(b , _b => [_b, _a])));
+// CONCATENATED MODULE: ./Strict/invert.js
+
+
+
+
+
+
+const invert = pipe(
+  entries_entries,
+  Strict_map(reverse1),
+  object_object
+);
+
+/* harmony default export */ var Strict_invert = (invert);
+// CONCATENATED MODULE: ./Strict/invertBy.js
+
+
+
+
+
+
+
+
+
+const invertBy = curry((f, obj) => go(
+  obj,
+  entries_entries,
+  Strict_map(pipe(reverse1, ([k, v]) => go1(f(k, v), _k => [_k, v]))),
+  iter => reduce((acc, [k, v]) => ((acc[k] || (acc[k] = [])).push(v), acc), {}, iter)
+));
+
+/* harmony default export */ var Strict_invertBy = (invertBy);
+// CONCATENATED MODULE: ./Lazy/keysL.js
+function* keysL(obj) {
+  for (const k in obj) yield k;
+};
+// CONCATENATED MODULE: ./Strict/isEmpty.js
+
+
+
+
+function isEmpty(a) {
+  if (Array.isArray(a) || typeof a === 'string') {
+    return a.length === 0;
+  } else if (isIterable(a)) {
+    const it = a[Symbol.iterator]();
+    const { done, value } = it.next();
+    if (done) return true;
+    else return [done, prependL(value, it)];
+  } else if (a !== null && typeof a === 'object') {
+    const res = isEmpty(keysL(a));
+    return typeof res === 'boolean' ? res : res[0];
+  } else {
+    return false;
+  }
 }
 // CONCATENATED MODULE: ./Strict/isNil.js
 const isNil = a => a === undefined || a === null;
@@ -1476,10 +1760,6 @@ function isString(a) {
 /* harmony default export */ var Strict_join = (curry(function join(sep, iter) {
   return reduce((acc, a) => `${acc}${sep}${a}`, iter);
 }));
-// CONCATENATED MODULE: ./Lazy/keysL.js
-function* keysL(obj) {
-  for (const k in obj) yield k;
-};
 // CONCATENATED MODULE: ./Strict/keys.js
 
 
@@ -1623,6 +1903,24 @@ function sum(iter) {
 function mean(iter) {
   return Strict_meanBy(identity, iter);
 };
+// CONCATENATED MODULE: ./Strict/merge.js
+
+
+
+
+
+
+
+function merge(...objs) {
+  return go(
+    objs,
+    Lazy_mapL(entriesDeepL),
+    flatL,
+    objectDeep
+  )
+}
+
+/* harmony default export */ var Strict_merge = (curry(merge));
 // CONCATENATED MODULE: ./Strict/minBy.js
 
 
@@ -1649,6 +1947,13 @@ function min(iter) {
 function negate(f) {
   return (..._) => go1(f(..._), not);
 }
+// CONCATENATED MODULE: ./Strict/none.js
+
+
+
+
+const none = (f, iter) => go1(Strict_find(f, iter), isUndefined);
+/* harmony default export */ var Strict_none = (none);
 // CONCATENATED MODULE: ./Strict/omit.js
 
 
@@ -1675,6 +1980,10 @@ function once(f) {
   let done = false, res = null;
   return (...args) =>
     done ? res : (done = true, res = f(...args));
+}
+// CONCATENATED MODULE: ./Strict/or.js
+function or(a, b) {
+  return Boolean(a || b);
 }
 // CONCATENATED MODULE: ./Strict/pipe1.js
 
@@ -1756,6 +2065,16 @@ function promiseAllObject(obj) {
 function range(..._) {
   return takeAll(rangeL(..._));
 }
+// CONCATENATED MODULE: ./Strict/reduceRight.js
+
+
+
+
+function reduceRight(f, acc, iter) {
+  if (arguments.length == 1) return (..._) => reduce(f, ..._);
+  if (arguments.length == 2) return reduce(f, head(iter = reverseL(acc)), iter);
+  return reduce(f, acc, reverseL(iter));
+}
 // CONCATENATED MODULE: ./Strict/reject.js
 
 
@@ -1765,13 +2084,6 @@ function range(..._) {
 /* harmony default export */ var Strict_reject = (curry(function reject(f, iter) {
   return Strict_filter(a => go1(f(a), not), iter);
 }));
-// CONCATENATED MODULE: ./Lazy/zipWithIndexL.js
-
-
-function* zipWithIndexL(iter) {
-  let i = -1;
-  for (const a of toIter(iter)) yield [++i, a];
-};
 // CONCATENATED MODULE: ./Lazy/removeL.js
 
 
@@ -1899,7 +2211,7 @@ const arrComparator = (arr) => (a, b) => {
 };
 
 function baseSortBy(left, right, f, arr) {
-  return Strict_isArray(f) ? baseSortBy(left, right, arrComparator(f), arr) :
+  return isArray(f) ? baseSortBy(left, right, arrComparator(f), arr) :
     typeof f == 'string' ? baseSortBy(left, right, a => a[f], arr) :
     f.length == 2 ? [...arr].sort(right == -1 ? pipe(f, n => n * -1) : f) :
     [...arr].sort((a, b, fa = f(a), fb = f(b)) => fa == fb ? 0 : fa < fb ? left : right)
@@ -2299,14 +2611,6 @@ function unzip(iter) {
     return takeAll(Lazy_updateByL(index, f, iter));
   }
 }));
-// CONCATENATED MODULE: ./Strict/when.js
-
-
-
-
-/* harmony default export */ var Strict_when = (curry2(function when(cond, f, ...args) {
-  return Strict_ifElse(cond, f, identity, ...args);
-}));
 // CONCATENATED MODULE: ./Strict/zipObj.js
 
 
@@ -2366,7 +2670,26 @@ function unzip(iter) {
 
 
 
- //ok
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2513,11 +2836,6 @@ function* constantL(a) { yield a; }
 function intervalL(time) {
   return Lazy_mapL(delay(time), rangeL(Infinity));
 }
-// CONCATENATED MODULE: ./Lazy/reverseL.js
-function* reverseL(arr) {
-  var l = arr.length;
-  while (l--) yield arr[l];
-}
 // CONCATENATED MODULE: ./.internal/catchNoopIter.js
 /* harmony default export */ var catchNoopIter = (arr => (
   arr.forEach(a => a.value instanceof Promise && a.value.catch(function() {})),
@@ -2620,6 +2938,7 @@ function limitLoadL(n, iter) {
 
 
 
+
 // CONCATENATED MODULE: ./.internal/catchNoop.js
 /* harmony default export */ var catchNoop = (arr => (
   arr.forEach(a => a instanceof Promise && a.catch(function() {})),
@@ -2668,12 +2987,18 @@ function takeAllC(n, iter) {
 function objectC(iter) {
   return Concurrency_reduceC((obj, [k, v]) => (obj[k] = v, obj), {}, iter);
 }
-// CONCATENATED MODULE: ./Concurrency/callsC.js
+// CONCATENATED MODULE: ./Concurrency/applyEachC.js
 
 
 
 
-/* harmony default export */ var callsC = (_internal_baseCalls(Concurrency_mapC, objectC));
+/* harmony default export */ var applyEachC = (_internal_baseApplyEach(Concurrency_mapC, objectC));
+// CONCATENATED MODULE: ./Concurrency/callEachC.js
+
+
+
+
+/* harmony default export */ var callEachC = (_internal_baseCallEach(Concurrency_mapC, objectC));
 // CONCATENATED MODULE: ./Concurrency/filterC.js
 
 
@@ -2693,6 +3018,14 @@ function objectC(iter) {
 
 /* harmony default export */ var Concurrency_dropC = (curry(function dropC(l, iter) {
   return Strict_drop(l, catchNoop([...iter]));
+}));
+// CONCATENATED MODULE: ./Concurrency/eachC.js
+
+
+
+
+/* harmony default export */ var Concurrency_eachC = (curry(function eachC(f, iter) {
+  return Concurrency_mapC(a => go1(f(a), _ => a), iter);
 }));
 // CONCATENATED MODULE: ./Concurrency/everyC.js
 
@@ -2725,6 +3058,12 @@ function headC(iter) {
 /* harmony default export */ var Concurrency_findC = (curry(function findC(f, iter) {
   return headC(Lazy_filterL(f, iter));
 }));
+// CONCATENATED MODULE: ./Concurrency/juxtC.js
+
+
+function juxtC(...fns) {
+  return (...args) => Concurrency_mapC(f => f(...args), fns);
+};
 // CONCATENATED MODULE: ./Concurrency/mapEntriesC.js
 
 
@@ -2785,6 +3124,9 @@ function tailC(iter) {
 
 /* harmony default export */ var take1C = (Concurrency_takeC(1));
 // CONCATENATED MODULE: ./Concurrency/index.js
+
+
+
 
 
 
