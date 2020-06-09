@@ -89,6 +89,7 @@ import {
   takeUntil,
   takeWhile,
   times,
+  toIter,
   union,
   unionBy,
   unionWith,
@@ -1629,7 +1630,7 @@ import {
     });
   });
 
-  describe('isEmpty', function() {
+  describe.only('isEmpty', function() {
     it('string', function() {
       expect(isEmpty('')).to.eql(true);
       expect(isEmpty('abc')).to.eql(false);
@@ -1640,11 +1641,16 @@ import {
       expect(isEmpty({a: 1})).to.eql(false);
     });
 
-    it('iterable', function() {
+    it('array', function() {
       expect(isEmpty([])).to.eql(true);
       expect(isEmpty([1])).to.eql(false);
+    });
+
+    it('iterable', function() {
       expect(isEmpty((function*(){})())).to.eql(true);
-      expect(isEmpty(L.range(1))).to.eql(false);
+      const [res, iter] = isEmpty(L.range(3));
+      expect(res).to.eql(false);
+      expect([...iter]).to.eql([0, 1, 2]);
     });
   });
 
