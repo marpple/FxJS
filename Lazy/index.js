@@ -10,6 +10,7 @@ export { default as differenceWith } from './differenceWithL.js';
 export { default as drop } from "./dropL.js";
 export { default as dropUntil } from './dropUntilL.js';
 export { default as dropWhile } from './dropWhileL.js';
+export { default as each } from "./eachL.js";
 export { default as empty } from "./emptyL.js";
 export { default as entries } from './entriesL.js';
 export { default as filter } from './filterL.js';

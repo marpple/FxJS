@@ -10,6 +10,7 @@ export { default as differenceWithL } from './Lazy/differenceWithL.js';
 export { default as dropL } from "./Lazy/dropL.js";
 export { default as dropUntilL } from './Lazy/dropUntilL.js';
 export { default as dropWhileL } from './Lazy/dropWhileL.js';
+export { default as eachL } from "./Lazy/eachL.js";
 export { default as emptyL } from "./Lazy/emptyL.js";
 export { default as entriesL } from './Lazy/entriesL.js';
 export { default as filterL } from './Lazy/filterL.js';
