@@ -5960,8 +5960,8 @@ __webpack_require__.d(Strict_namespaceObject, "baseSel", function() { return bas
 __webpack_require__.d(Strict_namespaceObject, "bindMethod", function() { return Strict_bindMethod; });
 __webpack_require__.d(Strict_namespaceObject, "both", function() { return Strict_both; });
 __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; });
-__webpack_require__.d(Strict_namespaceObject, "callMethod", function() { return Strict_callMethod; });
 __webpack_require__.d(Strict_namespaceObject, "callEach", function() { return callEach; });
+__webpack_require__.d(Strict_namespaceObject, "callMethod", function() { return Strict_callMethod; });
 __webpack_require__.d(Strict_namespaceObject, "chunk", function() { return Strict_chunk; });
 __webpack_require__.d(Strict_namespaceObject, "clone", function() { return clone; });
 __webpack_require__.d(Strict_namespaceObject, "compact", function() { return compact; });
@@ -6161,6 +6161,7 @@ __webpack_require__.d(Lazy_namespaceObject, "differenceWith", function() { retur
 __webpack_require__.d(Lazy_namespaceObject, "drop", function() { return Lazy_dropL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropUntil", function() { return Lazy_dropUntilL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropWhile", function() { return Lazy_dropWhileL; });
+__webpack_require__.d(Lazy_namespaceObject, "each", function() { return Lazy_eachL; });
 __webpack_require__.d(Lazy_namespaceObject, "empty", function() { return emptyL; });
 __webpack_require__.d(Lazy_namespaceObject, "entries", function() { return entriesL; });
 __webpack_require__.d(Lazy_namespaceObject, "filter", function() { return Lazy_filterL; });
@@ -7407,19 +7408,6 @@ function curry3(f) {
 
   return f.apply(void 0, args);
 }));
-// CONCATENATED MODULE: ./Strict/callMethod.js
-
-
-var callMethod = curry(function (name, obj) {
-  var _obj$name;
-
-  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    args[_key - 2] = arguments[_key];
-  }
-
-  return (_obj$name = obj[name]).call.apply(_obj$name, [obj].concat(args));
-});
-/* harmony default export */ var Strict_callMethod = (callMethod);
 // CONCATENATED MODULE: ./.internal/baseCallEach.js
 
 
@@ -7445,6 +7433,19 @@ var baseCallEach_baseCallEach = function baseCallEach(map, object) {
 
 
 /* harmony default export */ var callEach = (_internal_baseCallEach(Strict_map, object_object));
+// CONCATENATED MODULE: ./Strict/callMethod.js
+
+
+var callMethod = curry(function (name, obj) {
+  var _obj$name;
+
+  for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    args[_key - 2] = arguments[_key];
+  }
+
+  return (_obj$name = obj[name]).call.apply(_obj$name, [obj].concat(args));
+});
+/* harmony default export */ var Strict_callMethod = (callMethod);
 // CONCATENATED MODULE: ./Lazy/rangeL.js
 
 
@@ -9573,21 +9574,11 @@ function isEmpty_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === 
 
 
 
-
 function isEmpty(a) {
-  if (Array.isArray(a) || typeof a === 'string') {
-    return a.length === 0;
-  } else if (isIterable(a)) {
-    var it = a[Symbol.iterator]();
-
-    var _it$next = it.next(),
-        done = _it$next.done,
-        value = _it$next.value;
-
-    if (done) return true;else return [done, prependL(value, it)];
+  if (isIterable(a)) {
+    return a[Symbol.iterator]().next().done;
   } else if (a !== null && isEmpty_typeof(a) === 'object') {
-    var res = isEmpty(keysL(a));
-    return typeof res === 'boolean' ? res : res[0];
+    return isEmpty(keysL(a));
   } else {
     return false;
   }
@@ -11190,6 +11181,14 @@ function constantL(a) {
     }
   }, constantL_marked);
 }
+// CONCATENATED MODULE: ./Lazy/eachL.js
+
+
+
+var eachL = curry(function (f, iter) {
+  return Lazy_mapL(tap(f), iter);
+});
+/* harmony default export */ var Lazy_eachL = (eachL);
 // CONCATENATED MODULE: ./Lazy/flatMapL.js
 
 
@@ -11379,6 +11378,7 @@ function takeL_arrayLikeToArray(arr, len) { if (len == null || len > arr.length)
   }, takeL, null, [[4, 16, 19, 22]]);
 })));
 // CONCATENATED MODULE: ./Lazy/index.js
+
 
 
 

@@ -107,8 +107,8 @@ __webpack_require__.d(Strict_namespaceObject, "baseSel", function() { return bas
 __webpack_require__.d(Strict_namespaceObject, "bindMethod", function() { return Strict_bindMethod; });
 __webpack_require__.d(Strict_namespaceObject, "both", function() { return Strict_both; });
 __webpack_require__.d(Strict_namespaceObject, "call", function() { return call; });
-__webpack_require__.d(Strict_namespaceObject, "callMethod", function() { return Strict_callMethod; });
 __webpack_require__.d(Strict_namespaceObject, "callEach", function() { return callEach; });
+__webpack_require__.d(Strict_namespaceObject, "callMethod", function() { return Strict_callMethod; });
 __webpack_require__.d(Strict_namespaceObject, "chunk", function() { return Strict_chunk; });
 __webpack_require__.d(Strict_namespaceObject, "clone", function() { return clone; });
 __webpack_require__.d(Strict_namespaceObject, "compact", function() { return compact; });
@@ -308,6 +308,7 @@ __webpack_require__.d(Lazy_namespaceObject, "differenceWith", function() { retur
 __webpack_require__.d(Lazy_namespaceObject, "drop", function() { return Lazy_dropL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropUntil", function() { return Lazy_dropUntilL; });
 __webpack_require__.d(Lazy_namespaceObject, "dropWhile", function() { return Lazy_dropWhileL; });
+__webpack_require__.d(Lazy_namespaceObject, "each", function() { return Lazy_eachL; });
 __webpack_require__.d(Lazy_namespaceObject, "empty", function() { return emptyL; });
 __webpack_require__.d(Lazy_namespaceObject, "entries", function() { return entriesL; });
 __webpack_require__.d(Lazy_namespaceObject, "filter", function() { return Lazy_filterL; });
@@ -778,10 +779,6 @@ function curry3(f) {
 /* harmony default export */ var call = (curry(function call(f, ...args) {
   return f(...args);
 }));
-// CONCATENATED MODULE: ./Strict/callMethod.js
-
-const callMethod = curry((name, obj, ...args) => obj[name].call(obj, ...args));
-/* harmony default export */ var Strict_callMethod = (callMethod);
 // CONCATENATED MODULE: ./.internal/baseCallEach.js
 
 
@@ -799,6 +796,10 @@ const baseCallEach = (map, object) => (fs, ...args) =>
 
 
 /* harmony default export */ var callEach = (_internal_baseCallEach(Strict_map, object_object));
+// CONCATENATED MODULE: ./Strict/callMethod.js
+
+const callMethod = curry((name, obj, ...args) => obj[name].call(obj, ...args));
+/* harmony default export */ var Strict_callMethod = (callMethod);
 // CONCATENATED MODULE: ./Lazy/rangeL.js
 function* rangeL(start = 0, stop = start, step = 1) {
   if (arguments.length === 1) start = 0;
@@ -1725,18 +1726,11 @@ function* keysL(obj) {
 
 
 
-
 function isEmpty(a) {
-  if (Array.isArray(a) || typeof a === 'string') {
-    return a.length === 0;
-  } else if (isIterable(a)) {
-    const it = a[Symbol.iterator]();
-    const { done, value } = it.next();
-    if (done) return true;
-    else return [done, prependL(value, it)];
+  if (isIterable(a)) {
+    return a[Symbol.iterator]().next().done;
   } else if (a !== null && typeof a === 'object') {
-    const res = isEmpty(keysL(a));
-    return typeof res === 'boolean' ? res : res[0];
+    return isEmpty(keysL(a));
   } else {
     return false;
   }
@@ -2820,6 +2814,13 @@ function compactL(iter) {
 }
 // CONCATENATED MODULE: ./Lazy/constantL.js
 function* constantL(a) { yield a; }
+// CONCATENATED MODULE: ./Lazy/eachL.js
+
+
+
+
+const eachL = curry((f, iter) => Lazy_mapL(tap(f), iter));
+/* harmony default export */ var Lazy_eachL = (eachL);
 // CONCATENATED MODULE: ./Lazy/flatMapL.js
 
 
@@ -2889,6 +2890,7 @@ function limitLoadL(n, iter) {
   }
 }));
 // CONCATENATED MODULE: ./Lazy/index.js
+
 
 
 
