@@ -1648,9 +1648,9 @@ import {
 
     it('iterable', function() {
       expect(isEmpty((function*(){})())).to.eql(true);
-      const [res, iter] = isEmpty(L.range(3));
-      expect(res).to.eql(false);
-      expect([...iter]).to.eql([0, 1, 2]);
+      const range3 = L.range(3);
+      expect(isEmpty(range3)).to.eql(false);
+      expect([...range3]).to.eql([1, 2]);
     });
   });
 
