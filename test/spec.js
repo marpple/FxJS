@@ -1683,6 +1683,11 @@ import {
       expect(res2).to.eql({aa: {}, bb: { cc: {} }});
     });
 
+    it('string', function() {
+      const res = clone({a: 'abc'});
+      expect(res).to.eql({a: 'abc'});
+    });
+
     it('array', function() {
       const array = [1, 2, 3];
       const res = clone({a: array});
@@ -1718,9 +1723,9 @@ import {
     });
 
     it('sync', function() {
-      const a = {z: 0, a: 1, b: {c: 2, d: {e: 3}}, f: 5};
+      const a = {z: 'abc', a: 1, b: {c: 2, d: {e: 3}}, f: 5};
       const b = {a: 2, b: {c: 3, d: {e: 4}}};
-      expect(merge(a, b)).to.eql({z: 0, a: 2, b: {c: 3, d: {e: 4}}, f: 5});
+      expect(merge(a, b)).to.eql({z: 'abc', a: 2, b: {c: 3, d: {e: 4}}, f: 5});
     });
 
     it('async', async function() {

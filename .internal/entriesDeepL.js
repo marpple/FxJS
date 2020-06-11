@@ -8,6 +8,7 @@ import isArray from "../Strict/isArray.js";
 import isFunction from "../Strict/isFunction.js";
 import isIterable from "../Strict/isIterable.js";
 import isObject from "../Strict/isObject.js";
+import isString from "../Strict/isString.js";
 import clonedIterableSymbol from "./clonedIterableSymbol.js";
 
 const delegateIterable = function* (iter) {
@@ -27,6 +28,7 @@ export default function entriesDeepL(obj) {
     mapEntriesL(
       cond(
         [isArray, arr => arr.slice()],
+        [isString, identity],
         [isIterable, cloneIterable],
         [either(isObject, isFunction), entriesDeepL],
         [() => true, identity]
