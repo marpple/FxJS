@@ -55,6 +55,7 @@ import {
   mapObject,
   mean,
   merge,
+  notConcurrency,
   omit,
   omitBy,
   partition,
@@ -1761,4 +1762,50 @@ import {
       expect(await includes([Promise.resolve(41)], [[42]])).to.eql(false);
     });
   });
+
+  describe('notConcurrency', function() {
+    it('Reject follow calls', async function () {
+      let call = 0;
+      const add1 = () => new Promise(res => {
+        setTimeout(() => {
+          call +=1;
+          res();
+        }, 2000)
+      });
+
+      const newAdd1 = notConcurrency(add1);
+
+      await Promise.all([
+        newAdd1(),
+        newAdd1(),
+        newAdd1(),
+        newAdd1()
+      ]);
+      
+      expect(call).to.eql(1);
+    })
+
+    it('Call next after prev end', async function () {
+      let call = 0;
+      const add1 = () => new Promise(res => {
+        setTimeout(() => {
+          call +=1;
+          res();
+        }, 2000)
+      });
+
+      const newAdd1 = notConcurrency(add1);
+
+      await Promise.all([
+        newAdd1(),
+        newAdd1(),
+      ]);
+
+      expect(call).to.eql(1);
+
+      await delay(2000);
+      await newAdd1();
+      expect(call).to.eql(2);
+    })
+  })
 } ());
