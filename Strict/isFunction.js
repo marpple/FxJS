@@ -1,3 +1,3 @@
 export default function isFunction(a) {
-  return typeof a == 'function';
+  return typeof a == "function";
 }

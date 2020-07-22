@@ -65,6 +65,7 @@
     "chai": "^4.1.2",
     "esm": "^3.2.25",
     "mocha": "^7.2.0",
+    "prettier": "2.0.5",
     "terser-webpack-plugin": "^2.3.7",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.43.0",

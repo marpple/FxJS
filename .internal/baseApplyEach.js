@@ -3,8 +3,8 @@ import entriesL from "../Lazy/entriesL.js";
 import mapEntriesL from "../Lazy/mapEntriesL.js";
 
 const baseApplyEach = (map, object) => (fs, args) =>
-  isIterable(fs) ?
-    map(f => f(...args), fs) :
-    object(mapEntriesL(f => f(...args), entriesL(fs)));
+  isIterable(fs)
+    ? map((f) => f(...args), fs)
+    : object(mapEntriesL((f) => f(...args), entriesL(fs)));
 
 export default baseApplyEach;

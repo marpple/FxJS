@@ -6,12 +6,7 @@ import curry from "./curry.js";
 import go from "./go.js";
 
 function merge(...objs) {
-  return go(
-    objs,
-    mapL(entriesDeepL),
-    flatL,
-    objectDeep
-  )
+  return go(objs, mapL(entriesDeepL), flatL, objectDeep);
 }
 
 export default curry(merge);

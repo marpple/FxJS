@@ -7,7 +7,7 @@ import reduce from "../Strict/reduce.js";
 import when from "../Strict/when.js";
 import clonedIterable from "./clonedIterableSymbol.js";
 
-const isEntries = a =>
+const isEntries = (a) =>
   not(isString(a)) &&
   not(isArray(a)) &&
   isIterable(a) &&
@@ -15,11 +15,8 @@ const isEntries = a =>
 
 export default function objectDeep(entries) {
   return reduce(
-    (acc, [k, v]) => go(
-      v,
-      when(isEntries, objectDeep),
-      res => (acc[k] = res, acc)
-    ),
+    (acc, [k, v]) =>
+      go(v, when(isEntries, objectDeep), (res) => ((acc[k] = res), acc)),
     {},
     entries
   );

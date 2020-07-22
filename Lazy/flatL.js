@@ -14,31 +14,52 @@ export default function flatL(iter, depth = 1) {
       if (cur.done) {
         iterStack.pop();
         return recur();
-      } else if (iterStack.length <= depth && isIterable(cur.value) && typeof cur.value != 'string') {
+      } else if (
+        iterStack.length <= depth &&
+        isIterable(cur.value) &&
+        typeof cur.value != "string"
+      ) {
         iterStack.push(cur.value[Symbol.iterator]());
         return recur();
       } else if (cur.value instanceof Promise) {
         if (concurCheck && !concurCheck.done) {
           iterStack.length = 0;
-          return { value: Promise.reject(new Error("'L.flat' can not be used with 'C' function.")), done: false };
+          return {
+            value: Promise.reject(
+              new Error("'L.flat' can not be used with 'C' function.")
+            ),
+            done: false,
+          };
         }
         concurCheck = concurCheck || {};
         return {
-          value: cur.value.then(value => {
-            if (!concurCheck.hasOwnProperty('done')) concurCheck.done = true;
-            if (iterStack.length > depth || !isIterable(value) || typeof value == 'string') return value;
-            const iter = value[Symbol.iterator](), cur = iter.next();
-            return cur.done ? Promise.reject(nop) : (iterStack.push(iter), cur.value);
-          }).catch(e => {
-            if (!concurCheck.hasOwnProperty('done')) concurCheck.done = true;
-            return Promise.reject(e);
-          }),
-          done: false
+          value: cur.value
+            .then((value) => {
+              if (!concurCheck.hasOwnProperty("done")) concurCheck.done = true;
+              if (
+                iterStack.length > depth ||
+                !isIterable(value) ||
+                typeof value == "string"
+              )
+                return value;
+              const iter = value[Symbol.iterator](),
+                cur = iter.next();
+              return cur.done
+                ? Promise.reject(nop)
+                : (iterStack.push(iter), cur.value);
+            })
+            .catch((e) => {
+              if (!concurCheck.hasOwnProperty("done")) concurCheck.done = true;
+              return Promise.reject(e);
+            }),
+          done: false,
         };
       } else {
         return cur;
       }
     },
-    [Symbol.iterator]() { return this; }
+    [Symbol.iterator]() {
+      return this;
+    },
   };
 }

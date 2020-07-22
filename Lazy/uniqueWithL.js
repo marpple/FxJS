@@ -7,9 +7,10 @@ export default curry(function uniqueWithL(f, iter) {
   const res = [];
   return rejectL(
     ifElse(
-      a => some(v => f(a, v), res),
-      _ => true,
-      a => void res.push(a)
+      (a) => some((v) => f(a, v), res),
+      (_) => true,
+      (a) => void res.push(a)
     ),
-    iter);
+    iter
+  );
 });

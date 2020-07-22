@@ -1,2 +1,2 @@
-const isNil = a => a === undefined || a === null;
+const isNil = (a) => a === undefined || a === null;
 export default isNil;

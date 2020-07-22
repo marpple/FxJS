@@ -10,7 +10,7 @@ export default curry(function removeL(start, count, iter) {
   return go(
     iter,
     ipp,
-    rejectL(([i]) => i >= start && i < (start + count)),
+    rejectL(([i]) => i >= start && i < start + count),
     mapL(last)
   );
 });

@@ -2,7 +2,7 @@ import curry from "./curry.js";
 import reduce from "./reduce.js";
 
 function incSel(parent, k) {
-  parent[k] ? parent[k]++ : parent[k] = 1;
+  parent[k] ? parent[k]++ : (parent[k] = 1);
   return parent;
 }
 

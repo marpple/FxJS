@@ -11,5 +11,6 @@ export default curry(function every(f, iter) {
     takeUntilL(not),
     reduce((a, b) => a && b),
     (a = false) => a,
-    Boolean);
+    Boolean
+  );
 });

@@ -1,4 +1,4 @@
-import head from './head.js';
+import head from "./head.js";
 import filterL from "../Lazy/filterL.js";
 import curry from "./curry.js";
 

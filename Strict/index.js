@@ -45,8 +45,11 @@ export { default as equalsBy } from "./equalsBy.js";
 export { default as equalsBy2 } from "./equalsBy2.js";
 export { default as every } from "./every.js";
 export { default as evolve } from "./evolve.js";
-export { default as extend, default as assign } from './extend.js';
-export { default as extendRight, default as assignRight } from './extendRight.js';
+export { default as extend, default as assign } from "./extend.js";
+export {
+  default as extendRight,
+  default as assignRight,
+} from "./extendRight.js";
 export { default as filter } from "./filter.js";
 export { default as find } from "./find.js";
 export { default as findIndex } from "./findIndex.js";
@@ -106,7 +109,7 @@ export { default as min } from "./min.js";
 export { default as minBy } from "./minBy.js";
 export { default as multiply } from "./multiply.js";
 export { default as negate } from "./negate.js";
-export { default as blockUntilSettled } from './blockUntilSettled.js'
+export { default as blockUntilSettled } from "./blockUntilSettled.js";
 export { default as none } from "./none.js";
 export { default as noop } from "./noop.js";
 export { default as nop } from "./nop.js";

@@ -1,4 +1,4 @@
-import identity from './identity.js';
+import identity from "./identity.js";
 import uniqueBy from "./uniqueBy.js";
 
 export default function unique(a) {

@@ -1,6 +1,6 @@
 import baseExtend from "../.internal/baseExtend.js";
 
-const setter = (obj, [k, v]) => (obj[k] = v, obj);
+const setter = (obj, [k, v]) => ((obj[k] = v), obj);
 
 export default function extend(obj, ...objs) {
   return baseExtend(setter, obj, objs);

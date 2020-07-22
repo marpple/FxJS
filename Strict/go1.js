@@ -1,1 +1,1 @@
-export default (a, f) => a instanceof Promise ? a.then(f) : f(a);
+export default (a, f) => (a instanceof Promise ? a.then(f) : f(a));

@@ -3,4 +3,6 @@ import log from "./log.js";
 
 const f = tap(log);
 
-export default function hi(..._) { return f(..._); }
+export default function hi(..._) {
+  return f(..._);
+}

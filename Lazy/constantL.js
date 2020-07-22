@@ -1,1 +1,3 @@
-export default function* constantL(a) { yield a; }
+export default function* constantL(a) {
+  yield a;
+}

@@ -5,4 +5,4 @@ import mapL from "../Lazy/mapL.js";
 
 export default curry(function sumBy(f, iter) {
   return reduce(add, mapL(f, iter));
-})
+});

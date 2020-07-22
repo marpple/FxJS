@@ -6,15 +6,17 @@ import curry from "./curry.js";
 export default curry(function takeUntil(f, iter) {
   let res = [];
   iter = toIter(iter);
-  return function recur() {
+  return (function recur() {
     let cur;
     while (!(cur = iter.next()).done) {
       const a = cur.value;
-      const b = go1(a, a => (res.push(a), f(a, res)));
+      const b = go1(a, (a) => (res.push(a), f(a, res)));
       if (b instanceof Promise)
-        return b.then(b => b ? res : recur()).catch(e => e == nop ? recur() : Promise.reject(e));
+        return b
+          .then((b) => (b ? res : recur()))
+          .catch((e) => (e == nop ? recur() : Promise.reject(e)));
       if (b) break;
     }
     return res;
-  } ();
+  })();
 });

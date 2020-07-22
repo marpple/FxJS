@@ -11,5 +11,6 @@ export default curry(function someC(f, iter) {
     takeUntilL(identity),
     reduceC((a, b) => a || b),
     (a = false) => a,
-    Boolean);
+    Boolean
+  );
 });

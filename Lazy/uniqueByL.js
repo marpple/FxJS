@@ -5,9 +5,5 @@ import filterL from "./filterL.js";
 
 export default curry(function uniqueByL(f, iter) {
   const s = new Set();
-  return go1(
-    iter,
-    filterL(pipe(
-      f,
-      b => s.has(b) ? false : s.add(b))));
+  return go1(iter, filterL(pipe(f, (b) => (s.has(b) ? false : s.add(b)))));
 });

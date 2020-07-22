@@ -8,18 +8,22 @@ import flatMapL from "./flatMapL.js";
 import catchNoopIter from "../.internal/catchNoopIter.js";
 
 export default function limitLoadL(n, iter) {
-  if (arguments.length == 1) return typeof n == 'number' ? _ => limitLoadL(n, _) : n;
+  if (arguments.length == 1)
+    return typeof n == "number" ? (_) => limitLoadL(n, _) : n;
   if (n == Infinity) return iter;
 
   iter = toIter(iter);
   return go(
     rangeL(Infinity),
-    mapL(_ => go(
-      rangeL(n),
-      mapL(_ => iter.next()),
-      reject(a => a.done),
-      catchNoopIter
-    )),
-    takeUntilL(a => a.length < n),
-    flatMapL(mapL(a => a.value)));
+    mapL((_) =>
+      go(
+        rangeL(n),
+        mapL((_) => iter.next()),
+        reject((a) => a.done),
+        catchNoopIter
+      )
+    ),
+    takeUntilL((a) => a.length < n),
+    flatMapL(mapL((a) => a.value))
+  );
 }

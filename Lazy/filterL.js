@@ -6,7 +6,8 @@ import toIter from "../Strict/toIter.js";
 export default curry(function* filterL(f, iter) {
   for (const a of toIter(iter)) {
     const b = go1(a, f);
-    if (b instanceof Promise) yield b.then(b => b ? a : Promise.reject(nop));
+    if (b instanceof Promise)
+      yield b.then((b) => (b ? a : Promise.reject(nop)));
     else if (b) yield a;
   }
 });

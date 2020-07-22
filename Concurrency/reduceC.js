@@ -3,7 +3,7 @@ import catchNoop from "../.internal/catchNoop.js";
 import curry from "../Strict/curry.js";
 
 export default curry(function reduceC(f, acc, iter) {
-  return arguments.length == 2 ?
-    reduce(f, catchNoop([...acc])) :
-    reduce(f, acc, catchNoop([...iter]));
+  return arguments.length == 2
+    ? reduce(f, catchNoop([...acc]))
+    : reduce(f, acc, catchNoop([...iter]));
 });

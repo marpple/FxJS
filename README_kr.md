@@ -1,6 +1,7 @@
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
 
 # FxJS - Functional Extensions for Javascript
+
 ![npm](https://img.shields.io/npm/v/fxjs)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/fxjs)
 ![npm](https://img.shields.io/npm/dt/fxjs)
@@ -35,11 +36,10 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 ### Installation
 
 #### In Modern Browsers Supporting ES6
+
 `fx.js`는 ECMAScript Module로 작성된 FxJS를 브라우저에서 실행할 수 있는 하나의 스크립트 파일로 번들링한 것입니다.
 
-
 **주의: `fx.js`는 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
-
 
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
@@ -52,16 +52,15 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 ```javascript
 const { map, filter, reduce, L, C } = _;
 
-map(a => a + 1, [1, 2, 3]);
+map((a) => a + 1, [1, 2, 3]);
 // [2, 3, 4];
 ```
 
 #### In Legacy ES5 Browsers
+
 `fx.es5.js`는 **IE11** 브라우저를 타겟으로 FxJS를 빌드한 스크립트 파일입니다.
 
-
 **주의: `fx.js`와 마찬가지로, `fx.es5.js`역시 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
-
 
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
@@ -72,19 +71,21 @@ map(a => a + 1, [1, 2, 3]);
 ```
 
 ```javascript
-_.reduce((a, b) => a + b, L.map(a => a + 1, [1, 2, 3]));
+_.reduce(
+  (a, b) => a + b,
+  L.map((a) => a + 1, [1, 2, 3])
+);
 // 9;
 ```
 
 #### In Node.js
+
 FxJS는 ECMAScript Module으로 개발되고 있습니다.
 하지만 `fxjs`패키지에 배포하는 파일들은 **Node.js 6**버전을 target으로 변환된 CommonJS Module입니다.
-
 
 ```
 npm install fxjs
 ```
-
 
 ```javascript
 const FxJS = require("fxjs");
@@ -98,16 +99,17 @@ const { reduce, filterL, mapC } = FxJS;
 // 함수를 개별적으로 가져올 수도 있습니다.
 const rangeL = require("fxjs/Lazy/rangeL");
 
-
 _.go(
   rangeL(1, 5),
-  filterL(a => a % 2),
-  L.map(a => a * 10),
+  filterL((a) => a % 2),
+  L.map((a) => a * 10),
   reduce(_.add),
-  _.log); // 40
+  _.log
+); // 40
 ```
 
 CommonJS 모듈은 기본적으로 번들러가 Tree-Shaking을 지원되지 않기 때문에 `fxjs` package를 사용할 때, 개별 함수를 불러오는 방식으로 사용하는 것을 권장합니다.
+
 ```javascript
 import rangeL from "fxjs/Lazy/rangeL";
 import filterL from "fxjs/Lazy/filterL";
@@ -119,17 +121,18 @@ import log from "fxjs/Strict/log";
 
 go(
   rangeL(1, 5),
-  filterL(a => a % 2),
-  mapL(a => a * 10),
+  filterL((a) => a % 2),
+  mapL((a) => a * 10),
   reduce(add),
-  log); // 40
+  log
+); // 40
 ```
- 
 
 #### ECMAScript Module
+
 FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 배포하고 있습니다.
 `fxjs2`패키지는 `package.json`파일에 `type: "module"`로 정의되어 있습니다.
-*mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다.*
+_mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다._
 
 ```
 npm install fxjs2
@@ -141,10 +144,11 @@ import * as L from "fxjs2/Lazy/index.js";
 
 go(
   L.range(1, 5),
-  L.filter(a => a % 2),
-  L.map(a => a * 10),
+  L.filter((a) => a % 2),
+  L.map((a) => a * 10),
   reduce(add),
-  log); // 40
+  log
+); // 40
 ```
 
 ### Iteration protocols
@@ -152,8 +156,9 @@ go(
 제너레이터를 통해 만든 이터레이터를 FxJS의 함수들로 평가할 수 있습니다.
 
 ```javascript
-function *fibonacci() {
-  let a = 0, b = 1;
+function* fibonacci() {
+  let a = 0,
+    b = 1;
   while (true) {
     yield a;
     [a, b] = [b, a + b];
@@ -162,8 +167,9 @@ function *fibonacci() {
 
 const f = pipe(
   fibonacci,
-  L.filter(n => n % 2 == 0),
-  L.takeWhile(n => n < 10));
+  L.filter((n) => n % 2 == 0),
+  L.takeWhile((n) => n < 10)
+);
 
 const iterator = f();
 console.log(iterator.next()); // { value: 0, done: false }
@@ -182,8 +188,9 @@ reduce((a, b) => a + b, f());
 ```javascript
 const res = go(
   [1, 2, 3, 4, 5],
-  filter(a => a % 2),
-  reduce(add));
+  filter((a) => a % 2),
+  reduce(add)
+);
 
 log(res); // 9
 ```
@@ -195,9 +202,10 @@ log(res); // 9
 ```javascript
 const res = go(
   L.range(Infinity),
-  L.filter(a => a % 2),
+  L.filter((a) => a % 2),
   L.take(3),
-  reduce(add));
+  reduce(add)
+);
 
 log(res); // 9
 ```
@@ -210,9 +218,10 @@ Functional reactive programming 스타일을 작성할 수 있습니다.
 go(
   L.range(Infinity),
   L.map(delay(1000)),
-  L.map(a => a + 10),
+  L.map((a) => a + 10),
   L.take(3),
-  each(log));
+  each(log)
+);
 // 1초 후 10
 // 2초 후 11
 // 3초 후 12
@@ -227,9 +236,10 @@ FxJS의 함수들은 비동기를 잘 다룹니다. Promise의 프로토콜을 �
 
 await go(
   L.interval(1000),
-  L.map(a => a + 30),
-  L.takeUntil(a => a == 33),
-  each(log));
+  L.map((a) => a + 30),
+  L.takeUntil((a) => a == 33),
+  each(log)
+);
 // 1초 후 30
 // 2초 후 31
 // 3초 후 32
@@ -237,10 +247,11 @@ await go(
 
 const res = await go(
   L.interval(1000),
-  L.map(a => a + 20),
-  L.takeWhile(a => a < 23),
+  L.map((a) => a + 20),
+  L.takeWhile((a) => a < 23),
   L.map(tap(log)),
-  reduce(add));
+  reduce(add)
+);
 // 5초 후 20
 // 6초 후 21
 // 7초 후 22
@@ -269,35 +280,38 @@ const pages = await C.map(getPage, range(1, 5));
 go(
   range(1, 5),
   map(getPage),
-  filter(page => page.line > 50),
+  filter((page) => page.line > 50),
   map(getWords),
   flat,
   countBy(identity),
-  log);
+  log
+);
 // 4초 후
 // { html: 78, css: 36, is: 192 ... }
 
 go(
   L.range(1, 5),
   L.map(getPage),
-  L.filter(page => page.line > 50),
+  L.filter((page) => page.line > 50),
   L.map(getWords),
   C.takeAll, // 4개 페이지 동시 요청
   flat,
   countBy(identity),
-  log);
+  log
+);
 // 1초 후
 // { html: 78, css: 36, is: 192 ... }
 
 go(
   L.range(1, 5),
   L.map(getPage),
-  L.filter(page => page.line > 50),
+  L.filter((page) => page.line > 50),
   L.map(getWords),
   C.takeAll(2), // 2개 페이지씩 나눠서 동시 요청
   flat,
   countBy(identity),
-  log);
+  log
+);
 // 2초 후
 // { html: 78, css: 36, is: 192 ... }
 ```
@@ -309,9 +323,10 @@ FxJS는 자바스크립트의 기본 프로토콜을 지키고 있기 때문에 
 ```javascript
 const b = go(
   0,
-  a => a + 1,
-  a => a + 10,
-  a => a + 100);
+  (a) => a + 1,
+  (a) => a + 10,
+  (a) => a + 100
+);
 
 console.log(b);
 // 111
@@ -319,9 +334,12 @@ console.log(b);
 try {
   const b = go(
     0,
-    a => { throw { hi: 'ho' } },
-    a => a + 10,
-    a => a + 100);
+    (a) => {
+      throw { hi: "ho" };
+    },
+    (a) => a + 10,
+    (a) => a + 100
+  );
 
   console.log(b);
 } catch (c) {
@@ -335,9 +353,10 @@ async/await와 try/catch를 사용하여 비동기 에러 핸들링을 할 수 �
 ```javascript
 const b = await go(
   0,
-  a => Promise.resolve(a + 1),
-  a => a + 10,
-  a => a + 100);
+  (a) => Promise.resolve(a + 1),
+  (a) => a + 10,
+  (a) => a + 100
+);
 
 console.log(b);
 // 111
@@ -345,9 +364,10 @@ console.log(b);
 try {
   const b = await go(
     0,
-    a => Promise.resolve(a + 1),
-    a => Promise.reject({ hi: 'ho' }),
-    a => a + 100);
+    (a) => Promise.resolve(a + 1),
+    (a) => Promise.reject({ hi: "ho" }),
+    (a) => a + 100
+  );
 
   console.log(b);
 } catch (c) {
@@ -578,12 +598,14 @@ try {
   - [reduceS, stop](https://github.com/marpple/FxJS/blob/master/API.md#reduces-stop)
   - [goS, pipeS, stop, stopIf](https://github.com/marpple/FxJS/blob/master/API.md#gos-pipes-stop-stopif)
 - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
+
   - [html](https://github.com/marpple/FxJS/blob/master/API.md#html)
   - [join](https://github.com/marpple/FxJS/blob/master/API.md#join)
   - [strMap](https://github.com/marpple/FxJS/blob/master/API.md#strMap)
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
-  
+
 ## Extention Libraries
+
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)

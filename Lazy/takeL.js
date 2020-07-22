@@ -9,9 +9,9 @@ export default curry(function* takeL(l, iter) {
   for (const a of toIter(iter)) {
     if (a instanceof Promise) {
       a.catch(noop);
-      yield prev = (prev || Promise.resolve())
-        .then(_ => a)
-        .then(a => --l > -1 ? a : Promise.reject(nop));
+      yield (prev = (prev || Promise.resolve())
+        .then((_) => a)
+        .then((a) => (--l > -1 ? a : Promise.reject(nop))));
       prev = prev.catch(noop);
     } else {
       yield (--l, a);

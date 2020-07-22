@@ -12,7 +12,7 @@ export default curry(function meanBy(f, iter) {
     iter,
     mapL(f),
     Array.from.bind(Array),
-    juxt(sum, sel('length')),
+    juxt(sum, sel("length")),
     apply(divide)
-  )
+  );
 });

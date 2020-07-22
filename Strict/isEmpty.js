@@ -4,7 +4,7 @@ import isIterable from "./isIterable.js";
 export default function isEmpty(a) {
   if (isIterable(a)) {
     return a[Symbol.iterator]().next().done;
-  } else if (a !== null && typeof a === 'object') {
+  } else if (a !== null && typeof a === "object") {
     return isEmpty(keysL(a));
   } else {
     return false;

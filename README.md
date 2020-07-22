@@ -1,11 +1,11 @@
 [EN](https://github.com/marpple/FxJS) | [KR](https://github.com/marpple/FxJS/blob/master/README_kr.md)
 
 # FxJS - Functional Extensions for Javascript
+
 ![npm](https://img.shields.io/npm/v/fxjs)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/fxjs)
 ![npm](https://img.shields.io/npm/dt/fxjs)
 ![NPM](https://img.shields.io/npm/l/fxjs)
-
 
 FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterator, Generator, Promise.
 
@@ -36,11 +36,10 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 ### Installation
 
 #### In Modern Browsers Supporting ES6
+
 `fx.js` is a bundle of FxJS written in the ECMAScript Module as a single script file that can be run in a browser.
 
-
-**Note: `fx.js` uses the` fx`, `_`,` L`, and `C` properties of the window object as namespaces.**
-
+**Note: `fx.js` uses the`fx`, `_`,`L`, and `C` properties of the window object as namespaces.**
 
 - [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
 - [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
@@ -51,11 +50,10 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 ```
 
 #### In Legacy ES5 Browsers
+
 `fx.es5.js` is the build of FxJS as an **IE11** browser target.
 
-
-**Note: Like `fx.js`, `fx.es5.js` also use the window object's` fx`, `_`,` L`, and `C` properties as namespace.**
-
+**Note: Like `fx.js`, `fx.es5.js` also use the window object's`fx`, `_`,`L`, and `C` properties as namespace.**
 
 - [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
 - [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
@@ -66,15 +64,14 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
 ```
 
 #### In Node.js
+
 FxJS is developed as ECMAScript Module.
 However, the files published in the `fxjs` package are the CommonJS Module,
 which is transpiled to support **Node.js 6** version.
 
-
 ```
 npm install fxjs
 ```
-
 
 ```javascript
 const FxJS = require("fxjs");
@@ -90,10 +87,11 @@ const rangeL = require("fxjs/Lazy/rangeL");
 
 _.go(
   rangeL(1, 5),
-  filterL(a => a % 2),
-  L.map(a => a * 10),
+  filterL((a) => a % 2),
+  L.map((a) => a * 10),
   reduce(_.add),
-  _.log); // 40
+  _.log
+); // 40
 ```
 
 Module bundlers generally don't support Tree-Shaking to CommonJS modules, so when using the `fxjs` package, it is recommended that you import functions individually.
@@ -109,13 +107,15 @@ import log from "fxjs/Strict/log";
 
 go(
   rangeL(1, 5),
-  filterL(a => a % 2),
-  mapL(a => a * 10),
+  filterL((a) => a % 2),
+  mapL((a) => a * 10),
   reduce(add),
-  log); // 40
+  log
+); // 40
 ```
 
 #### ECMAScript Module
+
 FxJS publishes the `fxjs2` package, which is written only with the native ECMAScript Module.
 In the `fxjs2` package, the `type` field is defined as `module` in the `package.json` file.
 Development tools like mocha and jest do not yet support Native ESM, so be careful about using it.
@@ -130,10 +130,11 @@ import * as L from "fxjs2/Lazy/index.js";
 
 go(
   L.range(1, 5),
-  L.filter(a => a % 2),
-  L.map(a => a * 10),
+  L.filter((a) => a % 2),
+  L.map((a) => a * 10),
   reduce(add),
-  log); // 40
+  log
+); // 40
 ```
 
 ### Iteration protocols
@@ -141,8 +142,9 @@ go(
 You can evaluate the iterator as a function of FxJS.
 
 ```javascript
-function *fibonacci() {
-  let a = 0, b = 1;
+function* fibonacci() {
+  let a = 0,
+    b = 1;
   while (true) {
     yield a;
     [a, b] = [b, a + b];
@@ -151,8 +153,9 @@ function *fibonacci() {
 
 const f = pipe(
   fibonacci,
-  L.filter(n => n % 2 == 0),
-  L.takeWhile(n => n < 10));
+  L.filter((n) => n % 2 == 0),
+  L.takeWhile((n) => n < 10)
+);
 
 const iterator = f();
 console.log(iterator.next()); // { value: 0, done: false }
@@ -171,8 +174,9 @@ Any value can be used with FxJS if it has a `[Symbol.iterator]()` method.
 ```javascript
 const res = go(
   [1, 2, 3, 4, 5],
-  filter(a => a % 2),
-  reduce(add));
+  filter((a) => a % 2),
+  reduce(add)
+);
 
 log(res); // 9
 ```
@@ -184,9 +188,10 @@ You can do 'lazy evaluation' as a function of the `L` namespace.
 ```javascript
 const res = go(
   L.range(Infinity),
-  L.filter(a => a % 2),
+  L.filter((a) => a % 2),
   L.take(3),
-  reduce(add));
+  reduce(add)
+);
 
 log(res); // 9
 ```
@@ -199,9 +204,10 @@ Functional reactive programming style.
 go(
   L.range(Infinity),
   L.map(delay(1000)),
-  L.map(a => a + 10),
+  L.map((a) => a + 10),
   L.take(3),
-  each(log));
+  each(log)
+);
 // After 1 second 10
 // After 2 seconds 11
 // After 3 seconds 12
@@ -216,9 +222,10 @@ Asynchronous control is easy.
 
 await go(
   L.interval(1000),
-  L.map(a => a + 30),
-  L.takeUntil(a => a == 33),
-  each(log));
+  L.map((a) => a + 30),
+  L.takeUntil((a) => a == 33),
+  each(log)
+);
 // After 1 second 30
 // After 2 seconds 31
 // After 3 seconds 32
@@ -226,10 +233,11 @@ await go(
 
 const res = await go(
   L.interval(1000),
-  L.map(a => a + 20),
-  L.takeWhile(a => a < 23),
+  L.map((a) => a + 20),
+  L.takeWhile((a) => a < 23),
   L.map(tap(log)),
-  reduce(add));
+  reduce(add)
+);
 // After 5 seconds 20
 // After 6 seconds 21
 // After 7 seconds 22
@@ -258,35 +266,38 @@ Like [Clojure Reducers](https://clojure.org/reference/reducers), you can handle 
 go(
   range(1, 5),
   map(getPage),
-  filter(page => page.line > 50),
+  filter((page) => page.line > 50),
   map(getWords),
   flat,
   countBy(identity),
-  log);
+  log
+);
 // After 4 seconds
 // { html: 78, css: 36, is: 192 ... }
 
 go(
   L.range(1, 5),
   L.map(getPage),
-  L.filter(page => page.line > 50),
+  L.filter((page) => page.line > 50),
   L.map(getWords),
   C.takeAll, // All requests same time.
   flat,
   countBy(identity),
-  log);
+  log
+);
 // After 1 second
 // { html: 78, css: 36, is: 192 ... }
 
 go(
   L.range(1, 5),
   L.map(getPage),
-  L.filter(page => page.line > 50),
+  L.filter((page) => page.line > 50),
   L.map(getWords),
   C.takeAll(2), // 2 requests same time.
   flat,
   countBy(identity),
-  log);
+  log
+);
 // After 2 second
 // { html: 78, css: 36, is: 192 ... }
 ```
@@ -298,9 +309,10 @@ You can use JavaScript standard error handling.
 ```javascript
 const b = go(
   0,
-  a => a + 1,
-  a => a + 10,
-  a => a + 100);
+  (a) => a + 1,
+  (a) => a + 10,
+  (a) => a + 100
+);
 
 console.log(b);
 // 111
@@ -308,9 +320,12 @@ console.log(b);
 try {
   const b = go(
     0,
-    a => { throw { hi: 'ho' } },
-    a => a + 10,
-    a => a + 100);
+    (a) => {
+      throw { hi: "ho" };
+    },
+    (a) => a + 10,
+    (a) => a + 100
+  );
 
   console.log(b);
 } catch (c) {
@@ -324,9 +339,10 @@ You can use async/await and try/catch to handle asynchronous error handling.
 ```javascript
 const b = await go(
   0,
-  a => Promise.resolve(a + 1),
-  a => a + 10,
-  a => a + 100);
+  (a) => Promise.resolve(a + 1),
+  (a) => a + 10,
+  (a) => a + 100
+);
 
 console.log(b);
 // 111
@@ -334,9 +350,10 @@ console.log(b);
 try {
   const b = await go(
     0,
-    a => Promise.resolve(a + 1),
-    a => Promise.reject({ hi: 'ho' }),
-    a => a + 100);
+    (a) => Promise.resolve(a + 1),
+    (a) => Promise.reject({ hi: "ho" }),
+    (a) => a + 100
+  );
 
   console.log(b);
 } catch (c) {
@@ -573,6 +590,7 @@ try {
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
 
 ## Extention Libraries
+
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
 - [FxContrib](https://github.com/marpple/FxContrib)

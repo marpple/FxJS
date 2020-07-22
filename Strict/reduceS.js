@@ -6,7 +6,8 @@ import isStop from "./isStop.js";
 
 export default function reduceS(f, acc, iter) {
   if (arguments.length == 1) return (..._) => reduceS(f, ..._);
-  if (arguments.length == 2) return reduceS(f, head(iter = toIter(acc)), iter);
+  if (arguments.length == 2)
+    return reduceS(f, head((iter = toIter(acc))), iter);
 
   iter = toIter(iter);
   return go1(acc, function recur(acc) {

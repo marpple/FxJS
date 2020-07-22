@@ -1,1 +1,1 @@
-export default Symbol('clonedIterable');
+export default Symbol("clonedIterable");

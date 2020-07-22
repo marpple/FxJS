@@ -1,2 +1,2 @@
-const isNull = a => a === null;
+const isNull = (a) => a === null;
 export default isNull;

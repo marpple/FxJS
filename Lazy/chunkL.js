@@ -10,6 +10,7 @@ export default curry(function chunkL(n, iter) {
   iter = toIter(iter);
   return go(
     rangeL(Infinity),
-    mapL(_ => take(n, iter)),
-    takeWhileL(c => c.length))
+    mapL((_) => take(n, iter)),
+    takeWhileL((c) => c.length)
+  );
 });

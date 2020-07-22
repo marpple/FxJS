@@ -1,3 +1,3 @@
 export default function constant(a) {
-  return _ => a;
+  return (_) => a;
 }

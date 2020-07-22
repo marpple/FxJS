@@ -13,8 +13,9 @@ export default curry(function slice(start, end, iter) {
   }
   return go(
     [start, end],
-    map(i => i < 0 ? (i + iter.length) : i),
+    map((i) => (i < 0 ? i + iter.length : i)),
     append(iter),
     apply(sliceL),
-    takeAll);
+    takeAll
+  );
 });

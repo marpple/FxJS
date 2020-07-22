@@ -1,23 +1,25 @@
-const TerserPlugin = require('terser-webpack-plugin');
-const path = require('path');
+const TerserPlugin = require("terser-webpack-plugin");
+const path = require("path");
 
-module.exports = env => {
+module.exports = (env) => {
   return {
-    mode: env.NODE_ENV || 'development',
-    devtool: 'source-map',
+    mode: env.NODE_ENV || "development",
+    devtool: "source-map",
     entry: {
-      "fx": "./entry.js",
-      "fx.min": "./entry.js"
+      fx: "./entry.js",
+      "fx.min": "./entry.js",
     },
     output: {
-      path: path.resolve(__dirname, './dist'),
-      filename: '[name].js'
+      path: path.resolve(__dirname, "./dist"),
+      filename: "[name].js",
     },
     optimization: {
       minimize: true,
-      minimizer: [new TerserPlugin({
-        include: /\.min\.js$/
-      })]
-    }
-  }
+      minimizer: [
+        new TerserPlugin({
+          include: /\.min\.js$/,
+        }),
+      ],
+    },
+  };
 };

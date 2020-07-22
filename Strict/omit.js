@@ -4,7 +4,5 @@ import object from "./object.js";
 import entriesL from "../Lazy/entriesL.js";
 
 export default curry(function omit(ks, obj) {
-  return object(
-    rejectL(([k]) => ks.includes(k),
-      entriesL(obj)));
+  return object(rejectL(([k]) => ks.includes(k), entriesL(obj)));
 });

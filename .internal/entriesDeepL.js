@@ -15,11 +15,11 @@ const delegateIterable = function* (iter) {
   yield* iter;
 };
 
-const cloneIterable = iter => {
+const cloneIterable = (iter) => {
   const cloned = delegateIterable(iter);
   cloned[clonedIterableSymbol] = true;
   return cloned;
-}
+};
 
 export default function entriesDeepL(obj) {
   return go(
@@ -27,12 +27,12 @@ export default function entriesDeepL(obj) {
     entriesL,
     mapEntriesL(
       cond(
-        [isArray, arr => arr.slice()],
+        [isArray, (arr) => arr.slice()],
         [isString, identity],
         [isIterable, cloneIterable],
         [either(isObject, isFunction), entriesDeepL],
         [() => true, identity]
       )
     )
-  )
+  );
 }

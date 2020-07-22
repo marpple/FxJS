@@ -5,14 +5,15 @@ import noop from "../Strict/noop.js";
 import nop from "../Strict/nop.js";
 
 export default curry(function* takeUntilL(f, iter) {
-  let prev = null, ok = false;
+  let prev = null,
+    ok = false;
   for (const a of toIter(iter)) {
     const _ok = ok || go1(a, f);
     if (_ok instanceof Promise) {
       _ok.catch(noop);
-      yield prev = (prev || Promise.resolve())
-        .then(_ => _ok)
-        .then(_ok => ok ? Promise.reject(nop) : ((ok = _ok), a));
+      yield (prev = (prev || Promise.resolve())
+        .then((_) => _ok)
+        .then((_ok) => (ok ? Promise.reject(nop) : ((ok = _ok), a))));
       prev = prev.catch(noop);
     } else {
       ok = _ok;

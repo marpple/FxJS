@@ -9,13 +9,16 @@ export default curry(function evolve(dict, obj) {
   return go(
     obj,
     entries,
-    map(([k, v]) => go(
-      v,
-      v => typeof v === 'object'
-        ? evolve(dict[k] || {}, v)
-        : (dict[k] || identity)(v),
-      v => [k, v]
-    )),
+    map(([k, v]) =>
+      go(
+        v,
+        (v) =>
+          typeof v === "object"
+            ? evolve(dict[k] || {}, v)
+            : (dict[k] || identity)(v),
+        (v) => [k, v]
+      )
+    ),
     object
-  )
+  );
 });

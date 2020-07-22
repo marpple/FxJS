@@ -5,7 +5,7 @@ import head from "./head.js";
 
 export default function reduce(f, acc, iter) {
   if (arguments.length == 1) return (..._) => reduce(f, ..._);
-  if (arguments.length == 2) return reduce(f, head(iter = toIter(acc)), iter);
+  if (arguments.length == 2) return reduce(f, head((iter = toIter(acc))), iter);
 
   iter = toIter(iter);
   return go1(acc, function recur(acc) {
