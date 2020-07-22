@@ -106,7 +106,7 @@ export { default as min } from "./min.js";
 export { default as minBy } from "./minBy.js";
 export { default as multiply } from "./multiply.js";
 export { default as negate } from "./negate.js";
-export { default as notConcurrency } from './notCuncurrency.js'
+export { default as blockUntilSettled } from './blockUntilSettled.js'
 export { default as none } from "./none.js";
 export { default as noop } from "./noop.js";
 export { default as nop } from "./nop.js";

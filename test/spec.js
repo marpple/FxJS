@@ -55,7 +55,7 @@ import {
   mapObject,
   mean,
   merge,
-  notConcurrency,
+  blockUntilSettled,
   omit,
   omitBy,
   partition,
@@ -1763,7 +1763,7 @@ import {
     });
   });
 
-  describe('notConcurrency', function() {
+  describe('blockUntilSettled', function() {
     it('Reject follow calls', async function () {
       let call = 0;
       const add1 = () => new Promise(res => {
@@ -1773,7 +1773,7 @@ import {
         }, 2000)
       });
 
-      const newAdd1 = notConcurrency(add1);
+      const newAdd1 = blockUntilSettled(add1);
 
       await Promise.all([
         newAdd1(),
@@ -1794,7 +1794,7 @@ import {
         }, 2000)
       });
 
-      const newAdd1 = notConcurrency(add1);
+      const newAdd1 = blockUntilSettled(add1);
 
       await Promise.all([
         newAdd1(),
