@@ -100,7 +100,7 @@ __webpack_require__.d(Strict_namespaceObject, "all", function() { return all_all
 __webpack_require__.d(Strict_namespaceObject, "and", function() { return and; });
 __webpack_require__.d(Strict_namespaceObject, "any", function() { return any; });
 __webpack_require__.d(Strict_namespaceObject, "append", function() { return Strict_append; });
-__webpack_require__.d(Strict_namespaceObject, "apply", function() { return Strict_apply; });
+__webpack_require__.d(Strict_namespaceObject, "apply", function() { return apply; });
 __webpack_require__.d(Strict_namespaceObject, "applyEach", function() { return applyEach; });
 __webpack_require__.d(Strict_namespaceObject, "applyMethod", function() { return Strict_applyMethod; });
 __webpack_require__.d(Strict_namespaceObject, "baseSel", function() { return baseSel; });
@@ -209,6 +209,7 @@ __webpack_require__.d(Strict_namespaceObject, "min", function() { return min; })
 __webpack_require__.d(Strict_namespaceObject, "minBy", function() { return Strict_minBy; });
 __webpack_require__.d(Strict_namespaceObject, "multiply", function() { return multiply; });
 __webpack_require__.d(Strict_namespaceObject, "negate", function() { return negate; });
+__webpack_require__.d(Strict_namespaceObject, "blockUntilSettled", function() { return blockUntilSettled; });
 __webpack_require__.d(Strict_namespaceObject, "none", function() { return Strict_none; });
 __webpack_require__.d(Strict_namespaceObject, "noop", function() { return noop; });
 __webpack_require__.d(Strict_namespaceObject, "nop", function() { return Strict_nop; });
@@ -587,7 +588,7 @@ function takeAll(iter) {
 // CONCATENATED MODULE: ./Strict/apply.js
 
 
-/* harmony default export */ var Strict_apply = (curry(function apply(f, iter) {
+/* harmony default export */ var apply = (curry(function apply(f, iter) {
   return f(...iter);
 }));
 // CONCATENATED MODULE: ./Strict/isIterable.js
@@ -894,9 +895,14 @@ function isFunction(a) {
 const isObject = a => a !== null && typeof a === 'object' && a.constructor === Object;
 /* harmony default export */ var Strict_isObject = (isObject);
 
+// CONCATENATED MODULE: ./Strict/isString.js
+function isString(a) {
+  return typeof a == 'string';
+}
 // CONCATENATED MODULE: ./.internal/clonedIterableSymbol.js
 /* harmony default export */ var clonedIterableSymbol = (Symbol('clonedIterable'));
 // CONCATENATED MODULE: ./.internal/entriesDeepL.js
+
 
 
 
@@ -926,6 +932,7 @@ function entriesDeepL(obj) {
     Lazy_mapEntriesL(
       cond_cond(
         [isArray, arr => arr.slice()],
+        [isString, identity],
         [isIterable, cloneIterable],
         [Strict_either(Strict_isObject, isFunction), entriesDeepL],
         [() => true, identity]
@@ -942,7 +949,12 @@ function entriesDeepL(obj) {
 
 
 
-const isEntries = a => not(isArray(a)) && isIterable(a) && not(a[clonedIterableSymbol]);
+
+const isEntries = a =>
+  not(isString(a)) &&
+  not(isArray(a)) &&
+  isIterable(a) &&
+  not(a[clonedIterableSymbol]) === true;
 
 function objectDeep(entries) {
   return reduce(
@@ -1383,12 +1395,14 @@ const reverse = iter => takeAll(reverseL(iter));
 
 
 
+
 const extendRight = (...objs) => go(
   objs,
   Strict_reverse,
   apply(extend)
 );
 /* harmony default export */ var Strict_extendRight = (curry(extendRight));
+
 // CONCATENATED MODULE: ./Lazy/zipWithIndexL.js
 
 
@@ -1441,7 +1455,7 @@ function juxt(...fns) {
 
 
 /* harmony default export */ var Strict_fork = (curry3(function fork(join, f1, f2, ...args) {
-  return go(args, Strict_apply(juxt(f1, f2)), Strict_apply(join));
+  return go(args, apply(juxt(f1, f2)), apply(join));
 }));
 // CONCATENATED MODULE: ./Strict/isStop.js
 const SymbolStop = Symbol.for('stop');
@@ -1741,10 +1755,6 @@ const isNil = a => a === undefined || a === null;
 // CONCATENATED MODULE: ./Strict/isNull.js
 const isNull = a => a === null;
 /* harmony default export */ var Strict_isNull = (isNull);
-// CONCATENATED MODULE: ./Strict/isString.js
-function isString(a) {
-  return typeof a == 'string';
-}
 // CONCATENATED MODULE: ./Strict/isUndefined.js
 /* harmony default export */ var isUndefined = (a => a === undefined);
 // CONCATENATED MODULE: ./Strict/join.js
@@ -1887,7 +1897,7 @@ function sum(iter) {
     Lazy_mapL(f),
     Array.from.bind(Array),
     juxt(sum, Strict_sel('length')),
-    Strict_apply(divide)
+    apply(divide)
   )
 }));
 // CONCATENATED MODULE: ./Strict/mean.js
@@ -1941,6 +1951,18 @@ function min(iter) {
 function negate(f) {
   return (..._) => go1(f(..._), not);
 }
+// CONCATENATED MODULE: ./Strict/blockUntilSettled.js
+function blockUntilSettled(f) {
+    let is_pending = false;
+    return (...args) => {
+        if (is_pending) return;
+        is_pending = true;
+        const res = f(...args);
+        return (res instanceof Promise)
+          ? res.finally(() => is_pending = false)
+          : (is_pending = false, res);
+    };
+};
 // CONCATENATED MODULE: ./Strict/none.js
 
 
@@ -2187,7 +2209,7 @@ function reduceRight(f, acc, iter) {
     [start, end],
     Strict_map(i => i < 0 ? (i + iter.length) : i),
     Strict_append(iter),
-    Strict_apply(sliceL),
+    apply(sliceL),
     takeAll);
 }));
 // CONCATENATED MODULE: ./.internal/baseSortBy.js
@@ -2538,7 +2560,7 @@ function unique(a) {
 
 
 /* harmony default export */ var Strict_zip = (curry(function zip(...iters) {
-  return go(iters, takeAll, Strict_apply(Lazy_zipL), takeAll);
+  return go(iters, takeAll, apply(Lazy_zipL), takeAll);
 }));
 // CONCATENATED MODULE: ./Strict/unzip.js
 
@@ -2622,6 +2644,7 @@ function unzip(iter) {
   return Strict_map(group => f(...group), Lazy_zipL(...iterables))
 }));
 // CONCATENATED MODULE: ./Strict/index.js
+
 
 
 
