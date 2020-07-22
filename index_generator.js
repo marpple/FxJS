@@ -28,15 +28,15 @@ const write = ({ source_dir, prefix = '', postfix = '' }) =>
 
 go(
   write({
-    source_dir: './Lazy',
-    postfix: 'L',
-    aliases: {
-      zipWithIndex: ['ipp']
-    }
+    source_dir: './Strict',
+    postfix: '',
   }),
   _ => write({
     source_dir: './Concurrency',
     postfix: 'C'
   }),
-  _ => outputStream.end('export * from "./Strict/index.js";')
+  _ => write({
+    source_dir: './Lazy',
+    postfix: 'L',
+  }),
 );
