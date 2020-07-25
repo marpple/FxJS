@@ -5,13 +5,12 @@ module.exports = (env) => {
   return {
     mode: env.NODE_ENV || "development",
     devtool: "source-map",
-    entry: {
-      "fx.es5": "./entry.js",
-      "fx.es5.min": "./entry.js",
-    },
+    entry: "./entry.js",
     output: {
+      library: "_",
+      libraryTarget: "umd",
       path: path.resolve(__dirname, "./dist"),
-      filename: "[name].js",
+      filename: "fx.es5.js",
     },
     module: {
       rules: [
@@ -26,11 +25,7 @@ module.exports = (env) => {
     },
     optimization: {
       minimize: true,
-      minimizer: [
-        new UglifyJsPlugin({
-          include: /\.min\.js$/,
-        }),
-      ],
+      minimizer: [new UglifyJsPlugin()],
     },
   };
 };

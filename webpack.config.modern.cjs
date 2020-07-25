@@ -5,21 +5,16 @@ module.exports = (env) => {
   return {
     mode: env.NODE_ENV || "development",
     devtool: "source-map",
-    entry: {
-      fx: "./entry.js",
-      "fx.min": "./entry.js",
-    },
+    entry: "./entry.js",
     output: {
+      library: "_",
+      libraryTarget: "umd",
       path: path.resolve(__dirname, "./dist"),
-      filename: "[name].js",
+      filename: "fx.js",
     },
     optimization: {
       minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          include: /\.min\.js$/,
-        }),
-      ],
+      minimizer: [new TerserPlugin()],
     },
   };
 };

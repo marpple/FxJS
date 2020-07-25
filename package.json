@@ -1,22 +1,25 @@
 {
-  "name": "fxjs2",
+  "name": "fxjs",
   "version": "0.16.3",
   "description": "Functional Extensions for modern Javascript",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "index.cjs",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "transpile:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal",
-    "transpile:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict",
-    "transpile:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy",
-    "transpile:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency",
-    "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.js",
+    "transpile:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal --copy-files --out-file-extension .cjs",
+    "transpile:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict --copy-files --out-file-extension .cjs",
+    "transpile:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy --copy-files --out-file-extension .cjs",
+    "transpile:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency --copy-files --out-file-extension .cjs",
+    "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.cjs --copy-files ",
     "transpile": "npm run transpile:internal && npm run transpile:strict && npm run transpile:lazy && npm run transpile:concurrency && npm run transpile:index",
-    "generate:index": "node --experimental-modules index_generator.js",
-    "build": "npm run generate:index && npm run build-modern && npm run build-legacy",
-    "build-modern": "webpack --config webpack.config.modern.js --env.NODE_ENV=production",
-    "build-legacy": "webpack --config webpack.config.legacy.js --env.NODE_ENV=production",
+    "generate:index": "node index_generator.js",
+    "build": "npm run generate:index && npm run transpile && npm run build-modern && npm run build-legacy",
+    "build-modern": "webpack --config webpack.config.modern.cjs --env.NODE_ENV=production",
+    "build-legacy": "webpack --config webpack.config.legacy.cjs --env.NODE_ENV=production",
     "test": "mocha 'test/spec.js' --timeout 10000 --require esm"
   },
   "files": [
@@ -53,13 +56,13 @@
   "homepage": "https://github.com/marpple/FxJS#readme",
   "dependencies": {
     "core-js": "^3.6.5",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.1",
-    "@babel/core": "^7.10.2",
-    "@babel/plugin-proposal-export-namespace-from": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-export-namespace-from": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chai": "^4.1.2",
@@ -68,8 +71,8 @@
     "prettier": "2.0.5",
     "terser-webpack-plugin": "^2.3.7",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
   },
   "directories": {
     "test": "test"
@@ -79,8 +82,8 @@
     "fp",
     "fxjs"
   ],
-  "unpkg": "dist/fx.es5.min.js",
-  "jsdelivr": "dist/fx.es5.min.js",
+  "unpkg": "dist/",
+  "jsdelivr": "dist/",
   "np": {
     "yarn": false
   }
