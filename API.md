@@ -2,11 +2,15 @@
 
 - [Function](#Function)
   - [apply](#apply)
+  - [applyEach](#applyeach)
+  - [applyMethod](#applymethod)
+  - [bindMethod](#bindmethod)
   - [call](#call)
-  - [calls](#calls)
+  - [callEach](#calleach)
+  - [callMethod](#callmethod)
   - [constant](#constant)
   - [curry](#curry)
-  - [curryN](#curryN)
+  - [curryN](#curryn)
   - [debounce](#debounce)
   - [go](#go)
   - [juxt](#juxt)
@@ -18,99 +22,107 @@
 - [Strict](#strict)
   - [add](#add)
   - [append](#append)
-  - [baseSel](#baseSel)
+  - [baseSel](#basesel)
+  - [blockUntilSettled](#blockuntilsettled)
   - [chunk](#chunk)
+  - [clone](#clone)
   - [compact](#compact)
-  - [countBy](#countBy)
-  - [deepFlat](#deepFlat)
+  - [countBy](#countby)
+  - [deepFlat](#deepflat)
   - [defaults](#defaults)
-  - [defaultTo](#defaultTo)
+  - [defaultTo](#defaultto)
   - [delay](#delay)
   - [difference](#difference)
-  - [differenceBy](#differenceBy)
-  - [differenceWith](#differenceWith)
+  - [differenceBy](#differenceby)
+  - [differenceWith](#differencewith)
   - [divide](#divide)
   - [drop](#drop)
-  - [dropRight](#dropRight)
-  - [dropUntil](#dropUntil)
-  - [dropWhile](#dropWhile)
+  - [dropRight](#dropright)
+  - [dropUntil](#dropuntil)
+  - [dropWhile](#dropwhile)
   - [each](#each)
   - [entries](#entries)
   - [extend](#extend)
+  - [extendRight](#extendright)
   - [filter](#filter)
   - [find](#find)
-  - [findWhere](#findWhere)
+  - [findWhere](#findwhere)
   - [flat](#flat)
-  - [flatMap](#flatMap)
-  - [groupBy](#groupBy)
+  - [flatMap](#flatmap)
+  - [fork](#fork)
+  - [groupBy](#groupby)
   - [head](#head)
   - [identity](#identity)
-  - [indexBy](#indexBy)
+  - [includes](#includes)
+  - [indexBy](#indexby)
   - [initial](#initial)
   - [insert](#insert)
   - [intersection](#intersection)
-  - [intersectionBy](#intersectionBy)
-  - [intersectionWith](#intersectionWith)
+  - [intersectionBy](#intersectionby)
+  - [intersectionWith](#intersectionwith)
+  - [invert](#invert)
+  - [invertBy](#invertby)
   - [join](#join)
   - [keys](#keys)
   - [last](#last)
   - [map](#map)
-  - [mapEntries](#mapEntries)
-  - [mapObject](#mapObject)
+  - [mapEntries](#mapentries)
+  - [mapObject](#mapobject)
   - [max](#max)
-  - [maxBy](#maxBy)
+  - [maxBy](#maxby)
   - [mean](#mean)
-  - [meanBy](#meanBy)
+  - [meanBy](#meanby)
   - [min](#min)
-  - [minBy](#minBy)
+  - [minBy](#minby)
   - [noop](#noop)
   - [object](#object)
   - [omit](#omit)
-  - [omitBy](#omitBy)
+  - [omitBy](#omitby)
   - [partition](#partition)
   - [pick](#pick)
-  - [pickBy](#pickBy)
+  - [pickBy](#pickby)
   - [pluck](#pluck)
   - [prepend](#prepend)
-  - [promiseAllEntries](#promiseAllEntries)
-  - [promiseAllObject](#promiseAllObject)
+  - [promiseAllEntries](#promiseallentries)
+  - [promiseAllObject](#promiseallobject)
   - [range](#range)
   - [reduce](#reduce)
   - [reject](#reject)
   - [remove](#remove)
   - [repeat](#repeat)
   - [replace](#replace)
+  - [reverse](#reverse)
   - [sel](#sel)
   - [sort](#sort)
-  - [sortBy](#sortBy)
-  - [sortByDesc](#sortByDesc)
-  - [sortDesc](#sortDesc)
+  - [sortBy](#sortby)
+  - [sortByDesc](#sortbydesc)
+  - [sortDesc](#sortdesc)
   - [split](#split)
-  - [splitEvery](#splitEvery)
+  - [splitEvery](#splitevery)
   - [subtract](#subtract)
   - [sum](#sum)
-  - [sumBy](#sumBy)
+  - [sumBy](#sumby)
   - [tail](#tail-rest)
   - [take](#take)
   - [take1](#take1)
-  - [takeAll](#takeAll)
-  - [takeUntil](#takeUntil)
-  - [takeWhile](#takeWhile)
+  - [takeAll](#takeall)
+  - [takeUntil](#takeuntil)
+  - [takeWhile](#takewhile)
   - [times](#times)
-  - [toIter](#toIter)
+  - [toIter](#toiter)
   - [union](#union)
-  - [unionBy](#unionBy)
-  - [unionWith](#unionWith)
+  - [unionBy](#unionby)
+  - [unionWith](#unionwith)
   - [unique](#unique)
-  - [uniqueBy](#uniqueBy)
-  - [uniqueWith](#uniqueWith)
+  - [uniqueBy](#uniqueby)
+  - [uniqueWith](#uniquewith)
   - [unzip](#unzip)
   - [update](#update)
-  - [updateBy](#updateBy)
+  - [updateBy](#updateby)
   - [values](#values)
   - [zip](#zip)
-  - [zipObj](#zipObj)
-  - [zipWith](#zipWith)
+  - [zipObj](#zipobj)
+  - [zipWith](#zipwith)
 - [Predicates](#Predicates)
   - [all](#all)
   - [and](#and)
@@ -120,28 +132,32 @@
   - [either](#either)
   - [equals](#equals)
   - [equals2](#equals2)
-  - [equalsBy](#equalsBy)
-  - [equalsBy2](#equalsBy2)
+  - [equalsBy](#equalsby)
+  - [equalsBy2](#equalsby2)
   - [every](#every)
   - [gt](#gt)
   - [gte](#gte)
   - [has](#has)
-  - [ifElse](#ifElse)
-  - [isArray](#isArray)
-  - [isFunction](#isFunction)
-  - [isIterable](#isIterable)
-  - [isMatch](#isMatch)
-  - [isString](#isString)
-  - [isUndefined](#isUndefined)
+  - [ifElse](#ifelse)
+  - [isArray](#isarray)
+  - [isFunction](#isfunction)
+  - [isIterable](#isiterable)
+  - [isMatch](#ismatch)
+  - [isNil](#isnil)
+  - [isNull](#isnull)
+  - [isObject](#isobject)
+  - [isString](#isstring)
+  - [isUndefined](#isundefined)
   - [lt](#lt)
   - [lte](#lte)
   - [match](#match)
+  - [merge](#merge)
   - [not](#not)
   - [or](#or)
-  - [satisfiesEvery](#satisfiesEvery)
-  - [satisfiesSome](#satisfiesSome)
-  - [selEquals](#selEquals)
-  - [selSatisfies](#selSatisfies)
+  - [satisfiesEvery](#satisfiesevery)
+  - [satisfiesSome](#satisfiessome)
+  - [selEquals](#selequals)
+  - [selSatisfies](#selsatisfies)
   - [some](#some)
   - [unless](#unless)
   - [when](#when)
@@ -158,6 +174,7 @@
   - [L.drop](#L.drop)
   - [L.dropUntil](#L.dropUntil)
   - [L.dropWhile](#L.dropWhile)
+  - [L.each](#L.each)
   - [L.empty](#L.empty)
   - [L.entries](#L.entries)
   - [L.filter](#L.filter)
@@ -217,11 +234,11 @@
   - [C.takeRace](#C.takeRace)
 - [Stoppable](#stoppable)
   - [reduceS, stop](#reduces-stop)
-  - [goS, pipeS, stop, stopIf](#gos,-pipes,-stop,-stopif)
+  - [goS, pipeS, stop, stopIf](#gos-pipes-stop-stopif)
 - [String](#String)
   - [html](#html)
   - [join](#join)
-  - [strMap](#strMap)
+  - [strMap](#strmap)
   - [string](#string)
 
 ## Function
@@ -238,6 +255,32 @@ apply(add, args); // 30
 apply(add)(args); // 30
 ```
 
+### applyEach
+
+- `([f], args) => [f(...args)]`
+- `({k: f}, args) => {k: f(...args)}`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/applyEach.js)
+
+```javascript
+const args = [2, 3, 4];
+const addAll = (a, b, c) => a + b + c;
+const multiplyAll = (a, b, c) => a * b * c;
+
+addAll(...args) // 9
+multiplyAll(...args) // 24
+
+applyEach([addAll, multiplyAll], args) // [9, 24]
+applyEach({ add: addAll, mul: multiplyAll }, args) // { add: 9, mul: 24 }
+
+```
+
+### applyMethod
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/applyMethod.js)
+
+### bindMethod
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/bindMethod.js)
+
+
 ### call
 
 - `(f, ...args) => f(...args)`
@@ -249,19 +292,19 @@ call(add, 10, 20); // 30
 call(add)(10, 20); // 30
 ```
 
-### calls
+### callEach
 
 - `([(a, b) => c, (a, b) => d, ...], a, b) => [c, d, ...]`
 - `([(a, b) => Promise c, (a, b) => Promise d, ...], a, b) => Promise [c, d]`
 - `({ k: (a, b) => c, k2: (a, b) => d }, a, b) => { k: c, k2: d }`
 - `({ k: (a, b) => Promise c, k2: (a, b) => Promise d }, a, b) => Promise { k: c, k2: d }`
-- [source](https://github.com/marpple/FxJS/blob/master/Strict/calls.js)
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/callEach.js)
 
 ```javascript
-calls([(a) => a + 1, (a) => a + 2], 10);
+callEach([(a) => a + 1, (a) => a + 2], 10);
 // [11, 12]
 
-calls(
+callEach(
   {
     a: (a) => a + 1,
     b: (a) => a + 2,
@@ -270,20 +313,23 @@ calls(
 );
 // {a: 11, b: 12}
 
-calls([
+callEach([
   (_) => Promise.resolve(1),
   (_) => Promise.resolve(2),
   (_) => Promise.resolve(3),
 ]).then(log);
 // [1, 2, 3]
 
-calls({
+callEach({
   a: (_) => Promise.resolve(1),
   b: (_) => Promise.resolve(2),
   c: (_) => Promise.resolve(3),
 }).then(log);
 // {a: 1, b: 2, c: 3}
 ```
+
+### callMethod
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/callMethod.js)
 
 ### constant
 
@@ -459,7 +505,7 @@ go(
 
 ### add
 
-- Number => Number => Number
+- `Number => Number => Number`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/add.js)
 
 ```javascript
@@ -494,6 +540,37 @@ sel2("a>b", { b: { c: 20 } });
 // undefined
 ```
 
+### blockUntilSettled
+
+- `f => f`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/blockUntilSettled.js)
+
+```javascript
+// useful for functions to block multiple calls
+
+const callApi = blockUntilSettled(() => {
+  console.log('called!');
+  return delay(100, 5);
+});
+
+(async function () {
+  const p1 = callApi(); // console - called!
+  console.log('after p1'); // console - after p1
+  const p2 = callApi(); // 
+  console.log('after p2'); // console - after p2
+  const p3 = callApi(); // 
+  console.log('after p3'); // console - after p3
+  const [r1, r2, r3] = await Promise.all([p1, p2, p3]);
+
+  const r4 = await callApi(); // console - called!
+
+  console.log(r1, r2, r3, r4); // 5, undefined, undefined, 5
+  
+})();
+
+```
+
+
 ### chunk
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/chunk.js)
@@ -502,6 +579,10 @@ sel2("a>b", { b: { c: 20 } });
 chunk(2, [1, 2, 3, 4, 5]);
 // [[1, 2], [3, 4], [5]]
 ```
+
+### clone
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/clone.js)
 
 ### compact
 
@@ -516,10 +597,10 @@ compact([1, 2, 0, false, true, null]);
 
 ### countBy
 
-- (a => b) => Iterable a => { [b]: n }
-- (a => b) => Iterable Promise a => Promise { [b]: n }
-- (a => Promise b) => Iterable a => Promise { [b]: n }
-- (a => Promise b) => Iterable Promise a => Promise { [b]: n }
+- `(a => b) => Iterable a => { [b]: n }`
+- `(a => b) => Iterable Promise a => Promise { [b]: n }`
+- `(a => Promise b) => Iterable a => Promise { [b]: n }`
+- `(a => Promise b) => Iterable Promise a => Promise { [b]: n }`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/countBy.js)
 
 ```javascript
@@ -529,10 +610,10 @@ countBy((a) => (a % 2 ? "odd" : "even"), [1, 2, 3, 4, 5]);
 
 ### deepFlat
 
-- [[[[a]]]] => [a]
-- Iterable Iterable Iterable ... Iterable a => [a]
-- [Promise [[Promise a]]] => Promise [a]
-- [Promise [[Iterable Promise a]]] => Promise [a]
+- `[[[[a]]]] => [a]`
+- `Iterable Iterable Iterable ... Iterable a => [a]`
+- `[Promise [[Promise a]]] => Promise [a]`
+- `[Promise [[Iterable Promise a]]] => Promise [a]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/deepFlat.js)
 
 ```javascript
@@ -542,7 +623,7 @@ deepFlat([[1, 2, [3, [4, 5, [6], [[7]]]]]]);
 
 ### defaults
 
-- ({}, {}, ..., {}) => {}
+- `({}, {}, ..., {}) => {}`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/defaults.js)
 
 ```javascript
@@ -568,8 +649,8 @@ defaultTo(0, obj.d);
 
 ### delay
 
-- time => a => Promise a
-- (time, a) => Promise a
+- `time => a => Promise a`
+- `(time, a) => Promise a`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/delay.js)
 
 ```javascript
@@ -612,6 +693,15 @@ differenceWith(cmp, l1, l2);
 // [{a: 1}, {a: 2}, {a: 5}]
 ```
 
+### divide
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/divide.js)
+
+```javascript
+divide(4, 2) // 2
+divide(4)(2) // 2
+```
+
 ### drop
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/drop.js)
@@ -650,10 +740,10 @@ dropWhile((a) => a < 3, [1, 2, 3, 4]);
 
 ### each
 
-- (a => b) => Iterable a => [a]
-- (a => b) => Iterable Promise a => Promise [a]
-- (a => Promise b) => Iterable a => Promise [a]
-- (a => Promise b) => Iterable Promise a => Promise [a]
+- `(a => b) => Iterable a => [a]`
+- `(a => b) => Iterable Promise a => Promise [a]`
+- `(a => Promise b) => Iterable a => Promise [a]`
+- `(a => Promise b) => Iterable Promise a => Promise [a]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/each.js)
 
 ```javascript
@@ -666,7 +756,7 @@ go(
 
 ### entries
 
-- { k: v } => [[k, v]]
+- `{ k: v } => [[k, v]]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/entries.js)
 
 ```javascript
@@ -676,12 +766,23 @@ entries({ a: 1, b: 2, c: 3 });
 
 ### extend
 
-- ({}, {}, ..., {}) => {}
+- `({}, {}, ..., {}) => {}`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/extend.js)
 
 ```javascript
 extend({ flavor: "vanilla", sprinkles: "lots" }, { flavor: "chocolate" });
 // {flavor: "chocolate", sprinkles: "lots"}
+
+
+```
+
+### extendRight
+- `({}, {}, ..., {}) => {}`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/extendRight.js)
+
+```javascript
+extendRight({ flavor: "vanilla", sprinkles: "lots" }, { flavor: "chocolate" });
+// {flavor: "vanilla", sprinkles: "lots"}
 ```
 
 ### filter
@@ -716,11 +817,11 @@ filter((a) => Promise.resolve(a % 2), [
 
 ### find
 
-- find = head . L.filter
-- (a => Boolean) => Iterable a => a
-- (a => Promise Boolean) => Iterable a => Promise a
-- (a => Boolean) => Iterable Promise a => Promise a
-- (a => Promise Boolean) => Iterable Promise a => Promise a
+- `find = head . L.filter`
+- `(a => Boolean) => Iterable a => a`
+- `(a => Promise Boolean) => Iterable a => Promise a`
+- `(a => Boolean) => Iterable Promise a => Promise a`
+- `(a => Promise Boolean) => Iterable Promise a => Promise a`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/find.js)
 
 ```javascript
@@ -739,8 +840,8 @@ find(({age}) => age == 23, [
 
 ### findWhere
 
-- {k: v} => Iterable {k: v} => {k: v}
-- {k: v} => Iterable Promise {k: v} => Promise {k: v}
+- `{k: v} => Iterable {k: v} => {k: v}`
+- `{k: v} => Iterable Promise {k: v} => Promise {k: v}`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/findWhere.js)
 
 ```javascript
@@ -765,22 +866,22 @@ findWhere({ name: 'e', age: 23 }, [
 
 ### flat
 
-- (Iterable Iterable a, Number depth) => [a]
-- (Iterable Promise Iterable a, Number depth) => Promise [a]
-- (Iterable Iterable Promise a, Number depth) => Promise [a]
+- `(Iterable Iterable a, Number depth) => [a]`
+- `(Iterable Promise Iterable a, Number depth) => Promise [a]`
+- `(Iterable Iterable Promise a, Number depth) => Promise [a]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/flat.js)
 
 ```javascript
 flat([[1, 2], [3, 4]]);
 // [1, 2, 3, 4]
 
-flat([[1, [2]], [[[3]]]);
+flat([[1, [2]],[[[3]]]]);
 // [1, [2], [[3]]];
 
-flat([[1, [2]], [[[3]]], 2);
+flat([[1, [2]], [[[3]]]], 2);
 // [1, 2, [3]];
 
-flat([[1, [2]], [[[3]]], 3);
+flat([[1, [2]], [[[3]]]], 3);
 // [1, 2, 3];
 
 await flat([Promise.resolve([1, 2]), [Promise.resolve(3), 4]]);
@@ -789,13 +890,13 @@ await flat([Promise.resolve([1, 2]), [Promise.resolve(3), 4]]);
 
 ### flatMap
 
-- flatMap = flat . mapLazy
-- (a => Iterable b) => Iterable a => [b]
-- (a => Iterable b) => Iterable Promise a => Promise [b]
-- (a => Iterable Promise b) => Iterable a => Promise [b]
-- (a => Promise Iterable b) => Iterable Promise a => Promise [b]
-- (a => Promise Iterable Promise b) => Iterable a => Promise [b]
-- (a => Promise Iterable Promise b) => Iterable Promise a => Promise [b]
+- `flatMap = flat . mapLazy`
+- `(a => Iterable b) => Iterable a => [b]`
+- `(a => Iterable b) => Iterable Promise a => Promise [b]`
+- `(a => Iterable Promise b) => Iterable a => Promise [b]`
+- `(a => Promise Iterable b) => Iterable Promise a => Promise [b]`
+- `(a => Promise Iterable Promise b) => Iterable a => Promise [b]`
+- `(a => Promise Iterable Promise b) => Iterable Promise a => Promise [b]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/flatMap.js)
 
 ```javascript
@@ -805,6 +906,10 @@ flatMap((a) => range(a), [1, 2]);
 await flatMap((a) => Promise.resolve(range(a)), [1, 2]);
 // [0, 0, 1]
 ```
+
+### fork
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/fork.js)
 
 ### groupBy
 
@@ -832,6 +937,10 @@ head([1, 2, 3, 4]);
 const identity = (a) => a;
 ```
 
+### includes
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/includes.js)
+
 ### indexBy
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/indexBy.js)
@@ -854,6 +963,24 @@ indexBy((p) => p.id, products);
 ```javascript
 initial([1, 2, 3]);
 // [1, 2]
+```
+
+### insert
+
+- `(Number a, b, Array c) => Array d` 
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/insert.js)
+
+```javascript
+// prepend
+insert(-1, 0, [1, 2, 3]) // [0, 1, 2, 3]
+insert(0, 0, [1, 2, 3]) // [0, 1, 2, 3]
+
+// middle
+insert(2, 2.5, [1, 2, 3]) // [1, 2, 2.5, 3]
+
+// append
+insert(3, 4, [1, 2, 3]) // [1, 2, 3, 4]
+insert(100, 4, [1, 2, 3]) // [1, 2, 3, 4]
 ```
 
 ### intersection
@@ -887,6 +1014,14 @@ const l2 = [{ a: 3 }, { a: 4 }];
 intersectionWith(cmp, l1, l2);
 // [{a: 3}, {a: 4}]
 ```
+
+### invert
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/invert.js)
+
+### invertBy
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/invertBy.js)
 
 ### keys
 
@@ -1010,6 +1145,29 @@ maxBy((a) => a * -1, [1, 3, 7, 4]);
 // 1
 ```
 
+### mean
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/mean.js)
+
+```javascript
+mean([1, 2, 3, 4, 5, 6]) // 3
+mean(L.range(1, 6)) // 3
+await mean(Promise.resolve([1, 2, 3, 4, 5, 6])) // 3
+```
+
+### meanBy
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/meanBy.js)
+
+```javascript
+meanBy(identity, [1, 2, 3, 4, 5, 6]) // 3
+meanBy(
+  sel('age'),
+  [{ age: 10 }, { age: 20 }, { age: 30 }, { age: 40 }, { age: 50 }, { age: 60 }]
+)
+// 35
+```
+
 ### min
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/min.js)
@@ -1051,11 +1209,28 @@ object([
 
 ### omit
 
+- `([], {}) => {}`
+- `(keys, object) => object without input keys`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/omit.js)
 
 ```javascript
 omit(["a, c"], { a: 1, b: 2, c: 3, d: 4 });
 // {b: 2, d: 4}
+```
+
+### omitBy
+
+- `omitBy <-> pickBy`
+- `(f, {}) => {}`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/omitBy.js)
+
+```javascript
+omitBy(([k]) => ['a', 'b'].includes(k), { a: 1, b: 2, c: 3, d: 4 });
+// {b: 2, d: 4}
+
+omitBy(([k, v]) => v % 2 === 0, { a: 1, b: 2, c: 3, d: 4 });
+// {a: 1, c: 3}
+
 ```
 
 ### partition
@@ -1069,11 +1244,26 @@ partition((a) => a % 2, [1, 2, 3, 4, 5]);
 
 ### pick
 
+- `([], {}) => {}`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/pick.js)
 
 ```javascript
 pick(["a, c"], { a: 1, b: 2, c: 3, d: 4 });
 // {a: 1, c: 3}
+```
+
+### pickBy
+
+- `pickBy <-> omitBy`
+- `(f, {}) => {}`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/pickBy.js)
+
+```javascript
+pickBy(([k, v]) => ['a', 'c'].includes(k), { a: 1, b: 2, c: 3, d: 4 });
+// {a: 1, c: 3}
+
+pickBy(([k, v]) => v % 2 === 0, { a: 1, b: 2, c: 3, d: 4 });
+// {b: 2, d: 4}
 ```
 
 ### pluck
@@ -1174,6 +1364,48 @@ reject((a) => Promise.resolve(a % 2), [
 // [2]
 ```
 
+### remove
+
+- `(Number start, Iterable) => Array`
+- `(Number start, Number count, Iterable) => Array`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/remove.js)
+
+```javascript
+// remove with index
+remove(0, [1, 2, 3, 4, 5]) // [1, 2, 3, 4]
+remove(0, L.range(5)) // [1, 2, 3, 4]
+
+// remove with count
+remove(1, 2, [1, 2, 3, 4, 5]) // [0, 3, 4]
+remove(1, 2, L.range(5)) // [0, 3, 4]
+```
+
+### repeat
+
+- `(a, Number size) => [a, a, a, ...a]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/repeat.js)
+
+```javascript
+repeat("hi", 5) // ["hi", "hi", "hi", "hi", "hi"]
+```
+
+### replace
+
+- `(String substr|Regex, String newSubstr, String target) => String`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/replace.js)
+
+```javascript
+// search by string
+replace("foo", "bar", "foo foo foo") // "bar foo foo"
+
+// search by regex
+replace(/foo/g, "bar", "foo foo foo") // "bar bar bar"
+```
+
+### reverse
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/reverse.js)
+
 ### sel
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/sel.js)
@@ -1201,6 +1433,16 @@ reject((a) => Promise.resolve(a % 2), [
 ### splitEvery
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/splitEvery.js)
+
+### subtract
+
+- `(Number, Number) => Number`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/subtract.js)
+
+```javascript
+subtract(4, 1) // 3
+```
+
 
 ### sum
 
@@ -1234,6 +1476,21 @@ reject((a) => Promise.resolve(a % 2), [
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/takeWhile.js)
 
+### times
+
+- `range . map`
+- `(f, Number n) => [f(1), f(2), ...f(n-1)]`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/times.js)
+
+```javascript
+// times(String, 3)
+times(String, 3) // ["0", "1", "2"]
+times(n => n * 2, 5) // [2, 4, 6, 8, 10]
+
+// times(Promise.resolve.bind(Promise), 3)
+await times(n => Promise.resolve(n), 3) // [0, 1, 2]
+```
+
 ### toIter
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/toIter.js)
@@ -1245,6 +1502,10 @@ reject((a) => Promise.resolve(a % 2), [
 ### unionBy
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/unionBy.js)
+
+### unionWith
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/unionWith.js)
 
 ### unique
 
@@ -1278,9 +1539,21 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 // [{name: 'aa'}, {name: 'bb'}, {name: 'cc'}]
 ```
 
+### uniqueWith
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/uniqueWith.js)
+
 ### unzip
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/unzip.js)
+
+### update
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/update.js)
+
+### updateBy
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/updateBy.js)
 
 ### values
 
@@ -1299,6 +1572,30 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/zipWith.js)
 
 ## Predicates
+
+### all
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/all.js)
+
+### and
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/and.js)
+
+### any
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/any.js)
+
+### both
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/both.js)
+
+### cond
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/cond.js)
+
+### either
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/either.js)
 
 ### equals
 
@@ -1320,9 +1617,21 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/every.js)
 
+### gt
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/gt.js)
+
+### gte
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/gte.js)
+
 ### has
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/has.js)
+
+### ifElse
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/ifElse.js)
 
 ### isArray
 
@@ -1340,6 +1649,24 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/isMatch.js)
 
+### isNil
+- `a => b`
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isNil.js)
+
+```javascript
+isNil(undefined) // true
+isNil(null) // true
+isNil(false) // false
+isNil([]) // false
+isNil('') // false
+```
+
+### isNull
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isNull.js)
+
+### isObject
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/isObject.js)
+
 ### isString
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/isString.js)
@@ -1348,13 +1675,57 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/isUndefined.js)
 
-### match
+### lt
 
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/lt.js)
+
+### lte
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/lte.js)
+
+### match
+  
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/match.js)
+
+### merge
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/merge.js)
+
+### not
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/not.js)
+
+### or
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/or.js)
+
+### satisfiesEvery
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/satisfiesEvery.js)
+
+### satisfiesSome
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/satisfiesSome.js)
+
+### selEquals
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/selEquals.js)
+
+### selSatisfies
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/selSatisfies.js)
 
 ### some
 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/some.js)
+
+### unless
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/unless.js)
+
+### when
+
+- [source](https://github.com/marpple/FxJS/blob/master/Strict/when.js)
 
 ## Lazy
 
@@ -1406,6 +1777,10 @@ uniqueBy((u) => u.name.toUpperCase(), users);
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/dropWhileL.js)
 
+### L.each
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/eachL.js)
+
 ### L.empty
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/emptyL.js)
@@ -1448,6 +1823,10 @@ await go(
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/flatMapL.js)
 
+### L.insert
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/insertL.js)
+
 ### L.intersection
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/intersectionL.js)
@@ -1480,6 +1859,10 @@ await go(
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/mapEntriesL.js)
 
+### L.prepend
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/prependL.js)
+
 ### L.range
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/rangeL.js)
@@ -1488,9 +1871,21 @@ await go(
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/rejectL.js)
 
+### L.remove
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/removeL.js)
+
+### L.repeat
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/repeatL.js)
+
 ### L.reverse
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/reverseL.js)
+
+### L.slice
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/sliceL.js)
 
 ### L.splitEvery
 
@@ -1508,6 +1903,10 @@ await go(
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/takeWhileL.js)
 
+### L.times
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/timesL.js)
+
 ### L.union
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionL.js)
@@ -1515,6 +1914,10 @@ await go(
 ### L.unionBy
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionByL.js)
+
+### L.unionWith
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/unionWithL.js)
 
 ### L.unique
 
@@ -1524,9 +1927,21 @@ await go(
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueByL.js)
 
+### L.uniqueWith
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/uniqueWithL.js)
+
 ### L.values
 
 - [source](https://github.com/marpple/FxJS/blob/master/Lazy/valuesL.js)
+
+### L.update
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/updateL.js)
+
+### L.updateBy
+
+- [source](https://github.com/marpple/FxJS/blob/master/Lazy/updateByL.js)
 
 ### L.zipWithIndex
 
