@@ -4,6 +4,7 @@ import * as L from "../Lazy/index.js";
 import {
   add,
   both,
+  blockUntil,
   callEach,
   chunk,
   clone,
@@ -89,6 +90,7 @@ import {
   takeAll,
   takeUntil,
   takeWhile,
+  throttle,
   times,
   toIter,
   union,
@@ -2683,4 +2685,44 @@ import {
       expect(call).to.eql(2);
     });
   });
+
+  describe("throttle", () => {
+    it("reject follow calls", async () => {
+      let call = 0;
+      const add1 = () =>
+        new Promise((res) => {
+          call += 1;
+          res();
+        });
+
+      const newAdd1 = throttle(add1, 1100);
+
+      await newAdd1();
+      await delay(500, null);
+      await newAdd1();
+      await delay(400, null);
+      await newAdd1();
+
+      expect(call).to.eql(1);
+    });
+
+    it("Call next after delay", async () => {
+      let call = 0;
+      const add1 = () =>
+        new Promise((res) => {
+          call += 1;
+          res();
+        });
+
+      const newAdd1 = throttle(add1, 1100);
+
+      await newAdd1();
+      await delay(500, null);
+      await newAdd1();
+      await delay(1000, null)
+      await newAdd1();
+
+      expect(call).to.eql(2);
+    })
+  })
 })();

@@ -275,9 +275,19 @@ applyEach({ add: addAll, mul: multiplyAll }, args) // { add: 9, mul: 24 }
 ```
 
 ### applyMethod
+
+- `(String k, { k: v }, args) => v(...args)`
+- `String k => ({ k: v }, args) => v(...args) `  
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/applyMethod.js)
 
+```javascript
+applyMethod('add', { add: (a, b, c = 0) => a + b + c }, [1, 2]) // 3
+applyMethod('add', { add: (a, b, c = 0) => a + b + c }, [1, 2, 3]) // 6
+applyMethod('add')({ add: (a, b, c = 0) => a + b + c }, [1, 2, 3]) // 6
+```
+
 ### bindMethod
+
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/bindMethod.js)
 
 
@@ -329,6 +339,7 @@ callEach({
 ```
 
 ### callMethod
+
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/callMethod.js)
 
 ### constant
@@ -380,6 +391,7 @@ log(add2(1, 2, 3)); // 6
 
 ### debounce
 
+- `(f, time) => (...args) => `
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/debounce.js)
 
 ### go
@@ -421,6 +433,7 @@ pb.then(log); // 11
 
 ### juxt
 
+- `(f, f2, f3, ...) => (...args) => [f(...args), f2(...args), f3(...args), ...]`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/juxt.js)
 
 ```javascript
@@ -441,6 +454,7 @@ log(a(false)); // true
 
 ### once
 
+- `f => f`
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/once.js)
 
 ```javascript
@@ -499,6 +513,7 @@ go(
 
 ### throttle
 
+- (f, time) => 
 - [source](https://github.com/marpple/FxJS/blob/master/Strict/throttle.js)
 
 ## Strict

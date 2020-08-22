@@ -8,6 +8,7 @@ export { default as applyEach } from "./applyEach.js";
 export { default as applyMethod } from "./applyMethod.js";
 export { default as baseSel } from "./baseSel.js";
 export { default as bindMethod } from "./bindMethod.js";
+export { default as blockUntil } from "./blockUntil.js";
 export { default as both } from "./both.js";
 export { default as call } from "./call.js";
 export { default as callEach } from "./callEach.js";
