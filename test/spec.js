@@ -51,6 +51,7 @@ import {
   invertBy,
   isEmpty,
   join,
+  last,
   lt,
   map,
   mapObject,
@@ -2722,6 +2723,22 @@ import {
       await newAdd1();
 
       expect(call).to.eql(2);
+    });
+  });
+
+  describe("last", () => {
+    it("Returns last element of list that was given first arity", () => {
+      expect(last([1, 2, 3])).to.eql(3);
+      expect(last("ABC")).to.eql("C");
+    });
+
+    it("Evaluates iterable completely and returns last item", () => {
+      const iter = L.range(10);
+      expect(last(iter)).to.eql(9);
+    });
+
+    it("Resolves them if some items are Promise", async () => {
+      expect(await last([1, 2, Promise.resolve(3)])).to.eql(3);
     });
   });
 })();
