@@ -2719,10 +2719,10 @@ import {
       await newAdd1();
       await delay(500, null);
       await newAdd1();
-      await delay(1000, null)
+      await delay(1000, null);
       await newAdd1();
 
       expect(call).to.eql(2);
-    })
-  })
+    });
+  });
 })();

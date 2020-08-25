@@ -24,7 +24,10 @@ export { default as curry2 } from "./Strict/curry2.js";
 export { default as curry3 } from "./Strict/curry3.js";
 export { default as curryN } from "./Strict/curryN.js";
 export { default as debounce } from "./Strict/debounce.js";
-export { default as deepFlat, default as deepFlatten } from "./Strict/deepFlat.js";
+export {
+  default as deepFlat,
+  default as deepFlatten,
+} from "./Strict/deepFlat.js";
 export { default as defaults } from "./Strict/defaults.js";
 export { default as defaultTo } from "./Strict/defaultTo.js";
 export { default as delay } from "./Strict/delay.js";
@@ -98,7 +101,10 @@ export { default as log } from "./Strict/log.js";
 export { default as lt } from "./Strict/lt.js";
 export { default as lte } from "./Strict/lte.js";
 export { default as map } from "./Strict/map.js";
-export { default as mapEntries, default as entriesMap } from "./Strict/mapEntries.js";
+export {
+  default as mapEntries,
+  default as entriesMap,
+} from "./Strict/mapEntries.js";
 export { default as mapObject } from "./Strict/mapObject.js";
 export { default as match } from "./Strict/match.js";
 export { default as max } from "./Strict/max.js";
@@ -175,7 +181,10 @@ export { default as unionBy } from "./Strict/unionBy.js";
 export { default as unionWith } from "./Strict/unionWith.js";
 export { default as unique, default as uniq } from "./Strict/unique.js";
 export { default as uniqueBy, default as uniqBy } from "./Strict/uniqueBy.js";
-export { default as uniqueWith, default as uniqWith } from "./Strict/uniqueWith.js";
+export {
+  default as uniqueWith,
+  default as uniqWith,
+} from "./Strict/uniqueWith.js";
 export { default as unless } from "./Strict/unless.js";
 export { default as unzip } from "./Strict/unzip.js";
 export { default as update } from "./Strict/update.js";
@@ -198,7 +207,10 @@ export { default as headC } from "./Concurrency/headC.js";
 export { default as juxtC } from "./Concurrency/juxtC.js";
 export { default as mapC } from "./Concurrency/mapC.js";
 export { default as mapEntriesC } from "./Concurrency/mapEntriesC.js";
-export { default as objectC, default as fromEntriesC } from "./Concurrency/objectC.js";
+export {
+  default as objectC,
+  default as fromEntriesC,
+} from "./Concurrency/objectC.js";
 export { default as raceC } from "./Concurrency/raceC.js";
 export { default as reduceC } from "./Concurrency/reduceC.js";
 export { default as someC } from "./Concurrency/someC.js";
@@ -213,7 +225,10 @@ export { default as chunkL } from "./Lazy/chunkL.js";
 export { default as compactL } from "./Lazy/compactL.js";
 export { default as concatL } from "./Lazy/concatL.js";
 export { default as constantL } from "./Lazy/constantL.js";
-export { default as deepFlatL, default as deepFlattenL } from "./Lazy/deepFlatL.js";
+export {
+  default as deepFlatL,
+  default as deepFlattenL,
+} from "./Lazy/deepFlatL.js";
 export { default as differenceByL } from "./Lazy/differenceByL.js";
 export { default as differenceL } from "./Lazy/differenceL.js";
 export { default as differenceWithL } from "./Lazy/differenceWithL.js";
@@ -252,7 +267,10 @@ export { default as unionL } from "./Lazy/unionL.js";
 export { default as unionWithL } from "./Lazy/unionWithL.js";
 export { default as uniqueByL, default as uniqByL } from "./Lazy/uniqueByL.js";
 export { default as uniqueL, default as uniqL } from "./Lazy/uniqueL.js";
-export { default as uniqueWithL, default as uniqWithL } from "./Lazy/uniqueWithL.js";
+export {
+  default as uniqueWithL,
+  default as uniqWithL,
+} from "./Lazy/uniqueWithL.js";
 export { default as updateByL, default as adjustL } from "./Lazy/updateByL.js";
 export { default as updateL } from "./Lazy/updateL.js";
 export { default as valuesL } from "./Lazy/valuesL.js";
@@ -262,4 +280,3 @@ export {
   default as indexValuesL,
   default as ippL,
 } from "./Lazy/zipWithIndexL.js";
-
