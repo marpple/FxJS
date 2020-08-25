@@ -3,8 +3,8 @@ import * as C from "../Concurrency/index.js";
 import * as L from "../Lazy/index.js";
 import {
   add,
+  blockUntilSettled,
   both,
-  blockUntil,
   callEach,
   chunk,
   clone,
@@ -56,7 +56,6 @@ import {
   mapObject,
   mean,
   merge,
-  blockUntilSettled,
   omit,
   omitBy,
   partition,
