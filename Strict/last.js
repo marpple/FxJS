@@ -1,3 +1,9 @@
-export default function last(arr) {
-  return arr[arr.length - 1];
+import { reduce } from "./index.js";
+import isArray from "./isArray.js";
+
+export default function last(iter) {
+  if (isArray(iter)) {
+    return iter[iter.length - 1];
+  }
+  return reduce((_, a) => a, iter);
 }
