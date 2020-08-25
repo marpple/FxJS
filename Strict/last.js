@@ -1,4 +1,4 @@
-import { reduce } from "./index.js";
+import reduce from "./reduce.js";
 import isArray from "./isArray.js";
 
 export default function last(iter) {
