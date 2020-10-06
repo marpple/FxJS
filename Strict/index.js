@@ -109,7 +109,7 @@ export { default as merge } from "./merge.js";
 export { default as min } from "./min.js";
 export { default as minBy } from "./minBy.js";
 export { default as multiply } from "./multiply.js";
-export { default as negate } from "./negate.js";
+export { default as negate, default as complement } from "./negate.js";
 export { default as blockUntilSettled } from "./blockUntilSettled.js";
 export { default as none } from "./none.js";
 export { default as noop } from "./noop.js";
