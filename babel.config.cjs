@@ -1,23 +1,22 @@
-const is_cjs = process.env.BABEL_ENV === "cjs";
-const target = is_cjs ? { node: 6 } : { ie: 11 };
-const presets = [
-  [
-    "@babel/env",
-    {
-      targets: target,
-      useBuiltIns: "usage",
-      corejs: 3,
-    },
-  ],
-];
-const plugins = is_cjs
-  ? [
-      "@babel/plugin-proposal-export-namespace-from",
-      "transform-es2015-modules-simple-commonjs",
-    ]
-  : [];
+module.exports = (api) => {
+  const BABEL_ENV = api.env();
+  const targets =
+    BABEL_ENV === "cjs"
+      ? { node: 6 }
+      : BABEL_ENV === "modern"
+      ? "last 2 chrome versions"
+      : { ie: 11 };
 
-module.exports = {
-  presets,
-  plugins,
+  return {
+    presets: [
+      [
+        "@babel/preset-env",
+        {
+          targets,
+          useBuiltIns: "usage",
+          corejs: 3,
+        },
+      ],
+    ],
+  };
 };

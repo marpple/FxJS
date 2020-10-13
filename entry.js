@@ -1,4 +1,3 @@
-import * as L from "./Lazy/index.js";
-import * as C from "./Concurrency/index.js";
-export { L, C };
+export * as L from "./Lazy/index.js";
+export * as C from "./Concurrency/index.js";
 export * from "./index.js";

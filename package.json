@@ -17,9 +17,10 @@
     "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.cjs --copy-files ",
     "transpile": "npm run transpile:internal && npm run transpile:strict && npm run transpile:lazy && npm run transpile:concurrency && npm run transpile:index",
     "generate:index": "node index_generator.js",
-    "build": "npm run generate:index && npm run transpile && npm run build-modern && npm run build-legacy",
-    "build-modern": "webpack --config webpack.config.modern.cjs --env.NODE_ENV=production",
-    "build-legacy": "webpack --config webpack.config.legacy.cjs --env.NODE_ENV=production",
+    "build": "npm run generate:index && npm run transpile && npm run bundle",
+    "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
+    "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
+    "bundle": "npm run bundle:modern && npm run bundle:legacy",
     "test": "mocha 'test/spec.js' --timeout 10000 --require esm"
   },
   "files": [
@@ -59,19 +60,16 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-proposal-export-namespace-from": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
-    "babel-plugin-transform-es2015-modules-simple-commonjs": "^0.3.0",
     "chai": "^4.1.2",
     "esm": "^3.2.25",
     "mocha": "^7.2.0",
     "prettier": "2.0.5",
-    "terser-webpack-plugin": "^2.3.7",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.44.0",
+    "terser-webpack-plugin": "^2.3.8",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "directories": {

@@ -1,10 +1,14 @@
-import { createRequire } from "module";
-import * as esm from "../index.js";
-const require = createRequire(import.meta.url);
-const cjs = require("../index.cjs");
+/*  node version < 14.13 */
+// import { createRequire } from "module";
+// const require = createRequire(import.meta.url);
+// const cjs = require("../index.cjs");
+// import * as esm from "../index.js";
+// const { go, filter, range, nop: nop_esm, add: add_esm } = esm;
+// const { map, reduce, nop: nop_cjs, add: add_cjs } = cjs;
 
-const { go, filter, range, nop: nop_esm, add: add_esm } = esm;
-const { map, reduce, nop: nop_cjs, add: add_cjs } = cjs;
+/*  node version >= 14.13 */
+import { go, filter, range, nop as nop_esm, add as add_esm } from "../index.js";
+import { map, reduce, nop as nop_cjs, add as add_cjs } from "../index.cjs";
 
 console.log(nop_cjs === nop_esm);
 console.log(add_cjs === add_esm);
