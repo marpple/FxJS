@@ -115,7 +115,7 @@ export { default as merge } from "./Strict/merge.js";
 export { default as min } from "./Strict/min.js";
 export { default as minBy } from "./Strict/minBy.js";
 export { default as multiply } from "./Strict/multiply.js";
-export { default as negate } from "./Strict/negate.js";
+export { default as negate, default as complement } from "./Strict/negate.js";
 export { default as blockUntilSettled } from "./Strict/blockUntilSettled.js";
 export { default as none } from "./Strict/none.js";
 export { default as noop } from "./Strict/noop.js";
