@@ -7,6 +7,20 @@ module.exports = (api) => {
       ? "last 2 chrome versions"
       : { ie: 11 };
 
+  const plugins =
+    BABEL_ENV === "cjs"
+      ? [
+          [
+            "transform-require-extensions",
+            {
+              extensions: {
+                ".js": ".cjs",
+              },
+            },
+          ],
+        ]
+      : [];
+
   return {
     presets: [
       [
@@ -18,5 +32,6 @@ module.exports = (api) => {
         },
       ],
     ],
+    plugins,
   };
 };
