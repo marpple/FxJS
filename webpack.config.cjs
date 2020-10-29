@@ -17,6 +17,12 @@ module.exports = () => {
     module: {
       rules: [
         {
+          test: /\.m?js/,
+          resolve: {
+            fullySpecified: false,
+          },
+        },
+        {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
@@ -28,6 +34,9 @@ module.exports = () => {
     optimization: {
       minimize: true,
       minimizer: [new TerserPlugin()],
+    },
+    watchOptions: {
+      ignored: ["node_modules/**"],
     },
   };
 };

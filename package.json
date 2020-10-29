@@ -21,7 +21,7 @@
     "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
-    "test": "mocha 'test/spec.js' --timeout 10000 --require esm"
+    "test": "mocha 'test/spec.js' --timeout 10000"
   },
   "files": [
     ".internal",
@@ -60,17 +60,16 @@
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "babel-loader": "^8.1.0",
-    "chai": "^4.1.2",
-    "esm": "^3.2.25",
-    "mocha": "^7.2.0",
-    "prettier": "2.0.5",
-    "terser-webpack-plugin": "^2.3.8",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0",
+    "prettier": "^2.1.2",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^5.3.1",
+    "webpack-cli": "^4.1.0"
   },
   "directories": {
     "test": "test"

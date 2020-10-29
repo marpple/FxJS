@@ -1,4 +1,4 @@
-import { expect } from "chai";
+import chai from "chai";
 import * as C from "../Concurrency/index.js";
 import * as L from "../Lazy/index.js";
 import {
@@ -105,6 +105,8 @@ import {
   zipObj,
   zipWith,
 } from "../Strict/index.js";
+
+const { expect } = chai;
 
 (function () {
   describe("curry", function () {
