@@ -29,8 +29,8 @@
     "Concurrency",
     "Lazy",
     "Strict",
-    "dist",
-    "index.js"
+    "index.js",
+    "index.cjs"
   ],
   "repository": {
     "type": "git",
