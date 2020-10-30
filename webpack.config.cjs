@@ -35,8 +35,5 @@ module.exports = () => {
       minimize: true,
       minimizer: [new TerserPlugin()],
     },
-    watchOptions: {
-      ignored: ["node_modules/**"],
-    },
   };
 };

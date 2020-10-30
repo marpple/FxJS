@@ -4,7 +4,7 @@ module.exports = (api) => {
     BABEL_ENV === "cjs"
       ? { node: 6 }
       : BABEL_ENV === "modern"
-      ? "last 2 chrome versions"
+      ? ">= 2% and last 2 versions"
       : { ie: 11 };
 
   const plugins =
