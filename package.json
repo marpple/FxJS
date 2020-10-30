@@ -17,10 +17,11 @@
     "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.cjs --copy-files ",
     "transpile": "npm run transpile:internal && npm run transpile:strict && npm run transpile:lazy && npm run transpile:concurrency && npm run transpile:index",
     "generate:index": "node index_generator.js",
-    "build": "npm run generate:index && npm run transpile && npm run bundle",
     "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
+    "build": "npm run generate:index && npm run transpile && npm run bundle",
+    "deploy": "npm run build && np",
     "test": "mocha 'test/spec.js' --timeout 10000"
   },
   "files": [
@@ -69,7 +70,7 @@
     "mocha": "^8.2.0",
     "prettier": "^2.1.2",
     "terser-webpack-plugin": "^5.0.3",
-    "webpack": "^5.3.1",
+    "webpack": "^5.3.2",
     "webpack-cli": "^4.1.0"
   },
   "directories": {
