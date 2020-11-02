@@ -64,7 +64,7 @@
     "transpile-mjs:strict": "BABEL_ENV=mjs babel Strict --out-dir Strict --copy-files --out-file-extension .mjs",
     "transpile-mjs:lazy": "BABEL_ENV=mjs babel Lazy --out-dir Lazy --copy-files --out-file-extension .mjs",
     "transpile-mjs:concurrency": "BABEL_ENV=mjs babel Concurrency --out-dir Concurrency --copy-files --out-file-extension .mjs",
-    "transpile-mjs:index": "BABEL_ENV=mjs babel index.js --out-file index.mjs --copy-files",
+    "transpile-mjs:index": "BABEL_ENV=mjs babel index.js --out-file index.mjs --copy-files && node index_transform.js",
     "transpile-mjs": "npm run transpile-mjs:internal && npm run transpile-mjs:strict && npm run transpile-mjs:lazy && npm run transpile-mjs:concurrency && npm run transpile-mjs:index",
     "transpile-cjs:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal --out-file-extension .js",
     "transpile-cjs:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict --out-file-extension .js",
@@ -87,7 +87,7 @@
     "Lazy",
     "Strict",
     "index.js",
-    "index.cjs"
+    "index.mjs"
   ],
   "repository": {
     "type": "git",
