@@ -3,4 +3,4 @@
 .code
 .idea
 
-*.mjs
+/module
