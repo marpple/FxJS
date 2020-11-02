@@ -2,25 +2,82 @@
   "name": "fxjs",
   "version": "0.17.2",
   "description": "Functional Extensions for modern Javascript",
-  "main": "index.cjs",
+  "main": "index.js",
   "exports": {
-    "import": "./index.js",
-    "require": "./index.cjs"
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./index": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./index.js": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./.internal": {
+      "import": "./.internal/index.mjs",
+      "require": "./.internal/index.js"
+    },
+    "./.internal/*.js": {
+      "require": "./.internal/*.js"
+    },
+    "./.internal/*": {
+      "require": "./.internal/*.js"
+    },
+    "./Strict": {
+      "import": "./Strict/index.mjs",
+      "require": "./Strict/index.js"
+    },
+    "./Strict/*.js": {
+      "require": "./Strict/*.js"
+    },
+    "./Strict/*": {
+      "require": "./Strict/*.js"
+    },
+    "./Lazy": {
+      "import": "./Lazy/index.mjs",
+      "require": "./Lazy/index.js"
+    },
+    "./Lazy/*.js": {
+      "require": "./Lazy/*.js"
+    },
+    "./Lazy/*": {
+      "require": "./Lazy/*.js"
+    },
+    "./Concurrency": {
+      "import": "./Concurrency/index.mjs",
+      "require": "./Concurrency/index.js"
+    },
+    "./Concurrency/*.js": {
+      "require": "./Concurrency/*.js"
+    },
+    "./Concurrency/*": {
+      "require": "./Concurrency/*.js"
+    }
   },
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "transpile:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal --copy-files --out-file-extension .cjs",
-    "transpile:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict --copy-files --out-file-extension .cjs",
-    "transpile:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy --copy-files --out-file-extension .cjs",
-    "transpile:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency --copy-files --out-file-extension .cjs",
-    "transpile:index": "BABEL_ENV=cjs babel index.js --out-file index.cjs --copy-files ",
-    "transpile": "npm run transpile:internal && npm run transpile:strict && npm run transpile:lazy && npm run transpile:concurrency && npm run transpile:index",
+    "transpile-mjs:internal": "BABEL_ENV=mjs babel .internal --out-dir .internal --copy-files --out-file-extension .mjs",
+    "transpile-mjs:strict": "BABEL_ENV=mjs babel Strict --out-dir Strict --copy-files --out-file-extension .mjs",
+    "transpile-mjs:lazy": "BABEL_ENV=mjs babel Lazy --out-dir Lazy --copy-files --out-file-extension .mjs",
+    "transpile-mjs:concurrency": "BABEL_ENV=mjs babel Concurrency --out-dir Concurrency --copy-files --out-file-extension .mjs",
+    "transpile-mjs:index": "BABEL_ENV=mjs babel index.js --out-file index.mjs --copy-files",
+    "transpile-mjs": "npm run transpile-mjs:internal && npm run transpile-mjs:strict && npm run transpile-mjs:lazy && npm run transpile-mjs:concurrency && npm run transpile-mjs:index",
+    "transpile-cjs:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal --out-file-extension .js",
+    "transpile-cjs:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict --out-file-extension .js",
+    "transpile-cjs:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy --out-file-extension .js",
+    "transpile-cjs:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency --out-file-extension .js",
+    "transpile-cjs:index": "BABEL_ENV=cjs babel index.js --out-file index.js",
+    "transpile-cjs": "npm run transpile-cjs:internal && npm run transpile-cjs:strict && npm run transpile-cjs:lazy && npm run transpile-cjs:concurrency && npm run transpile-cjs:index",
+    "transpile": "npm run transpile-mjs && npm run transpile-cjs",
     "generate:index": "node index_generator.js",
     "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
-    "build": "npm run generate:index && npm run transpile && npm run bundle",
+    "build": "npm run generate:index && npm run bundle && npm run transpile",
     "deploy": "npm run build && np",
     "test": "mocha 'test/spec.js' --timeout 10000"
   },
@@ -65,6 +122,7 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-transform-import-extension": "^1.0.3",
     "babel-plugin-transform-require-extensions": "^2.0.1",
     "chai": "^4.2.0",
     "mocha": "^8.2.0",

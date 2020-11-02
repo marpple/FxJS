@@ -3,8 +3,4 @@
 .code
 .idea
 
-/.internal/*.cjs
-/Strict/*.cjs
-/Lazy/*.cjs
-/Concurrency/*.cjs
-/index.cjs
+*.mjs
