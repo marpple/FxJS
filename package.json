@@ -87,7 +87,7 @@
     "fp",
     "fxjs"
   ],
-  "umd": "dist/",
+  "unpkg": "dist/",
   "jsdelivr": "dist/",
   "np": {
     "yarn": false
