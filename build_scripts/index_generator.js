@@ -1,6 +1,6 @@
 import fs from "fs";
 import readline from "readline";
-import { go, pipe, split, last } from "./Strict/index.js";
+import { go, pipe, split, last } from "../Strict/index.js";
 
 const outputStream = fs.createWriteStream("./index.js");
 

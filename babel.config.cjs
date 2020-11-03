@@ -9,7 +9,9 @@ module.exports = (api) => {
       ? ">= 2% and last 2 versions"
       : { ie: 11 };
   const plugins =
-    BABEL_ENV === "mjs" ? ["./transform_import_extension.cjs"] : [];
+    BABEL_ENV === "mjs"
+      ? ["./build_scripts/transform_import_extension.cjs"]
+      : [];
   return {
     presets: [
       [

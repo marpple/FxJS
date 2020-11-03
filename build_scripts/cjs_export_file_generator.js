@@ -11,7 +11,7 @@ import {
   reduce,
   takeAllC,
   zipL,
-} from "./index.js";
+} from "../index.js";
 
 const readFile = (path, encoding = "utf-8") =>
   new Promise((resolve, reject) => {

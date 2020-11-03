@@ -7,8 +7,8 @@
   "module": "mjs/index.js",
   "sideEffects": false,
   "scripts": {
-    "generate:index": "node index_generator.js",
-    "generate:cjs-export-files": "node cjs_export_file_generator.js",
+    "generate:index": "node build_scripts/index_generator.js",
+    "generate:cjs-export-files": "node build_scripts/cjs_export_file_generator.js",
     "transpile-mjs:internal": "BABEL_ENV=mjs babel .internal --out-dir mjs/.internal --copy-files",
     "transpile-mjs:strict": "BABEL_ENV=mjs babel Strict --out-dir mjs/Strict --copy-files",
     "transpile-mjs:lazy": "BABEL_ENV=mjs babel Lazy --out-dir mjs/Lazy --copy-files",
