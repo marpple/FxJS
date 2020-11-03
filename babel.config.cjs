@@ -8,6 +8,8 @@ module.exports = (api) => {
       : BABEL_ENV === "modern"
       ? ">= 2% and last 2 versions"
       : { ie: 11 };
+  const plugins =
+    BABEL_ENV === "mjs" ? ["./transform_import_extension.cjs"] : [];
   return {
     presets: [
       [
@@ -20,5 +22,6 @@ module.exports = (api) => {
         },
       ],
     ],
+    plugins,
   };
 };
