@@ -7,7 +7,7 @@
 ![npm](https://img.shields.io/npm/dt/fxjs)
 ![NPM](https://img.shields.io/npm/l/fxjs)
 
-FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니다. Iterable, Iterator, Generator, Promise를 다룹니다.
+FxJS는 ECMAScript 6 언어의 Iterable / Iterator, Generator, Promise를 기반으로 작성된 함수형 자바스크립트 라이브러리입니다.
 
 - [Getting Started](#Getting-Started)
   - [Installation](#Installation)
@@ -26,7 +26,7 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
   - [Concurrency](https://github.com/marpple/FxJS/blob/master/API.md#concurrency)
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
-- [Extention Libraries](#Extention-Libraries)
+- [Extension Libraries](#Extension-Libraries)
   - [FxSQL](https://github.com/marpple/FxSQL)
   - [FxDOM](https://github.com/marpple/FxDOM)
   - [FxContrib](https://github.com/marpple/FxContrib)
@@ -34,123 +34,92 @@ FxJS는 ECMAScript 6 기반의 함수형 프로그래밍 라이브러리입니�
 ## Getting Started
 
 ### Installation
+#### In the browser environment
+- Modern Browser (>= 2% and last 2 versions)
+  ```html
+  <script src="https://unpkg.com/fxjs/dist/fx.js"></script>
+  ```
+- Legacy Browser (IE11)
+  ```html
+  <script src="https://unpkg.com/fxjs/dist/fx.es5.js"></script>
+  ```
+- Usage
+  ```html
+  <script>
+  const { L, C } = window._;
+  _.go(
+    [1, 2, 3],
+    L.map(a => a * a),
+    L.map(_.delay(300)),
+    C.takeAll,
+    _.reduce(_.add),
+    console.log
+  );
+  // 약 300ms 후에 14 출력
+  </script>
+  ```
+  **주의: 브라우저에서 `fx.js` 스크립트 파일이 로드되면 `_`가 전역 변수로 사용됩니다.**
 
-#### In Modern Browsers Supporting ES6
-
-`fx.js`는 ECMAScript Module로 작성된 FxJS를 브라우저에서 실행할 수 있는 하나의 스크립트 파일로 번들링한 것입니다.
-
-**주의: `fx.js`는 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
-
-- [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
-- [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
-- [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
-
-```html
-<script src="https://unpkg.com/fxjs/dist/fx.min.js"></script>
-```
-
-```javascript
-const { map, filter, reduce, L, C } = _;
-
-map((a) => a + 1, [1, 2, 3]);
-// [2, 3, 4];
-```
-
-#### In Legacy ES5 Browsers
-
-`fx.es5.js`는 **IE11** 브라우저를 타겟으로 FxJS를 빌드한 스크립트 파일입니다.
-
-**주의: `fx.js`와 마찬가지로, `fx.es5.js`역시 window 객체의 `fx`, `_`, `L`, `C` property를 namespace로 사용합니다.**
-
-- [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
-- [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
-- [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
-
-```html
-<script src="https://unpkg.com/fxjs/dist/fx.es5.min.js"></script>
-```
-
-```javascript
-_.reduce(
-  (a, b) => a + b,
-  L.map((a) => a + 1, [1, 2, 3])
-);
-// 9;
-```
-
-#### In Node.js
-
-FxJS는 ECMAScript Module으로 개발되고 있습니다.
-하지만 `fxjs`패키지에 배포하는 파일들은 **Node.js 6**버전을 target으로 변환된 CommonJS Module입니다.
+#### In the node.js environment
+FxJS는 CommonJS와 ES6 Module을 함께 지원하는 [Dual Module Package](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_dual_commonjs_es_module_packages) 입니다.
+FxJS 패키지의 두 가지 모듈 형식 중에서 commonjs는` node.js 6`버전 이상 부터 지원하며, ESM은 `node.js 12`버전 이상 부터 사용가능 합니다.
 
 ```
 npm install fxjs
 ```
-
+- CommonJS (>= node v6)
+  ```javascript
+  const FxJS = require("fxjs");
+  const _ = require("fxjs/Strict");
+  const L = require("fxjs/Lazy");
+  const C = require("fxjs/Concurrency");
+  
+  // fxjs의 default export module 객체는 Lazy, Concurrency를 포함한 모든 함수를 가지고 있습니다.
+  const { reduce, mapL, takeAllC } = FxJS;
+  
+  // 함수를 개별적으로 가져올 수도 있습니다.
+  const rangeL = require("fxjs/Lazy/rangeL");
+  _.go(
+    rangeL(1, 4),
+    L.map(a => a * a),
+    L.map(_.delay(300)),
+    C.takeAll,
+    _.reduce(_.add),
+    console.log
+  );
+  ```
+- ES6 Module (>= node v12)
+  ```javascript
+  import { add, delay, go, reduce, rangeL } from "fxjs";
+  import * as L from "fxjs/Lazy";
+  import * as C from "fxjs/Concurrency";
+  
+  go(
+    rangeL(1, 4),
+    L.map(a => a * a),
+    L.map(delay(300)),
+    C.takeAll,
+    reduce(add),
+    console.log
+  );
+  ```
+#### Dual Package Hazard
+FxJS는 Node.js 공식 문서에 소개된 Dual Module Package를 지원하는 두 가지 방법 중 [Isolate state](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_approach_2_isolate_state) 방식을 채택하였습니다.
+따라서 아래와 같이 CommonJS 모듈과 ES 모듈을 함께 사용하는 경우에 모듈이나 함수 객체의 동등 비교에 주의해야 합니다. 자세한 내용은 [Node.js 공식 문서](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_dual_commonjs_es_module_packages) 를 참고해 주세요.
 ```javascript
-const FxJS = require("fxjs");
-const _ = require("fxjs/Strict");
-const L = require("fxjs/Lazy");
-const C = require("fxjs/Concurrency");
+import { createRequire } from "module";
+import * as fxjs_mjs from "fxjs";
+import go_mjs from "fxjs/Strict/go.js";
 
-// fxjs의 default export module 객체는 Lazy, Concurrency를 포함한 모든 함수를 가지고 있습니다.
-const { reduce, filterL, mapC } = FxJS;
+const require = createRequire(import.meta.url);
+const fxjs_cjs = require('fxjs');
+const go_cjs = require('fxjs/Strict/go');
 
-// 함수를 개별적으로 가져올 수도 있습니다.
-const rangeL = require("fxjs/Lazy/rangeL");
-
-_.go(
-  rangeL(1, 5),
-  filterL((a) => a % 2),
-  L.map((a) => a * 10),
-  reduce(_.add),
-  _.log
-); // 40
+console.log(fxjs_mjs === fxjs_cjs); // false
+console.log(go_mjs === go_cjs); // false
+console.log(fxjs_cjs.go === go_cjs); // true
+console.log(fxjs_mjs.go === go_mjs); // true
 ```
-
-CommonJS 모듈은 기본적으로 번들러가 Tree-Shaking을 지원되지 않기 때문에 `fxjs` package를 사용할 때, 개별 함수를 불러오는 방식으로 사용하는 것을 권장합니다.
-
-```javascript
-import rangeL from "fxjs/Lazy/rangeL";
-import filterL from "fxjs/Lazy/filterL";
-import mapL from "fxjs/Lazy/mapL";
-import go from "fxjs/Strict/go";
-import add from "fxjs/Strict/add";
-import reduce from "fxjs/Strict/reduce";
-import log from "fxjs/Strict/log";
-
-go(
-  rangeL(1, 5),
-  filterL((a) => a % 2),
-  mapL((a) => a * 10),
-  reduce(add),
-  log
-); // 40
-```
-
-#### ECMAScript Module
-
-FxJS는 Native ECMAScript Module로만 작성된 `fxjs2`패키지를 별도로 배포하고 있습니다.
-`fxjs2`패키지는 `package.json`파일에 `type: "module"`로 정의되어 있습니다.
-_mocha와 jest같은 개발 도구에서 아직 Native ESM을 잘 지원하지 않기 때문에 주의해야 합니다._
-
-```
-npm install fxjs2
-```
-
-```javascript
-import { go, reduce, add, log } from "fxjs2";
-import * as L from "fxjs2/Lazy/index.js";
-
-go(
-  L.range(1, 5),
-  L.filter((a) => a % 2),
-  L.map((a) => a * 10),
-  reduce(add),
-  log
-); // 40
-```
-
 ### Iteration protocols
 
 제너레이터를 통해 만든 이터레이터를 FxJS의 함수들로 평가할 수 있습니다.
@@ -604,12 +573,10 @@ try {
   - [strMap](https://github.com/marpple/FxJS/blob/master/API.md#strMap)
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
 
-## Extention Libraries
+## Extension Libraries
 
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
-- [FxContrib](https://github.com/marpple/FxContrib)
 
 위의 라이브러리들은 FxJS를 기반으로 만들어졌습니다.
 FxSQL과 FxDOM은 각각 SQL과 DOM을 함수형 API를 통해 다룰 수 있는 라이브러리 입니다.
-그리고 FxContrib는 FxJS와 FxDOM, FxSQL의 Contributor를 위해 만들어 졌습니다.

@@ -7,7 +7,7 @@
 ![npm](https://img.shields.io/npm/dt/fxjs)
 ![NPM](https://img.shields.io/npm/l/fxjs)
 
-FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterator, Generator, Promise.
+FxJS is a functional Javascript library based on Iterable / Iterator, Generator, and Promise in ECMAScript 6.
 
 - [Getting Started](#getting-started)
   - [Installation](#Installation)
@@ -26,115 +26,102 @@ FxJS is a functional programming library based on ECMAScript 6. Iterable, Iterat
   - [Concurrency](https://github.com/marpple/FxJS/blob/master/API.md#concurrency)
   - [Stoppable](https://github.com/marpple/FxJS/blob/master/API.md#stoppable)
   - [String](https://github.com/marpple/FxJS/blob/master/API.md#String)
-- [Extention Libraries](#Extention-Libraries)
+- [Extension Libraries](#Extension-Libraries)
   - [FxSQL](https://github.com/marpple/FxSQL)
   - [FxDOM](https://github.com/marpple/FxDOM)
-  - [FxContrib](https://github.com/marpple/FxContrib)
 
 ## Getting Started
 
 ### Installation
+#### In the browser environment
+- Modern Browser (>= 2% and last 2 versions)
+  ```html
+  <script src="https://unpkg.com/fxjs/dist/fx.js"></script>
+  ```
+- Legacy Browser (IE11)
+  ```html
+  <script src="https://unpkg.com/fxjs/dist/fx.es5.js"></script>
+  ```
+- Usage
+  ```html
+  <script>
+  const { L, C } = window._;
+  _.go(
+    [1, 2, 3],
+    L.map(a => a * a),
+    L.map(_.delay(300)),
+    C.takeAll,
+    _.reduce(_.add),
+    console.log
+  );
+  // '14' output after about 300 ms
+  </script>
+  ```
+  **Note: When the browser loads the `fx.js` script file, `_` is used as a global variable.**
 
-#### In Modern Browsers Supporting ES6
+#### In the node.js environment
 
-`fx.js` is a bundle of FxJS written in the ECMAScript Module as a single script file that can be run in a browser.
-
-**Note: `fx.js` uses the`fx`, `_`,`L`, and `C` properties of the window object as namespaces.**
-
-- [fx.js](https://github.com/marpple/FxJS/blob/master/dist/fx.js)
-- [fx.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.js.map)
-- [fx.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.min.js)
-
-```html
-<script src="https://unpkg.com/fxjs/dist/fx.min.js"></script>
-```
-
-#### In Legacy ES5 Browsers
-
-`fx.es5.js` is the build of FxJS as an **IE11** browser target.
-
-**Note: Like `fx.js`, `fx.es5.js` also use the window object's`fx`, `_`,`L`, and `C` properties as namespace.**
-
-- [fx.es5.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js)
-- [fx.es5.js.map](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.js.map)
-- [fx.es5.min.js](https://github.com/marpple/FxJS/blob/master/dist/fx.es5.min.js)
-
-```html
-<script src="https://unpkg.com/fxjs/dist/fx.es5.min.js"></script>
-```
-
-#### In Node.js
-
-FxJS is developed as ECMAScript Module.
-However, the files published in the `fxjs` package are the CommonJS Module,
-which is transpiled to support **Node.js 6** version.
+FxJS is a [Dual Module Package](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_dual_commonjs_es_module_packages) that supports both CommonJS and ES6 Module.
+Among the two module types of the fxjs package, commonjs support `node.js v6` or higher, and ESM is available from `node.js v12` or higher.
 
 ```
 npm install fxjs
 ```
+- CommonJS (>= node v6)
+  ```javascript
+  const FxJS = require("fxjs");
+  const _ = require("fxjs/Strict");
+  const L = require("fxjs/Lazy");
+  const C = require("fxjs/Concurrency");
+  
+  // The module object that exported as default has all the functions in fxjs, including Lazy and Concurrency.
+  const { reduce, mapL, takeAllC } = FxJS;
+  
+  // You can also import the functions individually.
+  const rangeL = require("fxjs/Lazy/rangeL");
+  _.go(
+    rangeL(1, 4),
+    L.map(a => a * a),
+    L.map(_.delay(300)),
+    C.takeAll,
+    _.reduce(_.add),
+    console.log
+  );
+  ```
+- ES6 Module (>= node v12)
+  ```javascript
+  import { add, delay, go, reduce, rangeL } from "fxjs";
+  import * as L from "fxjs/Lazy";
+  import * as C from "fxjs/Concurrency";
+  
+  go(
+    rangeL(1, 4),
+    L.map(a => a * a),
+    L.map(delay(300)),
+    C.takeAll,
+    reduce(add),
+    console.log
+  );
+  ```
+  
+  
+#### Dual Package Hazard
+FxJS adopted the [Isolate state](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_approach_2_isolate_state) approach in two ways to support the Dual Module Package, which was introduced in the official Node.js document.
+Therefore, when using both CommonJS and ES modules, care must be taken to compare the equivalence of modules or function objects as shown below. For more information, see [Node.js Document](https://nodejs.org/dist/latest-v14.x/docs/api/packages.html#packages_dual_commonjs_es_module_packages).
 
 ```javascript
-const FxJS = require("fxjs");
-const _ = require("fxjs/Strict");
-const L = require("fxjs/Lazy");
-const C = require("fxjs/Concurrency");
+import { createRequire } from "module";
+import * as fxjs_mjs from "fxjs";
+import go_mjs from "fxjs/Strict/go.js";
 
-// The default module that imported has all the functions in fxjs, including Lazy and Concurrency.
-const { reduce, filterL, mapC } = FxJS;
+const require = createRequire(import.meta.url);
+const fxjs_cjs = require('fxjs');
+const go_cjs = require('fxjs/Strict/go');
 
-// You can also import the functions individually.
-const rangeL = require("fxjs/Lazy/rangeL");
-
-_.go(
-  rangeL(1, 5),
-  filterL((a) => a % 2),
-  L.map((a) => a * 10),
-  reduce(_.add),
-  _.log
-); // 40
-```
-
-Module bundlers generally don't support Tree-Shaking to CommonJS modules, so when using the `fxjs` package, it is recommended that you import functions individually.
-
-```javascript
-import rangeL from "fxjs/Lazy/rangeL";
-import filterL from "fxjs/Lazy/filterL";
-import mapL from "fxjs/Lazy/mapL";
-import go from "fxjs/Strict/go";
-import add from "fxjs/Strict/add";
-import reduce from "fxjs/Strict/reduce";
-import log from "fxjs/Strict/log";
-
-go(
-  rangeL(1, 5),
-  filterL((a) => a % 2),
-  mapL((a) => a * 10),
-  reduce(add),
-  log
-); // 40
-```
-
-#### ECMAScript Module
-
-FxJS publishes the `fxjs2` package, which is written only with the native ECMAScript Module.
-In the `fxjs2` package, the `type` field is defined as `module` in the `package.json` file.
-Development tools like mocha and jest do not yet support Native ESM, so be careful about using it.
-
-```
-npm install fxjs2
-```
-
-```javascript
-import { go, reduce, add, log } from "fxjs2";
-import * as L from "fxjs2/Lazy/index.js";
-
-go(
-  L.range(1, 5),
-  L.filter((a) => a % 2),
-  L.map((a) => a * 10),
-  reduce(add),
-  log
-); // 40
+console.log(fxjs_mjs === fxjs_cjs); // false
+console.log(go_mjs === go_cjs); // false
+console.log(fxjs_cjs.go === go_cjs); // true
+console.log(fxjs_mjs.go === go_mjs); // true
 ```
 
 ### Iteration protocols
@@ -597,12 +584,10 @@ try {
   - [strMap](https://github.com/marpple/FxJS/blob/master/API.md#strMap)
   - [string](https://github.com/marpple/FxJS/blob/master/API.md#string)
 
-## Extention Libraries
+## Extension Libraries
 
 - [FxSQL](https://github.com/marpple/FxSQL)
 - [FxDOM](https://github.com/marpple/FxDOM)
-- [FxContrib](https://github.com/marpple/FxContrib)
 
 The above libraries are based on FxJS.
 FxSQL and FxDOM are libraries that can handle SQL and DOM through functional APIs,respectively.
-FxContrib is contributors' library for FxJS, FxSQL and FxDOM.
