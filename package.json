@@ -4,74 +4,39 @@
   "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
   "type": "module",
+  "module": "mjs/index.js",
   "sideEffects": false,
-  "exports": {
-    ".": {
-      "import": "./module/index.js",
-      "require": "./index.js"
-    },
-    "./index.js": {
-      "import": "./module/index.js",
-      "require": "./index.js"
-    },
-    "./.internal/*": {
-      "import": "./module/.internal/*",
-      "require": "./.internal/*"
-    },
-    "./Strict": {
-      "import": "./module/Strict/index.js",
-      "require": "./Strict/index.js"
-    },
-    "./Strict/*": {
-      "import": "./module/Strict/*",
-      "require": "./Strict/*"
-    },
-    "./Lazy": {
-      "import": "./module/Lazy/index.js",
-      "require": "./Lazy/index.js"
-    },
-    "./Lazy/*": {
-      "import": "./module/Lazy/*",
-      "require": "./Lazy/*"
-    },
-    "./Concurrency": {
-      "import": "./module/Concurrency/index.js",
-      "require": "./Concurrency/index.js"
-    },
-    "./Concurrency/*": {
-      "import": "./module/Concurrency/*",
-      "require": "./Concurrency/*"
-    }
-  },
   "scripts": {
-    "transpile-mjs:internal": "BABEL_ENV=mjs babel .internal --out-dir module/.internal --copy-files",
-    "transpile-mjs:strict": "BABEL_ENV=mjs babel Strict --out-dir module/Strict --copy-files",
-    "transpile-mjs:lazy": "BABEL_ENV=mjs babel Lazy --out-dir module/Lazy --copy-files",
-    "transpile-mjs:concurrency": "BABEL_ENV=mjs babel Concurrency --out-dir module/Concurrency --copy-files",
-    "transpile-mjs:index": "BABEL_ENV=mjs babel index.js --out-file module/index.js --copy-files",
+    "generate:index": "node index_generator.js",
+    "generate:cjs-export-files": "node cjs_export_file_generator.js",
+    "transpile-mjs:internal": "BABEL_ENV=mjs babel .internal --out-dir mjs/.internal --copy-files",
+    "transpile-mjs:strict": "BABEL_ENV=mjs babel Strict --out-dir mjs/Strict --copy-files",
+    "transpile-mjs:lazy": "BABEL_ENV=mjs babel Lazy --out-dir mjs/Lazy --copy-files",
+    "transpile-mjs:concurrency": "BABEL_ENV=mjs babel Concurrency --out-dir mjs/Concurrency --copy-files",
+    "transpile-mjs:index": "BABEL_ENV=mjs babel index.js --out-file mjs/index.js --copy-files",
     "transpile-mjs": "npm run transpile-mjs:internal && npm run transpile-mjs:strict && npm run transpile-mjs:lazy && npm run transpile-mjs:concurrency && npm run transpile-mjs:index",
-    "transpile-cjs:internal": "BABEL_ENV=cjs babel .internal --out-dir .internal",
-    "transpile-cjs:strict": "BABEL_ENV=cjs babel Strict --out-dir Strict",
-    "transpile-cjs:lazy": "BABEL_ENV=cjs babel Lazy --out-dir Lazy",
-    "transpile-cjs:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir Concurrency",
-    "transpile-cjs:index": "BABEL_ENV=cjs babel index.js --out-file index.js",
+    "transpile-cjs:internal": "BABEL_ENV=cjs babel .internal --out-dir cjs/.internal --copy-files",
+    "transpile-cjs:strict": "BABEL_ENV=cjs babel Strict --out-dir cjs/Strict --copy-files",
+    "transpile-cjs:lazy": "BABEL_ENV=cjs babel Lazy --out-dir cjs/Lazy --copy-files",
+    "transpile-cjs:concurrency": "BABEL_ENV=cjs babel Concurrency --out-dir cjs/Concurrency --copy-files",
+    "transpile-cjs:index": "BABEL_ENV=cjs babel index.js --out-file cjs/index.js --copy-files",
     "transpile-cjs": "npm run transpile-cjs:internal && npm run transpile-cjs:strict && npm run transpile-cjs:lazy && npm run transpile-cjs:concurrency && npm run transpile-cjs:index",
     "transpile": "npm run transpile-mjs && npm run transpile-cjs",
-    "generate:index": "node index_generator.js",
     "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
-    "build": "npm run generate:index && npm run bundle && npm run transpile",
+    "build": "npm run generate:index && npm run bundle && npm run transpile && npm run generate:cjs-export-files",
     "deploy": "np --no-publish && npm run build && npm publish",
     "test": "mocha 'test/spec.js' --timeout 10000"
   },
   "files": [
+    "mjs/",
+    "cjs/",
     ".internal/",
     "Concurrency/",
     "Lazy/",
     "Strict/",
-    "index.js",
-    "module/"
+    "index.js"
   ],
   "repository": {
     "type": "git",

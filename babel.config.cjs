@@ -4,11 +4,10 @@ module.exports = (api) => {
     BABEL_ENV === "cjs"
       ? { node: 6 }
       : BABEL_ENV === "mjs"
-      ? "last 1 chrome version"
+      ? { node: 10 }
       : BABEL_ENV === "modern"
       ? ">= 2% and last 2 versions"
       : { ie: 11 };
-
   return {
     presets: [
       [
