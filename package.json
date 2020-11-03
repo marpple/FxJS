@@ -36,7 +36,8 @@
     "Concurrency/",
     "Lazy/",
     "Strict/",
-    "index.js"
+    "index.js",
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -86,7 +87,7 @@
     "fp",
     "fxjs"
   ],
-  "unpkg": "dist/",
+  "umd": "dist/",
   "jsdelivr": "dist/",
   "np": {
     "yarn": false
