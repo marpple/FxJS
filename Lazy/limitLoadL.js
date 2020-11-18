@@ -5,7 +5,7 @@ import mapL from "./mapL.js";
 import takeUntilL from "./takeUntilL.js";
 import reject from "../Strict/reject.js";
 import flatMapL from "./flatMapL.js";
-import catchNoopIter from "../.internal/catchNoopIter.js";
+import catchNoopIter from "../_internal/catchNoopIter.js";
 
 export default function limitLoadL(n, iter) {
   if (arguments.length == 1)

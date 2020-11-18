@@ -37,7 +37,7 @@ const readDir = (path) =>
     });
   });
 
-const DIR_NAMES = [".internal", "Strict", "Lazy", "Concurrency"];
+const DIR_NAMES = ["_internal", "Strict", "Lazy", "Concurrency"];
 const CJS_ROOT_INDEX = "./cjs/index.js";
 const root_dir_paths = map((dn) => `./${dn}`, DIR_NAMES);
 const generateCJSExportSyntax = (file_path) =>
@@ -59,6 +59,7 @@ const default_sub_path_exports = {
     import: "./mjs/index.js",
     require: "./cjs/index.js",
   },
+  "./package.json": "./package.json",
   "./index": {
     import: "./mjs/index.js",
     require: "./cjs/index.js",

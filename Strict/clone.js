@@ -1,5 +1,5 @@
-import deepEntriesL from "../.internal/entriesDeepL.js";
-import objectDeep from "../.internal/objectDeep.js";
+import deepEntriesL from "../_internal/entriesDeepL.js";
+import objectDeep from "../_internal/objectDeep.js";
 
 export default function clone(obj) {
   return objectDeep(deepEntriesL(obj));

@@ -5,7 +5,7 @@ import entries from "./entries.js";
 import map from "./map.js";
 import reduce from "./reduce.js";
 import pipe from "./pipe.js";
-import reverse1 from "../.internal/reverse1.js";
+import reverse1 from "../_internal/reverse1.js";
 
 const invertBy = curry((f, obj) =>
   go(

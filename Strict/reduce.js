@@ -1,6 +1,6 @@
 import toIter from "./toIter.js";
 import go1 from "./go1.js";
-import go2 from "../.internal/go2.js";
+import go2 from "../_internal/go2.js";
 import head from "./head.js";
 
 export default function reduce(f, acc, iter) {

@@ -1,5 +1,5 @@
 import reduce from "./reduce.js";
-import _go1 from "../.internal/go1Sync.js";
+import _go1 from "../_internal/go1Sync.js";
 import go1 from "./go1.js";
 
 export default function tap(f, ...fs) {

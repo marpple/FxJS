@@ -1,4 +1,4 @@
-import baseApplyEach from "../.internal/baseApplyEach.js";
+import baseApplyEach from "../_internal/baseApplyEach.js";
 import map from "./map.js";
 import object from "./object.js";
 

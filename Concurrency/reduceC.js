@@ -1,5 +1,5 @@
 import reduce from "../Strict/reduce.js";
-import catchNoop from "../.internal/catchNoop.js";
+import catchNoop from "../_internal/catchNoop.js";
 import curry from "../Strict/curry.js";
 
 export default curry(function reduceC(f, acc, iter) {

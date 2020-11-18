@@ -1,4 +1,4 @@
-import baseCallEach from "../.internal/baseCallEach.js";
+import baseCallEach from "../_internal/baseCallEach.js";
 import mapC from "./mapC.js";
 import objectC from "./objectC.js";
 
