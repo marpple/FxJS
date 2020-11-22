@@ -1,6 +1,6 @@
 {
   "name": "fxjs",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "description": "Functional Extensions for modern Javascript",
   "main": "index.js",
   "type": "module",
@@ -26,7 +26,7 @@
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
     "build": "npm run generate:index && npm run bundle && npm run transpile && npm run generate:cjs-export-files",
-    "deploy": "npm run build && np --no-publish && npm publish",
+    "deploy": "np --no-publish",
     "test": "mocha 'test/spec.js' --timeout 10000"
   },
   "files": [
