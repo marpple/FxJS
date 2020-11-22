@@ -579,8 +579,15 @@ const { expect } = chai;
   });
 
   describe("html", function () {
-    it("html", async () => {
+    it("undefined 값은 빈 공백으로 대체한다.", () => {
       expect(html`a${"b"}c${"d"}${undefined}e`).to.eql("abcde");
+    });
+
+    it("가장 바깥쪽 태그 외부의 공백은 제거한다", () => {
+      expect(html` <div>Hello World</div> `).to.eql("<div>Hello World</div>");
+    });
+
+    it("Promise 값을 풀어서 문자열을 결과를 만든다", async () => {
       expect(
         await html`a${Promise.resolve("b")}c${Promise.resolve(
           "d"

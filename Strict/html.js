@@ -9,6 +9,6 @@ export default function html(strs, ...datas) {
       (res, str) => go1(datas.next().value, (data) => `${res}${data}${str}`),
       strs
     ),
-    (a) => a.replace(/\s*(\>|\<)\s*/g, "$1").trim()
+    (a) => a.trim()
   );
 }
