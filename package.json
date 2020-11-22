@@ -64,20 +64,20 @@
   },
   "homepage": "https://github.com/marpple/FxJS#readme",
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.7.0",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "babel-loader": "^8.1.0",
+    "@babel/cli": "^7.12.7",
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.1",
     "chai": "^4.2.0",
-    "mocha": "^8.2.0",
-    "prettier": "^2.1.2",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.0",
     "terser-webpack-plugin": "^5.0.3",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
   },
   "directories": {
     "test": "test"
