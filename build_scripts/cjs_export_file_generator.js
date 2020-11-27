@@ -55,11 +55,11 @@ const generateCJSExportFiles = (dir_name, file_names) =>
   );
 
 const default_sub_path_exports = {
+  "./package.json": "./package.json",
   ".": {
     import: "./mjs/index.js",
     require: "./cjs/index.js",
   },
-  "./package.json": "./package.json",
   "./index": {
     import: "./mjs/index.js",
     require: "./cjs/index.js",
