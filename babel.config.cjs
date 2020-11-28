@@ -1,11 +1,9 @@
 module.exports = (api) => {
   const BABEL_ENV = api.env();
   const targets =
-    BABEL_ENV === "mjs"
-      ? { node: 12 }
-      : BABEL_ENV === "modern"
+    (BABEL_ENV === BABEL_ENV) === "modern"
       ? ">= 2% and last 2 versions"
-      : { ie: 11 };
+      : { ie: 11, ...(BABEL_ENV === "mjs" ? { node: 8 } : null) };
 
   const plugins =
     BABEL_ENV === "mjs"
