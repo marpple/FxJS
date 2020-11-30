@@ -5,8 +5,11 @@
   "type": "module",
   "main": "index.js",
   "module": "mjs/index.js",
+  "esnext": "esm/index.js",
+  "jsnext:main": "esm/index.js",
   "sideEffects": false,
   "scripts": {
+    "copy-esm": "rm -rf ./esm && mkdir ./esm && cp ./index.js ./esm/index.js && cp -R ./_internal ./esm/_internal && cp -R ./Lazy ./esm/Lazy && cp -R ./Concurrency ./esm/Concurrency && cp -R ./Strict ./esm/Strict",
     "generate:index": "node build_scripts/index_generator.js",
     "generate:cjs-export-files": "node build_scripts/cjs_export_file_generator.js",
     "transpile-mjs:internal": "BABEL_ENV=mjs babel _internal --out-dir mjs/_internal --copy-files",
@@ -25,11 +28,12 @@
     "bundle:modern": "NODE_ENV=production BABEL_ENV=modern webpack --config webpack.config.cjs",
     "bundle:legacy": "NODE_ENV=production BABEL_ENV=legacy webpack --config webpack.config.cjs",
     "bundle": "npm run bundle:modern && npm run bundle:legacy",
-    "build": "npm run generate:index && npm run bundle && npm run transpile && npm run generate:cjs-export-files",
+    "build": "npm run generate:index && npm run copy-esm && npm run bundle && npm run transpile && npm run generate:cjs-export-files",
     "deploy": "np --no-publish",
     "test": "mocha 'test/spec.js' --timeout 10000"
   },
   "files": [
+    "esm/",
     "mjs/",
     "cjs/",
     "_internal/",
