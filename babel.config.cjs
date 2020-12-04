@@ -19,7 +19,10 @@ module.exports = (api) => {
         {
           targets,
           useBuiltIns: "usage",
-          corejs: 3,
+          corejs: {
+            version: 3,
+            proposals: true,
+          },
           modules: BABEL_ENV === "mjs" ? false : "auto",
         },
       ],
