@@ -7,10 +7,18 @@ module.exports = (api) => {
       ? { ie: 11 }
       : { ie: 11, node: 8 };
 
-  const plugins =
-    BABEL_ENV === "mjs"
-      ? ["./build_scripts/transform_import_extension.cjs"]
-      : [];
+  const plugins = [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        corejs: 3,
+      },
+    ],
+  ];
+
+  if (BABEL_ENV === "mjs") {
+    plugins.push("./build_scripts/transform_import_extension.cjs");
+  }
 
   return {
     presets: [
@@ -18,11 +26,6 @@ module.exports = (api) => {
         "@babel/preset-env",
         {
           targets,
-          useBuiltIns: "usage",
-          corejs: {
-            version: 3,
-            proposals: true,
-          },
           modules: BABEL_ENV === "mjs" ? false : "auto",
         },
       ],
