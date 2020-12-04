@@ -5,6 +5,7 @@ const { NODE_ENV, BABEL_ENV } = process.env;
 
 module.exports = () => {
   return {
+    target: ["web", BABEL_ENV === "modern" ? "es6" : "es5"],
     mode: NODE_ENV || "development",
     devtool: "source-map",
     entry: "./entry.js",
