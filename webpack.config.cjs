@@ -18,16 +18,13 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.m?js/,
-          resolve: {
-            fullySpecified: false,
-          },
-        },
-        {
-          test: /\.js$/,
+          test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",
+          },
+          resolve: {
+            fullySpecified: false,
           },
         },
       ],
