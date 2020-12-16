@@ -56,11 +56,11 @@ const generateCJSExportFiles = (dir_name, file_names) =>
 
 const default_sub_path_exports = {
   "./package.json": "./package.json",
-  "./esm": "./esm/index.js",
-  "./esm/index.js": "./esm/index.js",
-  "./esm/Strict": "./esm/Strict/index.js",
-  "./esm/Lazy": "./esm/Lazy/index.js",
-  "./esm/Concurrency": "./esm/Concurrency/index.js",
+  "./es": "./es/index.js",
+  "./es/index.js": "./es/index.js",
+  "./es/Strict": "./es/Strict/index.js",
+  "./es/Lazy": "./es/Lazy/index.js",
+  "./es/Concurrency": "./es/Concurrency/index.js",
   ".": {
     import: "./mjs/index.js",
     require: "./cjs/index.js",
@@ -112,9 +112,9 @@ const default_sub_path_exports = {
           require: `./${source_file}`,
         };
         return {
+          [`./es/${source_file}`]: `./es/${source_file}`,
           [`./${source_file.replace(".js", "")}`]: sub_path,
           [`./${source_file}`]: sub_path,
-          [`./esm/${source_file}`]: `./esm/${source_file}`,
         };
       }, file_names)
     ),
