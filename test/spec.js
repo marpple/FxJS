@@ -2750,4 +2750,26 @@ const { expect } = chai;
       expect(await last([1, 2, Promise.resolve(3)])).to.eql(3);
     });
   });
+
+  describe(`L.zipWIthIndex`, function () {
+    it(`Yield each element with index`, function () {
+      // given
+      const items = ["a", "b", "c", "d", "e"];
+
+      // when
+      const result = L.zipWithIndex(items);
+
+      // then
+      let cur;
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        cur = result.next();
+        expect(cur.done).false;
+        expect(i).to.equal(cur.value[0]);
+        expect(item).to.equal(cur.value[1]);
+      }
+      cur = result.next();
+      expect(cur.done).true;
+    });
+  });
 })();
