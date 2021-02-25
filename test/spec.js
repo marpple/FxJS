@@ -2378,10 +2378,12 @@ const { expect } = chai;
       str: "HELLO",
       num: 100,
       sym: true,
+      nul: true,
       nested: {
         str2: "world!",
         num2: 200,
         sym2: true,
+        nul2: false,
       },
     };
 
@@ -2392,20 +2394,24 @@ const { expect } = chai;
         str: (str) => str.toUpperCase(),
         num: (a) => a * a,
         sym: (a) => a === symbol,
+        nul: (a) => a === null,
         nested: {
           str2: (a) => a + "!",
           num2: (a) => a * 100,
           sym2: (a) => a === symbol2,
+          nul2: (a) => a !== null,
         },
       };
       const obj = {
         str: "hello",
         num: 10,
         sym: symbol,
+        nul: null,
         nested: {
           str2: "world",
           num2: 2,
           sym2: symbol2,
+          nul2: null,
         },
       };
       expect(evolve(dictionary, obj)).to.eql(res);
@@ -2418,20 +2424,24 @@ const { expect } = chai;
         str: (str) => Promise.resolve(str.toUpperCase()),
         num: (a) => a * a,
         sym: (a) => a === symbol,
+        nul: (a) => Promise.resolve(a === null),
         nested: {
           str2: (a) => a + "!",
           num2: (a) => Promise.resolve(a * 100),
           sym2: (a) => a === symbol2,
+          nul2: (a) => Promise.resolve(a !== null),
         },
       };
       const obj = {
         str: Promise.resolve("hello"),
         num: 10,
         sym: Promise.resolve(symbol),
+        nul: null,
         nested: {
           str2: Promise.resolve("world"),
           num2: 2,
           sym2: Promise.resolve(symbol2),
+          nul2: null,
         },
       };
       expect(await evolve(dictionary, obj)).to.eql(res);

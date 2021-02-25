@@ -4,6 +4,7 @@ import object from "./object.js";
 import curry from "./curry.js";
 import identity from "./identity.js";
 import map from "./map.js";
+import isObject from "./isObject.js";
 
 export default curry(function evolve(dict, obj) {
   return go(
@@ -13,9 +14,7 @@ export default curry(function evolve(dict, obj) {
       go(
         v,
         (v) =>
-          typeof v === "object"
-            ? evolve(dict[k] || {}, v)
-            : (dict[k] || identity)(v),
+          isObject(v) ? evolve(dict[k] || {}, v) : (dict[k] || identity)(v),
         (v) => [k, v]
       )
     ),
