@@ -1500,7 +1500,7 @@ subtract(4, 1) // 3
 ```javascript
 // times(String, 3)
 times(String, 3) // ["0", "1", "2"]
-times(n => n * 2, 5) // [2, 4, 6, 8, 10]
+times(n => n * 2, 5) // [0, 2, 4, 6, 8]
 
 // times(Promise.resolve.bind(Promise), 3)
 await times(n => Promise.resolve(n), 3) // [0, 1, 2]
